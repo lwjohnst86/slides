@@ -6,7 +6,7 @@ output:
   xaringan::moon_reader:
     self_contained: true
     lib_dir: libs
-    css: ["xaringan-themer.css", "../../../common/custom.css"]
+    css: ["xaringan-themer.css", "../../common/custom.css"]
     nature:
       ratio: "16:9"
       highlightStyle: github
@@ -18,7 +18,7 @@ layout: true
 
 <div class="my-footer">
 <span>
-<img src="../../../common/au_logo_black.png" alt="Aarhus University", width="140">
+<img src="../../common/au_logo_black.png" alt="Aarhus University", width="160">
 </span>
 </div> 
 
@@ -34,7 +34,7 @@ mono_accent(
     base_color = "#105059",
     header_font_google = google_font("Poppins"),
     text_font_google = google_font("Oxygen"),
-    text_font_size = "35px"
+    text_font_size = "32px"
 )
 ```
 
