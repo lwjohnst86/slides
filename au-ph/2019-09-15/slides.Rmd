@@ -1,5 +1,5 @@
 ---
-title: "High-dimensional metabolic data in epidemiological studies"
+title: "Analyzing high dimensional metabolic data in epidemiological studies"
 author: "Luke Johnston"
 institute: "Aarhus University"
 output:
@@ -23,13 +23,14 @@ layout: true
 </div> 
 
 ```{r setup, include=FALSE}
+library(xaringanthemer)
+library(pcalg)
 options(htmltools.dir.version = FALSE)
 
 knitr::opts_chunk$set(echo = FALSE)
 ```
 
 ```{r xaringan-themer, include=FALSE}
-library(xaringanthemer)
 mono_accent(
     base_color = "#105059",
     header_font_google = google_font("Poppins"),
@@ -40,11 +41,15 @@ mono_accent(
 
 ---
 
-# Objectives:
+# Aims:
 
-- Showcase NetCoupler and its usefulness
+- Describe NetCoupler
 
-- Get feedback on the implementation
+- Get feedback and/or comments on it
+
+--
+
+- ... and to see if I explained it well
 
 ---
 
@@ -54,13 +59,19 @@ class: center, middle
 
 ---
 
-## Modern epi studies can generate a lot of metabolic data 
+## Modern epidemiology studies generate a lot of metabolic data 
 
-- More -omics type
+.pull-left[
+- -omics type data
 
+- Metabolic biomarkers
+]
+
+.pull-right[
 - High dimensionality
 
 - Complex networks
+]
 
 ???
 
@@ -70,11 +81,9 @@ Classic epidemiology meaning having an exposure with an output
 
 ---
 
-## "Traditional" analysis may use:
+## "Traditional" analysis may use: Dimensionality reduction
 
-Dimensionality reduction:
-
-![Reducing number of variables with PCA](images/pca.png)
+.center[![Reducing number of variables with PCA](images/pca.png)]
 
 ???
 
@@ -85,11 +94,7 @@ the interdependence and connections between variables it not maintained.
 
 ---
 
-## "Traditional" analysis may use:
-
-Many regression-type methods:
-
-- Models of outcome with each metabolic variable
+## "Traditional" analysis may use: Many regression-type models
 
 ```
 O1 = M1 + covariates
@@ -109,12 +114,9 @@ not taking account of the inherent interdependencies between variables.
 
 ---
 
-## "Traditional" analysis may use:
+## "Traditional" analysis may use: Network analysis
 
-Network analysis
-
-```{r, echo=FALSE, fig.width=7, fig.height=5}
-library(pcalg)
+```{r network-analysis, echo=FALSE, fig.width=7, fig.height=5, message=FALSE, warning=FALSE, fig.align="center"}
 set.seed(126)
 plot(randDAG(8, 2, "watts"))
 ```
@@ -130,20 +132,24 @@ methods require you provide a prespecified base network, which you might not kno
 
 ## So, what if we...
 
-<!-- Problem with these analyses... -->
-
-.pull-left[
 - want info about network structure?
-- don't know the network structure?
-- have an exposure, metabolites, and outcome?
-- are interested in causal links?
-]
-
 --
 
-.pull-right[
-![Exposure, network, and outcome.](images/network.png)
-]
+- don't know the network structure?
+--
+
+- have an exposure, metabolites, and outcome?
+--
+
+- are interested in causal links?
+
+---
+
+## What if we want to know something like this?
+
+```{r, out.width="75%", fig.align="center"}
+knitr::include_graphics("images/network.png")
+```
 
 ---
 
@@ -153,7 +159,7 @@ class: center, middle
 
 ---
 
-## NetCoupler: An algorithm that...
+## NetCoupler: A "causal structure learning" algorithm that...
 
 - Finds most likely network structure
 
@@ -173,25 +179,33 @@ class: middle, center
 
 ## 1. DAG skeleton of network is estimated
 
-![Step 1: Find DAG](images/nc-step-1.png)
+```{r, out.height="100%", fig.align="center"}
+knitr::include_graphics("images/nc-step-1.png")
+```
 
 ---
 
 ## 2. Initial links formed on exposure-side
 
-![Step 2: Links with E](images/nc-step-2.png)
+```{r, out.width="65%", fig.align="center"}
+knitr::include_graphics("images/nc-step-2.png")
+```
 
 ---
 
 ## 3. Direct effects estimated between exposure and network
 
-![Step 3: Direct effects estimated](images/nc-step-3.png)
+```{r, out.width="65%", fig.align="center"}
+knitr::include_graphics("images/nc-step-3.png")
+```
 
 ---
 
-## 4. Repeat identifying links, find unaffected/ambiguous, delete indirect links
+## 4. Repeat identifying links, find ambiguous, delete indirect links
 
-![Step 4: Repeat finding links](images/nc-step-4.png)
+```{r, out.width="65%", fig.align="center"}
+knitr::include_graphics("images/nc-step-4.png")
+```
 
 ???
 
@@ -202,19 +216,25 @@ stop here.
 
 ## 5. Initial links formed with outcome-side
 
-![Step 5: Form links with O](images/nc-step-5.png)
+```{r, out.width="65%", fig.align="center"}
+knitr::include_graphics("images/nc-step-5.png")
+```
 
 ---
 
 ## 6. Direct effects estimated between network and outcome
 
-![Step 6: Find direct effects](images/nc-step-6.png)
+```{r, out.width="65%", fig.align="center"}
+knitr::include_graphics("images/nc-step-6.png")
+```
 
 ---
 
-## 7. Repeat identifying links, delete indirect links, find unaffected/ambiguous
+## 7. Repeat identifying links, delete indirect links, find ambiguous
 
-![Step 7: Continue finding links](images/nc-step-7.png)
+```{r, out.width="65%", fig.align="center"}
+knitr::include_graphics("images/nc-step-7.png")
+```
 
 ???
 
@@ -225,13 +245,17 @@ outcome.
 
 ## 8. (optional) Combine both estimations into joint model
 
-![Step 8: Combine estimates into joint model](images/nc-step-8.png)
+```{r, out.width="85%", fig.align="center"}
+knitr::include_graphics("images/nc-step-8.png")
+```
 
 ---
 
-## Find (potentially) causal pathways with graphical model
+## Infer (potentially) causal pathways with graphical model
 
-![Causal pathways](images/nc-causal-pathways.png)
+```{r, out.width="85%", fig.align="center"}
+knitr::include_graphics("images/nc-causal-pathways.png")
+```
 
 ---
 
@@ -241,7 +265,7 @@ class: center, middle
 
 ---
 
-## NetCoupler current state
+## Current state of NetCoupler
 
 - Series of R scripts
 
@@ -265,8 +289,6 @@ class: center, middle
 .center[
 ![GitHub repo](images/netcoupler-github.png)
 ]
-
-.footnote[Source: https://github.com/ClemensWittenbecher/NetCoupler]
 
 ---
 
