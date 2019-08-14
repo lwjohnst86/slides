@@ -56,27 +56,15 @@ class: center, middle
 
 ## Modern epi studies can generate a lot of metabolic data 
 
-.pull-left[
 - More -omics type
 
 - High dimensionality
 
 - Complex networks
 
-- Linking with classic epidemiology
-]
-
---
-
-.pull-right[
-Examples:
-
-- Panel of 20-30 fatty acids
-- M
-
-]
-
 ???
+
+Like metabolomics, fatty acid panels.
 
 Classic epidemiology meaning having an exposure with an output
 
@@ -84,29 +72,63 @@ Classic epidemiology meaning having an exposure with an output
 
 ## "Traditional" analysis may use:
 
-Many regression-type methods:
-
-- M1 
-
----
-
-## "Traditional" analysis may use:
-
 Dimensionality reduction:
 
-random dag here with PCA output?
+![Reducing number of variables with PCA](images/pca.png)
+
+???
+
+This has the advantage of making things simpler while trying to maximize
+variance in the data. Afterward you can do modelling on each principal component.
+The disadvantage of this approach is that it loses a lot of information since
+the interdependence and connections between variables it not maintained.
 
 ---
 
 ## "Traditional" analysis may use:
 
-Network analysis:
+Many regression-type methods:
 
-random dag here
+- Models of outcome with each metabolic variable
+
+```
+O1 = M1 + covariates
+O1 = M2 + covariates
+...
+O1 = M7 + covariates
+O1 = M8 + covariates
+```
+
+???
+
+Some ways you might go about analyzing this data is by running many regression
+models, one for each metabolic variable for instance.
+
+This of course has problems since you're simply running a bunch of models and
+not taking account of the inherent interdependencies between variables.
 
 ---
 
-## What if we...
+## "Traditional" analysis may use:
+
+Network analysis
+
+```{r, echo=FALSE, fig.width=7, fig.height=5}
+library(pcalg)
+set.seed(126)
+plot(randDAG(8, 2, "watts"))
+```
+
+???
+
+This approach is nice in that you can extract information about the connection
+between metabolic variables. But there is no way to incorporate the disease
+outcome with this approach and in order to construct the network properly most
+methods require you provide a prespecified base network, which you might not know.
+
+---
+
+## So, what if we...
 
 <!-- Problem with these analyses... -->
 
@@ -120,13 +142,7 @@ random dag here
 --
 
 .pull-right[
-Exposure with network with outcome
-Exposure and outcome linked
-
-Exposure and network only
-Network and outcome only
-
-use inkscape maybe?
+![Exposure, network, and outcome.](images/network.png)
 ]
 
 ---
@@ -149,63 +165,73 @@ class: center, middle
 
 ---
 
-## Steps in NetCoupler
+class: middle, center
 
-1. DAG skeleton of network is estimated
---
-
-2. Initial links formed on exposure(E)-side
---
-
-3. Direct effects estimated between E and network
---
-
-4. Repeat identifying links, find unaffected/ambiguous and delete indirect links
---
-
-5. Initial links formed with outcome(O)-side
---
-
-6. Direct effects estimated between network and O
---
-
-7. Repeat identifying links, delete indirect links and find unaffected/ambiguous
---
-
-8. Combine E-side and O-side estimates into joint model
+## Algorithm (steps) used in NetCoupler
 
 ---
 
 ## 1. DAG skeleton of network is estimated
 
+![Step 1: Find DAG](images/nc-step-1.png)
 
 ---
 
-## 2. Initial links formed on exposure(E)-side
+## 2. Initial links formed on exposure-side
+
+![Step 2: Links with E](images/nc-step-2.png)
 
 ---
 
-## 3. Direct effects estimated between E and network
+## 3. Direct effects estimated between exposure and network
+
+![Step 3: Direct effects estimated](images/nc-step-3.png)
 
 ---
 
-## 4. Repeat identifying links, find unaffected/ambiguous and delete indirect links
+## 4. Repeat identifying links, find unaffected/ambiguous, delete indirect links
+
+![Step 4: Repeat finding links](images/nc-step-4.png)
+
+???
+
+If you were interested in linkages with an exposure on the network, you could
+stop here.
 
 ---
 
-## 5. Initial links formed with outcome(O)-side
+## 5. Initial links formed with outcome-side
+
+![Step 5: Form links with O](images/nc-step-5.png)
 
 ---
 
-## 6. Direct effects estimated between network and O
+## 6. Direct effects estimated between network and outcome
+
+![Step 6: Find direct effects](images/nc-step-6.png)
 
 ---
 
-## 7. Repeat identifying links, delete indirect links and find unaffected/ambiguous
+## 7. Repeat identifying links, delete indirect links, find unaffected/ambiguous
+
+![Step 7: Continue finding links](images/nc-step-7.png)
+
+???
+
+You could stop here if you were interested in linkages with the network and an
+outcome.
 
 ---
 
-## 8. Combine E-side and O-side estimates into joint model
+## 8. (optional) Combine both estimations into joint model
+
+![Step 8: Combine estimates into joint model](images/nc-step-8.png)
+
+---
+
+## Find (potentially) causal pathways with graphical model
+
+![Causal pathways](images/nc-causal-pathways.png)
 
 ---
 
