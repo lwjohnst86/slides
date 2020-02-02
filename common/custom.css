@@ -1,16 +1,25 @@
 /* For footer */
-div.my-footer {
+.my-footer {
     background-color: #FFFFFF;
     position: absolute;
-    bottom: 0px;
-    left: 0px;
+    bottom: 0;
+    left: 0;
     height: 50px;
     width: 100%;
 }
 
-div.my-footer span {
+.my-footer span {
     font-size: 10pt;
     position: absolute;
     left: 15px;
     bottom: 8px;
+}
+
+.my-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 30px;
+    width: 100%;
+    text-align: right;
 }
