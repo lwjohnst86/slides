@@ -1,5 +1,6 @@
 ---
 title: "MELD Project: The *M*etabolic consequences of adverse *E*arly *L*ife conditions and subsequent risk for adult type 2 *D*iabetes"
+subtitle: "DDA Start-up Presentation"
 author: "Luke W. Johnston"
 output:
   xaringan::moon_reader:
@@ -37,6 +38,10 @@ knitr::opts_chunk$set(
   warning = FALSE,
   fig.align = "center"
 )
+
+image_nc_path <- function(.file) {
+    here::here("au-ph", "2019-08-15", "images", .file)
+}
 ```
 
 ```{r xaringan-themer, include=FALSE}
@@ -100,7 +105,7 @@ life adversity and T2D with NetCoupler
 ## Methods: Population
 
 ```{r img-lexis, out.width="80%"}
-knitr::include_graphics("lexis-diagram.svg")
+knitr::include_graphics("images/lexis-diagram.svg")
 ```
 
 ---
@@ -108,7 +113,7 @@ knitr::include_graphics("lexis-diagram.svg")
 ## Methods: Variables
 
 ```{r img-dag, out.width="85%"}
-knitr::include_graphics("dag.svg")
+knitr::include_graphics("images/dag.svg")
 ```
 
 ---
@@ -116,27 +121,61 @@ knitr::include_graphics("dag.svg")
 ## Methods: Analysis process
 
 ```{r img-methods, out.width="70%"}
-knitr::include_graphics("methods.svg")
+knitr::include_graphics("images/methods.svg")
 ```
+
+---
+
+## Model to handle data that looks like:
+
+```{r img-model-handles-data, out.width="75%"}
+knitr::include_graphics(image_nc_path("network.png"))
+```
+
+---
+
+## NetCoupler: A "causal structure learning" algorithm that...
+
+.pull-left[
+- Finds most likely network structure
+
+- Allows inclusion of exposure and outcome
+
+- Identifies causal links between and within network
+]
+
+.pull-right[
+![Clemens Wittenbecher](https://avatars3.githubusercontent.com/u/33724052?size=250)
+]
+
+.footnote[NetCoupler algorithm was developed by Clemens Wittenbecher.]
 
 ---
 
 ## NetCoupler: Causal structure learning
 
 ```{r img-netcoupler, out.width="75%"}
-knitr::include_graphics("netcoupler-process.svg")
+knitr::include_graphics("images/netcoupler-process.svg")
 ```
 
 .footnote[[github.com/NetCoupler](https://github.com/NetCoupler)]
 
 ---
 
+## Infer (potentially) causal pathways with graphical model
+
+```{r img-netcoupler-end-goal, out.width="85%"}
+knitr::include_graphics(image_nc_path("nc-causal-pathways.png"))
+```
+
+
+---
+
 ### General timeline 
 
 ```{r img-timeline}
-knitr::include_graphics("timeline.svg")
+knitr::include_graphics("images/timeline.svg")
 ```
-
 
 ---
 
