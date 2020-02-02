@@ -1,0 +1,597 @@
+---
+title: "MELD Project: The *M*etabolic consequences of adverse *E*arly *L*ife conditions and subsequent risk for adult type 2 *D*iabetes"
+author: "Luke W. Johnston"
+output:
+  xaringan::moon_reader:
+    self_contained: true
+    lib_dir: libs
+    css: ["xaringan-themer.css", "../../common/custom.css"]
+    nature:
+      ratio: "16:9"
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+---
+
+layout: true
+
+<div class="my-footer">
+<img src="`r lwj::logo('dda')`" alt="DDA", width="75">
+<img src="`r lwj::logo('sdca')`" alt="SDCA", width="55"> 
+</div> 
+
+<div class="my-header">
+`r lwj::qrencode_svg("https://slides.lwjohnst.com/dda/2020-02-06/")`
+</div> 
+
+```{r setup, include=FALSE}
+options(htmltools.dir.version = FALSE)
+library(kableExtra)
+library(tidyverse)
+knitr::opts_chunk$set(
+  echo = FALSE,
+  dev = "png",
+  dpi = 150,
+  comment = "#>",
+  message = FALSE,
+  warning = FALSE,
+  fig.align = "center"
+)
+
+image_dda_path <- function(.file) {
+    here::here("dda", "2020-02-04", "images", .file)
+}
+
+image_nc_path <- function(.file) {
+    here::here("au-ph", "2019-08-15", "images", .file)
+}
+```
+
+```{r xaringan-themer, include=FALSE}
+library(xaringanthemer)
+mono_accent(
+    base_color = "#105059",
+    header_font_google = google_font("Poppins"),
+    text_font_google = google_font("Oxygen"),
+    text_font_size = "25px"
+)
+
+
+# mono_dark(
+#     base_color = "#214c78",
+#     black_color = darken_color("#214c78", 0.75),
+#     header_color = "#ffdebd", 
+#     text_color = "#ffdebd", 
+#     text_font_size = "36px",
+#     header_h1_font_size = "52px",
+#     header_h2_font_size = "48px",
+#     header_font_google = google_font("Monda"),
+#     text_font_google = google_font("Rosario")
+# )
+
+```
+
+---
+
+# Brainstorming and outline:
+
+- Purpose
+    - Feedback on project
+    - Present what I'm doing
+    - Share about early life, open science, and transparency
+- Project
+    - Intro
+    - Explanation of why matters
+    - Biological mechanisms
+    - Go into leg length?
+    - Methods
+        - General process
+        - Lexis diagram
+        - DAG variables
+        - NetCoupler explanation
+- Open Science
+    - How relates to project
+    - What is it?
+        - Open science, access, data, source code
+        - About transparency of process to making claim
+        - Summary of how common science studies do open science
+    - Protocol, include link with repository
+    - NetCoupler, link to repo
+    
+---
+
+# Purpose:
+
+- Seek feedback
+- Show my project
+- Share about:
+    - Early life influences
+    - Open science practices
+
+---
+
+class: center, middle
+
+# MELD Project Description
+
+---
+
+## Background and rationale
+
+- Early life shown to influence risk of diabetes
+- Not known how metabolic processes mediate this link
+- Difficult to study due to long timespans
+- Easier now with:
+    - Registers
+    - Cohort linkages
+    - Powerful mediation methods
+
+.footnote[[lwjohnst.gitlab.io/dda-pdf](https://lwjohnst.gitlab.io/dda-pdf/)]
+
+---
+
+## Potential mechanisms
+
+- Not entirely known in humans but theories:
+    - Influences organ development and subsequent ...
+
+---
+
+## Public health and clinical relevance
+
+TODO: Here or at the end?
+
+TODO: Go into leg length here?
+
+---
+
+## Research questions:
+
+- *Aims* to better quantify and understand impact of early life conditions on
+adult metabolic capacity and risk for T2D. 
+
+### Objectives
+
+1. Investigate how specific early life conditions affect risk of T2D at 
+national level
+1. Extend and generalise NetCoupler algorithm 
+([github.com/NetCoupler](https://github.com/NetCoupler/NetCoupler))
+    - Estimates direct and mediating pathways in high dimensional metabolic data
+1. Identify mediating pathways of metabolic capacity between early
+life adversity and T2D with NetCoupler
+
+---
+
+## Methods: Analysis process
+
+```{r img-methods, out.width="70%"}
+knitr::include_graphics(image_dda_path("methods.svg"))
+```
+
+---
+
+## Methods: Population
+
+```{r img-lexis, out.width="80%"}
+knitr::include_graphics(image_dda_path("lexis-diagram.svg"))
+```
+
+---
+
+## Methods: Variables
+
+```{r img-dag, out.width="85%"}
+knitr::include_graphics(image_dda_path("dag.svg"))
+```
+
+---
+
+## NetCoupler: Causal structure learning
+
+```{r img-netcoupler, out.width="75%"}
+knitr::include_graphics(image_dda_path("netcoupler-process.svg"))
+```
+
+.footnote[[github.com/NetCoupler](https://github.com/NetCoupler)]
+
+---
+
+# Aims:
+
+- Describe NetCoupler
+
+- Get feedback and/or comments on it
+
+--
+
+- ... and to see if I explained it well
+
+---
+
+class: center, middle
+
+# THE PROBLEM
+
+---
+
+## Modern epidemiology studies generate a lot of metabolic data 
+
+.pull-left[
+- -omics type data
+
+- Metabolic biomarkers
+]
+
+.pull-right[
+- High dimensionality
+
+- Complex networks
+]
+
+???
+
+Like metabolomics, fatty acid panels.
+
+Classic epidemiology meaning having an exposure with an output
+
+---
+
+## "Traditional" analysis may use: Dimensionality reduction
+
+.center[![Reducing number of variables with PCA](images/pca.png)]
+
+???
+
+This has the advantage of making things simpler while trying to maximize
+variance in the data. Afterward you can do modelling on each principal component.
+The disadvantage of this approach is that it loses a lot of information since
+the interdependence and connections between variables it not maintained.
+
+---
+
+## "Traditional" analysis may use: Many regression-type models
+
+```
+O1 = M1 + covariates
+O1 = M2 + covariates
+...
+O1 = M7 + covariates
+O1 = M8 + covariates
+```
+
+???
+
+Some ways you might go about analyzing this data is by running many regression
+models, one for each metabolic variable for instance.
+
+This of course has problems since you're simply running a bunch of models and
+not taking account of the inherent interdependencies between variables.
+
+---
+
+## "Traditional" analysis may use: Network analysis
+
+```{r network-analysis, echo=FALSE, fig.width=7, fig.height=5, message=FALSE, warning=FALSE, fig.align="center"}
+set.seed(126)
+plot(randDAG(8, 2, "watts"))
+```
+
+???
+
+This approach is nice in that you can extract information about the connection
+between metabolic variables. But there is no way to incorporate the disease
+outcome with this approach and in order to construct the network properly most
+methods require you provide a prespecified base network, which you might not know.
+
+---
+
+## So, what if we...
+
+- want info about network structure?
+--
+
+- don't know the network structure?
+--
+
+- have an exposure, metabolites, and outcome?
+--
+
+- are interested in causal links?
+
+---
+
+## What if we want to know something like this?
+
+```{r, out.width="75%", fig.align="center"}
+knitr::include_graphics("images/network.png")
+```
+
+---
+
+class: center, middle
+
+# THE SOLUTION
+
+---
+
+## NetCoupler: A "causal structure learning" algorithm that...
+
+- Finds most likely network structure
+
+- Allows inclusion of exposure and outcome
+
+- Identifies causal links between and within network
+
+.footnote[NetCoupler was developed by Clemens Wittenbecher.]
+
+---
+
+class: middle, center
+
+## Algorithm (steps) used in NetCoupler
+
+---
+
+## 1. DAG skeleton of network is estimated
+
+```{r, out.height="100%", fig.align="center"}
+knitr::include_graphics("images/nc-step-1.png")
+```
+
+---
+
+## 2. Initial links formed on exposure-side
+
+```{r, out.width="65%", fig.align="center"}
+knitr::include_graphics("images/nc-step-2.png")
+```
+
+---
+
+## 3. Direct effects estimated between exposure and network
+
+```{r, out.width="65%", fig.align="center"}
+knitr::include_graphics("images/nc-step-3.png")
+```
+
+---
+
+## 4. Repeat identifying links, find ambiguous, delete indirect links
+
+```{r, out.width="65%", fig.align="center"}
+knitr::include_graphics("images/nc-step-4.png")
+```
+
+???
+
+If you were interested in linkages with an exposure on the network, you could
+stop here.
+
+---
+
+## 5. Initial links formed with outcome-side
+
+```{r, out.width="65%", fig.align="center"}
+knitr::include_graphics("images/nc-step-5.png")
+```
+
+---
+
+## 6. Direct effects estimated between network and outcome
+
+```{r, out.width="65%", fig.align="center"}
+knitr::include_graphics("images/nc-step-6.png")
+```
+
+---
+
+## 7. Repeat identifying links, delete indirect links, find ambiguous
+
+```{r, out.width="65%", fig.align="center"}
+knitr::include_graphics("images/nc-step-7.png")
+```
+
+???
+
+You could stop here if you were interested in linkages with the network and an
+outcome.
+
+---
+
+## 8. (optional) Combine both estimations into joint model
+
+```{r, out.width="85%", fig.align="center"}
+knitr::include_graphics("images/nc-step-8.png")
+```
+
+---
+
+## Infer (potentially) causal pathways with graphical model
+
+```{r, out.width="85%", fig.align="center"}
+knitr::include_graphics("images/nc-causal-pathways.png")
+```
+
+---
+
+class: center, middle
+
+# OUR WORK
+
+---
+
+## Current state of NetCoupler
+
+- Series of R scripts
+
+--
+  
+- Only uses specific methods 
+
+???
+
+- Greats well on Clemens' computer
+- Not readily re-usable by others
+
+- PC-algorithm for network
+- Cox for modelling
+- Not easily extensible to other models
+
+---
+
+## Converting to a usable R package
+
+.center[
+![GitHub repo](images/netcoupler-github.png)
+]
+
+---
+
+## Converting to a usable R package
+
+.center[
+![Repo project board](images/netcoupler-tasks.png)
+]
+
+???
+
+We've got to improve on the underlying implementation, optimize the code for better
+speed and performance, fix up the interface so that other methods can be used
+like regression or mixed models, and reduce some software dependencies since
+right now it relies on software that is really hard to install and get working.
+
+---
+
+## Goals:
+
+- Submit to CRAN[1]
+
+--
+
+- Create simple interface to use
+
+--
+
+- Create website with documentation
+
+--
+
+- Develop tutorials
+
+.footnote[[1] CRAN distributes R packages.]
+
+---
+
+class: center, middle
+
+# Interest? Feedback? Comments?
+
+---
+
+
+- Open Science
+    - How relates to project
+    - What is it?
+        - Open science, access, data, source code
+        - About transparency of process to making claim
+        - Summary of how common science studies do open science
+    - Protocol, include link with repository
+    - NetCoupler, link to repo
+
+- E.g. developing protocol to register study[1]
+
+.footnote[[1] MELD Project Protocol: [lwjohnst.gitlab.io/meld-protocol](https://lwjohnst.gitlab.io/meld-protocol)]
+
+
+# What is our job as scientists?
+
+???
+
+(Revise based on responses)
+From all your descriptions, no one said "our job is to publish X papers per year
+in X impact factor journals" and yet under the current incentive system, that is
+exactly what our job entails.
+
+Today I'm going to be talking about open science, which is something that I'm
+quite passionate about and often incorporate into my work and teaching. With a show
+of hands, who here has heard of or who does open scientific practices?
+
+(Revise based on responses) Usually when I ask this question, the majority of
+researchers don't know what that is or at least associate it with open access,
+which is about publicly available and freely accessible knowledge generated by
+researchers. But open science encompasses much more than just open access. It 
+also includes open source for analysis code, open data, open protocols and methods...
+basically it is being completely transparent and freely sharing of all aspects
+of our work as scientists. Its a general philosophy for how science should ideally
+be conducted.
+
+Now normally I talk much more about publishing code, which really should be done
+more often but it is often rarely even on the radar, even within open science
+initiatives. An example, there was a recent trial of a drug that had to be
+retracted because the analysis code had an error in it that basically completely
+reversed the findings... if open source and considering code reviews was common
+place and part of the research culture, this type of problem would be much less
+likely to happen.
+
+But, for now I'm going to be talking about the open access side. We in academia
+currently have a philosophy for doing science that revolves around an an
+extremely unhealthy obsession with publications and with impact factor, which in
+many ways is the main driver to many of our current problems in science right
+now.
+
+Based on a show of hands, do you think that high impact journals have
+objectively higher quality research papers in them? But actually, the evidence
+suggests that high impact vs low impact has either negligible differences in
+quality or in fact with slightly lower quality in high impact journals. Meaning,
+there are more retractions, cases of fraud, questionable research practices,
+and irreplicability in higher impact journals. But that's a topic for another
+time.
+
+---
+
+class: middle, center
+
+# Open science: 
+
+## Open access, protocols, source code, and data
+
+---
+
+## Paired activity
+
+- What activities do you do in a typical workday?
+
+- Should any of these be part of the incentive structure?
+
+- Should you get rewarded for more than just your publications?
+
+- Would your typical workday look differently?
+
+---
+
+## Split-group discussion
+
+.pull-left[
+- Is number of publications a useful and meaningful metric for *impact* and *productivity*?
+]
+
+.pull-right[
+- Based on previous "job description", what could be a better metric?
+]
+
+---
+
+# Concluding questions: 
+
+## 1. Do we even need journals [*]?
+
+## 2. What can we do to make research culture healthier?
+
+.footnote[[*]. Excluding peer review.]
+
+???
+
+Here are some questions I leave as a conclusion. No need to answer now, but more
+think about it. One, do we actually need journals? Aside from the obvious role of
+peer review. And lastly, can we make research culture healthier, more open,
+transparent, and collaborative?
