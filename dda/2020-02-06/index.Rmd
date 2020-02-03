@@ -1,5 +1,5 @@
 ---
-title: "MELD Project: The *M*etabolic consequences of adverse *E*arly *L*ife conditions and subsequent risk for adult type 2 *D*iabetes"
+title: "MELD Project: *M*etabolic consequences of *E*arly *L*ife adversity and risk for type 2 *D*iabetes"
 author: "Luke W. Johnston"
 output:
   xaringan::moon_reader:
@@ -16,12 +16,14 @@ output:
 layout: true
 
 <div class="my-footer">
+<span>
 <img src="`r lwj::logo('dda')`" alt="DDA", width="75">
 <img src="`r lwj::logo('sdca')`" alt="SDCA", width="55"> 
+</span>
 </div> 
 
 <div class="my-header">
-`r lwj::qrencode_svg("https://slides.lwjohnst.com/dda/2020-02-06/")`
+`r lwj::qrencode_svg("https://slides.lwjohnst.com/dda/2020-02-06/", size = 2)`
 </div> 
 
 ```{r setup, include=FALSE}
@@ -45,30 +47,22 @@ image_dda_path <- function(.file) {
 image_nc_path <- function(.file) {
     here::here("au-ph", "2019-08-15", "images", .file)
 }
+
+fa2 <- function(.icon) {
+    fontawesome::fa(name = .icon, fill = "#214c78")
+}
 ```
 
 ```{r xaringan-themer, include=FALSE}
 library(xaringanthemer)
 mono_accent(
-    base_color = "#105059",
-    header_font_google = google_font("Poppins"),
-    text_font_google = google_font("Oxygen"),
+    base_color = "#214c78",
+    header_font_google = google_font("Monda"),
+    text_font_google = google_font("Rosario"),
+    header_h1_font_size = "52px",
+    header_h2_font_size = "48px",
     text_font_size = "25px"
 )
-
-
-# mono_dark(
-#     base_color = "#214c78",
-#     black_color = darken_color("#214c78", 0.75),
-#     header_color = "#ffdebd", 
-#     text_color = "#ffdebd", 
-#     text_font_size = "36px",
-#     header_h1_font_size = "52px",
-#     header_h2_font_size = "48px",
-#     header_font_google = google_font("Monda"),
-#     text_font_google = google_font("Rosario")
-# )
-
 ```
 
 ---
@@ -123,10 +117,10 @@ class: center, middle
 - Difficult to study due to long timespans
 - Easier now with:
     - Registers
-    - Cohort linkages
+    - Cohort `r fa2("link")` with registers
     - Powerful mediation methods
 
-.footnote[[lwjohnst.gitlab.io/dda-pdf](https://lwjohnst.gitlab.io/dda-pdf/)]
+.footnote[`r fa2("file-alt")`: [lwjohnst.gitlab.io/dda-pdf](https://lwjohnst.gitlab.io/dda-pdf/)]
 
 ---
 
@@ -172,7 +166,7 @@ knitr::include_graphics(image_dda_path("methods.svg"))
 
 ## Methods: Population
 
-```{r img-lexis, out.width="80%"}
+```{r img-lexis, out.width="70%"}
 knitr::include_graphics(image_dda_path("lexis-diagram.svg"))
 ```
 
@@ -186,31 +180,17 @@ knitr::include_graphics(image_dda_path("dag.svg"))
 
 ---
 
-## NetCoupler: Causal structure learning
+## Methods: Analyze data that looks like...
 
-```{r img-netcoupler, out.width="75%"}
-knitr::include_graphics(image_dda_path("netcoupler-process.svg"))
+```{r img-model-handles-data, out.width="75%"}
+knitr::include_graphics(image_nc_path("network.png"))
 ```
-
-.footnote[[github.com/NetCoupler](https://github.com/NetCoupler)]
-
----
-
-# Aims:
-
-- Describe NetCoupler
-
-- Get feedback and/or comments on it
-
---
-
-- ... and to see if I explained it well
 
 ---
 
 class: center, middle
 
-# THE PROBLEM
+# Current Analytic Problem
 
 ---
 
@@ -238,7 +218,9 @@ Classic epidemiology meaning having an exposure with an output
 
 ## "Traditional" analysis may use: Dimensionality reduction
 
-.center[![Reducing number of variables with PCA](images/pca.png)]
+```{r img-traditional-pca, fig.cap="Reducing number of variables with PCA"}
+knitr::include_graphics(image_nc_path("pca.png"))
+```
 
 ???
 
@@ -271,9 +253,19 @@ not taking account of the inherent interdependencies between variables.
 
 ## "Traditional" analysis may use: Network analysis
 
-```{r network-analysis, echo=FALSE, fig.width=7, fig.height=5, message=FALSE, warning=FALSE, fig.align="center"}
-set.seed(126)
-plot(randDAG(8, 2, "watts"))
+```{r img-traditional-network-analysis}
+library(ggdag)
+library(dagitty)
+g1 <- dagitty( "dag {
+    X5 -> X1 -> X2 -> Y
+    X1 <- X4 -> X3
+    X2 -> X3 -> Y
+    X -> Y
+    X <-> X5 <-> X2 <-> Y
+}")
+
+ggdag(g1) +
+    theme_dag()
 ```
 
 ???
@@ -302,27 +294,39 @@ methods require you provide a prespecified base network, which you might not kno
 
 ## What if we want to know something like this?
 
-```{r, out.width="75%", fig.align="center"}
-knitr::include_graphics("images/network.png")
+```{r img-data-like-this, out.width="75%"}
+knitr::include_graphics(image_nc_path("network.png"))
 ```
 
 ---
 
-class: center, middle
+## Potential solution: NetCoupler
 
-# THE SOLUTION
-
----
-
-## NetCoupler: A "causal structure learning" algorithm that...
+.pull-left[
+**Causal structure learning** that ...
 
 - Finds most likely network structure
 
 - Allows inclusion of exposure and outcome
 
 - Identifies causal links between and within network
+]
 
-.footnote[NetCoupler was developed by Clemens Wittenbecher.]
+.pull-right[
+![Clemens Wittenbecher](https://avatars3.githubusercontent.com/u/33724052?size=200)
+]
+
+.footnote[NetCoupler algorithm was developed by Clemens Wittenbecher.]
+
+---
+
+## NetCoupler algorithm overview
+
+```{r img-netcoupler, out.width="75%"}
+knitr::include_graphics(image_dda_path("netcoupler-process.svg"))
+```
+
+.footnote[`r fa2("r-project")` `r emo::ji("package")` [github.com/NetCoupler](https://github.com/NetCoupler)]
 
 ---
 
@@ -334,32 +338,32 @@ class: middle, center
 
 ## 1. DAG skeleton of network is estimated
 
-```{r, out.height="100%", fig.align="center"}
-knitr::include_graphics("images/nc-step-1.png")
+```{r img-nc-1, out.height="100%"}
+knitr::include_graphics(image_nc_path("nc-step-1.png"))
 ```
 
 ---
 
 ## 2. Initial links formed on exposure-side
 
-```{r, out.width="65%", fig.align="center"}
-knitr::include_graphics("images/nc-step-2.png")
+```{r img-nc-2, out.width="65%"}
+knitr::include_graphics(image_nc_path("nc-step-2.png"))
 ```
 
 ---
 
 ## 3. Direct effects estimated between exposure and network
 
-```{r, out.width="65%", fig.align="center"}
-knitr::include_graphics("images/nc-step-3.png")
+```{r img-nc-3, out.width="65%"}
+knitr::include_graphics(image_nc_path("nc-step-3.png"))
 ```
 
 ---
 
 ## 4. Repeat identifying links, find ambiguous, delete indirect links
 
-```{r, out.width="65%", fig.align="center"}
-knitr::include_graphics("images/nc-step-4.png")
+```{r img-nc-4, out.width="65%"}
+knitr::include_graphics(image_nc_path("nc-step-4.png"))
 ```
 
 ???
@@ -371,24 +375,24 @@ stop here.
 
 ## 5. Initial links formed with outcome-side
 
-```{r, out.width="65%", fig.align="center"}
-knitr::include_graphics("images/nc-step-5.png")
+```{r, out.width="65%"}
+knitr::include_graphics(image_nc_path("nc-step-5.png"))
 ```
 
 ---
 
 ## 6. Direct effects estimated between network and outcome
 
-```{r, out.width="65%", fig.align="center"}
-knitr::include_graphics("images/nc-step-6.png")
+```{r img-nc-6, out.width="65%"}
+knitr::include_graphics(image_nc_path("nc-step-6.png"))
 ```
 
 ---
 
 ## 7. Repeat identifying links, delete indirect links, find ambiguous
 
-```{r, out.width="65%", fig.align="center"}
-knitr::include_graphics("images/nc-step-7.png")
+```{r img-nc-7, out.width="65%"}
+knitr::include_graphics(image_nc_path("nc-step-7.png"))
 ```
 
 ???
@@ -400,91 +404,17 @@ outcome.
 
 ## 8. (optional) Combine both estimations into joint model
 
-```{r, out.width="85%", fig.align="center"}
-knitr::include_graphics("images/nc-step-8.png")
+```{r img-nc-8, out.width="85%"}
+knitr::include_graphics(image_nc_path("nc-step-8.png"))
 ```
 
 ---
 
 ## Infer (potentially) causal pathways with graphical model
 
-```{r, out.width="85%", fig.align="center"}
-knitr::include_graphics("images/nc-causal-pathways.png")
+```{r img-nc-pathways, out.width="85%"}
+knitr::include_graphics(image_nc_path("nc-causal-pathways.png"))
 ```
-
----
-
-class: center, middle
-
-# OUR WORK
-
----
-
-## Current state of NetCoupler
-
-- Series of R scripts
-
---
-  
-- Only uses specific methods 
-
-???
-
-- Greats well on Clemens' computer
-- Not readily re-usable by others
-
-- PC-algorithm for network
-- Cox for modelling
-- Not easily extensible to other models
-
----
-
-## Converting to a usable R package
-
-.center[
-![GitHub repo](images/netcoupler-github.png)
-]
-
----
-
-## Converting to a usable R package
-
-.center[
-![Repo project board](images/netcoupler-tasks.png)
-]
-
-???
-
-We've got to improve on the underlying implementation, optimize the code for better
-speed and performance, fix up the interface so that other methods can be used
-like regression or mixed models, and reduce some software dependencies since
-right now it relies on software that is really hard to install and get working.
-
----
-
-## Goals:
-
-- Submit to CRAN[1]
-
---
-
-- Create simple interface to use
-
---
-
-- Create website with documentation
-
---
-
-- Develop tutorials
-
-.footnote[[1] CRAN distributes R packages.]
-
----
-
-class: center, middle
-
-# Interest? Feedback? Comments?
 
 ---
 
