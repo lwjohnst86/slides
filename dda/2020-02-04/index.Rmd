@@ -17,18 +17,17 @@ output:
 layout: true
 
 <div class="my-footer">
+<span>
 <img src="`r lwj::logo('dda')`" alt="DDA", width="75">
 <img src="`r lwj::logo('sdca')`" alt="SDCA", width="55"> 
-</div> 
-
-<div class="my-header">
-`r lwj::qrencode_svg("https://slides.lwjohnst.com/dda/2020-02-04/")`
+</span>
 </div> 
 
 ```{r setup, include=FALSE}
 options(htmltools.dir.version = FALSE)
 library(kableExtra)
 library(tidyverse)
+library(fontawesome)
 knitr::opts_chunk$set(
   echo = FALSE,
   dev = "png",
