@@ -41,6 +41,10 @@ knitr::opts_chunk$set(
 image_nc_path <- function(.file) {
     here::here("au-ph", "2019-08-15", "images", .file)
 }
+
+fa2 <- function(.icon) {
+    fontawesome::fa(name = .icon, fill = "#214c78")
+}
 ```
 
 ```{r xaringan-themer, include=FALSE}
@@ -49,7 +53,8 @@ mono_accent(
     base_color = "#214c78",
     text_font_size = "28px",
     header_font_google = google_font("Monda"),
-    text_font_google = google_font("Rosario")
+    text_font_google = google_font("Rosario"),
+    header_h1_font_size = "52px"
 )
 ```
 
@@ -58,8 +63,11 @@ mono_accent(
 # Outline:
 
 - Project description
+
 - Plans during funding
+
 - Future perspectives
+
 - Challenges
 
 ---
@@ -73,20 +81,23 @@ class: center, middle
 ## Brief introduction
 
 - Early life influences risk for diabetes
-- How metabolic processes mediate link? `r emo::ji("shrug")`
+
+- How metabolic processes mediate link? `r emo::ji("shrug")``r emo::ji("shrug")`
+
 - Difficult to study due to long timespans
+
 - Easier now with:
     - Long term registers
-    - Cohort `r emo::ji("link")` registers
+    - Cohort `r fa2("link")` with registers
     - Powerful mediation methods
 
-.footnote[[lwjohnst.gitlab.io/dda-pdf](https://lwjohnst.gitlab.io/dda-pdf/)]
+.footnote[`r fa2("file-alt")`: [lwjohnst.gitlab.io/dda-pdf](https://lwjohnst.gitlab.io/dda-pdf/)]
 
 ---
 
 ## Research questions:
 
-- *Aim*: to quantify and understand impact of early life conditions on adult
+- *Aim*: To quantify and understand impact of early life conditions on adult
 metabolic capacity and risk for T2D.
 
 ### Objectives
@@ -124,7 +135,7 @@ knitr::include_graphics("images/methods.svg")
 
 ---
 
-## Model to handle data that looks like:
+## Analyzing data that looks like:
 
 ```{r img-model-handles-data, out.width="75%"}
 knitr::include_graphics(image_nc_path("network.png"))
@@ -143,7 +154,7 @@ knitr::include_graphics(image_nc_path("network.png"))
 ]
 
 .pull-right[
-![Clemens Wittenbecher](https://avatars3.githubusercontent.com/u/33724052?size=250)
+![Clemens Wittenbecher](https://avatars3.githubusercontent.com/u/33724052?size=200)
 ]
 
 .footnote[NetCoupler algorithm was developed by Clemens Wittenbecher.]
@@ -156,7 +167,7 @@ knitr::include_graphics(image_nc_path("network.png"))
 knitr::include_graphics("images/netcoupler-process.svg")
 ```
 
-.footnote[`r emo::ji("package")` [github.com/NetCoupler](https://github.com/NetCoupler)]
+.footnote[`r fa2("r-project")` `r emo::ji("package")` [github.com/NetCoupler](https://github.com/NetCoupler)]
 
 ---
 
@@ -168,7 +179,7 @@ knitr::include_graphics(image_nc_path("nc-causal-pathways.png"))
 
 ---
 
-### General timeline 
+## General timeline 
 
 ```{r img-timeline}
 knitr::include_graphics("images/timeline.svg")
@@ -176,11 +187,12 @@ knitr::include_graphics("images/timeline.svg")
 
 ---
 
-# Plans
+# (Some) Plans `r fa2("tasks")`
 
 - Adhere even more to open scientific practices
     - E.g. developing protocol to register study[1]
-- Research stays in Boston to work with collaborator
+
+- Research stays in Boston to work with Clemens
 
 .footnote[[1] MELD Project Protocol: [lwjohnst.gitlab.io/meld-protocol](https://lwjohnst.gitlab.io/meld-protocol)]
 
@@ -194,18 +206,22 @@ class: center, middle
 
 ## For project
 
-- Lots of potential for other `r emo::ji("question")`
-    - Cohort `r emo::ji("link")` registers
+- Potential for other research `r fa2("question")`s
+    - Cohort `r fa2("link")` with registers
     - Application of causal learning algorithm
+
 - Gain expertise in working with registers
-- Potential to get `r emo::ji("heavy_dollar_sign")` to expand project
+
+- Potential to get `r fa2("dollar-sign")``r fa2("dollar-sign")` to expand project
 
 ---
 
 ## For career
 
 - Develop and expand my network in Europe
+
 - Get more `r emo::ji("man_technologist")``r emo::ji("woman_technologist")` to work with
+
 - Co-mentor PhD student
 
 ---
@@ -213,7 +229,10 @@ class: center, middle
 # Challenges:
 
 - Navigating Statistics Denmark website and documentation 
+
 - Translating Danish words for variables and registers 
     - ... and knowing what to look for
+
 - Finding other datasets to use for linkage
+
 - Balancing my time with other projects
