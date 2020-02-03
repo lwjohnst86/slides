@@ -1,5 +1,5 @@
 /* For footer */
-.my-footer {
+div.my-footer {
     background-color: #FFFFFF;
     position: absolute;
     bottom: 0;
@@ -8,14 +8,14 @@
     width: 100%;
 }
 
-.my-footer span {
+div.my-footer span {
     font-size: 10pt;
     position: absolute;
     left: 15px;
     bottom: 8px;
 }
 
-.my-header {
+div.my-header {
     position: fixed;
     top: 0;
     left: 0;
