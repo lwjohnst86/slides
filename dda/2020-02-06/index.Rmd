@@ -408,6 +408,12 @@ class: center, middle
 
 class: middle, center
 
+# Thanks for listening `r emo::ji("grin")`
+
+---
+
+class: middle, center
+
 # Algorithm (steps) used in NetCoupler
 
 ---
