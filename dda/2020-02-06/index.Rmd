@@ -68,33 +68,6 @@ mono_accent(
 
 ---
 
-# Brainstorming and outline:
-
-- Purpose
-    - Feedback on project
-    - Present what I'm doing
-    - Share about early life, open science, and transparency
-- Project
-    - Intro
-    - Explanation of why matters
-    - Biological mechanisms
-    - Go into leg length?
-    - Methods
-        - General process
-        - Lexis diagram
-        - DAG variables
-        - NetCoupler explanation
-- Open Science
-    - How relates to project
-    - What is it?
-        - Open science, access, data, source code
-        - About transparency of process to making claim
-        - Summary of how common science studies do open science
-    - Protocol, include link with repository
-    - NetCoupler, link to repo
-    
----
-
 # Purpose:
 
 - Seek feedback
