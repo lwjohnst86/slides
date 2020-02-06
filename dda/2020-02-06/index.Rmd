@@ -15,18 +15,6 @@ output:
 
 layout: true
 
-<div class="my-footer">
-<span>
-<img src="`r lwj::logo('dda')`" alt="DDA", width="75">
-<img src="`r lwj::logo('sdca')`" alt="SDCA", width="55">
-<a href="https://slides.lwjohnst.com/dda/2020-02-06/">slides.lwjohnst.com/dda/2020-02-06</a>
-</span>
-</div> 
-
-<div class="my-header">
-`r lwj::qrencode_svg("https://slides.lwjohnst.com/dda/2020-02-06/", size = 2)`
-</div> 
-
 ```{r setup, include=FALSE}
 options(htmltools.dir.version = FALSE)
 library(kableExtra)
@@ -53,6 +41,19 @@ fa2 <- function(.icon) {
     fontawesome::fa(name = .icon, fill = "#214c78")
 }
 ```
+
+<div class="my-footer">
+<span>
+<img src="../../common/dda-logo.png" alt="DDA", width="75">
+<img src="../../common/sdca-logo.png" alt="SDCA", width="55">
+<a href="https://slides.lwjohnst.com/dda/2020-02-06/">slides.lwjohnst.com/dda/2020-02-06</a>
+</span>
+</div> 
+
+<div class="my-header">
+`r lwj::qrencode_svg("https://slides.lwjohnst.com/dda/2020-02-06/", size = 2)`
+</div> 
+
 
 ```{r xaringan-themer, include=FALSE}
 library(xaringanthemer)
