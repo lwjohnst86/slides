@@ -152,18 +152,16 @@ For my project, I won't be covering the adversity of excess.
 
 - *Overall aim*: Better quantify and understand impact of general early life
 (mainly childhood) conditions on adult metabolic capacity and risk for T2D.
-
-- *Specific objectives*:
-    1. Investigate how specific early childhood conditions affect risk of T2D
-    2. Identify mediating pathways of metabolic capacity between early
-    childhood adversity and T2D with NetCoupler
-
 --
 
-- To address 2., must also:
-    - Extend and generalise NetCoupler algorithm
-    ([github.com/NetCoupler](https://github.com/NetCoupler/NetCoupler)) 
-    - Direct and mediating pathway estimation
+
+- *Specific objectives*:
+    1. How specific conditions affect risk of T2D
+    2. Find mediating pathways of metabolic capacity between adversity and T2D
+--
+
+
+- To address 2., need to develop an analytic algorithm
     
 ???
 
@@ -171,6 +169,8 @@ I'm being intentionally vague about meaning of "early childhood conditions" beca
 what conditions I use depends on the data that's available and what may better
 represent "adversity". This will require some exploratory work at objective 1.
 to then use in objective 2.
+
+NetCoupler, which does direct and mediating pathway estimation
 
 ---
 
