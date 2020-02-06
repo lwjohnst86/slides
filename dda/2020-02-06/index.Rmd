@@ -357,7 +357,7 @@ knitr::include_graphics(image_dda_path("methods.svg"))
 
 # Current state of project: Just started
 
-## (Trying to) Adhere to open scientific practices
+**(Trying to) Adhere to open scientific practices**:
 
 - Project proposal: `r fa2("file-alt")` [lwjohnst.gitlab.io/dda-pdf](https://lwjohnst.gitlab.io/dda-pdf/)
 --
