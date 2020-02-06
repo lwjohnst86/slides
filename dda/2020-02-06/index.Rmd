@@ -354,21 +354,23 @@ knitr::include_graphics(image_dda_path("methods.svg"))
 
 ---
 
-## Current state of project
+# Current state of project: Just started
 
-- Developing NetCoupler `r fa2("r-project")` `r emo::ji("package")` 
-    - [github.com/NetCoupler](https://github.com/NetCoupler)
+## (Trying to) Adhere to open scientific practices
+
+- Project proposal: `r fa2("file-alt")` [lwjohnst.gitlab.io/dda-pdf](https://lwjohnst.gitlab.io/dda-pdf/)
 --
 
 
-- Developing protocol to register study
-        - MELD Project Protocol: `fa2("file-alt")` [lwjohnst.gitlab.io/meld-protocol](https://lwjohnst.gitlab.io/meld-protocol)
+- Developing NetCoupler: `r fa2("r-project")` `r emo::ji("package")` [github.com/NetCoupler](https://github.com/NetCoupler)
+--
 
----
 
-class: center, middle
+- Developing protocol to register study: `r fa2("file-alt")` [lwjohnst.gitlab.io/meld-protocol](https://lwjohnst.gitlab.io/meld-protocol)
 
-# Open science
+???
+
+About transparency of process to making claim.
 
 ---
 
