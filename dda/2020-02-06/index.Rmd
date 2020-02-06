@@ -102,8 +102,6 @@ class: center, middle
     - Cohort `r fa2("link")` with registers
     - Powerful mediation methods
 
-.footnote[`r fa2("file-alt")`: [lwjohnst.gitlab.io/dda-pdf](https://lwjohnst.gitlab.io/dda-pdf/)]
-
 ---
 
 ## Some potential mechanisms
