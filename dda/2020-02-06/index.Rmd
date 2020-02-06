@@ -390,24 +390,13 @@ class: center, middle
 
 ---
 
-## How does this relate to my project?
-
----
-
-## What is open science
-
-- About transparency of process to making claim
-- Summary of how common science studies do open science
-
----
-
 ## Open science: Terms and meanings
 
 .center[
 
 | **Term** | **Meaning** |
 |:------------|:---------------|
-| Open science | Freely available, openly licensed .red.bold[*] material for all things related to scientific activity |
+| Open science | Freely available, openly licensed material for all things related to scientific activity |
 | Open access | Free, unrestricted, publicly available **published articles** |
 | Open data | Freely available, re-usable, openly licensed **data** |
 | Open source/code | Freely available, re-usable, openly licensed **scientific code** used in generating results |
