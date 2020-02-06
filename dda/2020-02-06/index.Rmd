@@ -3,7 +3,6 @@ title: "MELD Project: *M*etabolic consequences of *E*arly *L*ife adversity and r
 author: "Luke W. Johnston"
 output:
   xaringan::moon_reader:
-    self_contained: true
     lib_dir: libs
     css: ["xaringan-themer.css", "../../common/custom.css"]
     nature:
@@ -11,6 +10,7 @@ output:
       highlightStyle: github
       highlightLines: true
       countIncrementalSlides: false
+      slideNumberFormat: ""
 ---
 
 layout: true
@@ -18,7 +18,8 @@ layout: true
 <div class="my-footer">
 <span>
 <img src="`r lwj::logo('dda')`" alt="DDA", width="75">
-<img src="`r lwj::logo('sdca')`" alt="SDCA", width="55"> 
+<img src="`r lwj::logo('sdca')`" alt="SDCA", width="55">
+<a href="https://slides.lwjohnst.com/dda/2020-02-06/">slides.lwjohnst.com/dda/2020-02-06</a>
 </span>
 </div> 
 
