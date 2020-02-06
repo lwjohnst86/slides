@@ -1,0 +1,757 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>MELD Project: Metabolic consequences of Early Life adversity and risk for type 2 Diabetes</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Luke W. Johnston" />
+    <link rel="stylesheet" href="xaringan-themer.css" type="text/css" />
+    <link rel="stylesheet" href="../../common/custom.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+# MELD Project: <em>M</em>etabolic consequences of <em>E</em>arly <em>L</em>ife adversity and risk for type 2 <em>D</em>iabetes
+### Luke W. Johnston
+
+---
+
+
+layout: true
+
+&lt;div class="my-footer"&gt;
+&lt;span&gt;
+&lt;img src="/home/luke/R/x86_64-pc-linux-gnu-library/3.6/lwj/logos/dda.png" alt="DDA", width="75"&gt;
+&lt;img src="/home/luke/R/x86_64-pc-linux-gnu-library/3.6/lwj/logos/sdca.jpg" alt="SDCA", width="55"&gt;
+&lt;a href="https://slides.lwjohnst.com/dda/2020-02-06/"&gt;slides.lwjohnst.com/dda/2020-02-06&lt;/a&gt;
+&lt;/span&gt;
+&lt;/div&gt; 
+
+&lt;div class="my-header"&gt;
+&lt;?xml version="1.0" encoding="UTF-8" standalone="yes"?&gt;
+&lt;!-- Created with qrencode 3.9.0 (http://fukuchi.org/works/qrencode/index.html.en) --&gt;
+&lt;svg width="2.05cm" height="2.05cm" viewBox="0 0 29 29" preserveAspectRatio="none" version="1.1" xmlns="http://www.w3.org/2000/svg"&gt;
+	&lt;g id="QRcode"&gt;
+		&lt;rect x="0" y="0" width="29" height="29" fill="#ffffff" /&gt;
+		&lt;g id="Pattern"&gt;
+			&lt;rect x="0" y="0" width="7" height="1" fill="#000000" /&gt;
+			&lt;rect x="9" y="0" width="1" height="1" fill="#000000" /&gt;
+			&lt;rect x="19" y="0" width="2" height="1" fill="#000000" /&gt;
+			&lt;rect x="22" y="0" width="7" height="1" fill="#000000" /&gt;
+			&lt;rect x="0" y="1" width="1" height="1" fill="#000000" /&gt;
+			&lt;rect x="6" y="1" width="1" height="1" fill="#000000" /&gt;
+			&lt;rect x="8" y="1" width="2" height="1" fill="#000000" /&gt;
+			&lt;rect x="11" y="1" width="2" height="1" fill="#000000" /&gt;
+			&lt;rect x="14" y="1" width="1" height="1" fill="#000000" /&gt;
+			&lt;rect x="20" y="1" width="1" height="1" fill="#000000" /&gt;
+			&lt;rect x="22" y="1" width="1" height="1" fill="#000000" /&gt;
+			&lt;rect x="28" y="1" width="1" height="1" fill="#000000" /&gt;
+			&lt;rect x="0" y="2" width="1" height="1" fill="#000000" /&gt;
+			&lt;rect x="2" y="2" width="3" height="1" fill="#000000" /&gt;
+			&lt;rect x="6" y="2" width="1" height="1" fill="#000000" /&gt;
+			&lt;rect x="9" y="2" width="3" height="1" fill="#000000" /&gt;
+			&lt;rect x="15" y="2" width="1" height="1" fill="#000000" /&gt;
+			&lt;rect x="18" y="2" width="2" height="1" fill="#000000" /&gt;
+			&lt;rect x="22" y="2" width="1" height="1" fill="#000000" /&gt;
+			&lt;rect x="24" y="2" width="3" height="1" fill="#000000" /&gt;
+			&lt;rect x="28" y="2" width="1" height="1" fill="#000000" /&gt;
+			&lt;rect x="0" y="3" width="1" height="1" fill="#000000" /&gt;
+			&lt;rect x="2" y="3" width="3" height="1" fill="#000000" /&gt;
+			&lt;rect x="6" y="3" width="1" height="1" fill="#000000" /&gt;
+			&lt;rect x="8" y="3" width="2" height="1" fill="#000000" /&gt;
+			&lt;rect x="11" y="3" width="1" height="1" fill="#000000" /&gt;
+			&lt;rect x="15" y="3" width="1" height="1" fill="#000000" /&gt;
+			&lt;rect x="17" y="3" width="2" height="1" fill="#000000" /&gt;
+			&lt;rect x="20" y="3" width="1" height="1" fill="#000000" /&gt;
+			&lt;rect x="22" y="3" width="1" height="1" fill="#000000" /&gt;
+			&lt;rect x="24" y="3" width="3" height="1" fill="#000000" /&gt;
+			&lt;rect x="28" y="3" width="1" height="1" fill="#000000" /&gt;
+			&lt;rect x="0" y="4" width="1" height="1" fill="#000000" /&gt;
+			&lt;rect x="2" y="4" width="3" height="1" fill="#000000" /&gt;
+			&lt;rect x="6" y="4" width="1" height="1" fill="#000000" /&gt;
+			&lt;rect x="10" y="4" width="1" height="1" fill="#000000" /&gt;
+			&lt;rect x="12" y="4" width="1" height="1" fill="#000000" /&gt;
+			&lt;rect x="15" y="4" width="6" height="1" fill="#000000" /&gt;
+			&lt;rect x="22" y="4" width="1" height="1" fill="#000000" /&gt;
+			&lt;rect x="24" y="4" width="3" height="1" fill="#000000" /&gt;
+			&lt;rect x="28" y="4" width="1" height="1" fill="#000000" /&gt;
+			&lt;rect x="0" y="5" width="1" height="1" fill="#000000" /&gt;
+			&lt;rect x="6" y="5" width="1" height="1" fill="#000000" /&gt;
+			&lt;rect x="8" y="5" width="1" height="1" fill="#000000" /&gt;
+			&lt;rect x="10" y="5" width="1" height="1" fill="#000000" /&gt;
+			&lt;rect x="15" y="5" width="1" height="1" fill="#000000" /&gt;
+			&lt;rect x="17" y="5" width="1" height="1" fill="#000000" /&gt;
+			&lt;rect x="22" y="5" width="1" height="1" fill="#000000" /&gt;
+			&lt;rect x="28" y="5" width="1" height="1" fill="#000000" /&gt;
+			&lt;rect x="0" y="6" width="7" height="1" fill="#000000" /&gt;
+			&lt;rect x="8" y="6" width="1" height="1" fill="#000000" /&gt;
+			&lt;rect x="10" y="6" width="1" height="1" fill="#000000" /&gt;
+			&lt;rect x="12" y="6" width="1" height="1" fill="#000000" /&gt;
+			&lt;rect x="14" y="6" width="1" height="1" fill="#000000" /&gt;
+			&lt;rect x="16" y="6" width="1" height="1" fill="#000000" /&gt;
+			&lt;rect x="18" y="6" width="1" height="1" fill="#000000" /&gt;
+			&lt;rect x="20" y="6" width="1" height="1" fill="#000000" /&gt;
+			&lt;rect x="22" y="6" width="7" height="1" fill="#000000" /&gt;
+			&lt;rect x="12" y="7" width="1" height="1" fill="#000000" /&gt;
+			&lt;rect x="14" y="7" width="2" height="1" fill="#000000" /&gt;
+			&lt;rect x="18" y="7" width="3" height="1" fill="#000000" /&gt;
+			&lt;rect x="0" y="8" width="5" height="1" fill="#000000" /&gt;
+			&lt;rect x="6" y="8" width="5" height="1" fill="#000000" /&gt;
+			&lt;rect x="12" y="8" width="4" height="1" fill="#000000" /&gt;
+			&lt;rect x="17" y="8" width="1" height="1" fill="#000000" /&gt;
+			&lt;rect x="19" y="8" width="1" height="1" fill="#000000" /&gt;
+			&lt;rect x="21" y="8" width="1" height="1" fill="#000000" /&gt;
+			&lt;rect x="23" y="8" width="1" height="1" fill="#000000" /&gt;
+			&lt;rect x="25" y="8" width="1" height="1" fill="#000000" /&gt;
+			&lt;rect x="27" y="8" width="1" height="1" fill="#000000" /&gt;
+			&lt;rect x="3" y="9" width="1" height="1" fill="#000000" /&gt;
+			&lt;rect x="8" y="9" width="2" height="1" fill="#000000" /&gt;
+			&lt;rect x="14" y="9" width="2" height="1" fill="#000000" /&gt;
+			&lt;rect x="18" y="9" width="7" height="1" fill="#000000" /&gt;
+			&lt;rect x="28" y="9" width="1" height="1" fill="#000000" /&gt;
+			&lt;rect x="0" y="10" width="1" height="1" fill="#000000" /&gt;
+			&lt;rect x="2" y="10" width="3" height="1" fill="#000000" /&gt;
+			&lt;rect x="6" y="10" width="2" height="1" fill="#000000" /&gt;
+			&lt;rect x="9" y="10" width="1" height="1" fill="#000000" /&gt;
+			&lt;rect x="11" y="10" width="3" height="1" fill="#000000" /&gt;
+			&lt;rect x="15" y="10" width="4" height="1" fill="#000000" /&gt;
+			&lt;rect x="24" y="10" width="1" height="1" fill="#000000" /&gt;
+			&lt;rect x="0" y="11" width="1" height="1" fill="#000000" /&gt;
+			&lt;rect x="2" y="11" width="3" height="1" fill="#000000" /&gt;
+			&lt;rect x="7" y="11" width="5" height="1" fill="#000000" /&gt;
+			&lt;rect x="14" y="11" width="2" height="1" fill="#000000" /&gt;
+			&lt;rect x="23" y="11" width="3" height="1" fill="#000000" /&gt;
+			&lt;rect x="27" y="11" width="1" height="1" fill="#000000" /&gt;
+			&lt;rect x="0" y="12" width="4" height="1" fill="#000000" /&gt;
+			&lt;rect x="6" y="12" width="2" height="1" fill="#000000" /&gt;
+			&lt;rect x="9" y="12" width="1" height="1" fill="#000000" /&gt;
+			&lt;rect x="11" y="12" width="1" height="1" fill="#000000" /&gt;
+			&lt;rect x="14" y="12" width="4" height="1" fill="#000000" /&gt;
+			&lt;rect x="19" y="12" width="1" height="1" fill="#000000" /&gt;
+			&lt;rect x="25" y="12" width="2" height="1" fill="#000000" /&gt;
+			&lt;rect x="0" y="13" width="2" height="1" fill="#000000" /&gt;
+			&lt;rect x="5" y="13" width="1" height="1" fill="#000000" /&gt;
+			&lt;rect x="8" y="13" width="1" height="1" fill="#000000" /&gt;
+			&lt;rect x="10" y="13" width="1" height="1" fill="#000000" /&gt;
+			&lt;rect x="12" y="13" width="1" height="1" fill="#000000" /&gt;
+			&lt;rect x="14" y="13" width="2" height="1" fill="#000000" /&gt;
+			&lt;rect x="17" y="13" width="4" height="1" fill="#000000" /&gt;
+			&lt;rect x="22" y="13" width="3" height="1" fill="#000000" /&gt;
+			&lt;rect x="28" y="13" width="1" height="1" fill="#000000" /&gt;
+			&lt;rect x="3" y="14" width="1" height="1" fill="#000000" /&gt;
+			&lt;rect x="5" y="14" width="3" height="1" fill="#000000" /&gt;
+			&lt;rect x="10" y="14" width="1" height="1" fill="#000000" /&gt;
+			&lt;rect x="13" y="14" width="1" height="1" fill="#000000" /&gt;
+			&lt;rect x="16" y="14" width="2" height="1" fill="#000000" /&gt;
+			&lt;rect x="20" y="14" width="2" height="1" fill="#000000" /&gt;
+			&lt;rect x="23" y="14" width="4" height="1" fill="#000000" /&gt;
+			&lt;rect x="0" y="15" width="1" height="1" fill="#000000" /&gt;
+			&lt;rect x="2" y="15" width="1" height="1" fill="#000000" /&gt;
+			&lt;rect x="4" y="15" width="2" height="1" fill="#000000" /&gt;
+			&lt;rect x="7" y="15" width="3" height="1" fill="#000000" /&gt;
+			&lt;rect x="12" y="15" width="1" height="1" fill="#000000" /&gt;
+			&lt;rect x="16" y="15" width="1" height="1" fill="#000000" /&gt;
+			&lt;rect x="19" y="15" width="2" height="1" fill="#000000" /&gt;
+			&lt;rect x="22" y="15" width="1" height="1" fill="#000000" /&gt;
+			&lt;rect x="27" y="15" width="1" height="1" fill="#000000" /&gt;
+			&lt;rect x="0" y="16" width="1" height="1" fill="#000000" /&gt;
+			&lt;rect x="2" y="16" width="6" height="1" fill="#000000" /&gt;
+			&lt;rect x="10" y="16" width="1" height="1" fill="#000000" /&gt;
+			&lt;rect x="12" y="16" width="4" height="1" fill="#000000" /&gt;
+			&lt;rect x="17" y="16" width="1" height="1" fill="#000000" /&gt;
+			&lt;rect x="19" y="16" width="1" height="1" fill="#000000" /&gt;
+			&lt;rect x="21" y="16" width="1" height="1" fill="#000000" /&gt;
+			&lt;rect x="25" y="16" width="2" height="1" fill="#000000" /&gt;
+			&lt;rect x="0" y="17" width="2" height="1" fill="#000000" /&gt;
+			&lt;rect x="4" y="17" width="2" height="1" fill="#000000" /&gt;
+			&lt;rect x="10" y="17" width="1" height="1" fill="#000000" /&gt;
+			&lt;rect x="14" y="17" width="1" height="1" fill="#000000" /&gt;
+			&lt;rect x="16" y="17" width="9" height="1" fill="#000000" /&gt;
+			&lt;rect x="26" y="17" width="1" height="1" fill="#000000" /&gt;
+			&lt;rect x="28" y="17" width="1" height="1" fill="#000000" /&gt;
+			&lt;rect x="0" y="18" width="1" height="1" fill="#000000" /&gt;
+			&lt;rect x="2" y="18" width="2" height="1" fill="#000000" /&gt;
+			&lt;rect x="6" y="18" width="4" height="1" fill="#000000" /&gt;
+			&lt;rect x="11" y="18" width="3" height="1" fill="#000000" /&gt;
+			&lt;rect x="15" y="18" width="1" height="1" fill="#000000" /&gt;
+			&lt;rect x="22" y="18" width="1" height="1" fill="#000000" /&gt;
+			&lt;rect x="24" y="18" width="1" height="1" fill="#000000" /&gt;
+			&lt;rect x="26" y="18" width="1" height="1" fill="#000000" /&gt;
+			&lt;rect x="0" y="19" width="1" height="1" fill="#000000" /&gt;
+			&lt;rect x="2" y="19" width="2" height="1" fill="#000000" /&gt;
+			&lt;rect x="5" y="19" width="1" height="1" fill="#000000" /&gt;
+			&lt;rect x="7" y="19" width="1" height="1" fill="#000000" /&gt;
+			&lt;rect x="9" y="19" width="3" height="1" fill="#000000" /&gt;
+			&lt;rect x="15" y="19" width="1" height="1" fill="#000000" /&gt;
+			&lt;rect x="19" y="19" width="1" height="1" fill="#000000" /&gt;
+			&lt;rect x="21" y="19" width="3" height="1" fill="#000000" /&gt;
+			&lt;rect x="27" y="19" width="1" height="1" fill="#000000" /&gt;
+			&lt;rect x="0" y="20" width="1" height="1" fill="#000000" /&gt;
+			&lt;rect x="2" y="20" width="1" height="1" fill="#000000" /&gt;
+			&lt;rect x="4" y="20" width="4" height="1" fill="#000000" /&gt;
+			&lt;rect x="10" y="20" width="2" height="1" fill="#000000" /&gt;
+			&lt;rect x="15" y="20" width="1" height="1" fill="#000000" /&gt;
+			&lt;rect x="17" y="20" width="8" height="1" fill="#000000" /&gt;
+			&lt;rect x="26" y="20" width="3" height="1" fill="#000000" /&gt;
+			&lt;rect x="8" y="21" width="3" height="1" fill="#000000" /&gt;
+			&lt;rect x="12" y="21" width="2" height="1" fill="#000000" /&gt;
+			&lt;rect x="17" y="21" width="2" height="1" fill="#000000" /&gt;
+			&lt;rect x="20" y="21" width="1" height="1" fill="#000000" /&gt;
+			&lt;rect x="24" y="21" width="5" height="1" fill="#000000" /&gt;
+			&lt;rect x="0" y="22" width="7" height="1" fill="#000000" /&gt;
+			&lt;rect x="8" y="22" width="1" height="1" fill="#000000" /&gt;
+			&lt;rect x="13" y="22" width="5" height="1" fill="#000000" /&gt;
+			&lt;rect x="19" y="22" width="2" height="1" fill="#000000" /&gt;
+			&lt;rect x="22" y="22" width="1" height="1" fill="#000000" /&gt;
+			&lt;rect x="24" y="22" width="3" height="1" fill="#000000" /&gt;
+			&lt;rect x="0" y="23" width="1" height="1" fill="#000000" /&gt;
+			&lt;rect x="6" y="23" width="1" height="1" fill="#000000" /&gt;
+			&lt;rect x="12" y="23" width="2" height="1" fill="#000000" /&gt;
+			&lt;rect x="15" y="23" width="1" height="1" fill="#000000" /&gt;
+			&lt;rect x="19" y="23" width="2" height="1" fill="#000000" /&gt;
+			&lt;rect x="24" y="23" width="1" height="1" fill="#000000" /&gt;
+			&lt;rect x="28" y="23" width="1" height="1" fill="#000000" /&gt;
+			&lt;rect x="0" y="24" width="1" height="1" fill="#000000" /&gt;
+			&lt;rect x="2" y="24" width="3" height="1" fill="#000000" /&gt;
+			&lt;rect x="6" y="24" width="1" height="1" fill="#000000" /&gt;
+			&lt;rect x="8" y="24" width="1" height="1" fill="#000000" /&gt;
+			&lt;rect x="10" y="24" width="1" height="1" fill="#000000" /&gt;
+			&lt;rect x="12" y="24" width="1" height="1" fill="#000000" /&gt;
+			&lt;rect x="14" y="24" width="2" height="1" fill="#000000" /&gt;
+			&lt;rect x="17" y="24" width="1" height="1" fill="#000000" /&gt;
+			&lt;rect x="20" y="24" width="5" height="1" fill="#000000" /&gt;
+			&lt;rect x="26" y="24" width="1" height="1" fill="#000000" /&gt;
+			&lt;rect x="28" y="24" width="1" height="1" fill="#000000" /&gt;
+			&lt;rect x="0" y="25" width="1" height="1" fill="#000000" /&gt;
+			&lt;rect x="2" y="25" width="3" height="1" fill="#000000" /&gt;
+			&lt;rect x="6" y="25" width="1" height="1" fill="#000000" /&gt;
+			&lt;rect x="8" y="25" width="1" height="1" fill="#000000" /&gt;
+			&lt;rect x="16" y="25" width="1" height="1" fill="#000000" /&gt;
+			&lt;rect x="18" y="25" width="3" height="1" fill="#000000" /&gt;
+			&lt;rect x="25" y="25" width="2" height="1" fill="#000000" /&gt;
+			&lt;rect x="0" y="26" width="1" height="1" fill="#000000" /&gt;
+			&lt;rect x="2" y="26" width="3" height="1" fill="#000000" /&gt;
+			&lt;rect x="6" y="26" width="1" height="1" fill="#000000" /&gt;
+			&lt;rect x="8" y="26" width="1" height="1" fill="#000000" /&gt;
+			&lt;rect x="11" y="26" width="2" height="1" fill="#000000" /&gt;
+			&lt;rect x="15" y="26" width="1" height="1" fill="#000000" /&gt;
+			&lt;rect x="19" y="26" width="1" height="1" fill="#000000" /&gt;
+			&lt;rect x="21" y="26" width="7" height="1" fill="#000000" /&gt;
+			&lt;rect x="0" y="27" width="1" height="1" fill="#000000" /&gt;
+			&lt;rect x="6" y="27" width="1" height="1" fill="#000000" /&gt;
+			&lt;rect x="8" y="27" width="2" height="1" fill="#000000" /&gt;
+			&lt;rect x="11" y="27" width="1" height="1" fill="#000000" /&gt;
+			&lt;rect x="14" y="27" width="3" height="1" fill="#000000" /&gt;
+			&lt;rect x="18" y="27" width="3" height="1" fill="#000000" /&gt;
+			&lt;rect x="22" y="27" width="2" height="1" fill="#000000" /&gt;
+			&lt;rect x="25" y="27" width="1" height="1" fill="#000000" /&gt;
+			&lt;rect x="27" y="27" width="1" height="1" fill="#000000" /&gt;
+			&lt;rect x="0" y="28" width="7" height="1" fill="#000000" /&gt;
+			&lt;rect x="8" y="28" width="1" height="1" fill="#000000" /&gt;
+			&lt;rect x="11" y="28" width="1" height="1" fill="#000000" /&gt;
+			&lt;rect x="15" y="28" width="1" height="1" fill="#000000" /&gt;
+			&lt;rect x="17" y="28" width="1" height="1" fill="#000000" /&gt;
+			&lt;rect x="19" y="28" width="1" height="1" fill="#000000" /&gt;
+			&lt;rect x="21" y="28" width="1" height="1" fill="#000000" /&gt;
+			&lt;rect x="24" y="28" width="3" height="1" fill="#000000" /&gt;
+		&lt;/g&gt;
+	&lt;/g&gt;
+&lt;/svg&gt;
+
+&lt;/div&gt; 
+
+
+
+
+
+---
+
+# Purpose:
+
+- Seek feedback
+
+- Show my project
+
+- Share about:
+    - Early life influences
+    - Analytic technique
+    - Open science practices
+
+---
+
+class: center, middle
+
+# MELD Project Description
+
+---
+
+## Background and rationale
+
+- Early life shown to influence risk of diabetes
+
+- How do metabolic processes mediate this link (in humans)? 🤷
+
+- Difficult to study due to long timespans
+--
+
+
+- Easier now with:
+    - Registers
+    - Cohort &lt;svg style="height:0.8em;top:.04em;position:relative;fill:#214c78;" viewBox="0 0 512 512"&gt;&lt;path d="M326.612 185.391c59.747 59.809 58.927 155.698.36 214.59-.11.12-.24.25-.36.37l-67.2 67.2c-59.27 59.27-155.699 59.262-214.96 0-59.27-59.26-59.27-155.7 0-214.96l37.106-37.106c9.84-9.84 26.786-3.3 27.294 10.606.648 17.722 3.826 35.527 9.69 52.721 1.986 5.822.567 12.262-3.783 16.612l-13.087 13.087c-28.026 28.026-28.905 73.66-1.155 101.96 28.024 28.579 74.086 28.749 102.325.51l67.2-67.19c28.191-28.191 28.073-73.757 0-101.83-3.701-3.694-7.429-6.564-10.341-8.569a16.037 16.037 0 0 1-6.947-12.606c-.396-10.567 3.348-21.456 11.698-29.806l21.054-21.055c5.521-5.521 14.182-6.199 20.584-1.731a152.482 152.482 0 0 1 20.522 17.197zM467.547 44.449c-59.261-59.262-155.69-59.27-214.96 0l-67.2 67.2c-.12.12-.25.25-.36.37-58.566 58.892-59.387 154.781.36 214.59a152.454 152.454 0 0 0 20.521 17.196c6.402 4.468 15.064 3.789 20.584-1.731l21.054-21.055c8.35-8.35 12.094-19.239 11.698-29.806a16.037 16.037 0 0 0-6.947-12.606c-2.912-2.005-6.64-4.875-10.341-8.569-28.073-28.073-28.191-73.639 0-101.83l67.2-67.19c28.239-28.239 74.3-28.069 102.325.51 27.75 28.3 26.872 73.934-1.155 101.96l-13.087 13.087c-4.35 4.35-5.769 10.79-3.783 16.612 5.864 17.194 9.042 34.999 9.69 52.721.509 13.906 17.454 20.446 27.294 10.606l37.106-37.106c59.271-59.259 59.271-155.699.001-214.959z"/&gt;&lt;/svg&gt; with registers
+    - Powerful mediation methods
+
+---
+
+## Some potential mechanisms
+
+- Impairs organ development (e.g cell numbers)
+
+- Affects insulin sensitivity pathways (e.g. in muscle)
+
+- Altered lifestyle behaviours
+
+- Excessive stress responses
+
+---
+
+## Public health and clinical relevance
+
+.pull-left[
+**Adversity of trauma**:
+
+- Refugees
+
+- Immigration
+
+- Childhood abuse
+
+- Poor or unsafe neighbourhood
+]
+
+--
+
+.pull-right[
+**Adversity of excess**:
+
+- Childhood obesity
+
+- Low-nutrient dense foods
+
+- Lack of exercise
+]
+
+???
+
+For my project, I won't be covering the adversity of excess.
+
+---
+
+## Research questions:
+
+- *Overall aim*: Better quantify and understand impact of general early life
+(mainly childhood) conditions on adult metabolic capacity and risk for T2D.
+--
+
+
+- *Specific objectives*:
+    1. How specific conditions affect risk of T2D
+    2. Find mediating pathways of metabolic capacity between adversity and T2D
+--
+
+
+- To address 2., need to develop an analytic algorithm
+    
+???
+
+I'm being intentionally vague about meaning of "early childhood conditions" because
+what conditions I use depends on the data that's available and what may better
+represent "adversity". This will require some exploratory work at objective 1.
+to then use in objective 2.
+
+NetCoupler, which does direct and mediating pathway estimation
+
+---
+
+## Identifying population with Lexis diagram
+
+&lt;img src="../../dda/2020-02-04/images/lexis-diagram.svg" width="70%" style="display: block; margin: auto;" /&gt;
+
+---
+
+## Identifying variables with DAG
+
+&lt;img src="../../dda/2020-02-04/images/dag.svg" width="85%" style="display: block; margin: auto;" /&gt;
+
+---
+
+## For objectives, need to analyze data like this...
+
+&lt;img src="../../au-ph/2019-08-15/images/network.png" width="75%" style="display: block; margin: auto;" /&gt;
+
+---
+
+class: center, middle
+
+# Current Analytic Problem
+
+---
+
+## Modern studies generate lots of metabolic data 
+
+.pull-left[
+- -omics type data
+
+- Metabolic biomarkers
+]
+
+.pull-right[
+- High dimensionality
+
+- Complex networks
+]
+
+---
+
+## "Traditional" analysis may use: Dimensionality reduction
+
+&lt;div class="figure" style="text-align: center"&gt;
+&lt;img src="../../au-ph/2019-08-15/images/pca.png" alt="Reducing number of variables with PCA" width="280" /&gt;
+&lt;p class="caption"&gt;Reducing number of variables with PCA&lt;/p&gt;
+&lt;/div&gt;
+
+???
+
+This has the advantage of making things simpler while trying to maximize
+variance in the data. Afterward you can do modelling on each principal component.
+The disadvantage of this approach is that it loses a lot of information since
+the interdependence and connections between variables it not maintained.
+
+---
+
+## "Traditional" analysis may use: Many regression-type models
+
+.center[
+```
+O1 = M1 + covariates
+O1 = M2 + covariates
+...
+O1 = M7 + covariates
+O1 = M8 + covariates
+```
+]
+
+???
+
+Some ways you might go about analyzing this data is by running many regression
+models, one for each metabolic variable for instance.
+
+This of course has problems since you're simply running a bunch of models and
+not taking account of the inherent interdependencies between variables.
+
+---
+
+## "Traditional" analysis may use: Network analysis
+
+&lt;img src="index_files/figure-html/img-traditional-network-analysis-1.png" width="50%" height="50%" style="display: block; margin: auto;" /&gt;
+
+???
+
+This approach is nice in that you can extract information about the connection
+between metabolic variables. But there is no way to incorporate the disease
+outcome with this approach and in order to construct the network properly most
+methods require you provide a prespecified base network, which you might not know.
+
+---
+
+## But, what if we...
+
+- want info about network structure?
+--
+
+
+- don't know the network structure?
+--
+
+
+- have an exposure, metabolites, and outcome?
+--
+
+
+- are interested in causal links?
+
+---
+
+## What if we want to know something like this?
+
+&lt;img src="../../au-ph/2019-08-15/images/network.png" width="75%" style="display: block; margin: auto;" /&gt;
+
+---
+
+## Potential solution: NetCoupler
+
+.pull-left[
+**Causal structure learning** that ...
+
+- Finds most likely network structure
+
+- Allows inclusion of exposure and outcome
+
+- Identifies causal links between and within network
+]
+
+.pull-right[
+![Clemens Wittenbecher](https://avatars3.githubusercontent.com/u/33724052?size=200)
+]
+
+.footnote[NetCoupler algorithm was developed by Clemens Wittenbecher.]
+
+---
+
+## NetCoupler algorithm overview
+
+&lt;img src="../../dda/2020-02-04/images/netcoupler-process.svg" width="75%" style="display: block; margin: auto;" /&gt;
+
+
+---
+
+## Infer (potentially) causal pathways with graphical model
+
+&lt;img src="../../au-ph/2019-08-15/images/nc-causal-pathways.png" width="85%" style="display: block; margin: auto;" /&gt;
+
+---
+
+## Overall analysis with NetCoupler
+
+&lt;img src="../../dda/2020-02-04/images/methods.svg" width="65%" style="display: block; margin: auto;" /&gt;
+
+---
+
+# Current state of project: Just started
+
+## (Trying to) Adhere to open scientific practices
+
+- Project proposal: &lt;svg style="height:0.8em;top:.04em;position:relative;fill:#214c78;" viewBox="0 0 384 512"&gt;&lt;path d="M224 136V0H24C10.7 0 0 10.7 0 24v464c0 13.3 10.7 24 24 24h336c13.3 0 24-10.7 24-24V160H248c-13.2 0-24-10.8-24-24zm64 236c0 6.6-5.4 12-12 12H108c-6.6 0-12-5.4-12-12v-8c0-6.6 5.4-12 12-12h168c6.6 0 12 5.4 12 12v8zm0-64c0 6.6-5.4 12-12 12H108c-6.6 0-12-5.4-12-12v-8c0-6.6 5.4-12 12-12h168c6.6 0 12 5.4 12 12v8zm0-72v8c0 6.6-5.4 12-12 12H108c-6.6 0-12-5.4-12-12v-8c0-6.6 5.4-12 12-12h168c6.6 0 12 5.4 12 12zm96-114.1v6.1H256V0h6.1c6.4 0 12.5 2.5 17 7l97.9 98c4.5 4.5 7 10.6 7 16.9z"/&gt;&lt;/svg&gt; [lwjohnst.gitlab.io/dda-pdf](https://lwjohnst.gitlab.io/dda-pdf/)
+--
+
+
+- Developing NetCoupler: &lt;svg style="height:0.8em;top:.04em;position:relative;fill:#214c78;" viewBox="0 0 581 512"&gt;&lt;path d="M581 226.6C581 119.1 450.9 32 290.5 32S0 119.1 0 226.6C0 322.4 103.3 402 239.4 418.1V480h99.1v-61.5c24.3-2.7 47.6-7.4 69.4-13.9L448 480h112l-67.4-113.7c54.5-35.4 88.4-84.9 88.4-139.7zm-466.8 14.5c0-73.5 98.9-133 220.8-133s211.9 40.7 211.9 133c0 50.1-26.5 85-70.3 106.4-2.4-1.6-4.7-2.9-6.4-3.7-10.2-5.2-27.8-10.5-27.8-10.5s86.6-6.4 86.6-92.7-90.6-87.9-90.6-87.9h-199V361c-74.1-21.5-125.2-67.1-125.2-119.9zm225.1 38.3v-55.6c57.8 0 87.8-6.8 87.8 27.3 0 36.5-38.2 28.3-87.8 28.3zm-.9 72.5H365c10.8 0 18.9 11.7 24 19.2-16.1 1.9-33 2.8-50.6 2.9v-22.1z"/&gt;&lt;/svg&gt; 📦 [github.com/NetCoupler](https://github.com/NetCoupler)
+--
+
+
+- Developing protocol to register study: &lt;svg style="height:0.8em;top:.04em;position:relative;fill:#214c78;" viewBox="0 0 384 512"&gt;&lt;path d="M224 136V0H24C10.7 0 0 10.7 0 24v464c0 13.3 10.7 24 24 24h336c13.3 0 24-10.7 24-24V160H248c-13.2 0-24-10.8-24-24zm64 236c0 6.6-5.4 12-12 12H108c-6.6 0-12-5.4-12-12v-8c0-6.6 5.4-12 12-12h168c6.6 0 12 5.4 12 12v8zm0-64c0 6.6-5.4 12-12 12H108c-6.6 0-12-5.4-12-12v-8c0-6.6 5.4-12 12-12h168c6.6 0 12 5.4 12 12v8zm0-72v8c0 6.6-5.4 12-12 12H108c-6.6 0-12-5.4-12-12v-8c0-6.6 5.4-12 12-12h168c6.6 0 12 5.4 12 12zm96-114.1v6.1H256V0h6.1c6.4 0 12.5 2.5 17 7l97.9 98c4.5 4.5 7 10.6 7 16.9z"/&gt;&lt;/svg&gt; [lwjohnst.gitlab.io/meld-protocol](https://lwjohnst.gitlab.io/meld-protocol)
+
+???
+
+About transparency of process to making claim.
+
+---
+
+class: center, middle
+
+## Question: 
+
+## How many know or have heard or know about &lt;u&gt;open science&lt;/u&gt;?
+
+---
+
+class: center, middle
+
+## Question: 
+
+## ...or &lt;u&gt;open access, open methods, open data, or open source&lt;/u&gt;?
+
+---
+
+## Open science: Terms and meanings
+
+.center[
+
+| **Term** | **Meaning** |
+|:------------|:---------------|
+| Open science | Freely available, openly licensed material for all things related to scientific activity |
+| Open access | Free, unrestricted, publicly available **published articles** |
+| Open data | Freely available, re-usable, openly licensed **data** |
+| Open source/code | Freely available, re-usable, openly licensed **scientific code** used in generating results |
+| Open methods/protocol | Freely available, re-usable, openly licensed **methods and protocols** used to create the data |
+
+]
+
+---
+
+class: middle, center
+
+# Thanks for listening 😁
+
+---
+
+class: middle, center
+
+# Algorithm (steps) used in NetCoupler
+
+---
+
+### 1. DAG skeleton of network is estimated
+
+&lt;img src="../../au-ph/2019-08-15/images/nc-step-1.png" width="1151" height="100%" style="display: block; margin: auto;" /&gt;
+
+---
+
+### 2. Initial links formed on exposure-side
+
+&lt;img src="../../au-ph/2019-08-15/images/nc-step-2.png" width="65%" style="display: block; margin: auto;" /&gt;
+
+---
+
+### 3. Direct effects estimated between exposure and network
+
+&lt;img src="../../au-ph/2019-08-15/images/nc-step-3.png" width="55%" style="display: block; margin: auto;" /&gt;
+
+---
+
+### 4. Repeat identifying links, find ambiguous, delete indirect links
+
+&lt;img src="../../au-ph/2019-08-15/images/nc-step-4.png" width="55%" style="display: block; margin: auto;" /&gt;
+
+???
+
+If you were interested in linkages with an exposure on the network, you could
+stop here.
+
+---
+
+### 5. Initial links formed with outcome-side
+
+&lt;img src="../../au-ph/2019-08-15/images/nc-step-5.png" width="65%" style="display: block; margin: auto;" /&gt;
+
+---
+
+### 6. Direct effects estimated between network and outcome
+
+&lt;img src="../../au-ph/2019-08-15/images/nc-step-6.png" width="65%" style="display: block; margin: auto;" /&gt;
+
+---
+
+### 7. Repeat identifying links, delete indirect links, find ambiguous
+
+&lt;img src="../../au-ph/2019-08-15/images/nc-step-7.png" width="65%" style="display: block; margin: auto;" /&gt;
+
+???
+
+You could stop here if you were interested in linkages with the network and an
+outcome.
+
+---
+
+### 8. (optional) Combine both estimations into joint model
+
+&lt;img src="../../au-ph/2019-08-15/images/nc-step-8.png" width="85%" style="display: block; margin: auto;" /&gt;
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"ratio": "16:9",
+"highlightStyle": "github",
+"highlightLines": true,
+"countIncrementalSlides": false,
+"slideNumberFormat": ""
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>
