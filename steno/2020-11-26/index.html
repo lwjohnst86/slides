@@ -20,6 +20,8 @@ class: center, middle, inverse, title-slide
 
 layout: true
 
+&lt;!-- Knit from document directory --&gt;
+
 &lt;div class="my-footer"&gt;
 &lt;span&gt;
 &lt;img src="../../common/dda-logo.png" alt="DDA", width="75"&gt;
@@ -34,29 +36,27 @@ layout: true
 
 ---
 
-## What is this talk about?
+## What this is talk about and overview
 
 --
 
-.pull-left[
-Title broken down:
-
-- Tools and workflows
-- Improving the process
-- Scientific research
-- Modern demands
-]
+1. What do I mean by scientific research?
+    - *How claims are verified.*
 
 --
 
-.pull-right[
-And re-arranged:
-
-1. What does scientific research mean?
 2. What are the modern demands?
+    - *Studies be more reproducible and replicable.*
+
+--
+
 3. What is the process that needs to be improved?
+    - *Reproducibility of studies.*
+
+--
+
 4. What are the tools and workflows?
-]
+    - *Version control with Git.*
 
 ???
 
@@ -67,7 +67,7 @@ the title and use that as the basis for the order I will talk about things.
 
 class: middle, center
 
-# What does scientific research mean?
+# What do I mean by scientific research?
 
 ---
 
@@ -76,7 +76,8 @@ class: middle, center
 --
 
 - Science has many philosophies
-    - Focus will be on: *Verifying claims*
+
+- Focus of talk will be on: *Verifying claims*
 
 --
 
@@ -102,7 +103,7 @@ copy of)
 
 ---
 
-## Replication vs reproducing
+## Replicability vs reproducibility
 
 ... terms are often confused with each other [1]
 
@@ -111,7 +112,8 @@ copy of)
 .pull-left[
 ### Replicability
 
-- Independently get similar results when doing study again with same design and analysis plan
+- Same study design, analysis plan
+- Different researcher, data, code
 - Linked to the "irreproducibility crisis" [2]
 ]
 
@@ -120,8 +122,8 @@ copy of)
 .pull-right[
 ### Reproducibility
 
-- Independently get same result when using the same data and code
-- Should be easy right? Sadly, often just as hard
+- Same data and code
+- Different researcher
 ]
 
 .footnote[
@@ -135,7 +137,7 @@ I'll get into research on reproducibility later.
 
 ---
 
-&lt;img src="slides_files/figure-html/reproducibility-figure-1.png" style="display: block; margin: auto;" /&gt;
+&lt;img src="index_files/figure-html/reproducibility-figure-1.png" style="display: block; margin: auto;" /&gt;
 
 
 .footnote[[Patil, 2019](https://doi.org/10.1038/s41562-019-0629-z)]
@@ -153,8 +155,6 @@ Study design, methods, and analysis need:
 - Easy to access to *any* researcher
 
 - Record of activity 
-
-- Inspectable and readable 
 
 .footnote[
 1. For both replicating and reproducing.
@@ -192,7 +192,7 @@ class: middle, center
 --
 
 .pull-right[
-&lt;img src="slides_files/figure-html/reg-reports-figure-1.png" style="display: block; margin: auto;" /&gt;
+&lt;img src="index_files/figure-html/reg-reports-figure-1.png" style="display: block; margin: auto;" /&gt;
 
 ]
 
@@ -221,9 +221,9 @@ There are lots of reasons for this, likely due to:
 ## ... Leading to present modern demands
 
 .middle[
-**Research studies need to be more reproducible and replicable [1]**
+- **Research studies need to be more reproducible and replicable [1]**
 
-**Research output needs to include more than just the manuscript (e.g. data, code) [1]**
+- **Research output needs to include more than just the manuscript (e.g. data, code) [1]**
 ]
 
 .footnote[
@@ -235,7 +235,7 @@ There are lots of reasons for this, likely due to:
 
 class: middle, center
 
-# What is the process that needs to be improved? 
+# What is the process that needs to be improved? Reproducibility
 
 ## And what are the tools and workflows for it?
 
@@ -246,13 +246,16 @@ but currently there isn't much focus on the reproducibility problem.
 
 ---
 
-## *Reproducibility*: Moving toward it
+## Moving toward more *reproducibility*
 
 .center[
 &lt;img src="../../steno/2020-11-26/images/reproducibility-spectrum.jpg" width="85%" height="85%" style="display: block; margin: auto;" /&gt;
 ]
 
-.footnote[[Peng, 2011](https://science.sciencemag.org/content/334/6060/1226).]
+.footnote[
+- [Peng, 2011](https://science.sciencemag.org/content/334/6060/1226)
+- Should say "Full reproducibility".
+]
 
 --
 
@@ -288,6 +291,10 @@ However, this is a highly informal system and very prone to error and mistakes.
 
 ## Formal version control software: Git
 
+*Tracks and saves changes done to files into a history of changes. *
+
+--
+
 Think about these questions: 
 
 - Do you have many files of different versions of a manuscript do you have, including getting feedback from co-authors, etc?
@@ -299,7 +306,7 @@ manuscript and need to make a new file so that the original is not modified?
 
 --
 
-=&gt; Answered yes to any? Git helps by managing changes to files for you.
+=&gt; Answered yes to any? Git helps with these situations.
 
 ---
 
@@ -315,7 +322,6 @@ Version control like Git fulfills:
 - Self-containment
 
 - Accessibility
-
 ]
 
 --
@@ -344,6 +350,8 @@ don't work or are quite difficult.
 
 ## Numerous benefits other than reproducibility
 
+- Work more efficiently on your own
+
 - Better collaboration &lt;!-- Both internal and external --&gt;
 
 - Better project management
@@ -352,7 +360,7 @@ don't work or are quite difficult.
 
 - Greater potential for gaining collaborators
 
-- Defend against fraud
+- Defend against fraud or auditing purposes
 
 - Evidence of contributions and work
 
@@ -370,11 +378,9 @@ single version of each file, rather than multiple versions of the same file.
 
 ## Real-world examples: My own projects
 
-- (Largely) solo project: [NetCoupler](https://github.com/NetCoupler/NetCoupler)
+- Solo research project: [Code for a paper from PhD](https://github.com/lwjohnst86/tagDiabetes)
 
-- Team-based and national/local project: [r-cubed](https://gitlab.com/rostools/r-cubed) 
-
-- Global collaboration project: [py-rse](https://github.com/merely-useful/py-rse)
+- Team-based and national/local teaching project: [r-cubed](https://gitlab.com/rostools/r-cubed)
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
