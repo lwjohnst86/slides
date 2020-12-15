@@ -1,5 +1,5 @@
 ---
-title: "`r stringr::str_to_title('A data-driven approach at characterizing heterogeneity in neuropathy assessments')`"
+title: "A data-driven approach at characterizing heterogeneity in neuropathy assessments"
 author: "Luke Johnston"
 output:
   xaringan::moon_reader:
