@@ -46,14 +46,9 @@ fa2 <- function(.icon) {
 <span>
 <img src="../../common/dda-logo.png" alt="DDA", width="75">
 <img src="../../common/sdca-logo.png" alt="SDCA", width="55">
-<a href="https://slides.lwjohnst.com/dda/2020-02-06/">slides.lwjohnst.com/dda/2020-02-06</a>
+<a href="https://slides.lwjohnst.com/steno/2020-02-06/">slides.lwjohnst.com/steno/2020-02-06</a>
 </span>
 </div> 
-
-<div class="my-header">
-`r lwj::qrencode_svg("https://slides.lwjohnst.com/dda/2020-02-06/", size = 2)`
-</div> 
-
 
 ```{r xaringan-themer, include=FALSE}
 library(xaringanthemer)
