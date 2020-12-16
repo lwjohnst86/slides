@@ -4,8 +4,5 @@ exclude: "README.html"
 description: |
   Presentation slides
 output_dir: "."
-navbar:
-  right:
-    - text: "Home"
-      href: index.html
+# Include link to my website? Include navbar?
 output: distill::distill_article
