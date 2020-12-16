@@ -1,0 +1,45 @@
+---
+title: "Presentation slides"
+description: |
+  Slides for presentation that I've given.
+site: distill::distill_website
+---
+
+```{r setup, include=FALSE, eval=FALSE}
+# knitr::opts_chunk$set(echo = FALSE)
+library(tidyverse)
+library(lubridate)
+slides <- fs::dir_ls(recurse = TRUE, glob = "*.html|Rmd") %>% 
+    str_subset("_site/.*", negate = TRUE) 
+
+title <- slides %>% 
+    str_subset(".*/.*/*.Rmd") %>% 
+    map(rmarkdown::yaml_front_matter) %>% 
+    map("title") %>% 
+    compact() %>% 
+    unlist()
+
+link <- slides %>% 
+    str_subset(".*/.*/*.html") 
+
+link %>% 
+    str_split("/") %>% 
+    map(str_subset, "html", negate = TRUE) %>% 
+    # TODO: Put location in yaml of slides, rather than here based on filename
+    map_dfr(set_names, c("location", "date")) %>% 
+    mutate(location = str_to_upper(location) %>% 
+               str_replace("STENO", "Steno Aarhus"),
+           link = link,
+           title = title) %>%
+    arrange(desc(date)) %>% 
+    mutate(date = stamp_date("March 1, 1999")(as_date(date))) %>% 
+    glue::glue_data("- **{date}**: [*{title}*]({link}) for {location}") %>% 
+    clipr::write_clip()
+```
+
+- **December 16, 2020**: [*NetCoupler: Inferring causal pathways between high-dimensional metabolic data and external factors*](iarc/2020-12-16/index.html) for IARC Nutritional Methodology and Biostatistics Group
+- **November 26, 2020**: [*Tools and workflows for improving the process for scientific research to meet modern demands*](steno/2020-11-26/index.html) for Steno Thursdays in Aarhus
+- **February 06, 2020**: [*MELD Project: *M*etabolic consequences of *E*arly *L*ife adversity and risk for type 2 *D*iabetes*](steno/2020-02-06/index.html) for Steno Thursdays in Aarhus
+- **February 04, 2020**: [*MELD Project: The *M*etabolic consequences of adverse *E*arly *L*ife conditions and subsequent risk for adult type 2 *D*iabetes*](dda/2020-02-04/index.html) for Danish Diabetes Academy Start-up Meeting for Funded Projects
+- **September 12, 2019**: [*A data-driven approach at characterizing heterogeneity in neuropathy assessments*](au-ph/2019-09-12/index.html) for Work-In-Progress meeting at Public Health in Aarhus University
+- **August 15, 2019**: [*Analyzing high dimensional metabolic data in epidemiological studies*](au-ph/2019-08-15/slides.html) for weekly Section for Epidemiology meeting at Public Health in Aarhus University
