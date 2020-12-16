@@ -1,0 +1,26 @@
+digraph {
+    graph [ranksep = 0.25 splines = curved]
+
+    node [group = a shape = box style = filled fillcolor = lightcyan]
+    df_data [label = 'Input dataframe:\l- Metabolites\l- Outcome/Exposure\l']
+    df_edge [label = 'Edge table:\l- Nodes\l- Edges\l- Weights\l']
+    df_results [label = 'Output dataframe:\l- Nodes\l- Estimates\l- Effects\l']
+
+    node [group = '' shape = box style = filled fillcolor = darkolivegreen1]
+    fn_std [label = 'nc_standardize()']
+    fn_net [label = 'nc_estimate_network()']
+    fn_links [label = 'nc_estimate_exposure_links()\nnc_estimate_outcome_links()']
+
+    subgraph {
+        rank = same
+        fn_net; fn_std
+    }
+
+    subgraph {
+        rank = same
+        fn_links; df_edge
+    }
+
+    df_data -> fn_std -> fn_links -> df_results
+    fn_std -> fn_net -> df_edge -> fn_links
+}
