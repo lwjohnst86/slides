@@ -1,7 +1,7 @@
 ---
 title: "Presentation slides"
 description: |
-  Slides for presentation that I've given.
+  Slides for presentations that I've given.
 site: distill::distill_website
 ---
 
@@ -36,7 +36,7 @@ link %>%
     glue::glue_data("- **{date}**: [*{title}*]({link}) for {location}") %>% 
     clipr::write_clip()
 ```
-
+- **January 08, 2021**: [*Expert Corner for the Basic Human Nutrition course*](misc/2021-01-08/index.html) for a University of Toronto Basic Human Nutrition Course
 - **December 16, 2020**: [*NetCoupler: Inferring causal pathways between high-dimensional metabolic data and external factors*](iarc/2020-12-16/index.html) for IARC Nutritional Methodology and Biostatistics Group
 - **November 26, 2020**: [*Tools and workflows for improving the process for scientific research to meet modern demands*](steno/2020-11-26/index.html) for Steno Thursdays in Aarhus
 - **February 06, 2020**: [*MELD Project: *M*etabolic consequences of *E*arly *L*ife adversity and risk for type 2 *D*iabetes*](steno/2020-02-06/index.html) for Steno Thursdays in Aarhus

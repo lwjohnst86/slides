@@ -1,0 +1,13 @@
+{
+  "articles": [
+    {
+      "path": "index.html",
+      "title": "Presentation slides",
+      "description": "Slides for presentations that I've given.\n",
+      "author": [],
+      "contents": "\nJanuary 08, 2021: Expert Corner for the Basic Human Nutrition course for a University of Toronto Basic Human Nutrition Course\nDecember 16, 2020: NetCoupler: Inferring causal pathways between high-dimensional metabolic data and external factors for IARC Nutritional Methodology and Biostatistics Group\nNovember 26, 2020: Tools and workflows for improving the process for scientific research to meet modern demands for Steno Thursdays in Aarhus\nFebruary 06, 2020: MELD Project: Metabolic consequences of Early Life adversity and risk for type 2 Diabetes for Steno Thursdays in Aarhus\nFebruary 04, 2020: MELD Project: The Metabolic consequences of adverse Early Life conditions and subsequent risk for adult type 2 Diabetes for Danish Diabetes Academy Start-up Meeting for Funded Projects\nSeptember 12, 2019: A data-driven approach at characterizing heterogeneity in neuropathy assessments for Work-In-Progress meeting at Public Health in Aarhus University\nAugust 15, 2019: Analyzing high dimensional metabolic data in epidemiological studies for weekly Section for Epidemiology meeting at Public Health in Aarhus University\n\n\n\n",
+      "last_modified": "2021-01-08T16:01:06-05:00"
+    }
+  ],
+  "collections": []
+}

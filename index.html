@@ -88,27 +88,27 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   <!--radix_placeholder_meta_tags-->
   <title>Luke's Slides: Presentation slides</title>
   
-  <meta property="description" itemprop="description" content="Slides for presentation that I&#39;ve given."/>
+  <meta property="description" itemprop="description" content="Slides for presentations that I&#39;ve given."/>
   
   
   
   <!--  https://developers.facebook.com/docs/sharing/webmasters#markup -->
   <meta property="og:title" content="Luke&#39;s Slides: Presentation slides"/>
   <meta property="og:type" content="article"/>
-  <meta property="og:description" content="Slides for presentation that I&#39;ve given."/>
+  <meta property="og:description" content="Slides for presentations that I&#39;ve given."/>
   <meta property="og:locale" content="en_US"/>
   <meta property="og:site_name" content="Luke&#39;s Slides"/>
   
   <!--  https://dev.twitter.com/cards/types/summary -->
   <meta property="twitter:card" content="summary"/>
   <meta property="twitter:title" content="Luke&#39;s Slides: Presentation slides"/>
-  <meta property="twitter:description" content="Slides for presentation that I&#39;ve given."/>
+  <meta property="twitter:description" content="Slides for presentations that I&#39;ve given."/>
   
   <!--/radix_placeholder_meta_tags-->
   <!--radix_placeholder_rmarkdown_metadata-->
   
   <script type="text/json" id="radix-rmarkdown-metadata">
-  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","description","site"]}},"value":[{"type":"character","attributes":{},"value":["Presentation slides"]},{"type":"character","attributes":{},"value":["Slides for presentation that I've given.\n"]},{"type":"character","attributes":{},"value":["distill::distill_website"]}]}
+  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","description","site"]}},"value":[{"type":"character","attributes":{},"value":["Presentation slides"]},{"type":"character","attributes":{},"value":["Slides for presentations that I've given.\n"]},{"type":"character","attributes":{},"value":["distill::distill_website"]}]}
   </script>
   <!--/radix_placeholder_rmarkdown_metadata-->
   <!--radix_placeholder_navigation_in_header-->
@@ -301,6 +301,11 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
     text-decoration: underline;
   }
   
+  d-article details {
+    grid-column: text;
+    margin-bottom: 0.8em;
+  }
+  
   @media(min-width: 768px) {
   
   d-article pre,
@@ -455,6 +460,17 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   
   div.hanging-indent{
     margin-left: 1em; text-indent: -1em;
+  }
+  
+  /* Citation hover box */
+  
+  .tippy-box[data-theme~=light-border] {
+    background-color: rgba(250, 250, 250, 0.95);
+  }
+  
+  .tippy-content > p {
+    margin-bottom: 0;
+    padding: 2px;
   }
   
   
@@ -1122,7 +1138,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
       var layout = $(this).attr('data-layout');
   
       // apply layout to markdown level block elements
-      var elements = $(this).children().not('div.sourceCode, pre, script');
+      var elements = $(this).children().not('details, div.sourceCode, pre, script');
       elements.each(function(i, el) {
         var layout_div = $('<div class="' + layout + '"></div>');
         if (layout_div.hasClass('shaded')) {
@@ -1237,6 +1253,20 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
       // move appendix-bottom entries to the bottom
       $('.appendix-bottom').appendTo('d-appendix').children().unwrap();
       $('.appendix-bottom').remove();
+  
+      // hoverable references
+      $('span.citation[data-cites]').each(function() {
+        var refHtml = $('#ref-' + $(this).attr('data-cites')).html();
+        window.tippy(this, {
+          allowHTML: true,
+          content: refHtml,
+          maxWidth: 500,
+          interactive: true,
+          interactiveBorder: 10,
+          theme: 'light-border',
+          placement: 'bottom-start'
+        });
+      });
   
       // clear polling timer
       clearInterval(tid);
@@ -1398,6 +1428,10 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   
   <!--/radix_placeholder_distill-->
   <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+  <script src="site_libs/popper-2.6.0/popper.min.js"></script>
+  <link href="site_libs/tippy-6.2.7/tippy.css" rel="stylesheet" />
+  <link href="site_libs/tippy-6.2.7/tippy-light-border.css" rel="stylesheet" />
+  <script src="site_libs/tippy-6.2.7/tippy.umd.min.js"></script>
   <script src="site_libs/anchor-4.2.2/anchor.min.js"></script>
   <script src="site_libs/bowser-1.9.3/bowser.min.js"></script>
   <script src="site_libs/webcomponents-2.0.0/webcomponents.js"></script>
@@ -1413,7 +1447,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <!--radix_placeholder_front_matter-->
 
 <script id="distill-front-matter" type="text/json">
-{"title":"Presentation slides","description":"Slides for presentation that I've given.","authors":[]}
+{"title":"Presentation slides","description":"Slides for presentations that I've given.","authors":[]}
 </script>
 
 <!--/radix_placeholder_front_matter-->
@@ -1426,12 +1460,13 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <h1>Presentation slides</h1>
 <!--radix_placeholder_categories-->
 <!--/radix_placeholder_categories-->
-<p><p>Slides for presentation that I’ve given.</p></p>
+<p><p>Slides for presentations that I’ve given.</p></p>
 </div>
 
 
 <div class="d-article">
 <ul>
+<li><strong>January 08, 2021</strong>: <a href="misc/2021-01-08/index.html"><em>Expert Corner for the Basic Human Nutrition course</em></a> for a University of Toronto Basic Human Nutrition Course</li>
 <li><strong>December 16, 2020</strong>: <a href="iarc/2020-12-16/index.html"><em>NetCoupler: Inferring causal pathways between high-dimensional metabolic data and external factors</em></a> for IARC Nutritional Methodology and Biostatistics Group</li>
 <li><strong>November 26, 2020</strong>: <a href="steno/2020-11-26/index.html"><em>Tools and workflows for improving the process for scientific research to meet modern demands</em></a> for Steno Thursdays in Aarhus</li>
 <li><strong>February 06, 2020</strong>: <a href="steno/2020-02-06/index.html"><em>MELD Project: </em>M<em>etabolic consequences of </em>E<em>arly </em>L<em>ife adversity and risk for type 2 </em>D<em>iabetes</em></a> for Steno Thursdays in Aarhus</li>
