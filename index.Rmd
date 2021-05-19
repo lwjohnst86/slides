@@ -39,6 +39,7 @@ link %>%
     clipr::write_clip()
 ```
 
+- **May 21, 2021**: [*NetCoupler: Inferring causal pathways between high-dimensional metabolic data and external factors*](des/2021-05-21/index.html) talk for Danish Epidemiological Society Annual Meeting
 - **February 08, 2021**: [*Reproducibility and code sharing in science: Why it's important and how to do it*](steno/2021-02-08/index.html) talk for the Diabetes Epidemiology group at Steno Diabetes Center Aarhus 
 - **January 08, 2021**: [*Expert Corner for the Basic Human Nutrition course*](misc/2021-01-08/index.html) talk for a University of Toronto Basic Human Nutrition Course
 - **December 16, 2020**: [*NetCoupler: Inferring causal pathways between high-dimensional metabolic data and external factors*](iarc/2020-12-16/index.html) talk for IARC Nutritional Methodology and Biostatistics Group

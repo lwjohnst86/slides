@@ -1,0 +1,342 @@
+---
+title: "NetCoupler: Inferring causal pathways between high-dimensional metabolic data and external factors"
+author: |
+    Luke W. Johnston
+    
+    Steno Diabetes Center Aarhus, Denmark
+output:
+  xaringan::moon_reader:
+    lib_dir: libs
+    css: ["xaringan-themer.css", "../../common/custom.css"]
+    nature:
+      ratio: "16:9"
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+---
+
+layout: true
+
+<!-- To the Danish Epidemiological Society -->
+
+<div class="my-footer">
+<span>
+<img src="../../common/dda-logo.png" alt="DDA", width="75">
+<img src="../../common/sdca-logo.png" alt="SDCA", width="55">
+<a href="https://slides.lwjohnst.com/des/2021-05-21/">slides.lwjohnst.com/des/2021-05-21</a>
+</span>
+</div> 
+
+```{r setup, include=FALSE}
+options(htmltools.dir.version = FALSE)
+library(kableExtra)
+library(tidyverse)
+library(fontawesome)
+knitr::opts_chunk$set(
+  echo = FALSE,
+  dev = "png",
+  dpi = 150,
+  comment = "#>",
+  message = FALSE,
+  warning = FALSE,
+  fig.align = "center"
+)
+
+image_dda_path <- function(.file) {
+    fs::path("..", "..", "dda", "2020-02-04", "images", .file)
+}
+
+image_nc_path <- function(.file) {
+    fs::path("..", "..", "au-ph", "2019-08-15", "images", .file)
+}
+
+image_iarc_path <- function(.file) {
+    fs::path("..", "..", "iarc", "2020-12-16", "images", .file)
+}
+
+fa2 <- function(.icon) {
+    fontawesome::fa(name = .icon, fill = "#214c78")
+}
+```
+
+```{r xaringan-themer, include=FALSE}
+library(xaringanthemer)
+style_mono_accent(
+    base_color = "#8b0000",
+    base_font_size = "24px",
+    header_font_google = google_font("Cabin"),
+    text_font_google = google_font("KoHo")
+)
+```
+
+---
+
+# Outline:
+
+- History and background on the analytic problem
+
+- NetCoupler implementation and development
+
+- Examples using NetCoupler
+
+- Current challenges
+
+---
+
+class: middle
+
+# History and background on analytic problem
+
+---
+
+## Amount of data generated is massive
+
+.pull-left[
+- -omics type data
+
+- Metabolic biomarkers
+]
+
+.pull-right[
+- High dimensionality
+
+- Complex networks
+]
+
+???
+
+Want to ask questions using this type of data, some way to handle that complexity.
+
+---
+
+## "Traditional" analysis may use: Dimensionality reduction
+
+```{r img-traditional-pca, fig.cap="Reducing number of variables with PCA."}
+knitr::include_graphics(image_nc_path("pca.png"))
+```
+
+???
+
+This has the advantage of making things simpler while trying to maximize
+variance in the data. Afterward you can do modelling on each principal component.
+The disadvantage of this approach is that it loses a lot of information since
+the interdependence and connections between variables it not maintained.
+
+---
+
+## "Traditional" analysis may use: Many regression-type models
+
+.center[
+```
+O1 = M1 + covariates
+O1 = M2 + covariates
+...
+O1 = M7 + covariates
+O1 = M8 + covariates
+```
+]
+
+???
+
+Some ways you might go about analyzing this data is by running many regression
+models, one for each metabolic variable for instance.
+
+This of course has problems since you're simply running a bunch of models and
+not taking account of the inherent interdependencies between variables.
+
+---
+
+## "Traditional" analysis may use: Network analysis
+
+```{r img-traditional-network-analysis, fig.height=3.5, fig.width=6, out.width="50%", out.height="50%"}
+library(ggdag)
+library(dagitty)
+g1 <- dagitty( "dag {
+    X5 -> X1 -> X2 -> Y
+    X1 <- X4 -> X3
+    X2 -> X3 -> Y
+    X -> Y
+    X <-> X5 <-> X2 <-> Y
+}")
+
+ggdag(g1, seed = 154426) +
+    theme_dag()
+```
+
+???
+
+This approach is nice in that you can extract information about the connection
+between metabolic variables. But there is no way to incorporate the disease
+outcome with this approach and in order to construct the network properly most
+methods require you provide a prespecified base network, which you might not know.
+
+---
+
+## But, what if...
+
+- want info about network structure?
+--
+
+
+- don't know the network structure?
+--
+
+
+- have an exposure, metabolites, and outcome?
+
+---
+
+## ... want to know is something like this?
+
+```{r img-data-like-this, out.width="75%"}
+knitr::include_graphics(image_nc_path("network.png"))
+```
+
+---
+
+class: middle
+
+# (Potential) solution: NetCoupler
+
+---
+
+## Initial development
+
+.pull-left[
+- Developed by Clemens Wittenbecher for his 
+[PhD thesis](https://publishup.uni-potsdam.de/opus4-ubp/frontdoor/deliver/index/docId/40459/file/wittenbecher_diss.pdf)
+
+- Algorithm that:
+    - Finds most likely network structure
+    - Allows inclusion of exposure and outcome
+    - Identifies causal links from and within the network
+]
+
+.pull-right[
+![Clemens Wittenbecher](https://avatars3.githubusercontent.com/u/33724052?size=200)
+]
+
+---
+
+## Four basic phases of the algorithm
+
+```{r img-netcoupler, out.width="90%"}
+knitr::include_graphics(image_iarc_path("netcoupler-process.svg"))
+```
+
+???
+
+A key is that the algorithm is flexible enough to handle different types of
+models
+
+---
+
+## Infer (potentially) causal pathways with graphical model output
+
+```{r img-nc-pathways, out.width="85%"}
+knitr::include_graphics(image_nc_path("nc-causal-pathways.png"))
+```
+
+---
+
+## Developing NetCoupler as an R package
+
+--
+
+.center[
+```{r img-netcoupler-github, out.width="70%"}
+knitr::include_graphics(image_iarc_path("netcoupler-github.png"))
+```
+]
+
+.footnote[
+- [github.com/NetCoupler](https://github.com/NetCoupler/NetCoupler)
+- **Goal**: Submit to CRAN by mid-2021.
+]
+
+???
+
+Met him at EDEG, asked if it was an R package. Started working together after
+that.
+
+---
+
+class: middle
+
+# Example projects using NetCoupler
+
+---
+
+## UK Biobank: Metabolic pathways between components of stature and HbA1c
+
+```{r img-aim-ukbiobank, out.height="90%"}
+knitr::include_graphics(image_iarc_path("aim-ukbiobank.svg"))
+```
+
+---
+
+## UK Biobank characteristics
+
+.pull-left[
+- Basics:
+    - ~480,000 participants
+    - Cross-sectional
+    - Stature measures
+    - Various demographics
+]
+
+.pull-right[
+- Metabolic variables:
+    - Cholesterol
+    - Albumin
+    - Alanine Aminotransferase
+    - Apolipoprotein A and B
+    - Aspartate Aminotransferase
+    - C-reactive Protein
+    - Gamma Glutamyltransferase
+    - HDL and LDL Cholesterol
+    - Triglycerides
+]
+
+---
+
+## Link between leg length, liver markers, HbA1c
+
+```{r img-netcoupler-results, out.width="60%"}
+knitr::include_graphics(image_iarc_path("ukbiobank-netcoupler-results.png"))
+```
+
+---
+
+class: middle
+
+# Current challenges
+
+---
+
+## Several limitations or improvements
+
+- **Mainly**, performance can be slow
+    - E.g. larger data or networks
+
+--
+
+- Untested on larger networks
+
+--
+
+- Untested on non-cross-sectional/time-to-event data
+
+--
+
+- Visualizing can be tricky
+
+--
+
+- Interpreting estimates can be tricky
+
+---
+
+class: middle
+
+# Thanks! Questions?
