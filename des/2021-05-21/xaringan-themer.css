@@ -36,7 +36,7 @@
   --code-font-is-google: 1;
   --base-font-size: 24px;
   --text-font-size: 1rem;
-  --code-font-size: 0.9rem;
+  --code-font-size: 1.2em;
   --code-inline-font-size: 1em;
   --header-h1-font-size: 2.75rem;
   --header-h2-font-size: 2.25rem;
@@ -257,3 +257,28 @@ table.dataTable.hover tbody tr:hover, table.dataTable.display tbody tr:hover {
   background-color: var(--black);
 }
 
+
+
+/* Extra CSS */
+div.my-footer {
+  background-color: #FFFFFF;
+  position: absolute;
+  bottom: 0px;
+  left: 0px;
+  height: 50px;
+  width: 100%;
+}
+div.my-footer span {
+  font-size: 12pt;
+  position: absolute;
+  left: 15px;
+  bottom: 8px;
+}
+div.my-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 25px;
+  width: 100%;
+  text-align: right;
+}

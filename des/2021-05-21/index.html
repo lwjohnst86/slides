@@ -4,8 +4,7 @@
     <title>NetCoupler: Inferring causal pathways between high-dimensional metabolic data and external factors</title>
     <meta charset="utf-8" />
     <script src="libs/header-attrs/header-attrs.js"></script>
-    <link rel="stylesheet" href="des/2021-05-21/xaringan-themer.css" type="text/css" />
-    <link rel="stylesheet" href="common/custom.css" type="text/css" />
+    <link rel="stylesheet" href="xaringan-themer.css" type="text/css" />
   </head>
   <body>
     <textarea id="source">
@@ -23,11 +22,10 @@ layout: true
 &lt;!-- To the Danish Epidemiological Society --&gt;
 
 &lt;div class="my-header"&gt;&lt;/div&gt;
-
 &lt;div class="my-footer"&gt;
 &lt;span&gt;
-&lt;img src="common/dda-logo.png" alt="DDA", width="75"&gt;
-&lt;img src="common/sdca-logo.png" alt="SDCA", width="55"&gt;
+&lt;img src="../../common/dda-logo.png" alt="DDA", width="75"&gt;
+&lt;img src="../../common/sdca-logo.png" alt="SDCA", width="55"&gt;
 &lt;a href="https://slides.lwjohnst.com/des/2021-05-21/"&gt;slides.lwjohnst.com/des/2021-05-21&lt;/a&gt;
 &lt;/span&gt;
 &lt;/div&gt; 
@@ -76,10 +74,10 @@ Want to ask questions using this type of data, some way to handle that complexit
 
 ---
 
-## "Traditional" analysis may use: Dimensionality reduction
+## Potential analysis: Dimensionality reduction
 
 &lt;div class="figure" style="text-align: center"&gt;
-&lt;img src="au-ph/2019-08-15/images/pca.png" alt="Reducing number of variables with PCA."  /&gt;
+&lt;img src="../../au-ph/2019-08-15/images/pca.png" alt="Reducing number of variables with PCA." width="280" /&gt;
 &lt;p class="caption"&gt;Reducing number of variables with PCA.&lt;/p&gt;
 &lt;/div&gt;
 
@@ -92,7 +90,7 @@ the interdependence and connections between variables it not maintained.
 
 ---
 
-## "Traditional" analysis may use: Many regression-type models
+## Potential analysis: Many regression-type models
 
 .center[
 ```
@@ -114,7 +112,7 @@ not taking account of the inherent interdependencies between variables.
 
 ---
 
-## "Traditional" analysis may use: Network analysis
+## Potential analysis: Network analysis
 
 &lt;img src="index_files/figure-html/img-traditional-network-analysis-1.png" width="50%" height="50%" style="display: block; margin: auto;" /&gt;
 
@@ -143,7 +141,7 @@ methods require you provide a prespecified base network, which you might not kno
 
 ## ... want to know is something like this?
 
-&lt;img src="au-ph/2019-08-15/images/network.png" width="75%" style="display: block; margin: auto;" /&gt;
+&lt;img src="../../au-ph/2019-08-15/images/network.png" width="75%" style="display: block; margin: auto;" /&gt;
 
 ---
 
@@ -162,7 +160,7 @@ class: middle
 - Algorithm that:
     - Finds most likely network structure
     - Allows inclusion of exposure and outcome
-    - Identifies causal links from and within the network
+    - Identifies causal links from, to, and within the network
 ]
 
 .pull-right[
@@ -173,7 +171,7 @@ class: middle
 
 ## Four basic phases of the algorithm
 
-&lt;img src="iarc/2020-12-16/images/netcoupler-process.svg" width="90%" style="display: block; margin: auto;" /&gt;
+&lt;img src="../../iarc/2020-12-16/images/netcoupler-process.svg" width="90%" style="display: block; margin: auto;" /&gt;
 
 ???
 
@@ -184,7 +182,7 @@ models
 
 ## Infer (potentially) causal pathways with graphical model output
 
-&lt;img src="au-ph/2019-08-15/images/nc-causal-pathways.png" width="85%" style="display: block; margin: auto;" /&gt;
+&lt;img src="../../au-ph/2019-08-15/images/nc-causal-pathways.png" width="85%" style="display: block; margin: auto;" /&gt;
 
 ---
 
@@ -193,7 +191,7 @@ models
 --
 
 .center[
-&lt;img src="iarc/2020-12-16/images/netcoupler-github.png" width="70%" style="display: block; margin: auto;" /&gt;
+&lt;img src="../../iarc/2020-12-16/images/netcoupler-github.png" width="70%" style="display: block; margin: auto;" /&gt;
 ]
 
 .footnote[
@@ -216,7 +214,7 @@ class: middle
 
 ## UK Biobank: Metabolic pathways between components of stature and HbA1c
 
-&lt;img src="iarc/2020-12-16/images/aim-ukbiobank.svg" height="90%" style="display: block; margin: auto;" /&gt;
+&lt;img src="../../iarc/2020-12-16/images/aim-ukbiobank.svg" height="90%" style="display: block; margin: auto;" /&gt;
 
 ---
 
@@ -247,7 +245,7 @@ class: middle
 
 ## Link between leg length, liver markers, HbA1c
 
-&lt;img src="iarc/2020-12-16/images/ukbiobank-netcoupler-results.png" width="60%" style="display: block; margin: auto;" /&gt;
+&lt;img src="../../iarc/2020-12-16/images/ukbiobank-netcoupler-results.png" width="60%" style="display: block; margin: auto;" /&gt;
 
 ---
 
