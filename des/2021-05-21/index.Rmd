@@ -7,7 +7,7 @@ author: |
 output:
   xaringan::moon_reader:
     lib_dir: libs
-    css: ["des/2021-05-21/xaringan-themer.css", "common/custom.css"]
+    css: "xaringan-themer.css"
     nature:
       ratio: "16:9"
       highlightStyle: github
@@ -20,11 +20,10 @@ layout: true
 <!-- To the Danish Epidemiological Society -->
 
 <div class="my-header"></div>
-
 <div class="my-footer">
 <span>
-<img src="common/dda-logo.png" alt="DDA", width="75">
-<img src="common/sdca-logo.png" alt="SDCA", width="55">
+<img src="../../common/dda-logo.png" alt="DDA", width="75">
+<img src="../../common/sdca-logo.png" alt="SDCA", width="55">
 <a href="https://slides.lwjohnst.com/des/2021-05-21/">slides.lwjohnst.com/des/2021-05-21</a>
 </span>
 </div> 
@@ -44,20 +43,12 @@ knitr::opts_chunk$set(
   fig.align = "center"
 )
 
-image_dda_path <- function(.file) {
-    fs::path("dda", "2020-02-04", "images", .file)
-}
-
 image_nc_path <- function(.file) {
-    fs::path("au-ph", "2019-08-15", "images", .file)
+    fs::path("..", "..", "au-ph", "2019-08-15", "images", .file)
 }
 
 image_iarc_path <- function(.file) {
-    fs::path("iarc", "2020-12-16", "images", .file)
-}
-
-fa2 <- function(.icon) {
-    fontawesome::fa(name = .icon, fill = "#214c78")
+    fs::path("..", "..", "iarc", "2020-12-16", "images", .file)
 }
 ```
 
@@ -66,10 +57,11 @@ library(xaringanthemer)
 style_mono_accent(
     base_color = "#8b0000",
     base_font_size = "24px",
+    code_font_size = "1.2em",
     header_font_google = google_font("Cabin"),
-    text_font_google = google_font("KoHo"),
-    outfile = "des/2021-05-21/xaringan-themer.css"
+    text_font_google = google_font("KoHo")
 )
+source(here::here("common/custom-css.R"))
 ```
 
 ---
