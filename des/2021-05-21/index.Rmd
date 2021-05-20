@@ -204,7 +204,7 @@ class: middle
 - Algorithm that:
     - Finds most likely network structure
     - Allows inclusion of exposure and outcome
-    - Identifies causal links from and within the network
+    - Identifies causal links from, to, and within the network
 ]
 
 .pull-right[
