@@ -1,0 +1,201 @@
+---
+title: "NetCoupler: Inferring causal pathways between high-dimensional metabolic data and external factors"
+author:
+    - Luke W. Johnston
+    - Clemens Wittenbecher
+    - Fabian Eichelmann
+output:
+  xaringan::moon_reader:
+    lib_dir: libs
+    css: "xaringan-themer.css"
+    nature:
+      ratio: "16:9"
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+---
+
+layout: true
+
+<!-- To UseR 2021 -->
+
+<div class="my-header"></div>
+<div class="my-footer">
+<span>
+<img src="../../common/dda-logo.png" width="75" alt="Danish Diabetes Academy logo">
+<img src="../../common/sdca-logo.png" alt="Steno Diabetes Center Aarhus logo" width="55">
+<a href="https://slides.lwjohnst.com/user/2021-07-06/">slides.lwjohnst.com/user/2021-07-06</a>
+</span>
+</div> 
+
+```{r setup, include=FALSE}
+options(htmltools.dir.version = FALSE)
+library(kableExtra)
+library(tidyverse)
+library(fontawesome)
+knitr::opts_chunk$set(
+  echo = FALSE,
+  message = FALSE,
+  warning = FALSE,
+  fig.align = "center"
+)
+
+image_nc_path <- function(.file) {
+    fs::path("..", "..", "au-ph", "2019-08-15", "images", .file)
+}
+
+image_iarc_path <- function(.file) {
+    fs::path("..", "..", "iarc", "2020-12-16", "images", .file)
+}
+```
+
+```{r xaringan-themer, include=FALSE}
+library(xaringanthemer)
+style_mono_accent(
+    base_color = "#8b0000",
+    text_font_size = "28px",
+    code_font_size = "1.2em",
+    header_font_google = google_font("Cabin"),
+    text_font_google = google_font("KoHo")
+)
+source(here::here("common/custom-css.R"))
+```
+
+```{r image-alt-and-cap-text, include=FALSE}
+alt_questions_form <- "Network of an exposure variable"
+cap_questions_form <- "Use for answering questions of this form."
+alt_nc_phases <- ""
+cap_nc_phases <- ""
+alt_nc_pathways <- ""
+cap_nc_pathways <- ""
+alt_nc_example <- ""
+cap_nc_example <- ""
+```
+
+
+<!--
+
+Instructions:
+
+- Timing:
+    - 5 min
+    - ~100-150 wpm = 500-750 words total
+- Video:
+    - Show face (picture-in-picture layout)
+    - OBS Studio/Simple Screen Recorder
+    - Describe headers, graphics
+    - Speak each word on slides
+    - Describe what and why
+- Content:
+    - Include speakers notes
+    - Include alt-text
+    - Include transcript
+
+
+# Outline brainstorm
+
+- Purpose
+- Implementation and usage
+- Real-world Example
+- Challenges/limitations
+    
+-->
+
+---
+
+## Designed to answer questions that involve complex metabolic networks 
+
+.pull-left[
+
+**Motivation**:
+
+- High dimensional and complex network data (e.g. -omics, metabolics)
+- Derive potential network structure
+- Estimate pathways:
+    - From exposure (e.g. exercise) to network
+    - From network to outcome (e.g. diabetes)
+]
+
+.pull-right[
+```{r img-questions-form, out.width="100%", fig.alt=alt_questions_form, fig.cap=cap_questions_form}
+knitr::include_graphics(image_nc_path("network.png"))
+```
+]
+
+???
+
+---
+
+## Main features of NetCoupler
+
+.pull-left[
+- Finds most likely network structure
+
+- Can include exposure and/or outcome
+
+- Identifies causal links from, to, and within the network
+]
+
+.pull-right[
+- Flexible in type of model used (e.g. linear or logistic regression)
+
+- Allows adjusting for confounders and covariates
+
+- Results output designed for visualizing
+]
+
+.footnote[
+- [github.com/NetCoupler](https://github.com/NetCoupler/NetCoupler)
+- **Goal**: Submit to CRAN by mid-2021.
+]
+
+
+---
+
+## Four basic phases of the algorithm
+
+```{r img-nc-phases, out.width="90%", fig.alt=alt_nc_phases, fig.cap=cap_nc_phases}
+knitr::include_graphics(image_iarc_path("netcoupler-process.svg"))
+```
+
+???
+
+---
+
+## Graphical model outputs allows visual inference of pathways
+
+```{r img-nc-pathways, out.width="85%", fig.alt=alt_nc_pathways, fig.cap=cap_nc_pathways}
+knitr::include_graphics(image_nc_path("nc-causal-pathways.png"))
+```
+
+???
+
+---
+
+## Example project with UK Biobank: Metabolic pathways between components of stature and HbA1c
+
+
+```{r img-nc-example, out.width="60%", fig.alt=alt_nc_example, fig.cap=cap_nc_example}
+knitr::include_graphics(image_iarc_path("ukbiobank-netcoupler-results.png"))
+```
+
+---
+
+## Current limitations and areas of improvement
+
+- **Mainly**, performance can be slow
+    - E.g. larger data or networks
+
+- Untested on larger networks
+
+- Untested on non-cross-sectional/time-to-event data
+
+- Visualizing can be tricky
+
+- Interpreting estimates can be tricky
+
+---
+
+class: middle
+
+# Thanks!
