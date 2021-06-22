@@ -14,4 +14,7 @@ Imports:
     scifigure,
     showtext,
     xaringan,
+    xaringanExtra (>= 0.5.2),
     xaringanthemer
+Remotes:  
+    gadenbuie/xaringanExtra
