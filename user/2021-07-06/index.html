@@ -1,19 +1,21 @@
 <!DOCTYPE html>
 <html lang="" xml:lang="">
   <head>
-    <title>NetCoupler: Inferring causal pathways between high-dimensional metabolic data and external factors</title>
+    <title>NetCoupler: Inferring causal pathways between high-dimensional metabolomics data and external factors</title>
     <meta charset="utf-8" />
     <meta name="author" content="Luke W. Johnston" />
     <meta name="author" content="Clemens Wittenbecher" />
     <meta name="author" content="Fabian Eichelmann" />
     <script src="libs/header-attrs/header-attrs.js"></script>
-    <link rel="stylesheet" href="xaringan-themer.css" type="text/css" />
+    <link href="libs/remark-css/useR.css" rel="stylesheet" />
+    <link href="libs/remark-css/useR-fonts.css" rel="stylesheet" />
+    <link rel="stylesheet" href="extra.css" type="text/css" />
   </head>
   <body>
     <textarea id="source">
 class: center, middle, inverse, title-slide
 
-# NetCoupler: Inferring causal pathways between high-dimensional metabolic data and external factors
+# NetCoupler: Inferring causal pathways between high-dimensional metabolomics data and external factors
 ### Luke W. Johnston
 ### Clemens Wittenbecher
 ### Fabian Eichelmann
@@ -23,21 +25,56 @@ class: center, middle, inverse, title-slide
 
 layout: true
 
-&lt;!-- To UseR 2021 --&gt;
+&lt;!-- To UseR 2021 
 
-&lt;div class="my-header"&gt;&lt;/div&gt;
+Bio:
+
+Diabetes epidemiologist, R teacher, create R packages and tutorials to help researchers do reproducible and open science more easily. Personal site: https://lukewjohnston.com/
+
+Slides are found here: https://slides.lwjohnst.com/user/2021-07-06/
+
+--&gt;
+
 &lt;div class="my-footer"&gt;
-&lt;span&gt;
-&lt;img src="../../common/dda-logo.png" width="75" alt="Danish Diabetes Academy logo"&gt;
-&lt;img src="../../common/sdca-logo.png" alt="Steno Diabetes Center Aarhus logo" width="55"&gt;
-&lt;a href="https://slides.lwjohnst.com/user/2021-07-06/"&gt;slides.lwjohnst.com/user/2021-07-06&lt;/a&gt;
-&lt;/span&gt;
+Slides: &lt;a href="https://slides.lwjohnst.com/user/2021-07-06/"&gt;slides.lwjohnst.com/user/2021-07-06&lt;/a&gt;
+&lt;br&gt;Package: &lt;a href="https://github.com/NetCoupler/NetCoupler/"&gt;github.com/NetCoupler/NetCoupler&lt;/a&gt;
 &lt;/div&gt; 
 
 
 
-
-
+<div>
+<style type="text/css">.xaringan-extra-logo {
+width: 110px;
+height: 128px;
+z-index: 0;
+background-image: url(../../common/dda-sdca-logos.png);
+background-size: contain;
+background-repeat: no-repeat;
+position: absolute;
+top:1em;right:1em;
+}
+</style>
+<script>(function () {
+  let tries = 0
+  function addLogo () {
+    if (typeof slideshow === 'undefined') {
+      tries += 1
+      if (tries < 10) {
+        setTimeout(addLogo, 100)
+      }
+    } else {
+      document.querySelectorAll('.remark-slide-content:not(.title-slide):not(.inverse):not(.hide_logo)')
+        .forEach(function (slide) {
+          const logo = document.createElement('div')
+          logo.classList = 'xaringan-extra-logo'
+          logo.href = null
+          slide.appendChild(logo)
+        })
+    }
+  }
+  document.addEventListener('DOMContentLoaded', addLogo)
+})()</script>
+</div>
 
 
 
@@ -59,35 +96,28 @@ Instructions:
     - Include alt-text
     - Include transcript
 
-
-# Outline brainstorm
-
-- Purpose
-- Implementation and usage
-- Real-world Example
-- Challenges/limitations
-    
 --&gt;
 
 ---
 
-## Designed to answer questions that involve complex metabolic networks 
+## Designed to identify *potential* causal factors from complex networks
 
 .pull-left[
 
 **Motivation**:
 
-- High dimensional and complex network data (e.g. -omics, metabolics)
+- Moderately high dimensional and complex network data (e.g. metabolomics)
 - Derive potential network structure
-- Estimate pathways:
+- Estimate causal pathways:
     - From exposure (e.g. exercise) to network
     - From network to outcome (e.g. diabetes)
+    - From exposure to outcome, through the network
 ]
 
 .pull-right[
 &lt;div class="figure" style="text-align: center"&gt;
-&lt;img src="../../au-ph/2019-08-15/images/network.png" alt="Network of an exposure variable" width="100%" /&gt;
-&lt;p class="caption"&gt;Use for answering questions of this form.&lt;/p&gt;
+&lt;img src="../../au-ph/2019-08-15/images/network.png" alt="Diagram showing an exposure variable connected by lines to a network of metabolite variables within circles, that are then connected to an outcome variable." width="100%" /&gt;
+&lt;p class="caption"&gt;Use NetCoupler to answer questions of this form (M = metabolite).&lt;/p&gt;
 &lt;/div&gt;
 ]
 
@@ -95,73 +125,128 @@ Instructions:
 
 ---
 
-## Main features of NetCoupler
+## Main features of NetCoupler 
+
 
 .pull-left[
 - Finds most likely network structure
 
 - Can include exposure and/or outcome
 
-- Identifies causal links from, to, and within the network
+- Identifies *potential* causal links from, to, and within the network
 ]
 
 .pull-right[
-- Flexible in type of model used (e.g. linear or logistic regression)
+- Flexible in type of model used (e.g. linear, logistic, cox regression)
 
 - Allows adjusting for confounders and covariates
 
-- Results output designed for visualizing
+- Results output designed to be visualized (e.g. with tidygraph/ggraph packages)
 ]
-
-.footnote[
-- [github.com/NetCoupler](https://github.com/NetCoupler/NetCoupler)
-- **Goal**: Submit to CRAN by mid-2021.
-]
-
 
 ---
 
 ## Four basic phases of the algorithm
 
-&lt;img src="../../iarc/2020-12-16/images/netcoupler-process.svg" width="90%" style="display: block; margin: auto;" /&gt;
+&lt;div class="figure" style="text-align: center"&gt;
+&lt;img src="../../iarc/2020-12-16/images/netcoupler-process.svg" alt="Diagram with four distinct areas representing the phases.
+First phase shows a network of nodes called N commnected by lines that has been derived.
+Second phase shows one node, called the index node, as an example of being iteratively selected, 
+along with the other nodes it is connected to, called neighbour nodes.
+Third phase shows a series of diagrams that are calculated for all combinations of
+the index node with its neighbouring nodes. There are eight of these diagrams. Each
+diagram represents a model for the next phase.
+Fourth phase shows that each model from the previous phase is classified into
+direct, ambigious, or no effect. This classification happens separately for 
+exposures, called E, and outcomes, called O." width="90%" /&gt;
+&lt;p class="caption"&gt;Overview of the four phases.&lt;/p&gt;
+&lt;/div&gt;
 
 ???
 
 ---
 
-## Graphical model outputs allows visual inference of pathways
+## Example use with R code
+
+.pull-left[
+
+```r
+library(NetCoupler)
+std_data &lt;- dataset %&gt;% 
+    nc_standardize(
+        starts_with("metabolite")
+    )
+
+network &lt;- std_data %&gt;% 
+    nc_estimate_network(
+        starts_with("metabolite")
+    ) %&gt;% 
+    as_edge_tbl()
+
+outcome_estimates &lt;- std_data %&gt;%
+    nc_estimate_outcome_links(
+        edge_tbl = network,
+        outcome = "HbA1c",
+        model_function = lm
+    )
+```
+]
+
+.pull-right[
+- Data needs to be standardized
+
+- Need network to be an edge table (columns for start and end nodes)
+]
+
+???
+
+---
+
+## Graphical model output allows visual inference of *potential* pathways
 
 &lt;img src="../../au-ph/2019-08-15/images/nc-causal-pathways.png" width="85%" style="display: block; margin: auto;" /&gt;
 
 ???
 
----
-
-## Example project with UK Biobank: Metabolic pathways between components of stature and HbA1c
-
-
-&lt;img src="../../iarc/2020-12-16/images/ukbiobank-netcoupler-results.png" width="60%" style="display: block; margin: auto;" /&gt;
 
 ---
 
 ## Current limitations and areas of improvement
 
-- **Mainly**, performance can be slow
-    - E.g. larger data or networks
+.pull-left[
+- Application:
+    - Focused on topics with few connected intermediate factors (e.g.
+    metabolic data) linking exposures (e.g. exercise) to outcomes (diabetes)
 
-- Untested on larger networks
+- Conceptual:
+    - Tricky to visualize (too many paths and variables)
+    - Difficult to interpret output estimates
+    - Not suited to pure exploration, should have some theoretical basis
+]
 
-- Untested on non-cross-sectional/time-to-event data
+--
 
-- Visualizing can be tricky
+.pull-right[
+- Modeling:
+    - Heavily relies on p-values
+    - Only tested on cross-sectional/time-to-event data
 
-- Interpreting estimates can be tricky
+- Software:
+    - Slow performance
+    - Untested on networks with &gt;25 variables
+    - Probably not sensible for *very* high-dimensional data (e.g. genomics)
+]
+
+???
 
 ---
 
 class: middle
 
 # Thanks!
+
+???
+
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
