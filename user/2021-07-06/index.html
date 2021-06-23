@@ -123,6 +123,18 @@ Instructions:
 
 ???
 
+Hi everyone, I'm going to be talking about NetCoupler, which is an algorithm and R
+package for inferring causal pathways between high-dimensional metabolomics data
+and external factors.
+
+We had several motivations for creating NetCoupler, largely because
+we wanted to use moderately high dimensional and complex
+network data such as from metabolomics and to be able to answer questions about
+potential causal pathways that occur through the network.
+As illustrated by the diagram, we wanted to know how an exposure like exercise
+might influence a network, how a network might influence an outcome like
+diabetes, or how an exposure might influence an outcome through the network.
+
 ---
 
 ## Main features of NetCoupler 
@@ -145,6 +157,20 @@ Instructions:
 
 - Results are designed to be visualized (e.g. with tidygraph/ggraph packages)
 ]
+
+???
+
+The main features of NetCoupler are that it finds the most likely network
+structure, it can include exposure and/or outcome variables, and it can identify
+potential causal links involving the metabolic network. 
+
+NetCoupler is also quite flexible in the type of models you can use in it, 
+so you could use models like linear or logistic
+regression or Cox proportional hazard models. Because these
+models can be used, you can also adjust for potential confounding factors that might
+bias the results. Since NetCoupler is based on network graphs,
+the results are especially designed to be visualized as them too, like with the
+packages tidygraph or ggraph.
 
 ---
 
@@ -172,6 +198,26 @@ exposures, called E, and outcomes, called O." width="90%" style="display: block;
 
 ???
 
+The NetCoupler algorithm works in four basic phases, illustrated in this
+diagram.
+
+The first phase is that the structure of the metabolic network is derived using
+causal structure learning algorithms like the PC-algorithm.
+
+The second phase is where each metabolic variable, called a node, within the
+network is iteratively selected and set as the index node. Each connected
+neighbouring nodes are then identified and selected. Here, the index node
+has three neighbours.
+
+The third phase is where each possible combination of index with neighbouring
+node is calculated and used in the model. There are three neighbours here, so
+that would be eight different combinations representing eight models.
+
+The fourth phase is taking all these models and linking them with either
+an exposure or an outcome variable, as well as any confounding factors. Based on
+specific thresholds, the link between exposure or outcome and the index node is
+classified as either direct, ambigious, or no effect.
+
 ---
 
 ## Graphical model output allows visual inference of *potential* pathways
@@ -196,6 +242,14 @@ Two are the direct effect lines and two are the ambigious lines." width="85%" st
 
 ???
 
+The final graphical model output can allow for visual inference of the potential
+pathways. For instance, in this example figure, NetCoupler might classify
+two direct effects, represented by the thicker lines with arrows, 
+and two ambigious effects, represented by the thinner lines, between an exposure or
+an outcome and individual metabolic variables. We can then visually trace
+the pathway from the exposure, through the metabolic variables, and to the outcome,
+and infer that the metabolic variables along this path, marked as red here, may
+be along the causal pathway.
 
 ---
 
@@ -222,67 +276,6 @@ Two are the direct effect lines and two are the ambigious lines." width="85%" st
 
 ???
 
----
-
-class: middle
-
-# Thanks!
-
-???
-
-Hi everyone, I'm going to be talking about NetCoupler, which is an algorithm and R
-package for inferring causal pathways between high-dimensional metabolomics data
-and external factors.
-
-We had several motivations for creating NetCoupler, largely because
-we wanted to use moderately high dimensional and complex
-network data such as from metabolomics and to be able to answer questions about
-potential causal pathways that occur through the network.
-As illustrated by the diagram, we wanted to know how an exposure like exercise
-might influence a network, how a network might influence an outcome like
-diabetes, or how an exposure might influence an outcome through the network.
-
-The main features of NetCoupler are that it finds the most likely network
-structure, it can include exposure and/or outcome variables, and it can identify
-potential causal links involving the metabolic network. 
-
-NetCoupler is also quite flexible in the type of models you can use in it, 
-so you could use models like linear or logistic
-regression or Cox proportional hazard models. Because these
-models can be used, you can also adjust for potential confounding factors that might
-bias the results. Since NetCoupler is based on network graphs,
-the results are especially designed to be visualized as them too, like with the
-packages tidygraph or ggraph.
-
-The NetCoupler algorithm works in four basic phases, illustrated in this
-diagram.
-
-The first phase is that the structure of the metabolic network is derived using
-causal structure learning algorithms like the PC-algorithm.
-
-The second phase is where each metabolic variable, called a node, within the
-network is iteratively selected and set as the index node. Each connected
-neighbouring nodes are then identified and selected. Here, the index node
-has three neighbours.
-
-The third phase is where each possible combination of index with neighbouring
-node is calculated and used in the model. There are three neighbours here, so
-that would be eight different combinations representing eight models.
-
-The fourth phase is taking all these models and linking them with either
-an exposure or an outcome variable, as well as any confounding factors. Based on
-specific thresholds, the link between exposure or outcome and the index node is
-classified as either direct, ambigious, or no effect.
-
-The final graphical model output can allow for visual inference of the potential
-pathways. For instance, in this example figure, NetCoupler might classify
-two direct effects, represented by the thicker lines with arrows, 
-and two ambigious effects, represented by the thinner lines, between an exposure or
-an outcome and individual metabolic variables. We can then visually trace
-the pathway from the exposure, through the metabolic variables, and to the outcome,
-and infer that the metabolic variables along this path, marked as red here, may
-be along the causal pathway.
-
 We're actively working on this R package and there are still limitations and 
 areas to improve.
 
@@ -301,6 +294,14 @@ it would work with other types of data.
 Finally, one of the biggest issues is that performance is quite slow. Because of
 this, we haven't tested it on networks with larger than 25 or so variables and
 we guess it probably isn't sensible to use on very high dimensional data like genomics.
+
+---
+
+class: middle
+
+# Thanks!
+
+???
 
 If you want to see how to use NetCoupler, more detail is on the NetCoupler website
 found in the footer. 
