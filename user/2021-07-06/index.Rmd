@@ -73,6 +73,7 @@ xaringanthemer::style_extra_css(
 ```{r use-logo}
 xaringanExtra::use_logo(
   image_url = "../../common/dda-sdca-logos.png",
+  position = xaringanExtra::css_position(top = "1em", left = "1em"),
   width = "110px"
 )
 ```
@@ -90,10 +91,16 @@ diagram represents a model for the next phase.
 Fourth phase shows that each model from the previous phase is classified into
 direct, ambigious, or no effect. This classification happens separately for 
 exposures, called E, and outcomes, called O."
-cap_nc_phases <- "Overview of the four phases."
-alt_nc_pathways <- "
-Thicker lines with arrows indicate
-"
+cap_nc_phases <- ""
+alt_nc_pathways <- "Diagram showing how the results from NetCoupler might look.
+Four lines originate from the exposure node on the left side, 
+two thicker lines with arrows indicating direct effects 
+and two thinner lines indicating ambigious effects. These four lines connect
+to four metabolic variables, marked in red. All other metabolic variables,
+as circles with the letter M, are connected with each other by one or two lines.
+Four lines originate from four metabolic variables, also marked in red, 
+and end at the outcome variable.
+Two are the direct effect lines and two are the ambigious lines."
 cap_nc_pathways <- ""
 ```
 
@@ -106,7 +113,7 @@ Instructions:
     - ~100-150 wpm = 500-750 words total
 - Video:
     - Show face (picture-in-picture layout)
-    - OBS Studio/Simple Screen Recorder
+    - OBS Studio/Simple Screen Recorder/Zoom
     - Describe headers, graphics
     - Speak each word on slides
     - Describe what and why
@@ -176,41 +183,6 @@ knitr::include_graphics(image_iarc_path("netcoupler-process.svg"))
 
 ---
 
-## Simple example of the R code to use
-
-.pull-left[
-```{r example-nc-code, eval=FALSE, echo=TRUE}
-library(NetCoupler)
-std_data <- dataset %>% 
-    nc_standardize(
-        starts_with("metabolite")
-    )
-
-network <- std_data %>% 
-    nc_estimate_network(
-        starts_with("metabolite")
-    ) %>% 
-    as_edge_tbl()
-
-outcome_estimates <- std_data %>%
-    nc_estimate_outcome_links(
-        edge_tbl = network,
-        outcome = "HbA1c",
-        model_function = lm
-    )
-```
-]
-
-.pull-right[
-- Data needs to be standardized
-
-- Need network object to be an edge table (columns for start and end nodes)
-]
-
-???
-
----
-
 ## Graphical model output allows visual inference of *potential* pathways
 
 ```{r img-nc-pathways, out.width="85%", fig.alt=alt_nc_pathways, fig.cap=cap_nc_pathways}
@@ -222,14 +194,13 @@ knitr::include_graphics(image_nc_path("nc-causal-pathways.png"))
 
 ---
 
-## Current limitations and areas of improvement
+## Current limitations and areas to improve
 
 .pull-left[
 - Conceptual:
     - Tricky to visualize (too many paths and variables)
     - Difficult to interpret output estimates
-    - Not suited to pure exploration, should have some theoretical basis
-    
+    - Not suited for pure exploration, should have some theoretical basis
 - Modeling:
     - Heavily relies on p-values
     - Only tested on cross-sectional/time-to-event data
@@ -258,63 +229,75 @@ Hi everyone, I'm going to be talking about NetCoupler, which is an algorithm and
 package for inferring causal pathways between high-dimensional metabolomics data
 and external factors.
 
-We had several motivations for creating NetCoupler.
-We wanted to be able to make use of moderately high dimensional and complex
-network data such as from metabolomics and to be able to derive the potential
-underlying network that we could use to estimate possible causal pathways
-from. We wanted to answer questions about potential pathways that an
-exposure like exercise might have on a network, that a network might have on an
-outcome like diabetes, or that an exposure might have on an outcome, through the
-network, all of which is illustrated by the diagram.
+We had several motivations for creating NetCoupler, largely because
+we wanted to use moderately high dimensional and complex
+network data such as from metabolomics and to be able to answer questions about
+potential causal pathways that occur through the network.
+As illustrated by the diagram, we wanted to know how an exposure like exercise
+might influence a network, how a network might influence an outcome like
+diabetes, or how an exposure might influence an outcome through the network.
 
-With NetCoupler, the main features are that it can find the most likely network
-structure, that it can include exposure and/or outcome variables, and that it
-can help in identifying potential causal links from, to, and within the metabolic
-network. This would then form the basis for exploring these potential links in
-further research.
+The main features of NetCoupler are that it finds the most likely network
+structure, it can include exposure and/or outcome variables, and it can identify
+potential causal links involving the metabolic network. 
 
-From an implementation point of view, the type of model you can use in
-NetCoupler is quite flexible, in that you can use models like linear or logistic
-regression or Cox proportional hazard models. Because the algorithm uses these
-models, you can also adjust for any potential confounding factors that might
-bias the results. And lastly, given the algorithm is based on network graphs,
-the results are designed specifically to be visualized, such as with the
-tidygraph or ggraph packages.
+NetCoupler is also quite flexible in the type of models you can use in it, 
+so you could use models like linear or logistic
+regression or Cox proportional hazard models. Because these
+models can be used, you can also adjust for potential confounding factors that might
+bias the results. Since NetCoupler is based on network graphs,
+the results are especially designed to be visualized as them too, like with the
+packages tidygraph or ggraph.
 
-There are four basic phases of the NetCoupler algorithm that are illustrated in
-this diagram.
+The NetCoupler algorithm works in four basic phases, illustrated in this
+diagram.
 
 The first phase is that the structure of the metabolic network is derived using
-the established causal structure learning PC-algorthm. 
+causal structure learning algorithms like the PC-algorithm.
 
-The second phase is where
-each metabolic variable, called a node, within the network is iteratively
-selected, represented as an index node, along with its connected neighbouring
-nodes. In this case, the selected index node has three neighbours.
+The second phase is where each metabolic variable, called a node, within the
+network is iteratively selected and set as the index node. Each connected
+neighbouring nodes are then identified and selected. Here, the index node
+has three neighbours.
 
 The third phase is where each possible combination of index with neighbouring
-node is calculated and later each combination is set as a model. 
-Since there are three neighbours here, that would be eight different possible 
-combinations representing eight models.
+node is calculated and used in the model. There are three neighbours here, so
+that would be eight different combinations representing eight models.
 
 The fourth phase is taking all these models and linking them with either
-an exposure variable or an outcome. Based on some specific threshold,
-the link between exposure or outcome and the index node is classified as
-either direct, ambigious, or no effect.
-
-Here is a very simple example of how NetCoupler would be used in R. More details
-are found on the NetCoupler website linked in the footer, so I'll only briefly 
-mention the overall workflow. The first step is to standardize all of the data
-so that later steps can work correctly. Next step is to estimate the network
-of the metabolic data and convert it into an edge table with columns indicating
-the start and end nodes for each pair of connected nodes. Finally, both the
-standardized data and the edge table are put into the main estimation function.
+an exposure or an outcome variable, as well as any confounding factors. Based on
+specific thresholds, the link between exposure or outcome and the index node is
+classified as either direct, ambigious, or no effect.
 
 The final graphical model output can allow for visual inference of the potential
 pathways. For instance, in this example figure, NetCoupler might classify
-two direct effects, represented by the thicker lines with arrowheads, 
+two direct effects, represented by the thicker lines with arrows, 
 and two ambigious effects, represented by the thinner lines, between an exposure or
-an outcome and individual metabolic variables. Here, we can then visually trace
+an outcome and individual metabolic variables. We can then visually trace
 the pathway from the exposure, through the metabolic variables, and to the outcome,
-and infer that the metabolic variables along this path, here marked as red, might
-be along the causal pathway between exposure and outcome.
+and infer that the metabolic variables along this path, marked as red here, may
+be along the causal pathway.
+
+We're actively working on this R package and there are still limitations and 
+areas to improve.
+
+Conceptually, figuring out how to meaningfully visualize the results has been
+tricky, because you quickly get too much going on. Because of the pre-processing
+of the data beforehand, the model estimates can be very difficult to interpret.
+We also don't believe this algorithm is suited for pure exploration, as there
+should be at least some theoretical basis for potential causal pathways in
+your research question.
+
+For modeling, the classification thresholds rely largely on p-values, which can
+be problematic and we're working on other types of thresholds. We also have only
+tested NetCoupler on cross-sectional or time-to-event data, so don't know how
+it would work with other types of data.
+
+Finally, one of the biggest issues is that performance is quite slow. Because of
+this, we haven't tested it on networks with larger than 25 or so variables and
+we guess it probably isn't sensible to use on very high dimensional data like genomics.
+
+If you want to see how to use NetCoupler, more detail is on the NetCoupler website
+found in the footer. 
+
+Thanks for listening!
