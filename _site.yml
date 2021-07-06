@@ -4,5 +4,11 @@ exclude: "README.html"
 description: |
   Presentation slides
 output_dir: "."
-# Include link to my website? Include navbar?
+theme: theme.css
 output: distill::distill_article
+navbar:
+  right:
+    - icon: "fas fa-home"
+      href: "https://lukewjohnston.com/"
+    - text: "CV"
+      href: "https://cv.lukewjohnston.com/"
