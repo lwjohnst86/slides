@@ -8,7 +8,11 @@ theme: theme.css
 output: distill::distill_article
 navbar:
   right:
-    - icon: "fas fa-home"
-      href: "https://lukewjohnston.com/"
-    - text: "CV"
-      href: "https://cv.lukewjohnston.com/"
+    - text: Sites
+      menu:
+        - text: Main
+          href: https://lukewjohnston.com
+        - text: CV
+          href: https://cv.lukewjohnston.com
+        - text: Posters
+          href: https://posters.lwjohnst.com
