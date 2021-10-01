@@ -1,0 +1,91 @@
+---
+title: "Lightning talk to Joint Steno Epi meeting"
+output:
+  xaringan::moon_reader:
+    seal: false
+    lib_dir: libs
+    css: ["xaringan-themer.css", "../../common/custom.css"]
+    nature:
+      slideNumberFormat: ""
+      ratio: "16:9"
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+---
+
+layout: true
+
+<!-- Knit from document directory -->
+
+<div class="my-footer">
+<span>
+<img src="../../common/dda-logo.png" alt="DDA", width="75">
+<img src="../../common/sdca-logo.png" alt="SDCA", width="55">
+<a href="https://slides.lwjohnst.com/steno/2021-10-04/">slides.lwjohnst.com/steno/2021-10-04</a>
+</span>
+</div> 
+
+```{r setup, include=FALSE}
+library(xaringanthemer)
+library(fontawesome)
+options(htmltools.dir.version = FALSE)
+knitr::opts_chunk$set(
+  echo = FALSE,
+  dev = "png",
+  dpi = 150,
+  comment = "#>",
+  message = FALSE,
+  warning = FALSE,
+  fig.align = "center"
+)
+
+image_iarc_path <- function(.file) {
+    fs::path("..", "..", "iarc", "2020-12-16", "images", .file)
+}
+
+image_steno_2021_10_path <- function(.file) {
+    fs::path("..", "..", "steno", "2021-10-04", "images", .file)
+}
+
+fa2 <- function(.icon) {
+    fontawesome::fa(name = .icon, fill = "#214c78")
+}
+```
+
+```{r xaringan-themer, include=FALSE}
+style_mono_accent(
+    base_color = "#214c78",
+    base_font_size = "20px",
+    header_font_google = google_font("Monda"),
+    text_font_google = google_font("Rosario"),
+    header_h3_font_size = "30px",
+    extra_css = list(
+       ".remark-slide-content" = list("padding-top" = "10px"),
+       ".remark-slide-content > h3:first-of-type" = list("margin-top" = "10px")
+    )
+)
+```
+
+---
+
+### NetCoupler algorithm (`r fa2("r-project")` `r emo::ji("package")`: [github.com/NetCoupler](https://github.com/NetCoupler/NetCoupler/))
+
+
+.pull-left[
+```{r img-netcoupler, out.width="100%"}
+knitr::include_graphics(image_steno_2021_10_path("netcoupler-process.svg"))
+```
+]
+
+.pull-right[
+```{r img-aim-ukbiobank, out.width="70%"}
+knitr::include_graphics(image_iarc_path("aim-ukbiobank.svg"))
+```
+
+```{r img-ukbiobank-netcoupler-results, out.width="100%"}
+knitr::include_graphics(image_iarc_path("ukbiobank-netcoupler-results.png"))
+```
+
+Very preliminary results using UK Biobank data.
+]
+
