@@ -68,7 +68,7 @@ style_mono_accent(
 
 ---
 
-### NetCoupler algorithm (`r fa2("r-project")` `r emo::ji("package")`: [github.com/NetCoupler](https://github.com/NetCoupler/NetCoupler/))
+### NetCoupler algorithm ([github.com/NetCoupler](https://github.com/NetCoupler/NetCoupler/))
 
 
 .pull-left[
