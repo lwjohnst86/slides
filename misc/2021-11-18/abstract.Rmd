@@ -1,0 +1,30 @@
+---
+title: Life Scientist Trainers
+output: md_document
+---
+
+# Brainstorming
+
+- Incorporating reading, listening, coding/doing, discussing, hands-on practice
+- Docs to quickly onboard new instructors
+- Empowering learners to take next steps
+    - e.g. Contribute to material via GitLab/Hub
+    - e.g. Instructing in a safe environment to ...
+- Emphasize code of conduct and safe space for learning
+
+# Content
+
+## Objectives/take home messages
+
+Actionable.
+
+1.
+2.
+3.
+4. (optional)
+5. (optional)
+
+## Abstract
+
+Words: 500
+
