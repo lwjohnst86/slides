@@ -1,0 +1,317 @@
+---
+title: "Reproducibility and code sharing in science"
+subtitle: "Why it’s important and how to do it"
+output:
+  xaringan::moon_reader:
+    lib_dir: libs
+    css: ["xaringan-themer.css", "../../common/custom.css"]
+    nature:
+      ratio: "16:9"
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+---
+
+layout: true
+
+<!-- Knit from document directory -->
+
+<div class="my-footer">
+<span>
+<img src="../../common/dda-logo.png" alt="DDA", width="75">
+<img src="../../common/sdca-logo.png" alt="SDCA", width="55">
+<a href="https://slides.lwjohnst.com/steno/2021-02-08/">slides.lwjohnst.com/steno/2021-02-08</a>
+</span>
+</div> 
+
+```{r setup, include=FALSE}
+library(xaringanthemer)
+library(fontawesome)
+options(htmltools.dir.version = FALSE)
+knitr::opts_chunk$set(
+  echo = FALSE,
+  dev = "png",
+  dpi = 150,
+  comment = "#>",
+  message = FALSE,
+  warning = FALSE,
+  fig.align = "center"
+)
+
+image_steno1_path <- function(.file) {
+    fs::path("..", "..", "steno", "2020-11-26", "images", .file)
+}
+
+image_steno2_path <- function(.file) {
+    fs::path("..", "..", "steno", "2021-02-08", "images", .file)
+}
+
+fa2 <- function(.icon) {
+    fontawesome::fa(name = .icon, fill = "#214c78")
+}
+```
+
+```{r xaringan-themer, include=FALSE}
+style_mono_accent(
+    base_color = "#214c78",
+    base_font_size = "30px",
+    header_font_google = google_font("Monda"),
+    text_font_google = google_font("Rosario"),
+    header_h1_font_size = "54px",
+    header_h2_font_size = "46px",
+    text_font_size = "25px"
+)
+```
+
+---
+
+## Talk overview
+
+- Reproducibility
+    - Basic principle of scientific method
+    - Same data, same code, different analyst, same results
+    - Tools: R Markdown, documentation
+
+- Code sharing
+    - Tied to reproducibility
+    - For learning and critical review
+    - Tools: GitHub and Zenodo
+
+---
+
+class: middle, center
+
+# Reproducibility: Importance and practice
+
+---
+
+```{r reproducibility-figure, fig.height=3.5}
+library(scifigure)
+library(tidyverse)
+studies <- init_experiments(
+    nexp = 2,
+    exp_names = c("Original", "Reproducing"),
+    stage_names = c(
+        "question",
+        "experimental_design",
+        "experimenter",
+        "data",
+        "analysis_plan",
+        "analyst",
+        "code",
+        "estimate",
+        "claim"
+    )
+) 
+studies["analyst", "Reproducing"] <- "incorrect"
+
+sci_figure(studies, 
+    stage_names = c(
+        "Question",
+        "Study Design",
+        "Experimenter",
+        "Data",
+        "Analysis Plan",
+        "Analyst",
+        "Code",
+        "Estimate",
+        "Claim"
+    ),
+    cols = c("#D20000", "#D20000", "#CDCDCD", "black"),
+    showlegend = FALSE
+)
+```
+
+
+.footnote[
+[Patil, 2019](https://doi.org/10.1038/s41562-019-0629-z); [Plessar, 2018](https://www.frontiersin.org/articles/10.3389/fninf.2017.00076/full#B9); American Statistical Association [statement](https://www.amstat.org/asa/files/pdfs/POL-ReproducibleResearchRecommendations.pdf)
+]
+
+???
+
+- Detailed description
+    - Includes *exactly how* analysis was done, ie. based on analysis code
+
+---
+
+## Reproducibility in biomedical science
+
+.pull-left[
+- Already know *replication* is a major problem 
+    - e.g. Many Labs Project, OSC Project, Reproducibility Project
+
+- Don't know extent of *reproducibility*
+    - Few studies share data [1]
+    - Almost no study provides code [2]
+]
+
+--
+
+.pull-right[
+```{r reg-reports-figure, fig.width=4, fig.height=3}
+tribble(
+    ~text, ~value,
+    "Data available", 41,
+    "Code available", 37,
+    "Could reproduce", 21
+) %>% 
+    mutate(text = fct_inorder(text)) %>% 
+    ggplot(aes(x = text, y = value, label = value)) +
+    geom_col(fill = "#214c78", width = 0.7) +
+    geom_text(nudge_y = 3) +
+    annotate("text", y = 64, x = 2.75, label = "Total articles: 62") +
+    coord_cartesian(ylim = c(0, 65)) +
+    theme_minimal() +
+    labs(y = "Articles",
+         title = "Reproducibility of Registered\nReports in Psychology [3]") +
+    theme(axis.title.x = element_blank(), 
+          panel.grid = element_blank())
+```
+
+]
+
+.footnote[
+1. [Wallach, 2018](https://pubmed.ncbi.nlm.nih.gov/30457984/)
+2. [Leek, 2017](https://www.annualreviews.org/doi/10.1146/annurev-statistics-060116-054104),
+[Considine, 2017](https://link.springer.com/article/10.1007/s11306-017-1299-3)
+3. [Obels, 2020](https://doi.org/10.1177/2515245920918872)
+]
+
+???
+
+OSC project: Open Science Collaboration Project
+
+Except maybe bioinformatics, where about 60% of studies do.
+
+---
+
+## Why is it important? `r emo::ji("face_with_monocle")`
+
+- *Simplest*: It's a key pillar of scientific method.
+    - With modern technology, easy to implement (relative to past)
+
+--
+
+- In biomedical research, poorly implemented or not done at all
+
+.footnote[
+1. Selected articles: [Goldacre, 2019](https://doi.org/10.1136/bmj.l6365); [Munafó, 2017](https://www.nature.com/articles/s41562-016-0021); [TOP guidelines](https://science.sciencemag.org/content/348/6242/1422.full);
+[Transparency Checklist](https://www.nature.com/articles/s41562-019-0772-6);
+[Peng, 2011](https://science.sciencemag.org/content/334/6060/1226)
+]
+
+???
+
+(about implementation) I have no training or education (PhD in Nutrition, BSc in
+Kinesiology) in these and I was able to learn. Though I am a bit obsessive about
+learning these things so...
+
+There are lots of reasons for this, likely due to:
+
+- Lack of awareness and training
+- Difficulty of adoption
+- No incentive or reward
+- Little to no culture to do it
+
+---
+
+## Keep in mind: *Reproducibility* is a spectrum
+
+.center[
+```{r, out.height="85%", out.width="85%"}
+knitr::include_graphics(image_steno1_path("reproducibility-spectrum.jpg"))
+```
+]
+
+.footnote[
+- Should say "Full reproducibility".
+]
+
+---
+
+## Practical ways of doing reproducibility
+
+.pull-left[
+- Generic ways:
+    - `r fa2("file-code")` Documenting scripts and their order, keep them
+    together (in same folder)
+    - `r fa2("file-alt")` Reproducible document systems
+    - `r fa2("project-diagram")` Pipeline management
+    - `r fa2("database")` Can't share data? Make fake dataset of the original one.
+]
+
+--
+
+.pull-right[
+- `r fa2("r-project")` specific (easy to hard):
+    - Documenting R scripts, ordering them, and using R Projects
+    - R Markdown documents
+    - Pipeline tools (`r emo::ji("package")`: drake, targets)
+]
+
+---
+
+## Demonstrations
+
+- [Code for a paper from my PhD](https://github.com/lwjohnst86/tagDiabetes)
+    - [Documenting scripts approach](https://github.com/lwjohnst86/tagDiabetes/blob/code/R/generate_results.R)
+    - [R Markdown approach](https://github.com/lwjohnst86/tagDiabetes/blob/code/doc/manuscript.Rmd)
+
+- [Pipelines approach](https://books.ropensci.org/targets/walkthrough.html#file-structure)
+
+---
+
+class: middle, center
+
+# Code sharing: Importance and practice
+
+---
+
+## Why is it important? `r emo::ji("face_with_monocle")`
+
+- Tightly tied to reproducibility
+    - Need code to reproduce results
+
+--
+
+- Critically review a study's exact analysis
+
+--
+
+- Builds common standards and best practices
+
+--
+
+- Read others code to learn how to write better
+    - Code is written to be read by yourself and others [1]
+
+.footnote[
+[1]: Otherwise we'd all write in 
+[Assembly](https://upload.wikimedia.org/wikipedia/commons/f/f3/Motorola_6800_Assembly_Language.png).
+]
+???
+
+- Reproducibility:
+    - Code is the exact steps done to data to get results
+    - Transparent and clear
+    - Easy to access to *any* researcher
+    - Inspectable: (linked to accessibility, but also common language, simple to
+    read, logical, well-reasoned)
+- standards: can't do that with hidden code
+- how do we get better at writing? By first reading. To get better at coding we
+need to read others code to know how to write. Like writing text, writing code
+is done for a reader. If it was purely for the computer, we'd all be writing in
+Assembly or binary (lowest level programming language)
+
+---
+
+## Practical ways of sharing code
+
+- Main and most commonly used:
+    - [GitHub](https://github.com/)\*
+    - [Zenodo](https://zenodo.org/)\*
+    - [figshare](https://figshare.com/)
+    - [OSF](https://osf.io/)
+
+.footnote[GitHub and Zenodo can be 
+[connected](https://guides.github.com/activities/citable-code/)!]

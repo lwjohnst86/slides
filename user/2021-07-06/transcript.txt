@@ -1,0 +1,268 @@
+
+00:00
+hi everyone today i'm going to be
+00:02
+talking about neck coupler which is an
+00:03
+algorithm in our package for inferring
+00:05
+causal pathways between high dimensional
+00:08
+metabolomics data and external factors
+00:11
+our motivation for designing and
+00:13
+creating net coupler
+00:14
+was to be able to make use of moderately
+00:16
+high dimensional and complex network
+00:18
+data and to be able to answer
+00:22
+questions about causal pathways that
+00:24
+involve that network
+00:27
+as illustrated by this figure or a
+00:29
+diagram
+00:31
+we want to know how an exposure like
+00:33
+exercise might influence
+00:35
+the network how the network might
+00:37
+influence an outcome like diabetes
+00:40
+or how an exposure might influence an
+00:42
+outcome through
+00:43
+the metabolic network there are
+00:46
+several main features of net coupler in
+00:48
+that it can find that
+00:50
+likely network structure underlying
+00:52
+metabolic data you can include
+00:54
+exposure and outcome data and it finds
+00:58
+that
+00:58
+those potential causal links that that
+01:01
+connect the exposure outcome and the
+01:04
+network
+01:06
+it's also quite flexible in the type of
+01:07
+models that you can use within it so
+01:09
+you can use linear regression models or
+01:12
+cox proportional hazard models
+01:14
+and because those models are used you
+01:16
+can also adjust for
+01:17
+potential confounding factors that might
+01:19
+bias your results
+01:21
+and net coupler is designed as
+01:24
+to work with network graphs so it's the
+01:27
+results are
+01:28
+uh designed to be also visualized like
+01:30
+that so for instance through
+01:32
+tidy graph or g graph packages
+01:36
+so there are four basic phases of the
+01:38
+net coupler
+01:39
+the first phase is to derive the
+01:42
+underlying metabolic network
+01:45
+structure and the second phase is then
+01:48
+to use that
+01:50
+that metabolic network structure and
+01:51
+iteratively select the metabolic
+01:53
+variables
+01:54
+within called nodes and set
+01:58
+each node as an index node and select
+02:01
+the neighboring nodes of that index node
+02:03
+so in this case that would be three
+02:05
+neighbors for this index node the third
+02:08
+phase
+02:08
+is to then calculate all possible
+02:10
+combinations
+02:12
+of uh index node with the neighboring
+02:15
+nodes
+02:16
+so and then set the and then use them
+02:18
+within in the model
+02:20
+in this case there are three neighbor
+02:22
+three neighboring nodes
+02:23
+that would be eight different
+02:24
+combinations um and
+02:27
+representing eight models the fourth
+02:30
+phase is then taking those models and
+02:31
+linking them with the exposure
+02:33
+uh e or the outcome o
+02:36
+and then based on some uh specific
+02:39
+threshold
+02:40
+classifying the the link between
+02:43
+exposure or outcome and the index node
+02:45
+as either direct effect
+02:47
+ambiguous or no effect
+02:50
+the final graphical model output can
+02:52
+allow for
+02:54
+visually inferring about potential
+02:56
+causal pathways
+02:58
+so for instance net coupler might
+03:00
+identify two
+03:02
+direct effects here that that are uh
+03:05
+the thicker lines of the arrows or to
+03:07
+end to
+03:08
+ambiguous effects which are the thinner
+03:10
+lines uh
+03:11
+from the exposure or towards the outcome
+03:15
+then you can visually trace the paths
+03:18
+that go from the exposure to the outcome
+03:21
+through the network graph and you can
+03:23
+identify
+03:24
+specific metabolic variables here
+03:28
+marked as red as potentially
+03:32
+being on the causal pathway between the
+03:35
+exposure and the outcome
+03:38
+we're currently actively working on this
+03:40
+on this package so there are
+03:41
+some several limitations and areas to
+03:44
+improve
+03:46
+they're quite tricky to visualize when
+03:48
+you start to have too many variables
+03:50
+so that's something that we're working
+03:52
+on improving
+03:54
+because the data has been pre-processed
+03:56
+beforehand the
+03:58
+model out the output estimates are
+04:01
+difficult to interpret
+04:03
+and we also don't believe that this
+04:04
+algorithm is best suited for purely
+04:07
+explorative
+04:08
+purposes there should be some
+04:09
+theoretical basis to the research
+04:11
+question
+04:13
+the modeling also relies that the
+04:14
+classification threshold
+04:16
+also relies heavily on the p-values so
+04:19
+we're working on
+04:20
+using different types of thresholds and
+04:22
+we've only tested this on
+04:23
+cross-sectional and time-to-event data
+04:25
+so we don't know how it works in other
+04:26
+settings it's also quite slow so we
+04:30
+haven't tested it on networks with
+04:31
+larger than 25 variables
+04:33
+and it's probably not suitable for very
+04:34
+high dimensional data
+04:36
+anyway if you're interested in learning
+04:38
+more the package link is in the footer
+04:41
+thanks for listening 
+

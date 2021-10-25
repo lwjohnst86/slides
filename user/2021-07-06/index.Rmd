@@ -1,0 +1,304 @@
+---
+title: "NetCoupler: Inferring causal pathways between high-dimensional metabolomics data and external factors"
+author:
+    - Luke W. Johnston
+    - Clemens Wittenbecher
+    - Fabian Eichelmann
+output:
+  xaringan::moon_reader:
+    lib_dir: libs
+    css: ["useR", "useR-fonts", "extra.css"]
+    #css: "xaringan-themer.css"
+    nature:
+      ratio: "16:9"
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+---
+
+layout: true
+
+<!-- To UseR 2021 
+
+Bio:
+
+Diabetes epidemiologist, R teacher, create R packages and tutorials to help researchers do reproducible and open science more easily. Personal site: https://lukewjohnston.com/
+
+Slides are found here: https://slides.lwjohnst.com/user/2021-07-06/
+
+-->
+
+<div class="my-footer">
+Slides: <a href="https://slides.lwjohnst.com/user/2021-07-06/">slides.lwjohnst.com/user/2021-07-06</a>
+<br>Package: <a href="https://github.com/NetCoupler/NetCoupler/">github.com/NetCoupler/NetCoupler</a>
+</div> 
+
+```{r setup, include=FALSE}
+options(htmltools.dir.version = FALSE)
+knitr::opts_chunk$set(
+  echo = FALSE,
+  message = FALSE,
+  warning = FALSE,
+  fig.align = "center"
+)
+
+image_nc_path <- function(.file) {
+    fs::path("..", "..", "au-ph", "2019-08-15", "images", .file)
+}
+
+image_iarc_path <- function(.file) {
+    fs::path("..", "..", "iarc", "2020-12-16", "images", .file)
+}
+
+library(xaringanthemer)
+xaringanthemer::style_extra_css(
+    list(
+        "div.my-footer" = list(
+            position = "absolute",
+            background = "transparent",
+            bottom = "0px",
+            left = "140px",
+            height = "50px",
+            "font-size" = "20px"
+        ),
+        ".remark-slide-content" = list(
+            "font-size" = "24px"
+        )
+    ),
+    outfile = "extra.css",
+    append = FALSE
+)
+```
+
+```{r use-logo}
+xaringanExtra::use_logo(
+  image_url = "../../common/dda-sdca-logos.png",
+  position = xaringanExtra::css_position(top = "1em", left = "1em"),
+  width = "110px"
+)
+```
+
+```{r image-alt-and-cap-text, include=FALSE}
+alt_questions_form <- "Diagram showing an exposure variable connected by lines to a network of metabolite variables within circles, that are then connected to an outcome variable."
+cap_questions_form <- "Use NetCoupler to answer questions of this form (M = metabolite)."
+alt_nc_phases <- "Diagram with four distinct areas representing the phases.
+First phase shows a network of nodes called N commnected by lines that has been derived.
+Second phase shows one node, called the index node, as an example of being iteratively selected, 
+along with the other nodes it is connected to, called neighbour nodes.
+Third phase shows a series of diagrams that are calculated for all combinations of
+the index node with its neighbouring nodes. There are eight of these diagrams. Each
+diagram represents a model for the next phase.
+Fourth phase shows that each model from the previous phase is classified into
+direct, ambigious, or no effect. This classification happens separately for 
+exposures, called E, and outcomes, called O."
+cap_nc_phases <- ""
+alt_nc_pathways <- "Diagram showing how the results from NetCoupler might look.
+Four lines originate from the exposure node on the left side, 
+two thicker lines with arrows indicating direct effects 
+and two thinner lines indicating ambigious effects. These four lines connect
+to four metabolic variables, marked in red. All other metabolic variables,
+as circles with the letter M, are connected with each other by one or two lines.
+Four lines originate from four metabolic variables, also marked in red, 
+and end at the outcome variable.
+Two are the direct effect lines and two are the ambigious lines."
+cap_nc_pathways <- ""
+```
+
+<!--
+
+Instructions:
+
+- Timing:
+    - 5 min
+    - ~100-150 wpm = 500-750 words total
+- Video:
+    - Show face (picture-in-picture layout)
+    - OBS Studio/Simple Screen Recorder/Zoom
+    - Describe headers, graphics
+    - Speak each word on slides
+    - Describe what and why
+- Content:
+    - Include speakers notes
+    - Include alt-text
+    - Include transcript
+
+-->
+
+---
+
+## Designed to identify *potential* causal factors from complex networks
+
+.pull-left[
+
+**Motivation**:
+
+- Moderately high dimensional and complex network data (e.g. metabolomics)
+- Derive potential network structure
+- Estimate causal pathways:
+    - From exposure (e.g. exercise) to network
+    - From network to outcome (e.g. diabetes)
+    - From exposure to outcome, through the network
+]
+
+.pull-right[
+```{r img-questions-form, out.width="100%", fig.alt=alt_questions_form, fig.cap=cap_questions_form}
+knitr::include_graphics(image_nc_path("network.png"))
+```
+]
+
+???
+
+Hi everyone, I'm going to be talking about NetCoupler, which is an algorithm and R
+package for inferring causal pathways between high-dimensional metabolomics data
+and external factors.
+
+We had several motivations for creating NetCoupler, largely because
+we wanted to use moderately high dimensional and complex
+network data such as from metabolomics and to be able to answer questions about
+potential causal pathways that occur through the network.
+As illustrated by the diagram, we wanted to know how an exposure like exercise
+might influence a network, how a network might influence an outcome like
+diabetes, or how an exposure might influence an outcome through the network.
+
+---
+
+## Main features of NetCoupler 
+
+
+.pull-left[
+- Finds most likely network structure
+
+- Can include exposure and/or outcome
+
+- Identifies *potential* causal links from, to, and within the network
+]
+
+--
+
+.pull-right[
+- Flexible in type of model used (e.g. linear, logistic, cox regression)
+
+- Allows adjusting for confounders and covariates
+
+- Results are designed to be visualized (e.g. with tidygraph/ggraph packages)
+]
+
+???
+
+The main features of NetCoupler are that it finds the most likely network
+structure, it can include exposure and/or outcome variables, and it can identify
+potential causal links involving the metabolic network. 
+
+NetCoupler is also quite flexible in the type of models you can use in it, 
+so you could use models like linear or logistic
+regression or Cox proportional hazard models. Because these
+models can be used, you can also adjust for potential confounding factors that might
+bias the results. Since NetCoupler is based on network graphs,
+the results are especially designed to be visualized as them too, like with the
+packages tidygraph or ggraph.
+
+---
+
+## Four basic phases of the algorithm
+
+```{r img-nc-phases, out.width="90%", fig.alt=alt_nc_phases, fig.cap=cap_nc_phases}
+knitr::include_graphics(image_iarc_path("netcoupler-process.svg"))
+```
+
+???
+
+The NetCoupler algorithm works in four basic phases, illustrated in this
+diagram.
+
+The first phase is that the structure of the metabolic network is derived using
+causal structure learning algorithms like the PC-algorithm.
+
+The second phase is where each metabolic variable, called a node, within the
+network is iteratively selected and set as the index node. Each connected
+neighbouring nodes are then identified and selected. Here, the index node
+has three neighbours.
+
+The third phase is where each possible combination of index with neighbouring
+node is calculated and used in the model. There are three neighbours here, so
+that would be eight different combinations representing eight models.
+
+The fourth phase is taking all these models and linking them with either
+an exposure or an outcome variable, as well as any confounding factors. Based on
+specific thresholds, the link between exposure or outcome and the index node is
+classified as either direct, ambigious, or no effect.
+
+---
+
+## Graphical model output allows visual inference of *potential* pathways
+
+```{r img-nc-pathways, out.width="85%", fig.alt=alt_nc_pathways, fig.cap=cap_nc_pathways}
+knitr::include_graphics(image_nc_path("nc-causal-pathways.png"))
+```
+
+???
+
+The final graphical model output can allow for visual inference of the potential
+pathways. For instance, in this example figure, NetCoupler might classify
+two direct effects, represented by the thicker lines with arrows, 
+and two ambigious effects, represented by the thinner lines, between an exposure or
+an outcome and individual metabolic variables. We can then visually trace
+the pathway from the exposure, through the metabolic variables, and to the outcome,
+and infer that the metabolic variables along this path, marked as red here, may
+be along the causal pathway.
+
+---
+
+## Current limitations and areas to improve
+
+.pull-left[
+- Conceptual:
+    - Tricky to visualize (too many paths and variables)
+    - Difficult to interpret output estimates
+    - Not suited for pure exploration, should have some theoretical basis
+- Modeling:
+    - Heavily relies on p-values
+    - Only tested on cross-sectional/time-to-event data
+]
+
+--
+
+.pull-right[
+- Software:
+    - Slow performance
+    - Untested on networks with >25 variables
+    - Probably not sensible for *very* high-dimensional data (e.g. genomics)
+]
+
+???
+
+We're actively working on this R package and there are still limitations and 
+areas to improve.
+
+Conceptually, figuring out how to meaningfully visualize the results has been
+tricky, because you quickly get too much going on. Because of the pre-processing
+of the data beforehand, the model estimates can be very difficult to interpret.
+We also don't believe this algorithm is suited for pure exploration, as there
+should be at least some theoretical basis for potential causal pathways in
+your research question.
+
+For modeling, the classification thresholds rely largely on p-values, which can
+be problematic and we're working on other types of thresholds. We also have only
+tested NetCoupler on cross-sectional or time-to-event data, so don't know how
+it would work with other types of data.
+
+Finally, one of the biggest issues is that performance is quite slow. Because of
+this, we haven't tested it on networks with larger than 25 or so variables and
+we guess it probably isn't sensible to use on very high dimensional data like genomics.
+
+---
+
+class: middle
+
+# Thanks!
+
+???
+
+If you want to see how to use NetCoupler, more detail is on the NetCoupler website
+found in the footer. 
+
+Thanks for listening!

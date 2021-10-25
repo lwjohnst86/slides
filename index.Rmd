@@ -2,7 +2,9 @@
 title: "Presentation slides"
 description: |
   Slides for presentations that I've given.
-site: distill::distill_website
+site: 
+    distill::distill_website:
+        search: false
 ---
 
 ```{r setup, include=FALSE, eval=FALSE}
@@ -33,13 +35,18 @@ link %>%
            title = title) %>%
     arrange(desc(date)) %>% 
     mutate(date = stamp_date("March 1, 1999")(as_date(date))) %>% 
-    glue::glue_data("- **{date}**: [*{title}*]({link}) for {location}") %>% 
+    slice(1) %>% 
+    glue::glue_data("- **{date}**: [*{title}*]({link}) talk for {location}") %>% 
     clipr::write_clip()
 ```
-- **January 08, 2021**: [*Expert Corner for the Basic Human Nutrition course*](misc/2021-01-08/index.html) for a University of Toronto Basic Human Nutrition Course
-- **December 16, 2020**: [*NetCoupler: Inferring causal pathways between high-dimensional metabolic data and external factors*](iarc/2020-12-16/index.html) for IARC Nutritional Methodology and Biostatistics Group
-- **November 26, 2020**: [*Tools and workflows for improving the process for scientific research to meet modern demands*](steno/2020-11-26/index.html) for Steno Thursdays in Aarhus
-- **February 06, 2020**: [*MELD Project: *M*etabolic consequences of *E*arly *L*ife adversity and risk for type 2 *D*iabetes*](steno/2020-02-06/index.html) for Steno Thursdays in Aarhus
-- **February 04, 2020**: [*MELD Project: The *M*etabolic consequences of adverse *E*arly *L*ife conditions and subsequent risk for adult type 2 *D*iabetes*](dda/2020-02-04/index.html) for Danish Diabetes Academy Start-up Meeting for Funded Projects
-- **September 12, 2019**: [*A data-driven approach at characterizing heterogeneity in neuropathy assessments*](au-ph/2019-09-12/index.html) for Work-In-Progress meeting at Public Health in Aarhus University
-- **August 15, 2019**: [*Analyzing high dimensional metabolic data in epidemiological studies*](au-ph/2019-08-15/slides.html) for weekly Section for Epidemiology meeting at Public Health in Aarhus University
+
+- **July 06, 2021**: [*NetCoupler: Inferring causal pathways between high-dimensional metabolomics data and external factors*](user/2021-07-06/index.html) talk for the useR! 2021 conference
+- **May 21, 2021**: [*NetCoupler: Inferring causal pathways between high-dimensional metabolic data and external factors*](des/2021-05-21/index.html) talk for Danish Epidemiological Society Annual Meeting
+- **February 08, 2021**: [*Reproducibility and code sharing in science: Why it's important and how to do it*](steno/2021-02-08/index.html) talk for the Diabetes Epidemiology group at Steno Diabetes Center Aarhus 
+- **January 08, 2021**: [*Expert Corner for the Basic Human Nutrition course*](misc/2021-01-08/index.html) talk for a University of Toronto Basic Human Nutrition Course
+- **December 16, 2020**: [*NetCoupler: Inferring causal pathways between high-dimensional metabolic data and external factors*](iarc/2020-12-16/index.html) talk for IARC Nutritional Methodology and Biostatistics Group
+- **November 26, 2020**: [*Tools and workflows for improving the process for scientific research to meet modern demands*](steno/2020-11-26/index.html) talk for Steno Thursdays in Aarhus
+- **February 06, 2020**: [*MELD Project: *M*etabolic consequences of *E*arly *L*ife adversity and risk for type 2 *D*iabetes*](steno/2020-02-06/index.html) talk for Steno Thursdays in Aarhus
+- **February 04, 2020**: [*MELD Project: The *M*etabolic consequences of adverse *E*arly *L*ife conditions and subsequent risk for adult type 2 *D*iabetes*](dda/2020-02-04/index.html) talk for Danish Diabetes Academy Start-up Meeting for Funded Projects
+- **September 12, 2019**: [*A data-driven approach at characterizing heterogeneity in neuropathy assessments*](au-ph/2019-09-12/index.html) talk for Work-In-Progress meeting at Public Health in Aarhus University
+- **August 15, 2019**: [*Analyzing high dimensional metabolic data in epidemiological studies*](au-ph/2019-08-15/slides.html) talk for weekly Section for Epidemiology meeting at Public Health in Aarhus University
