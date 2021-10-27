@@ -1,7 +1,11 @@
 ---
-title: Life Scientist Trainers
-output: md_document
+title: "Life Scientist Trainers"
+output: 
+    md_document:
+        pandoc_args: "--wrap=none"
 ---
+
+Instructions: https://lifescitrainers.org/2021/10/19/how-i-teach-life-scientists/
 
 # Brainstorming
 
@@ -9,8 +13,11 @@ output: md_document
 - Docs to quickly onboard new instructors
 - Empowering learners to take next steps
     - e.g. Contribute to material via GitLab/Hub
-    - e.g. Instructing in a safe environment to ...
-- Emphasize code of conduct and safe space for learning
+    - e.g. Instructing in a safe environment for learning
+- Emphasize code of conduct and building a safe and supportive space for learning
+- Re-use for both learners and (potential) instructors
+- Use modern software tools and workflows
+- Use evidence based learning and teaching practices
 
 # Content
 
@@ -18,13 +25,43 @@ output: md_document
 
 Actionable.
 
-1.
-2.
-3.
-4. (optional)
+1. Incorporate and weave in reading, listening, doing, and discussing *in class*.
+2. Encourage past participants to instruct workshops, and give them documentation and support for onboarding them.
+3. Emphasize the code of conduct and the safety of the learning space, and *embody* it.
+4. Provide the material online, easily accessible, and follow it exactly. Deviate as little as possible, and only if relevant. (optional)
 5. (optional)
 
 ## Abstract
 
-Words: 500
+Words: ~300 / 500
 
+**Shifting Science and Research Culture Towards Openness and Reproducibility Through Education and Training**
+
+While reproducibility is a core principle of science, estimating the global
+reproducibility of studies is near impossible. Lack of incentives to conduct
+reproducible research, the nearly non-existent sharing of analytic code, and the
+general lack of awareness and training in it all contribute to this state.
+Improving reproducibility (and overall openness) requires extensive and
+fundamental changes to how we conduct science, one way being through training.
+Our aim was then to create an open, re-usable, and beginner-friendly learning
+module on how biomedical researchers can do Reproducible Research using the R
+language ("r-cubed" or R3).
+
+We followed some key principles when making the material: be openly licensed and
+publicly accessible for more re-use; emphasize creating a safe and supportive
+environment that empowers participants to engage, question, and learn; use
+modern and beginner-friendly software and workflows; and use evidence-based
+learning and teaching practices. We designed the material targeting the
+participants as well as potential and new instructors.
+
+We've ran the course four times with the Danish Diabetes Academy, a national
+diabetes organization in Denmark dedicated to educating the next generation of
+diabetes researchers, where it has been consistently highly rated, in demand,
+and well-received. From the feedback surveys, we find that the skills we teach
+are in high demand, sought after, and necessary for doing research more
+effectively. As part of the "teaching is the best way to learn", almost all 
+instructors of the course have also been past participants, which has immensely
+helped make the material more accessible to novices. The material is available
+at r-cubed.rostools.org, with specific sections detailing how to re-use the
+material and teach it others. With this course, we hope to start shifting the
+research culture towards doing better, reproducible, and open science. 
