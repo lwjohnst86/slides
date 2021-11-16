@@ -164,3 +164,70 @@ links between metabolism and disease (like diabetes).
     - Follow what interests and motivates you
     - Enjoy and cultivate relationships with others (you may end up collaborating
     together!)
+
+# Outline
+
+# Course arose from need for skills in data analysis emoji coding
+
+## ... and awareness of reproducibility and open science emoji mind explode
+
+.footnote[
+- Link to material
+- JOSE paper: DOI
+]
+
+???
+
+- This course arose from a need
+
+# Why not use existing material from e.g. Carpentries? emoji thinking
+
+- No strong narrative thread
+- Jumping around with concepts without reusing them again later
+- Using older workflows/packages
+- Emphasis/focus on writing software
+- Not targeted to biomedical researchers
+
+# Key principles when developing material
+
+- Be openly licensed and publicly accessible for more re-use
+- Emphasize creating a safe and supportive environment that empowers
+participants to engage, question, and learn
+- Use modern and beginner-friendly software and workflows
+- Use evidence-based learning and teaching practices
+- Designed material for the participants as well as potential and new
+instructors
+- Include strong narrative thread throughout entire content
+
+## Feedback
+
+- What worked well
+- What to improve
+
+# What worked
+
+## Consistent and strong positive feedback on material being online and easily accessible
+
+## 
+
+# What needed to improve
+
+## Consistent feedback on NOT deviating from online material
+
+## SLOW DOWN and limit moving between applications on screen
+
+# Tried out:
+
+## Reading
+
+- Why try it out? We 
+
+
+
+- That we followed
+- Consistently strong feedback on having material easily accessible online that we followed, so if any got lost
+
+1. Incorporate and weave in reading, listening, doing, and discussing *in class*.
+2. Encourage past participants to instruct workshops, and give them documentation and support for onboarding them.
+3. Emphasize the code of conduct and the safety of the learning space, and *embody* it.
+4. Provide the material online, easily accessible, and follow it exactly. Deviate as little as possible, and only if relevant. (optional)
