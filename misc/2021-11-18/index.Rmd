@@ -1,233 +1,401 @@
 ---
-title: "Expert Corner for the Basic Human Nutrition course"
+title: "Shifting Science and Research Culture Towards Openness and Reproducibility Through Education and Training"
+author: "Luke W. Johnston"
 output:
   xaringan::moon_reader:
     lib_dir: libs
-    css: ["xaringan-themer.css", "../../common/custom.css"]
+    css: "xaringan-themer.css"
     nature:
+      slideNumberFormat: ""
       ratio: "16:9"
-      highlightStyle: github
-      highlightLines: true
       countIncrementalSlides: false
 ---
 
 layout: true
 
-<div class="my-footer">
-<span>
-<img src="../../common/dda-logo.png" alt="DDA", width="75">
-<img src="../../common/sdca-logo.png" alt="SDCA", width="55">
-<a href="https://slides.lwjohnst.com/misc/2021-01-08/">slides.lwjohnst.com/misc/2021-01-08</a>
-</span>
-</div> 
-
 ```{r setup, include=FALSE}
 options(htmltools.dir.version = FALSE)
-library(fontawesome)
 knitr::opts_chunk$set(
   echo = FALSE,
-  dev = "png",
-  dpi = 150,
-  comment = "#>",
   message = FALSE,
-  warning = FALSE,
-  fig.align = "center"
+  warning = FALSE
 )
 
-image_misc_path <- function(.file) {
-    fs::path("..", "..", "misc", "2021-01-08", "images", .file)
+fa2 <- function(icon) {
+    fontawesome::fa(name = icon, fill = "#2471a3")
 }
 
-fa2 <- function(.icon) {
-    fontawesome::fa(name = .icon, fill = "#105059")
+image_link <- function(image_path, url, ...) {
+    htmltools::a(
+        href = url,
+        htmltools::img(src = image_path, ...)
+    )
+}
+```
+
+```{css}
+.footer-left {
+    background-color: #FFFFFF;
+    position: absolute;
+    bottom: 8px;
+    left: 20px;
+    height: 60px;
+    width: 30%;
+    font-size: 14pt;
+}
+
+.footer-right {
+    background-color: #FFFFFF;
+    position: absolute;
+    bottom: 8px;
+    right: 5px;
+    height: 50px;
+    width: 30%;
+    font-size: 14pt;
 }
 ```
 
 ```{r xaringan-themer, include=FALSE}
 library(xaringanthemer)
 style_mono_accent(
-    base_color = "#105059",
-    base_font_size = "30px",
-    code_font_size = "1rem",
-    header_h1_font_size = "60px",
-    header_h2_font_size = "42px",
-    header_font_google = google_font("Monda"),
-    text_font_google = google_font("Rosario")
+    base_color = "#2471a3",
+    base_font_size = "24px",
+    header_font_google = google_font("Merriweather Sans", "300")
 )
 ```
 
-<!-- About 4-5 min long -->
-
----
-
-# Who am I?
-
-.pull-left[
-- I'm Luke Johnston `r emo::ji("wave")` 
-- `r fa2("briefcase")`: Postdoctoral researcher
-- `r fa2("globe-europe")`: Steno Diabetes Center Aarhus, Denmark
-- `r fa2("user-graduate")`: 
-    - BSc in Kinesiology from University of Waterloo
-    - MSc and PhD in Nutritional Sciences from UofT
-]
-
-.pull-right[
-```{r, out.width="60%"}
-knitr::include_graphics(image_misc_path("luke-pic.jpg"))
+.footer-left[
+```{r footer-logos}
+image_link("../../common/dda-logo.png", "https://www.danishdiabetesacademy.dk", width = "95px")
+image_link("../../common/sdca-logo.png", "https://www.stenoaarhus.dk/", width = "60px")
 ```
 ]
 
-.footnote[More details: [cv.lukewjohnston.com](https://cv.lukewjohnston.com/)]
+.footer-right[
+[slides.lwjohnst.com/misc/2021-11-18](https://slides.lwjohnst.com/misc/2021-11-18/)
+]
 
 ---
 
-# Career path `r fa2("route")` 
-
-- High school: `r emo::ji("thinking")` in sports medicine
-
---
-
-- Bachelor in Kinesiology: `r emo::ji("thinking")` in Nutrition
-
---
-
-- MSc and PhD in Nutrition: `r emo::ji("thinking")` in statistics, epidemiology,
-and software development
-
---
-
-- Postdoc in diabetes epidemiology: `r emo::ji("thinking")` in teaching stats +
-programming and in software and method development
-
----
-
-# Research from PhD `r fa2("user-graduate")`
-
-1. *Clusters of fatty acids in the serum triacylglyceride fraction associate
-with the disorders of type 2 diabetes*. (2018). DOI: 10.1194/jlr.P084970.
-
-2. *Association of non-esterified fatty acid composition with insulin
-sensitivity and beta cell function in the Prospective Metabolism and Islet Cell
-Evaluation (PROMISE) cohort*. (2017). DOI: 10.1007/s00125-017-4534-6.
-
-3. *Longitudinal associations of phospholipid and cholesteryl ester fatty acids
-with disorders underlying diabetes.*. (2016). DOI: 10.1210/jc.2015-4267.
-
-???
-
-Overall objective of my PhD was to investigate how types of fatty acids in the
-blood might influence risk for type 2 diabetes.
-
----
-
-## One `r emo::ji("key")` finding: Triglycerides related to *de novo* lipogenesis may `r fa2("arrow-up")` diabetes risk
-
-```{r, out.width="35%"}
-knitr::include_graphics(image_misc_path("pls-tag-isi.png"))
+```{r progress-bar}
+xaringanExtra::use_progress_bar(color = "#A35624", location = "top")
 ```
 
----
-
-# Some current research projects
-
---
-
-- MELD project: Studying how early life influences metabolism and risk
-for diabetes using the Danish national registers (e.g. Cause of Death Register,
-Birth Register).
-    - `r fa2("link")`: [lwjohnst.gitlab.io/dda-pdf](https://lwjohnst.gitlab.io/dda-pdf/)
-
---
-
-- NetCoupler: Statistical method and R package `r emo::ji("package")` to find
-links between metabolism and disease (like diabetes).
-    - `r fa2("link")`: [netcoupler.github.io/netcoupler](https://netcoupler.github.io/NetCoupler/)
-
---
-
-- r-cubed: Training material on using modern tools for scientific data analysis.
-    - `r fa2("link")`: [r-cubed.rostools.org](https://r-cubed.rostools.org/)
-
----
-
-# `r emo::ji("thought")` Future and general advice
-
-- Things I've learned:
-    - High need for computational `r emo::ji("computer")` skills, tools, and
-    training in research
-    - Academia has many many major flaws that need fixing `r emo::ji("wrench")`
-    - Working in research is very rewarding and amazing! 
-
---
-
-- Biggest pieces of advice: 
-    - Follow what interests and motivates you
-    - Enjoy and cultivate relationships with others (you may end up collaborating
-    together!)
+```{r logo-r3}
+xaringanExtra::use_logo(
+  image_url = "https://gitlab.com/uploads/-/system/project/avatar/15345313/apple-touch-icon.png",
+  link_url = "https://r-cubed.rostools.org/",
+  width = "55",
+)
+```
 
 # Outline
 
-# Course arose from need for skills in data analysis emoji coding
+<!-- 10 min -->
 
-## ... and awareness of reproducibility and open science emoji mind explode
+- Key points
+- Introduction to course and attendees
+- Key principles used while creating/updating course
+    - Lessons learned
+- Experiences of effectiveness and impact (within Denmark)
+- Summary
+
+???
+
+Hi everyone, thanks for coming to listen to my talk. I'm Luke and I work as a
+postdoc at the Steno Diabetes Center in Aarhus Denmark. If you want to check out
+these slides, there's a link to them in the footer of each slide.
+
+So, since this is an audience of other trainers, I'm going to focus on the
+topics of practicals of teaching and on curriculum development.
+
+(Go over outline).
+
+While talking about key principles and lessons learned, it will tie back
+to some of the key messages.
+
+---
+
+# *Actionable* key `r emo::ji("key")` points
+
+???
+
+Before I begin, I want to say a couple of caveats about these key messages.
+Here, I'm assuming that the learners are working/full-time researchers
+(including PhD students), not necessarily in an undergraduate context and
+related to learning data analysis or more practical type skills.
+
+--
+
+1. Have material be online, easily found
+    - Follow it (almost) exactly, deviate only if necessary
+1. Encourage participants to instruct future workshops
+    - Provide onboarding docs and support
+1. Emphasize code of conduct and safety of the learning space
+    - *Embody* it
+1. Use and weave in reading, listening, doing, and discussing activities *in class*
+
+???
+
+(Go over the messages).
+
+---
+
+class: middle
+
+# Reproducible Research in R (R3 or r-cubed) course/workshop for PhD students and postdocs *doing biomedical research*
 
 .footnote[
-- Link to material
-- JOSE paper: DOI
+- Website: [r-cubed.rostools.org](https://r-cubed.rostools.org)
+- JOSE paper: [10.21105/jose.00122](https://jose.theoj.org/papers/10.21105/jose.00122)
+- Also intermediate course: [r-cubed-intermediate.rostools.org](https://r-cubed-intermediate.rostools.org/)
 ]
 
 ???
 
-- This course arose from a need
+Now getting into the course itself. In Denmark, a course is anything from a couple 
+days to a couple weeks, while in North America this might be referred to as a workshop.
+The course is teaching reproducible research in R to PhD students and postdocs who
+do biomedical research, largely diabetes research. This course is 3 full days, 
+composing of 5 code along sessions where the instructor types and the learners
+follow along, a few lectures, and a final group project. For more info on the
+course, check out the website as well as our paper describing the course and how
+to use it. We also have an intermediate course that has a lot of overlap with
+what I'm talking about today.
 
-# Why not use existing material from e.g. Carpentries? emoji thinking
+---
+
+class: middle
+
+# Course arose from need for skills in data analysis `r emo::ji("woman_technologist_medium_skin_tone")`
+
+## ... and for more awareness on reproducibility and open science `r emo::ji("exploding_head")`
+
+???
+
+I started teaching these topics during my Masters and PhD because I saw a huge need
+for these skills and just general awareness of some practicalities of doing science.
+This course specifically I started during my postdoc because one, there was a need 
+for more computational skills in my field and two, because the awareness around
+reproducibility and open science was very lacking.
+
+---
+
+class: middle
+
+# Key `r emo::ji("key")` principles when developing material and learned from feedback
+
+???
+
+When developing this course along with updating each time we run it, there
+were some key principles that we used to form the foundation for the entire content
+of the course. And I'll be covering some of them for most of the talk.
+
+---
+
+## Use evidence based learning and teaching best practices `r emo::ji("woman_teacher_light_skin_tone")`
+
+???
+
+The first one is, of course, building the curriculum based on evidence around learning
+and on teaching best practices.
+
+--
+
+1. Collect (and use) anonymous and critical feedback often!
+
+???
+
+Like any research, in order to build and then improve something you need to actively
+get feedback, often. Doesn't matter how you do it, but get it. I make a Google Forms
+survey that asks generally, what worked and what could be improved, at the end of
+each day. Then I use that to determine what needs fixing and what to keep. Must of the
+later points link to this item.
+
+--
+
+2. Multiple activities to learning *in class* (reading, doing, listening,
+discussing, teaching, group, and solo)
+
+???
+
+Learning requires multiple different angles repeating basically the same information
+in a different way until it gets remembered and saved into long-term memory.
+In this way, during the course we get learners to do multiple tasks like reading
+activities, hands-on exercises, listening, typing while we do the code along,
+teaching which I'll get back to, and doing a group project. Most of these
+activities essentially repeat the same information but in slightly different
+ways.
+
+In relation to reading, one thing I found was talking about a concept always had
+some variance in saying it each time I ran the course or when another instructor
+did the specific session. Plus, we have many people who have English as a second
+language, so the amount of information you could convey orally was much less
+than by reading. It also slows us down, which is really important to have enforced
+within the material because, I do it, its very easy to go too fast through the material.
+After they read a section, as the instructor we would briefly
+go over the topic again, to reinforce the concept. After adding the reading
+activities and getting the feedback, there was consistent and strong positive comments
+about that, so we kept it and added more.
+
+--
+
+3. Less is more: Brains can only handle so much new information
+
+--
+
+4. Strong and focused narrative tied to learning outcome
+
+???
+
+Brains can only hold so much information in them at any one time, so the key
+thing while building material is keep things lean and focused on what the learning
+outcome and objectives. Both point 3 and 4 relate to this. The narrative throughout
+the whole curriculum should be laser focused on the learning outcome. Don't deviate
+from the material. Each time we've ran the course, we've stripped out more and more.
+Plus, everytime I deviate too much from the material because I have some expert knowledge
+that I want to share from excitedness, I see it in the feedback that it confused
+them or that if I talk about it it should be in the material.
+
+--
+
+5. Limit lectures and slides (largely for conceptual/ranting topics)
+
+
+???
+
+Lastly, lectures are some of the poorest form of memory retention, so we severly
+limit them to only very abstract topics or things to rant about, like how un-open
+science is.
+
+---
+
+class: middle
+
+## Openly licensed `r fa2("fab fa-creative-commons-by")` and easily accessible `r fa2("fas fa-wifi")`
+
+--
+
+.footnote[Website: From Hugo Academic (blogdown) to GitBook (bookdown) to Bootstrap theme (bookdown).]
+
+???
+
+- Re-use for both learners and (potential) instructors
+
+E.g. started with using a typical style website, like that offered by the Hugo
+Academic theme, but for several reasons especially with ease of use, I moved
+over to using bookdown. The feedback we've gotten
+
+Consistent and strong positive feedback on material being online and easily accessible
+
+- Have material be easily accessible and well designed/structured
+
+6. Book format is very useful since a course is chronological and time is linear,
+so book follows exactly what each session should go over and cover.
+
+- I think this is really important because I see a lot of for instance university
+courses not have their material be publicly available in the idea that
+people should pay for the material and I understand but I think that's a shame
+because people don't usually take courses for the content itself, they do it
+to be taught. Taught by someone.
+
+---
+
+class: middle
+
+## Safe `r fa2("fas fa-hand-holding-heart")` and supportive `r fa2("fas fa-hands-helping")` environment
+
+.footnote[Through a code of conduct, explicit expectations of participants and
+instructors, as well as detailed and descriptive syllabus.]
+
+???
+
+This is really the first step, the
+first introduction learners have with the material, so its really important to get
+it clear about what they should expect to learn.
+
+- BE VERY MINDFUL of your language. Using words like "just", "simply",
+and other "dismissive" language can undermine the learners experience
+and comfort, thus impacting their learning.
+
+- STRONGLY emphasize code of conduct, importance of keeping environment
+feeling safe and supportive
+
+- Empowering learners to take next steps
+    - e.g. Contribute to material via GitLab/Hub
+
+---
+
+class: middle
+
+## Use modern and beginner-friendly software, packages, and workflows
+
+.footnote[E.g. use open source, tidyverse R packages, R Markdown. Small exception `r emo::ji("grimacing")`: Git, though used through RStudio's interface.]
+
+???
+
+- E.g. R and tidyverse, R Markdown. Had a long discussion with a colleague teacher
+about only focusing on the tidyverse
+- That also fit with philosophy of science (so only open source)
+
+---
+
+class: middle
+
+## Design material for participants *as well as* potential/new instructors 
+
+.footnote[As well as potential contributors (i.e. the participants).]
+
+???
+
+Used GitLab, have GitLab CI build book and website so contributors don't have to, used
+bookdown since it has a low skill entry for use (compared to blogdown)
+
+
+- Provide onboarding documentation, meeting, and support to new instructors
+    - Make teaching the course a component of learning (for the new-ish instructor)
+
+---
+
+# Experiences of effectiveness and impact (within Denmark `r emo::ji("denmark")`)
+
+.footnote[Feedback data is found on the [GitLab repository](https://gitlab.com/rostools/r-cubed/-/tree/main/feedback).]
+
+???
+
+- We run the course through the danish diabetes academy here in Denmark, which
+provides a training and funding space for diabetes researchers. This course as well
+as the intermediate course are both the highest rated and most in-demand courses
+that they offer. Plus we can see from the feedback that 
+
+- Every time I teach the course, I ask if they have heard of or know about open
+science or reproducibility etc. When I first ran the course, I mostly got blank
+stares... now easily more than half know about it in some way.
+
+---
+
+# Summary and recap
+
+1. Have material be online, easily found
+    a. Follow it (almost) exactly, deviate only if necessary
+1. Encourage participants to instruct future workshops
+    a. Provide onboarding documentation and support
+1. Emphasize code of conduct and the safety of the space to learn
+    a. *Embody* it
+1. Use and weave in reading, listening, doing, and discussing *in class*
+
+--
+
+### Try out the material and give us feedback on it! `r emo::ji("nerd")`
+
+???
+
+# Appendix
+
+Why not use existing material from e.g. Carpentries?
 
 - No strong narrative thread
 - Jumping around with concepts without reusing them again later
 - Using older workflows/packages
 - Emphasis/focus on writing software
 - Not targeted to biomedical researchers
-
-# Key principles when developing material
-
-- Be openly licensed and publicly accessible for more re-use
-- Emphasize creating a safe and supportive environment that empowers
-participants to engage, question, and learn
-- Use modern and beginner-friendly software and workflows
-- Use evidence-based learning and teaching practices
-- Designed material for the participants as well as potential and new
-instructors
-- Include strong narrative thread throughout entire content
-
-## Feedback
-
-- What worked well
-- What to improve
-
-# What worked
-
-## Consistent and strong positive feedback on material being online and easily accessible
-
-## 
-
-# What needed to improve
-
-## Consistent feedback on NOT deviating from online material
-
-## SLOW DOWN and limit moving between applications on screen
-
-# Tried out:
-
-## Reading
-
-- Why try it out? We 
-
-
-
-- That we followed
-- Consistently strong feedback on having material easily accessible online that we followed, so if any got lost
-
-1. Incorporate and weave in reading, listening, doing, and discussing *in class*.
-2. Encourage past participants to instruct workshops, and give them documentation and support for onboarding them.
-3. Emphasize the code of conduct and the safety of the learning space, and *embody* it.
-4. Provide the material online, easily accessible, and follow it exactly. Deviate as little as possible, and only if relevant. (optional)
