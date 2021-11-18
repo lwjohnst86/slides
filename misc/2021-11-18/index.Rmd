@@ -183,7 +183,7 @@ reproducibility and open science was very lacking.
 
 class: middle
 
-# Key `r emo::ji("key")` principles when developing material and learned from feedback
+# (Some) Key `r emo::ji("key")` principles when developing the material and learned from the feedback
 
 ???
 
@@ -202,7 +202,7 @@ and on teaching best practices.
 
 --
 
-1. Collect (and use) anonymous and critical feedback often!
+1. Collect (and use) anonymous and critical feedback often! Including from instructors
 
 ???
 
@@ -259,14 +259,14 @@ them or that if I talk about it it should be in the material.
 
 --
 
-5. Limit lectures and slides (largely for conceptual/ranting topics)
+5. Limit lectures and slides (largely used for conceptual/ranting topics)
 
 
 ???
 
-Lastly, lectures are some of the poorest form of memory retention, so we severly
+Lastly, lectures are some of the poorest form of memory retention, so we severely
 limit them to only very abstract topics or things to rant about, like how un-open
-science is.
+science is. 
 
 ---
 
@@ -274,30 +274,33 @@ class: middle
 
 ## Openly licensed `r fa2("fab fa-creative-commons-by")` and easily accessible `r fa2("fas fa-wifi")`
 
---
-
-.footnote[Website: From Hugo Academic (blogdown) to GitBook (bookdown) to Bootstrap theme (bookdown).]
+.footnote[Website: From Hugo Academic (blogdown) to GitBook (bookdown) to Bootstrap (bookdown) theme.]
 
 ???
 
-- Re-use for both learners and (potential) instructors
+The next key principle is to ensure the material is maximally used and re-used.
+This means applying an open license to it and having it easily accessible online.
 
-E.g. started with using a typical style website, like that offered by the Hugo
-Academic theme, but for several reasons especially with ease of use, I moved
-over to using bookdown. The feedback we've gotten
+I think this is a bit of a misunderstood area. I see a lot of for instance university
+courses that don't have their material publicly available, thinking that they 
+need to keep it only for people paying or attending the class. While I understand 
+that idea, I think that's a shame and maybe misguided because people don't
+usually take courses for the content itself, generally, they take them to be
+taught. They come for teachers and the experience, not the content alone.
 
-Consistent and strong positive feedback on material being online and easily accessible
+And we see it in the feedback, there is always very strong and consistent
+positive feedback talking about how great it is that the material is online and
+easily accessible.
 
-- Have material be easily accessible and well designed/structured
+When I started I used a typical style website format, like that offered by the
+Hugo Academic theme, but there were several things that bugged me about it,
+especially around ease of use. Which was important because I wanted more contributors
+and collaborators working on this project. So I moved over to using bookdown,
+which is an R package for making books.
 
-6. Book format is very useful since a course is chronological and time is linear,
-so book follows exactly what each session should go over and cover.
-
-- I think this is really important because I see a lot of for instance university
-courses not have their material be publicly available in the idea that
-people should pay for the material and I understand but I think that's a shame
-because people don't usually take courses for the content itself, they do it
-to be taught. Taught by someone.
+I think book formats for a structure of a course works very well, 
+because courses are chronological and time is linear,
+and since books are linear as well, the content follows exactly what we cover.
 
 ---
 
@@ -310,33 +313,29 @@ instructors, as well as detailed and descriptive syllabus.]
 
 ???
 
-This is really the first step, the
-first introduction learners have with the material, so its really important to get
-it clear about what they should expect to learn.
+This next principle is something I think is so important... and that is establish
+and maintaining an environment that is safe and supportive for learning. Having that
+explicit description of expected behaviour of learners and instructors through
+the code of conduct, through the syllabus, through how you as the instructor embody
+this attitude. Learning is more than just the teaching and the content, but also
+about the learners motivation and interest and engagement with the content...
+and if the environment doesn't feel safe for them, they won't learn as much as they
+could.
 
-- BE VERY MINDFUL of your language. Using words like "just", "simply",
-and other "dismissive" language can undermine the learners experience
-and comfort, thus impacting their learning.
+And it's so easy to unconsciously use dismissive or diminishing language like "just" or
+"simply" or hand-waving something away when talking about something while you're
+teaching... but that can lead to undermining learners confidence and trust,
+particularly for underrepresented or minority groups within science.
 
-- STRONGLY emphasize code of conduct, importance of keeping environment
-feeling safe and supportive
+For instance, what I do is have a question in the pre-course survey asking
+if they have read the code of conduct, which is also a pre-course task of
+theirs. Then during the first introduction session, I mention that I saw
+everyone say yes to it so I make it clear, this is important, this isn't
+something on the side. Its a key component to the whole learning environment and
+process.
 
-- Empowering learners to take next steps
-    - e.g. Contribute to material via GitLab/Hub
-
----
-
-class: middle
-
-## Use modern and beginner-friendly software, packages, and workflows
-
-.footnote[E.g. use open source, tidyverse R packages, R Markdown. Small exception `r emo::ji("grimacing")`: Git, though used through RStudio's interface.]
-
-???
-
-- E.g. R and tidyverse, R Markdown. Had a long discussion with a colleague teacher
-about only focusing on the tidyverse
-- That also fit with philosophy of science (so only open source)
+And having this environment also means we engage more of them in getting involved
+as teachers or contributors. Which then solidifies the learning even more.
 
 ---
 
@@ -348,12 +347,14 @@ class: middle
 
 ???
 
-Used GitLab, have GitLab CI build book and website so contributors don't have to, used
-bookdown since it has a low skill entry for use (compared to blogdown)
-
-
-- Provide onboarding documentation, meeting, and support to new instructors
-    - Make teaching the course a component of learning (for the new-ish instructor)
+Lastly, the material isn't only for the participants, it's also for future instructors
+and contributors. Since it is written with the idea that learners will read it
+during the course or afterwards, this also gives new instructors something to 
+use to prepare for teaching their session or course itself if they want.
+Interspersed throughout the text are messages to the instructors on top of
+an instructor guide giving advice and tips on how to prepare, what to do,
+and how to teach. We hope that, structured as it is, anyone can take the course
+and try to teach it themselves to others.
 
 ---
 
@@ -363,14 +364,23 @@ bookdown since it has a low skill entry for use (compared to blogdown)
 
 ???
 
-- We run the course through the danish diabetes academy here in Denmark, which
-provides a training and funding space for diabetes researchers. This course as well
-as the intermediate course are both the highest rated and most in-demand courses
-that they offer. Plus we can see from the feedback that 
+Alright, I've gone over the key principles for the course, how effective and impactful
+has it been? We've ran the course through the Danish Diabetes Academy here in
+Denmark, which is an organization that provides funding, networking events, and
+educational events and courses to diabetes researchers. They collect evaluations
+for the course and both this course as well as the intermediate one are both
+the highest rated and most in-demand courses that they offer. Plus based on
+the feedback we collect, we can see how much the participants really enjoy the
+course and often recommend it their colleagues. If you want to read some of the 
+feedback we get, they are found in our GitLab repository, the link is there in
+the footnote of this slide.
 
-- Every time I teach the course, I ask if they have heard of or know about open
-science or reproducibility etc. When I first ran the course, I mostly got blank
-stares... now easily more than half know about it in some way.
+As for impact, every time I teach the course, I ask if they have heard of or
+know about open science or reproducibility etc. When I first ran the course, I
+mostly got blank stares... now easily more than half know about it in some way.
+It probably isn't only due to the course, in general this area along with data
+science are growing so quick that people would have eventually heard about these
+topics.
 
 ---
 
@@ -384,11 +394,19 @@ stares... now easily more than half know about it in some way.
     a. *Embody* it
 1. Use and weave in reading, listening, doing, and discussing *in class*
 
+???
+
+Anyway, I could talk about this for a long time. But to end, let's go back to
+the key messages. I talked about (go over messages).
+
 --
 
 ### Try out the material and give us feedback on it! `r emo::ji("nerd")`
 
 ???
+
+And to end, please, if you try out the material, lets us know! We'd love more
+feedback on it! Thanks for listening!
 
 # Appendix
 
