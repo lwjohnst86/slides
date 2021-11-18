@@ -130,7 +130,7 @@ related to learning data analysis or more practical type skills.
 1. Have material be online, easily found
     - Follow it (almost) exactly, deviate only if necessary
 1. Encourage participants to instruct future workshops
-    - Provide onboarding docs and support
+    - Provide onboarding documentation and support
 1. Emphasize code of conduct and safety of the learning space
     - *Embody* it
 1. Use and weave in reading, listening, doing, and discussing activities *in class*
@@ -154,14 +154,13 @@ class: middle
 ???
 
 Now getting into the course itself. In Denmark, a course is anything from a couple 
-days to a couple weeks, while in North America this might be referred to as a workshop.
+days to a couple weeks, while in North America this might be called a workshop.
 The course is teaching reproducible research in R to PhD students and postdocs who
-do biomedical research, largely diabetes research. This course is 3 full days, 
-composing of 5 code along sessions where the instructor types and the learners
-follow along, a few lectures, and a final group project. For more info on the
-course, check out the website as well as our paper describing the course and how
-to use it. We also have an intermediate course that has a lot of overlap with
-what I'm talking about today.
+do biomedical research, largely diabetes research. 
+
+This course is 3 full days, composing of 5 code along sessions where the
+instructor types and the learners follow along, a few lectures, and a final
+group project. For more info on the course, check out the links below.
 
 ---
 
@@ -173,10 +172,9 @@ class: middle
 
 ???
 
-I started teaching these topics during my Masters and PhD because I saw a huge need
-for these skills and just general awareness of some practicalities of doing science.
-This course specifically I started during my postdoc because one, there was a need 
-for more computational skills in my field and two, because the awareness around
+While I've been teaching these general topics since my Masters, this course
+specifically I started during my postdoc because one, there was a need for more
+computational skills in my field and two, because the awareness around
 reproducibility and open science was very lacking.
 
 ---
@@ -207,10 +205,9 @@ and on teaching best practices.
 ???
 
 Like any research, in order to build and then improve something you need to actively
-get feedback, often. Doesn't matter how you do it, but get it. I make a Google Forms
-survey that asks generally, what worked and what could be improved, at the end of
-each day. Then I use that to determine what needs fixing and what to keep. Must of the
-later points link to this item.
+get feedback, often. I made a Google Forms survey that asks generally, what
+worked and what could be improved, at the end of each day. Then I use that to
+fix, remove, or keep things.
 
 --
 
@@ -222,44 +219,43 @@ discussing, teaching, group, and solo)
 Learning requires multiple different angles repeating basically the same information
 in a different way until it gets remembered and saved into long-term memory.
 In this way, during the course we get learners to do multiple tasks like reading
-activities, hands-on exercises, listening, typing while we do the code along,
-teaching which I'll get back to, and doing a group project. Most of these
-activities essentially repeat the same information but in slightly different
-ways.
+activities, hands-on exercises, listening, and so on. 
 
 In relation to reading, one thing I found was talking about a concept always had
 some variance in saying it each time I ran the course or when another instructor
 did the specific session. Plus, we have many people who have English as a second
 language, so the amount of information you could convey orally was much less
-than by reading. It also slows us down, which is really important to have enforced
-within the material because, I do it, its very easy to go too fast through the material.
-After they read a section, as the instructor we would briefly
-go over the topic again, to reinforce the concept. After adding the reading
-activities and getting the feedback, there was consistent and strong positive comments
-about that, so we kept it and added more.
+than by reading. 
+
+It also slows us down, which is really important to have enforced within the
+material because, I do it, its very easy to go too fast through the material.
+After they read a section, as the instructor we would briefly go over the topic
+again, to reinforce the concept. After adding the reading activities and getting
+the feedback, there was consistent and strong positive comments about that, so
+we kept it and added more.
 
 --
 
-3. Less is more: Brains can only handle so much new information
-
---
-
-4. Strong and focused narrative tied to learning outcome
+3. Strong and focused narrative tied to learning outcome: Less is more
 
 ???
 
+The narrative throughout the whole curriculum should be laser focused on the
+learning outcome.
+
 Brains can only hold so much information in them at any one time, so the key
-thing while building material is keep things lean and focused on what the learning
-outcome and objectives. Both point 3 and 4 relate to this. The narrative throughout
-the whole curriculum should be laser focused on the learning outcome. Don't deviate
-from the material. Each time we've ran the course, we've stripped out more and more.
-Plus, everytime I deviate too much from the material because I have some expert knowledge
-that I want to share from excitedness, I see it in the feedback that it confused
-them or that if I talk about it it should be in the material.
+thing while building material is keep things lean and focused on what the
+learning outcome and objectives. Each time we've ran the course, we've stripped
+out more and more.
+
+Don't deviate from the material. Plus, everytime I deviate too much from the
+material because I have some expert knowledge that I want to share from
+excitedness, I see it in the feedback that it confused them or that if I talk
+about it it should be in the material.
 
 --
 
-5. Limit lectures and slides (largely used for conceptual/ranting topics)
+4. Limit lectures and slides (largely used for conceptual/ranting topics)
 
 
 ???
@@ -273,8 +269,6 @@ science is.
 class: middle
 
 ## Openly licensed `r fa2("fab fa-creative-commons-by")` and easily accessible `r fa2("fas fa-wifi")`
-
-.footnote[Website: From Hugo Academic (blogdown) to GitBook (bookdown) to Bootstrap (bookdown) theme.]
 
 ???
 
@@ -292,16 +286,6 @@ And we see it in the feedback, there is always very strong and consistent
 positive feedback talking about how great it is that the material is online and
 easily accessible.
 
-When I started I used a typical style website format, like that offered by the
-Hugo Academic theme, but there were several things that bugged me about it,
-especially around ease of use. Which was important because I wanted more contributors
-and collaborators working on this project. So I moved over to using bookdown,
-which is an R package for making books.
-
-I think book formats for a structure of a course works very well, 
-because courses are chronological and time is linear,
-and since books are linear as well, the content follows exactly what we cover.
-
 ---
 
 class: middle
@@ -314,28 +298,23 @@ instructors, as well as detailed and descriptive syllabus.]
 ???
 
 This next principle is something I think is so important... and that is establish
-and maintaining an environment that is safe and supportive for learning. Having that
-explicit description of expected behaviour of learners and instructors through
-the code of conduct, through the syllabus, through how you as the instructor embody
-this attitude. Learning is more than just the teaching and the content, but also
-about the learners motivation and interest and engagement with the content...
-and if the environment doesn't feel safe for them, they won't learn as much as they
-could.
+and maintaining an environment that is safe and supportive for learning. Have the
+explicit code of conduct on expected behaviour of everyone involved at the forefront and 
+have instructors embody this attitude. Learning is so dependent on the learners
+motivation and interest and engagement with the content... and if they don't feel
+safe, they won't learn as much as they could.
 
-And it's so easy to unconsciously use dismissive or diminishing language like "just" or
-"simply" or hand-waving something away when talking about something while you're
-teaching... but that can lead to undermining learners confidence and trust,
-particularly for underrepresented or minority groups within science.
+And it's so easy to unconsciously use dismissive language like saying
+"simply" or hand-waving a topic away when you're teaching. But it can lead to
+undermining learners confidence and trust in themselves, particularly for
+underrepresented or minority groups within science. So constantly self-reflecting
+is really vital to this topic.
 
-For instance, what I do is have a question in the pre-course survey asking
-if they have read the code of conduct, which is also a pre-course task of
-theirs. Then during the first introduction session, I mention that I saw
-everyone say yes to it so I make it clear, this is important, this isn't
-something on the side. Its a key component to the whole learning environment and
-process.
-
-And having this environment also means we engage more of them in getting involved
-as teachers or contributors. Which then solidifies the learning even more.
+For example, I have a question in the pre-course survey asking
+if they have read the code of conduct, which is also a pre-course task.
+Then during the first introduction session, I mention that I've read that
+everyone say yes to that question and I make it clear, this is important, this
+isn't something on the side.
 
 ---
 
@@ -357,6 +336,8 @@ and how to teach. We hope that, structured as it is, anyone can take the course
 and try to teach it themselves to others.
 
 ---
+
+class: middle
 
 # Experiences of effectiveness and impact (within Denmark `r emo::ji("denmark")`)
 
@@ -387,11 +368,11 @@ topics.
 # Summary and recap
 
 1. Have material be online, easily found
-    a. Follow it (almost) exactly, deviate only if necessary
+    - Follow it (almost) exactly, deviate only if necessary
 1. Encourage participants to instruct future workshops
-    a. Provide onboarding documentation and support
+    - Provide onboarding documentation and support
 1. Emphasize code of conduct and the safety of the space to learn
-    a. *Embody* it
+    - *Embody* it
 1. Use and weave in reading, listening, doing, and discussing *in class*
 
 ???
