@@ -1,0 +1,269 @@
+---
+title: "A framework for an open and scalable infrastructure for health data exemplified by the DD2 initiative"
+output:
+  xaringan::moon_reader:
+    lib_dir: libs
+    css: "xaringan-themer.css"
+    nature:
+      slideNumberFormat: ""
+      ratio: "16:9"
+      countIncrementalSlides: false
+---
+
+layout: true
+
+```{r setup, include=FALSE}
+options(htmltools.dir.version = FALSE)
+knitr::opts_chunk$set(
+  echo = FALSE,
+  message = FALSE,
+  warning = FALSE
+)
+
+fa2 <- function(icon) {
+    fontawesome::fa(name = icon, fill = "#2471a3")
+}
+
+image_link <- function(image_path, url, ...) {
+    htmltools::a(
+        href = url,
+        htmltools::img(src = image_path, ...)
+    )
+}
+```
+
+```{css}
+.footer-right {
+    background-color: #FFFFFF;
+    position: absolute;
+    bottom: 8px;
+    right: 5px;
+    height: 60px;
+    width: 30%;
+    font-size: 10pt;
+}
+```
+
+```{r xaringan-themer, include=FALSE}
+library(xaringanthemer)
+style_mono_accent(
+    base_color = "#990033",
+    base_font_size = "20px",
+    text_font_size = "1.1rem",
+    header_font_google = google_font("Merriweather Sans", "300")
+)
+```
+
+.footer-right[
+Project description: [steno-aarhus.github.io/dif-project](https://steno-aarhus.github.io/dif-project)  
+Slides: [slides.lwjohnst.com/steno/2022-01-13](https://slides.lwjohnst.com/steno/2022-01-13/)
+]
+
+---
+
+```{r progress-bar}
+xaringanExtra::use_progress_bar(color = "#990033", location = "top")
+```
+
+```{r logo-sdca}
+xaringanExtra::use_logo(
+  image_url = "../../common/sdca-logo.png",
+  link_url = "https://www.stenoaarhus.dk/",
+  width = "60",
+)
+```
+
+<!-- 30 min, ~20 slides -->
+
+## Purpose of talk and "take home messages"
+
+**Will cover**:
+
+- Introduce the project
+
+- Bring awareness to issue and its importance
+
+- How project will help as a (potential) solution
+
+--
+
+**Won't cover**:
+
+- Any technical details of the project (it's more of a software/data engineering project)
+
+???
+
+Not cover... 
+
+Another caveat, since this is a newly started project, that is way more of the
+computational and technical side maybe many of you are interested in hearing about.
+
+I could talk easily talk about all the technical details of this project for
+many hours, but I will spare you that.
+
+Because of this the talk will be on the shorter side, unless people
+have questions that get more into the details... 
+
+---
+
+## Background: Increasing need in science for...
+
+- Computational tools and technologies
+
+- Secure and reliable IT infrastructure
+
+- Greater openness and transparency
+
+- More reproducibility of studies
+
+- Highly technical skills and knowledge
+
+--
+
+*... especially in relation to data management.*
+
+???
+
+Questions like:
+
+- How do store your data? In what file format?
+- Where do you store your data and how do you name the files?
+- How do you keep track of changes to the data?
+- (For multi-center studies) Who has which datasets and how do you combine them together?
+- How do you or your collaborators find out what variables there are in the data, what do they mean?
+- When there are errors or problems in your data, and you've already published
+with or analyzed on it, how can you easily determine which publications used the
+in correct data and how can you easily update the publications with the correct
+data?
+- How can you easily share your data with colleagues or reviewers to check your 
+findings?
+
+---
+
+## Current barriers to addressing these needs
+
+- Funding agencies don't fully recognize these challenges, so don't provide
+funding
+
+--
+
+- Researchers aren't aware of or understand the issues, or don't have skills to tackle them
+
+--
+
+- People with needed technical skills leave for industry
+
+---
+
+class: middle
+
+## Recent new funding: NNF Data Science Research Infrastructure 5 year grant
+
+### ... which lead to this current project
+
+.footnote[And getting the funding for it.]
+
+???
+
+> Development of new ... methods and technologies within data science, ..., data
+engineering, ...
+
+---
+
+class: middle
+
+## Brief backstory: 
+
+### Application process started by the DD2 study to update their own infrastructure and SDCA was asked to join
+
+???
+
+Not going to go into DD2.
+
+Myself, Alisa, and Annelli were asked to join in the application process
+and we ended up taking the lead on it and expanding it into a project that could
+be used by more than just the DD2 study.
+
+---
+
+## Aims of the Framework
+
+???
+
+These aims may seem vague, but bare with me.
+
+--
+
+1. **Primary aim**: Create and implement an efficient, scalable, and open source
+data infrastructure framework that connects data collectors, researchers,
+clinicians, and other stakeholders, with the data, documentation, and findings
+(starting within the DD2 study)
+
+--
+
+2. **Secondary aim**: Create this framework so that *other research groups and
+companies*, who are unable or can't build something similar, can relatively
+easily implement it and modify as needed for their own purposes.
+
+--
+
+> In short: Make a software product that makes it easier to find, store, and
+use data for research projects, and make it so that it is easy and free to use 
+for others.
+
+???
+
+Again, these might not be really tangible to grasp what this actually means.
+That's where visuals are really powerful.
+
+---
+
+.center[
+![Detailed schematic of the framework for building a data infrastructure for scientific studies.](images/detailed-schematic.svg)
+]
+
+---
+
+## A few example uses of this Framework
+
+1. Solo researcher or a small research group starts a study to have data for
+their PhD students, but have limited funds and technical expertise.
+
+--
+
+2. A small startup company that relies on data collection for business needs to get
+operational quickly, but doesn't yet have funds to hire technical personnel.
+
+--
+
+3. A large multi-center, multi-country study has an aim of widely disseminating
+their data for maximal, and cost-effective, use by their collaborators and others.
+
+???
+
+All of these could use the framework to abide by the best practices in FAIR data
+management.
+
+---
+
+## Guiding principles of Framework
+
+1. Follow and enable FAIR principles
+
+2. Openly licensed and re-usable (e.g. CC-BY) 
+
+3. State-of-the-art principles and tools in software design
+
+4. Friendly to beginner and non-technical users
+
+---
+
+## Short-term plan
+
+> [Full 5 year timeline found on website.](https://steno-aarhus.github.io/dif-project/#deliverables-and-milestones)
+
+- Hire software/data engineers as soon as possible
+
+- Developing "Minimum Viable Product" of first component within ~2 years
+
+- Emphasize making training and documentation targeted to non-technical users throughout project
