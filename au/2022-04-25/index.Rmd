@@ -1,0 +1,201 @@
+---
+# For NCRR
+title: "Workshop on reproducibility and open science"
+output:
+  xaringan::moon_reader:
+    lib_dir: libs
+    css: "xaringan-themer.css"
+    nature:
+      slideNumberFormat: ""
+      ratio: "16:9"
+      countIncrementalSlides: false
+---
+
+layout: true
+
+```{r setup, include=FALSE}
+options(htmltools.dir.version = FALSE)
+knitr::opts_chunk$set(
+  echo = FALSE,
+  message = FALSE,
+  warning = FALSE
+)
+
+fa2 <- function(icon) {
+    fontawesome::fa(name = icon, fill = "#2471a3")
+}
+
+image_link <- function(image_path, url, ...) {
+    htmltools::a(
+        href = url,
+        htmltools::img(src = image_path, ...)
+    )
+}
+```
+
+```{css}
+.footer-right {
+    background-color: #FFFFFF;
+    position: absolute;
+    bottom: 8px;
+    right: 5px;
+    height: 60px;
+    width: 30%;
+    font-size: 10pt;
+}
+```
+
+```{r xaringan-themer, include=FALSE}
+library(xaringanthemer)
+style_mono_accent(
+    base_color = "#990033",
+    base_font_size = "20px",
+    text_font_size = "1.1rem",
+    header_font_google = google_font("Merriweather Sans", "300")
+)
+```
+
+.footer-right[
+[slides.lwjohnst.com/au/2022-04-25](https://slides.lwjohnst.com/au/2022-04-25/)
+]
+
+---
+
+```{r progress-bar}
+xaringanExtra::use_progress_bar(color = "#990033", location = "top")
+```
+
+```{r logo-sdca}
+xaringanExtra::use_logo(
+  image_url = "../../common/sdca-logo.png",
+  link_url = "https://www.stenoaarhus.dk/",
+  width = "60",
+)
+```
+
+<!-- 30 min, ~20 slides -->
+
+Outline
+
+
+---
+
+- My work and R courses?
+    - DDA
+    - I know that several people from NCRR have taken my R course
+
+---
+
+- Assumptions about audience, expectations from me
+    - not about me, or this lecture
+    - Some might be "inflamatory" (better word)
+    
+---
+
+## Purpose ...?
+
+---
+
+class: middle
+
+**Take-home message:**
+
+# Publicly share your code from your research
+
+???
+
+And I will add, share you code at *any* stage of your research. From beginning,
+to end, to middle.
+
+---
+
+- Lifecycle of science (image?)
+
+---
+
+## Reproducibility
+
+- (raise of hands) how many know the difference between reproducibility and replicability?
+    - Other words for it are analytic reproducibility, computational reproducibility,
+    or reproducible data analysis
+    - Repro is spectrum (image)
+        - Part of this workshop and a lot of my teaching and work is to get that 
+        us as a community to move close to this end
+    - Key concept: Using the same data to *independently* get the same result
+    - Expand, that reproducibility is about the HOW EXACTLY a finding was found
+
+---
+
+# Exercise: What is your workflow for doing your research?
+
+(Time: 10 min)
+
+- (10 min) Exercise: What is your workflow? Explicit, detailed
+    - How to share what they think of?
+
+---
+
+
+- Return to repro is spectrum (image) and lifecycle, but it has more detail (folders, etc)
+    - E.g. include more like where project is saved, how data location is referenced,
+    how changes to files are tracked, how versions of files are kept/organized,
+    how collaboration is done on those files?
+        - (use example of `setwd()`)
+    - And if more reproducible, if things change, its easier to update later work
+    with literally a push of a button (or single command)
+    - Also about *inspectability*
+    - Key thing we're missing here... *independent*
+    
+- Image of "time-cost" curve?
+    - Initial investment is large, longer term payoff is high
+
+---
+
+- Open science is spectrum (image)
+
+---
+
+- Drill down, specific to software use for analysis, data management, etc.
+    - And open protocol/analysis plan, open data format
+    - E.g. AU has institutionally approved a closed source statistical software (Stata),
+    which by definition, makes work less open and reproducible (someone else needs a Stata license to run your software), unlike open source software like R where anyone can install and run it.
+
+---
+
+## Exercise: What might be some *benefits* to being more reproducible and open at NCRR?
+
+(Time: 5 min)
+
+(e.g. organizational, group-level, technical, knowledge capacity, trainee)
+
+---
+
+## Exercise: What might be some *barriers* to being more reproducible and open at NCRR?
+
+(Time: 5 min)
+
+(e.g. organizational like AU pushing and supporting a closed source statistical
+software, group-level, technical, knowledge capacity)
+
+---
+
+- (10 min) Exercise: Potential immediate and longer term solutions for being open
+and reproducible within your own groups
+
+---
+
+
+- Potential solutions (social and technical):
+    - Code reviews
+    - Pair programming/analysis
+    - Reviewing (pre-analysis) *detailed* and explicit analysis plan review
+    - Work with DST to make it easier to download code from server to eventually share
+    
+
+- And of course, back to the take-home message:
+    - Share your code along with your research output
+        - GitHub, Zenodo, etc (use slides from r-cubed)
+        - Follow a standard folder and file structure
+        - Use reproducible document systems (e.g. R Markdown)
+
+
