@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>Workshop on reproducibility and open science</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Luke W. Johnston" />
+    <script src="libs/header-attrs/header-attrs.js"></script>
+    <script src="libs/xaringanExtra-progressBar/progress-bar.js"></script>
+    <link rel="stylesheet" href="xaringan-themer.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+# Workshop on reproducibility and open science
+### Luke W. Johnston
+
+---
+
+
+layout: true
+
+
+
+&lt;style type="text/css"&gt;
+.footer-left {
+    background-color: #FFFFFF;
+    position: absolute;
+    bottom: 8px;
+    left: 40px;
+    height: 60px;
+    width: 30%;
+    font-size: 12pt;
+}
+
+&lt;/style&gt;
+
+
+
+.footer-left[
+Slides: [slides.lwjohnst.com/au/2022-04-25](https://slides.lwjohnst.com/au/2022-04-25/)
+]
+
+---
+
+<style>.xe__progress-bar__container {
+  top:0;
+  opacity: 1;
+  position:absolute;
+  right:0;
+  left: 0;
+}
+.xe__progress-bar {
+  height: 0.25em;
+  background-color: #990033;
+  width: calc(var(--slide-current) / var(--slide-total) * 100%);
+}
+.remark-visible .xe__progress-bar {
+  animation: xe__progress-bar__wipe 200ms forwards;
+  animation-timing-function: cubic-bezier(.86,0,.07,1);
+}
+@keyframes xe__progress-bar__wipe {
+  0% { width: calc(var(--slide-previous) / var(--slide-total) * 100%); }
+  100% { width: calc(var(--slide-current) / var(--slide-total) * 100%); }
+}</style>
+
+<div>
+<style type="text/css">.xaringan-extra-logo {
+width: 60px;
+height: 128px;
+z-index: 0;
+background-image: url(../../common/sdca-logo.png);
+background-size: contain;
+background-repeat: no-repeat;
+position: absolute;
+top:1em;right:1em;
+}
+</style>
+<script>(function () {
+  let tries = 0
+  function addLogo () {
+    if (typeof slideshow === 'undefined') {
+      tries += 1
+      if (tries < 10) {
+        setTimeout(addLogo, 100)
+      }
+    } else {
+      document.querySelectorAll('.remark-slide-content:not(.title-slide):not(.inverse):not(.hide_logo)')
+        .forEach(function (slide) {
+          const logo = document.createElement('a')
+          logo.classList = 'xaringan-extra-logo'
+          logo.href = 'https://www.stenoaarhus.dk/'
+          slide.appendChild(logo)
+        })
+    }
+  }
+  document.addEventListener('DOMContentLoaded', addLogo)
+})()</script>
+</div>
+
+&lt;!-- 
+70 min: 
+
+- 2 * 10 min activity
+- 2 * 
+--&gt;
+
+???
+
+- My work and R courses?
+    - DDA
+    - I know that several people from NCRR have taken my R course
+
+--
+
+## Outline
+
+- Learning objectives
+
+- Main take-home message
+
+- Introduce and describe reproducibility and open science
+
+- Activities to discuss and brainstorm
+
+- Resources
+
+---
+
+
+## Learning objectives of this workshop: 
+
+1. Become aware of what reproducible and open practices are
+
+--
+
+2. Hear and learn about what the experiences and thoughts of your colleagues are
+
+--
+
+3. Learn some simple potential ways to become more open and reproducible
+
+--
+
+4. Identify ways to incorporate these practices at NCRR (1)
+
+.footnote[(1): NCRR and any work on DST has unique challenges.]
+
+???
+
+
+---
+
+class: middle
+
+**Take-home message:**
+
+## Publicly share your code from your research
+
+???
+
+And I will add, share you code at *any* stage of your research. From beginning,
+to end, to middle.
+
+---
+
+class: middle
+
+## Why are reproducible and open practices important right now?
+
+**They are part of multiple large trends like team science, computing, meta-research, higher quality/rigor**
+
+???
+
+(Raise of hands) How many could describe the difference between reproducibility
+and replicability?
+
+---
+
+class: top
+
+## Reproducibility: Same data, same analysis, same result? 
+
+
+
+&lt;img src="images/fig-reproducibility-1.png" width="85%" style="display: block; margin: auto;" /&gt;
+
+- Also called analytic/computational reproducibility or reproducible data
+analysis.
+- *Independently* reproduce results in paper based on same analysis and data.
+
+---
+
+class: top
+
+## Reproducibility is a spectrum
+
+&lt;img src="images/spectrum-reproducibility.svg" width="85%" style="display: block; margin: auto;" /&gt;
+
+.footnote[
+Just as much about *inspectability* as it is about *actual* reproducibility.
+]
+
+???
+
+Part of this workshop and a lot of my teaching and work is to get that us as a
+community to move closer to this end.
+
+Reproducibility is about HOW EXACTLY a finding was found in a study.
+
+---
+
+## 6 min activity: Think about your research workflow, then share
+
+- For 4 min, *to yourself*, think what your workflow is *exactly* like for doing
+research and add these thoughts to the Menti.
+    - Where do you save your files? How do you name your files?
+    - What apps do you open at the start of the day, how do you know which
+    files to working on, and where you left off?
+    - How do you keep track of tasks to do?
+    - How do you collaborate and coordinate with others? Email? Open files on a
+    shared folder?
+
+- For 2 min, as the whole group we'll briefly go over some of the workflow items.
+
+???
+
+This helps to get us thinking and mentally primed for later activities.
+
+---
+
+## Reproducibility as a spectrum
+
+&lt;img src="images/spectrum-reproducibility.svg" width="80%" style="display: block; margin: auto;" /&gt;
+
+--
+
+\+ One folder per manuscript (with associated files)  
+\+ Relative file paths used (`data/project-data.csv` vs `C:/User1/some-data-file.csv`)  
+\+ Version controlled (like with Git)  
+\+ Automated and explicit pipeline management (re-generate results with single command)  
+\+ Reproducible document system
+
+???
+
+- And if more reproducible, if things change, its easier to update later work
+with literally a push of a button (or single command)
+
+- But, we're missing key component here...
+
+---
+
+class: middle
+
+## Key concept: Using the same data to *independently* get the same result
+
+???
+
+If you were to give me your code and I had access to your data, would 
+I know how you got any given result presented in your paper?
+
+---
+
+## Open science occurs at all stages of research
+
+&lt;img src="images/fig-open-science-1.png" width="80%" style="display: block; margin: auto;" /&gt;
+
+???
+
+Components of open science are in all stages of research.
+
+---
+
+## Open science is also a spectrum 
+
+&lt;img src="images/spectrum-open-science.svg" width="80%" style="display: block; margin: auto;" /&gt;
+
+\+ Open access (like preprints)  
+\+ Open protocol  
+\+ **Open data/data format**  
+\+ **Open analysis plan/code**  
+\+ **Open source (like software used)** (1)
+
+.footnote[(1): Example, AU institutionally approves and supports a closed source
+software (Stata), reducing reproducibility.]
+
+???
+
+Focus down to reproducibility side (data, code).
+
+E.g. AU has institutionally approved a closed source statistical software
+(Stata), which by definition, makes work less open and reproducible (someone
+else needs a Stata license to run your software), unlike open source software
+like R where anyone can install and run it.
+
+---
+
+## 5 min activity: Think and share about potential *benefits*
+
+&gt; What might be some *benefits* to being more reproducible and open at NCRR
+at the organizational, group, and/or individual level (from the trainee to those
+more established)?
+
+- For 1 min, *to yourself*, think about the question.
+
+- For 2 min, discuss with your neighbour what you've thought about.
+
+- For 2 min, we'll have a group-wide sharing of some of the thoughts.
+
+---
+
+## 5 min activity: Think and share about potential *barriers*
+
+&gt; What might be some *barriers* to being more reproducible and open at NCRR
+at the organizational, group, and/or individual level (from knowledge and technical
+capacity, to what gets supported and what doesn't)?
+
+- For 1 min, *to yourself*, think about the question.
+
+- For 2 min, discuss with your neighbour what you've thought about.
+
+- For 2 min, we'll have a group-wide sharing of some of the thoughts.
+
+---
+
+## Possible social and technical actions to moving toward openness and reproducibility 
+
+--
+
+.pull-left[
+- Do code reviews, pair programming/analysis
+
+- Reviewing (pre-analysis) *detailed*
+    - Data cleaning plan 
+    - Data analysis plan
+
+- Work with DST to support reproducible/open systems (within law)
+]
+    
+--
+
+.pull-left[
+- **Share your code with your research output** using GitHub and Zenodo
+
+- Decide on standard folder and file structure for each project/manuscript
+]
+
+???
+
+Now that we're getting more into thinking about benefits and barriers, we
+can get into thinking about potential actions to take to be more reproducible and 
+open. Before getting into brainstorming activities, I want to give you some
+ideas for actions to help prime your thinking.
+
+- Work with/pressure DST to make it easier to download code from server to
+eventually share (something we'll start doing more at SDCA)
+  
+---
+
+## 10 min activity: Think, brainstorm, then share *short-term, easier* options
+
+&gt; What are some potential options that you, your group, and NCRR could
+implement *relatively easily and within the short-term (&lt;1 year)* to be more
+open and reproducible?
+
+- For 2 min, think about ideas to this question (and write down if you need to)
+
+- For 3 min, brainstorm with your neighbour(s) on what you've all thought about
+
+- For 2 min, decide on one person to write down some of the ideas in the Mentimeter
+
+- For 3 min, we'll briefly go over and discuss some ideas from the Mentimeter
+
+---
+
+## 10 min activity: Think, brainstorm, then share *long-term, more difficult* options
+
+&gt; What are some potential options that you, your group, and NCRR could implement
+that are more difficult and within the longer-term (&gt;2 years) to be more open
+and reproducible?
+
+- For 2 min, think about ideas to this question (and write down if you need to)
+
+- For 3 min, brainstorm with your neighbour(s) on what you've all thought about
+
+- For 2 min, decide on one person to write down some of the ideas in the Mentimeter
+
+- For 3 min, we'll briefly go over and discuss some ideas from the Mentimeter
+
+---
+
+## Resources
+
+- Introduction course to Reproducible Research in R: 
+[r-cubed.rostools.org](https://r-cubed.rostools.org/)
+    - [Further learning resources](https://r-cubed.rostools.org/resources.html#further-learning)
+
+- Intermediate course to Reproducible Research in R:
+[r-cubed-intermediate.rostools.org](https://r-cubed-intermediate.rostools.org/)
+    - [Further learning resources](https://r-cubed-intermediate.rostools.org/resources.html#for-continued-learning)
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"slideNumberFormat": "",
+"ratio": "16:9",
+"countIncrementalSlides": false
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>

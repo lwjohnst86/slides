@@ -16,5 +16,9 @@ Imports:
     xaringan,
     xaringanExtra (>= 0.5.2),
     xaringanthemer
-Remotes:  
+Remotes: 
     gadenbuie/xaringanExtra
+Suggests: 
+    Cairo,
+    emojifont,
+    svglite
