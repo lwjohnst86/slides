@@ -19,16 +19,10 @@ knitr::opts_chunk$set(
   message = FALSE,
   warning = FALSE
 )
+library(emoji)
 
 fa2 <- function(icon) {
-    fontawesome::fa(name = icon, fill = "#2471a3")
-}
-
-image_link <- function(image_path, url, ...) {
-    htmltools::a(
-        href = url,
-        htmltools::img(src = image_path, ...)
-    )
+    fontawesome::fa(name = icon, fill = "#da9100")
 }
 ```
 
@@ -40,7 +34,7 @@ image_link <- function(image_path, url, ...) {
     right: 5px;
     height: 60px;
     width: 30%;
-    font-size: 10pt;
+    font-size: 11pt;
 }
 ```
 
@@ -49,14 +43,15 @@ library(xaringanthemer)
 style_mono_accent(
     base_color = "#990033",
     base_font_size = "20px",
-    text_font_size = "1.1rem",
+    text_font_size = "1.2rem", 
+    text_font_google = google_font("Nanum Gothic"),
     header_font_google = google_font("Merriweather Sans", "300")
 )
 ```
 
 .footer-right[
 Project description: [steno-aarhus.github.io/dif-project](https://steno-aarhus.github.io/dif-project)  
-Slides: [slides.lwjohnst.com/steno/2022-01-13](https://slides.lwjohnst.com/steno/2022-01-13/)
+Slides: [slides.lwjohnst.com/steno/2022-04-26](https://slides.lwjohnst.com/steno/2022-04-26/)
 ]
 
 ---
@@ -73,122 +68,62 @@ xaringanExtra::use_logo(
 )
 ```
 
-<!-- 30 min, ~20 slides -->
-
-## Purpose of talk and "take home messages"
-
-**Will cover**:
-
-- Introduce the project
-
-- Bring awareness to issue and its importance
-
-- How project will help as a (potential) solution
-
---
-
-**Won't cover**:
-
-- Any technical details of the project (it's more of a software/data engineering project)
-
 ???
 
-Not cover... 
+## Setting the stage
 
-Another caveat, since this is a newly started project, that is way more of the
-computational and technical side maybe many of you are interested in hearing about.
+Imagine that you are a new professor, just starting getting a group and research
+programme going...
+1. Solo researcher or a small research group starts a study to have data for
+their PhD students, but have limited funds and technical expertise.
 
-I could talk easily talk about all the technical details of this project for
-many hours, but I will spare you that.
+- Or, you are a startup trying get investment and build income quickly... in
+the research realm so need to follow best practices/requirements for data management
+2. A small startup company that relies on data collection for business needs to get
+operational quickly, but doesn't yet have funds to hire technical personnel.
 
-Because of this the talk will be on the shorter side, unless people
-have questions that get more into the details... 
+- Or, you are a large, multi-national/center consortium that wants to keep better
+track of who's working on what, and how to discover and share data added to the
+project...
+3. A large multi-center, multi-country study has an aim of widely disseminating
+their data for maximal, and cost-effective, use by their collaborators and others.
+
+All of these could use the framework to abide by the best practices in FAIR data
+management.
+
+
+## Brainstorming
+
+- "Set the stage"
+- Intro product and aims
+
+- "But Luke, why is that important? We just save the data on the
+computer and get everyone working on that."
+
+- Barriers
+    
+- Users perspective
+    - User 1: data collection, emoji lab tech, etc
+    - User 2: Grad student, postdocs, researchers not part of group?
+    - User 3: Public, other researchers, your own group
+    - User 4: Admin or PI, needing to keep track of things
+
+- Schematic, data engineering
+
+- What else exists like this? "Don't these exist right now?" or "What's
+different about this?"
+
+
+- Plans for project, other plans
+    - Team, RSE
 
 ---
 
-## Background: Increasing need in science for...
-
-- Computational tools and technologies
-
-- Secure and reliable IT infrastructure
-
-- Greater openness and transparency
-
-- More reproducibility of studies
-
-- Highly technical skills and knowledge
-
---
-
-*... especially in relation to data management.*
+## Data Infrastructure Framework (DIF) Project
 
 ???
 
-Questions like:
-
-- How do store your data? In what file format?
-- Where do you store your data and how do you name the files?
-- How do you keep track of changes to the data?
-- (For multi-center studies) Who has which datasets and how do you combine them together?
-- How do you or your collaborators find out what variables there are in the data, what do they mean?
-- When there are errors or problems in your data, and you've already published
-with or analyzed on it, how can you easily determine which publications used the
-in correct data and how can you easily update the publications with the correct
-data?
-- How can you easily share your data with colleagues or reviewers to check your 
-findings?
-
----
-
-## Current barriers to addressing these needs
-
-- Funding agencies don't fully recognize these challenges, so don't provide
-funding
-
---
-
-- Researchers aren't aware of or understand the issues, or don't have skills to tackle them
-
---
-
-- People with needed technical skills leave for industry
-
----
-
-class: middle
-
-## Recent new funding: NNF Data Science Research Infrastructure 5 year grant
-
-### ... which lead to this current project
-
-.footnote[And getting the funding for it.]
-
-???
-
-> Development of new ... methods and technologies within data science, ..., data
-engineering, ...
-
----
-
-class: middle
-
-## Brief backstory: 
-
-### Application process started by the DD2 study to update their own infrastructure and SDCA was asked to join
-
-???
-
-Not going to go into DD2.
-
-Myself, Alisa, and Annelli were asked to join in the application process
-and we ended up taking the lead on it and expanding it into a project that could
-be used by more than just the DD2 study.
-
----
-
-## Aims of the Framework
-
-???
+We're still working out a better name, but for now we're calling it DIF
 
 These aims may seem vague, but bare with me.
 
@@ -208,13 +143,100 @@ easily implement it and modify as needed for their own purposes.
 --
 
 > In short: Make a software product that makes it easier to find, store, and
-use data for research projects, and make it so that it is easy and free to use 
-for others.
+use data for research projects that abide by best practices, and make it so
+that it is easy and free to use for others.
 
 ???
 
 Again, these might not be really tangible to grasp what this actually means.
-That's where visuals are really powerful.
+
+---
+
+## Why is this important? `r emoji("thinking")`
+
+???
+
+Increasing need in science for... 
+
+- Computational tools and technologies
+- Secure and reliable IT infrastructure
+- Greater openness and transparency
+- More reproducibility of studies
+- Highly technical skills and knowledge
+*... especially in relation to data management.*
+
+Questions like:
+
+- How do store your data? In what file format?
+- Where do you store your data and how do you name the files?
+- How do you keep track of changes to the data?
+- (For multi-center studies) Who has which datasets and how do you combine them together?
+- How do you or your collaborators find out what variables there are in the data, what do they mean?
+- When there are errors or problems in your data, and you've already published
+with or analyzed on it, how can you easily determine which publications used the
+in correct data and how can you easily update the publications with the correct
+data?
+- How can you easily share your data with colleagues or reviewers to check your 
+findings?
+
+---
+
+class: middle
+
+## Past and current barriers `r fa2("lock")`: Lack of funding, awareness, understanding, skill, and knowledge
+
+???
+
+- Funding agencies don't fully recognize these challenges, so don't provide
+funding
+- Researchers aren't aware of or understand the issues, or don't have skills to tackle them
+- People with needed technical skills leave for industry
+
+---
+
+class: middle
+
+## Recent new funding: NNF Data Science Research Infrastructure 5 year grant
+
+.footnote[Which lead to this DIF Project and getting the funding for it `r emoji("star-struck")`]
+
+???
+
+Development of new ... methods and technologies within data science, ..., data
+engineering, ...
+
+---
+
+## Guiding principles `r fa2("compass")`
+
+1. Follow and enable FAIR principles
+
+2. Openly licensed and re-usable (e.g. CC-BY, MIT) 
+
+3. State-of-the-art principles and tools in software and UI design
+
+4. Friendly to beginner and non-technical users
+
+???
+
+---
+
+class: middle
+
+## Four users `r fa2("users")`
+
+---
+
+## User 1: Data input from `r emoji("woman_office_worker_medium_skin_tone")` `r emoji("man_health_worker")` `r emoji("scientist")`
+
+--
+
+## User 2: Those who will use the data `r emoji("woman_scientist_medium_skin_tone")` `r emoji("student")`
+
+--
+
+## User 3: scientist, student, person, person raising hand
+## User 4: office worker...
 
 ---
 
@@ -224,37 +246,17 @@ That's where visuals are really powerful.
 
 ---
 
-## A few example uses of this Framework
+class: middle
 
-1. Solo researcher or a small research group starts a study to have data for
-their PhD students, but have limited funds and technical expertise.
+## What similar infrastructures exist?
 
---
+Most large companies, UK Biobank
 
-2. A small startup company that relies on data collection for business needs to get
-operational quickly, but doesn't yet have funds to hire technical personnel.
-
---
-
-3. A large multi-center, multi-country study has an aim of widely disseminating
-their data for maximal, and cost-effective, use by their collaborators and others.
+... but have the product be the infrastructure itself
 
 ???
 
-All of these could use the framework to abide by the best practices in FAIR data
-management.
-
----
-
-## Guiding principles of Framework
-
-1. Follow and enable FAIR principles
-
-2. Openly licensed and re-usable (e.g. CC-BY) 
-
-3. State-of-the-art principles and tools in software design
-
-4. Friendly to beginner and non-technical users
+Show it off?
 
 ---
 
@@ -262,8 +264,14 @@ management.
 
 > [Full 5 year timeline found on website.](https://steno-aarhus.github.io/dif-project/#deliverables-and-milestones)
 
-- Hire software/data engineers as soon as possible
+- Hire software/data engineers and build team as soon as possible
 
 - Developing "Minimum Viable Product" of first component within ~2 years
 
 - Emphasize making training and documentation targeted to non-technical users throughout project
+
+---
+
+class: middle
+
+## Interested in being involved or learning more? Let us know!
