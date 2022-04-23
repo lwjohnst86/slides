@@ -26,8 +26,8 @@ knitr::opts_chunk$set(
   fig.align = "center"
 )
 
-fa2 <- function(icon) {
-    fontawesome::fa(name = icon, fill = "#2471a3")
+fa2 <- function(icon, fill = "#da9100") {
+    fontawesome::fa(name = icon, fill = fill)
 }
 ```
 
@@ -54,7 +54,8 @@ style_mono_accent(
 )
 ```
 
-```{r data-prep-for-figures}
+```{r data-prep-for-figures, include=FALSE}
+library(emoji)  
 library(ggplot2)  
 library(emojifont)  
 library(tidyverse)
@@ -107,6 +108,7 @@ plot_research_stages <- function(data) {
         coord_equal() +
         theme_minimal() +
         theme(
+            plot.margin = margin(t = -3, l = -0.5),
             text = element_text(size = 12),
             axis.title.x = element_blank(),
             axis.title.y = element_blank(),
@@ -116,7 +118,8 @@ plot_research_stages <- function(data) {
 ```
 
 .footer-left[
-Slides: [slides.lwjohnst.com/au/2022-04-25](https://slides.lwjohnst.com/au/2022-04-25/)
+Slides: [slides.lwjohnst.com/au/2022-04-25](https://slides.lwjohnst.com/au/2022-04-25/)  
+Licensed under CC-BY `r fa2("creative-commons-by", "#990033")`
 ]
 
 ---
@@ -138,17 +141,18 @@ xaringanExtra::use_logo(
 
 - 2 * 10 min activity
 - 2 * 
--->
 
-???
+Introduce myself and my work.
 
 - My work and R courses?
     - DDA
     - I know that several people from NCRR have taken my R course
 
+-->
+
 --
 
-## Outline
+## `r fa2("list", "#990033")` Outline
 
 - Learning objectives
 
@@ -173,16 +177,13 @@ xaringanExtra::use_logo(
 
 --
 
-3. Learn some simple potential ways to become more open and reproducible
+3. Learn about some simple ways to become more open and reproducible
 
 --
 
-4. Identify ways to incorporate these practices at NCRR (1)
+4. Identify ways to adopt some of these practices at NCRR (1)
 
 .footnote[(1): NCRR and any work on DST has unique challenges.]
-
-???
-
 
 ---
 
@@ -201,7 +202,7 @@ to end, to middle.
 
 class: middle
 
-## Why are reproducible and open practices important right now?
+## Why are reproducible and open practices important right now? `r emoji("thinking")`
 
 **They are part of multiple large trends like team science, computing, meta-research, higher quality/rigor**
 
@@ -212,7 +213,7 @@ and replicability?
 
 ---
 
-## Reproducibility: Same data, same analysis, same result? 
+## Reproducibility: Same data + analysis = same result? 
 
 ```{r fig-reproducibility, out.width="85%", fig.width=6, fig.height=2}
 study_df %>% 
@@ -229,7 +230,7 @@ analysis.
 ## Reproducibility is a spectrum
 
 ```{r fig-spectrum-reproducibility, out.width="80%"}
-knitr::include_graphics("images/spectrum-reproducibility.svg")
+knitr::include_graphics("images/spectrum-reproducibility.png")
 ```
 
 .footnote[
@@ -245,10 +246,10 @@ Reproducibility is about HOW EXACTLY a finding was found in a study.
 
 ---
 
-## 6 min activity: Think about your research workflow, then share
+## 6 min activity: Think `r emoji("thought_balloon")`about your research workflow, then share `r fa2("comments")`
 
 - For 4 min, *to yourself*, think what your workflow is *exactly* like for doing
-research. As you think of them, add them to the Mentimeter, until the time runs.
+research. As you think of them, add them to the Mentimeter, until the time runs out.
     - Where do you save your files? How do you name your files?
     - What apps do you use?
     - How do you know which files to work on and where you left off?
@@ -266,7 +267,7 @@ This helps to get us thinking and mentally primed for later activities.
 ## Reproducibility as a spectrum
 
 ```{r fig-spectrum-reproducibility-2, out.width="80%"}
-knitr::include_graphics("images/spectrum-reproducibility.svg")
+knitr::include_graphics("images/spectrum-reproducibility.png")
 ```
 
 --
@@ -279,8 +280,15 @@ knitr::include_graphics("images/spectrum-reproducibility.svg")
 
 ???
 
+- I wanted you to think about your workflow so you can start appreciating
+how even small things can be changed to improve reproducibility.
+
 - And if more reproducible, if things change, its easier to update later work
 with literally a push of a button (or single command)
+
+- Some things are easier to do than others, and some require more technical
+knowledge and skill than most researchers have the time or motivation to
+acquire. (More about encouraging these skills).
 
 - But, we're missing key component here...
 
@@ -288,7 +296,7 @@ with literally a push of a button (or single command)
 
 class: middle
 
-## Key concept: Using the same data to *independently* get the same result
+## Key `r fa2("key")` component: Using the same data and analysis to *independently* get the same result
 
 ???
 
@@ -313,7 +321,7 @@ Components of open science are in all stages of research.
 ## Open science is also a spectrum 
 
 ```{r fig-spectrum-open-science, out.width="80%"}
-knitr::include_graphics("images/spectrum-open-science.svg")
+knitr::include_graphics("images/spectrum-open-science.png")
 ```
 
 \+ Open access (like preprints)  
@@ -336,9 +344,9 @@ like R where anyone can install and run it.
 
 ---
 
-## 5 min activity: Think and share about potential *benefits*
+## 5 min activity: Think `r emoji("thought_balloon")` and share `r fa2("comments")` about potential *benefits*
 
-> What might be some *benefits* to being more reproducible and open at NCRR
+> What might be some ***benefits*** to being more reproducible and open at NCRR
 at the organizational, group, and/or individual level (from the trainee to those
 more established)?
 
@@ -350,9 +358,9 @@ more established)?
 
 ---
 
-## 5 min activity: Think and share about potential *barriers*
+## 5 min activity: Think `r emoji("thought_balloon")` and share `r fa2("comments")` about potential *barriers*
 
-> What might be some *barriers* to being more reproducible and open at NCRR
+> What might be some ***barriers*** to being more reproducible and open at NCRR
 at the organizational, group, and/or individual level (from knowledge and technical
 capacity, to what gets supported and what doesn't)?
 
@@ -375,13 +383,13 @@ capacity, to what gets supported and what doesn't)?
     - Data cleaning plan 
     - Data analysis plan
 
-- Work with DST to support reproducible/open systems (within law)
+- Discuss with DST to support reproducible/open systems (within law)
 ]
     
 --
 
 .pull-left[
-- **Share your code with your research output** using GitHub and Zenodo
+- **Publicly link your code with your research output** using GitHub and Zenodo
 
 - Decide on standard folder and file structure for each project/manuscript
 ]
@@ -398,7 +406,7 @@ eventually share (something we'll start doing more at SDCA)
   
 ---
 
-## 10 min activity: Think, brainstorm, then share *short-term, easier* options
+## 10 min activity: Think `r emoji("thought_balloon")`, brainstorm, then share `r fa2("comments")` *short-term, easier* options
 
 > What are some potential options that you, your group, and NCRR could
 implement *relatively easily and within the short-term (<1 year)* to be more
@@ -414,7 +422,7 @@ open and reproducible?
 
 ---
 
-## 10 min activity: Think, brainstorm, then share *long-term, more difficult* options
+## 10 min activity: Think `r emoji("thought_balloon")`, brainstorm, then share `r fa2("comments")` *long-term, more difficult* options
 
 > What are some potential options that you, your group, and NCRR could implement
 that are *more difficult and within the longer-term (>2 years)* to be more open
