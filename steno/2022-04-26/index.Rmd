@@ -30,8 +30,8 @@ fa2 <- function(icon) {
 .footer-right {
     background-color: #FFFFFF;
     position: absolute;
-    bottom: 8px;
-    right: 5px;
+    bottom: 10px;
+    right: 8px;
     height: 60px;
     width: 30%;
     font-size: 11pt;
@@ -50,7 +50,7 @@ style_mono_accent(
 ```
 
 .footer-right[
-Project description: [steno-aarhus.github.io/dif-project](https://steno-aarhus.github.io/dif-project)  
+Website: [steno-aarhus.github.io/dif-project](https://steno-aarhus.github.io/dif-project)  
 Slides: [slides.lwjohnst.com/steno/2022-04-26](https://slides.lwjohnst.com/steno/2022-04-26/)
 ]
 
@@ -73,49 +73,22 @@ xaringanExtra::use_logo(
 ## Setting the stage
 
 Imagine that you are a new professor, just starting getting a group and research
-programme going...
-1. Solo researcher or a small research group starts a study to have data for
-their PhD students, but have limited funds and technical expertise.
+programme going... or solo researcher or a small research group starts a study
+to have data for their PhD students, but have limited funds and technical
+expertise.
 
-- Or, you are a startup trying get investment and build income quickly... in
-the research realm so need to follow best practices/requirements for data management
-2. A small startup company that relies on data collection for business needs to get
+- Or, you are a small startup company trying get investment and build income
+quickly... in the research realm so need to follow best practices/requirements
+for data management... relies on data collection for business. Needs to get
 operational quickly, but doesn't yet have funds to hire technical personnel.
 
 - Or, you are a large, multi-national/center consortium that wants to keep better
 track of who's working on what, and how to discover and share data added to the
-project...
-3. A large multi-center, multi-country study has an aim of widely disseminating
-their data for maximal, and cost-effective, use by their collaborators and others.
+project... or has an aim of widely disseminating their data for maximal, and
+cost-effective, use by their collaborators and others.
 
 All of these could use the framework to abide by the best practices in FAIR data
 management.
-
-
-## Brainstorming
-
-- "Set the stage"
-- Intro product and aims
-
-- "But Luke, why is that important? We just save the data on the
-computer and get everyone working on that."
-
-- Barriers
-    
-- Users perspective
-    - User 1: data collection, emoji lab tech, etc
-    - User 2: Grad student, postdocs, researchers not part of group?
-    - User 3: Public, other researchers, your own group
-    - User 4: Admin or PI, needing to keep track of things
-
-- Schematic, data engineering
-
-- What else exists like this? "Don't these exist right now?" or "What's
-different about this?"
-
-
-- Plans for project, other plans
-    - Team, RSE
 
 ---
 
@@ -152,7 +125,11 @@ Again, these might not be really tangible to grasp what this actually means.
 
 ---
 
+class: middle
+
 ## Why is this important? `r emoji("thinking")`
+
+**Large trends across science in computing, data quantity, accountability, transparency**
 
 ???
 
@@ -207,7 +184,7 @@ engineering, ...
 
 ---
 
-## Guiding principles `r fa2("compass")`
+## `r fa2("compass")` Guiding principles 
 
 1. Follow and enable FAIR principles
 
@@ -223,20 +200,19 @@ engineering, ...
 
 class: middle
 
-## Four users `r fa2("users")`
+## Targeted to 4 users `r fa2("users")`
 
 ---
 
-## User 1: Data input from `r emoji("woman_office_worker_medium_skin_tone")` `r emoji("man_health_worker")` `r emoji("scientist")`
+class: middle 
 
---
+## User 1: Data input from `r emoji("woman_office_worker_medium_skin_tone")` `r emoji("man_health_worker")` `r emoji("scientist")` `r emoji("computer")`
 
 ## User 2: Those who will use the data `r emoji("woman_scientist_medium_skin_tone")` `r emoji("student")`
 
---
+## User 3: Exploring projects and results `r emoji("person")` `r emoji("person_raising_hand")`
 
-## User 3: scientist, student, person, person raising hand
-## User 4: office worker...
+## User 4: Administrators `r emoji("office_worker")`
 
 ---
 
@@ -250,13 +226,21 @@ class: middle
 
 ## What similar infrastructures exist?
 
-Most large companies, UK Biobank
+Found in most large companies, some research based ones (UK Biobank)...
 
-... but have the product be the infrastructure itself
+... but few have the product be the infrastructure itself
 
 ???
 
 Show it off?
+
+One plan is to do as much of a search as possible for similar projects. Unlike 
+scientific papers, it's not as easy to find software projects.
+
+We know of two similar projects, one in Oslo related to a brain mapping project
+and another in the US called gen3 that's managed by the University of Chicago.
+Depending on how they fit our needs and aims, we might "fork" their projects and
+contribute back to them. (Explain "forking").
 
 ---
 
