@@ -139,6 +139,14 @@ xaringanExtra::use_logo(
 <!-- 
 70 min: 
 
+
+15
++ 6 (activity) = 21
++ 10 = 31
++ 5*2 (activity) = 41
++ 5 = 46
++ 10*2 (activity) = 66
+
 - 2 * 10 min activity
 - 2 * 
 
@@ -149,8 +157,6 @@ Introduce myself and my work.
     - I know that several people from NCRR have taken my R course
 
 -->
-
---
 
 ## `r fa2("list", "#990033")` Outline
 
