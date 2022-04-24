@@ -15,10 +15,10 @@ Imports:
     showtext,
     xaringan,
     xaringanExtra (>= 0.5.2),
-    xaringanthemer
-Remotes: 
-    gadenbuie/xaringanExtra
-Suggests: 
+    xaringanthemer,
     Cairo,
     emojifont,
+    emoji,
     svglite
+Remotes: 
+    gadenbuie/xaringanExtra
