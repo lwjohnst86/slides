@@ -160,7 +160,7 @@ Introduce myself and my work.
 
 - Introduce and describe reproducibility and open science
 
-- Activities to discuss and brainstorm
+- Activities to discuss and brainstorm (~40 min)
 
 - Resources
 
@@ -249,7 +249,7 @@ Reproducibility is about HOW EXACTLY a finding was found in a study.
 ## 6 min activity: Think `r emoji("thought_balloon")`about your research workflow, then share `r fa2("comments")`
 
 - For 4 min, *to yourself*, think what your workflow is *exactly* like for doing
-research. As you think of them, add them to the Mentimeter, until the time runs out.
+research. As you think of what you do, add them to the Mentimeter, until the time runs out.
     - Where do you save your files? How do you name your files?
     - What apps do you use?
     - How do you know which files to work on and where you left off?
@@ -409,7 +409,7 @@ eventually share (something we'll start doing more at SDCA)
 ## 10 min activity: Think `r emoji("thought_balloon")`, brainstorm, then share `r fa2("comments")` *short-term, easier* options
 
 > What are some potential options that you, your group, and NCRR could
-implement *relatively easily and within the short-term (<1 year)* to be more
+implement ***relatively easily and within the short-term (<1 year)*** to be more
 open and reproducible?
 
 - For 2 min, think about ideas to this question (and write down if you want to)
@@ -425,7 +425,7 @@ open and reproducible?
 ## 10 min activity: Think `r emoji("thought_balloon")`, brainstorm, then share `r fa2("comments")` *long-term, more difficult* options
 
 > What are some potential options that you, your group, and NCRR could implement
-that are *more difficult and within the longer-term (>2 years)* to be more open
+that are ***more difficult and within the longer-term (>1 years)*** to be more open
 and reproducible?
 
 - For 2 min, think about ideas to this question (and write down if you want to)
