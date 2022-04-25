@@ -18,7 +18,8 @@ options(htmltools.dir.version = FALSE)
 knitr::opts_chunk$set(
   echo = FALSE,
   message = FALSE,
-  warning = FALSE
+  warning = FALSE,
+  fig.align = "center"
 )
 library(emoji)
 
@@ -43,8 +44,8 @@ fa2 <- function(icon) {
 library(xaringanthemer)
 style_mono_accent(
     base_color = "#990033",
-    base_font_size = "20px",
-    text_font_size = "1.2rem", 
+    base_font_size = "22px",
+    text_font_size = "1.3rem", 
     text_font_google = google_font("Nanum Gothic"),
     header_font_google = google_font("Merriweather Sans", "300")
 )
@@ -174,7 +175,7 @@ funding
 
 class: middle
 
-## Recent new funding: NNF Data Science Research Infrastructure 5 year grant
+## Recent new funding `r emoji("money_bag")`: NNF Data Science Research Infrastructure 5 year grant
 
 .footnote[Which lead to this DIF Project and getting the funding for it `r emoji("star-struck")`]
 
@@ -199,27 +200,39 @@ engineering, ...
 
 ---
 
-class: middle
-
-## Targeted to 4 users `r fa2("users")`
-
----
-
-class: middle 
-
-## User 1: Data input from `r emoji("woman_office_worker_medium_skin_tone")` `r emoji("man_health_worker")` `r emoji("scientist")` `r emoji("computer")`
-
-## User 2: Those who will use the data `r emoji("woman_scientist_medium_skin_tone")` `r emoji("student")`
-
-## User 3: Exploring projects and results `r emoji("person")` `r emoji("person_raising_hand")`
-
-## User 4: Administrators `r emoji("office_worker")`
+```{r fig-detailed-schematic, out.width="58%"}
+knitr::include_graphics("images/detailed-schematic.png")
+```
 
 ---
 
-.center[
-![Detailed schematic of the framework for building a data infrastructure for scientific studies.](images/detailed-schematic.svg)
-]
+```{r fig-layers, out.width="58%"}
+knitr::include_graphics("images/layers.png")
+```
+
+---
+
+```{r fig-user-1, out.width="58%"}
+knitr::include_graphics("images/user-1.png")
+```
+
+---
+
+```{r fig-user-2, out.width="58%"}
+knitr::include_graphics("images/user-2.png")
+```
+
+---
+
+```{r fig-user-3, out.width="58%"}
+knitr::include_graphics("images/user-3.png")
+```
+
+---
+
+```{r fig-user-4, out.width="58%"}
+knitr::include_graphics("images/user-4.png")
+```
 
 ---
 
@@ -245,7 +258,7 @@ contribute back to them. (Explain "forking").
 
 ---
 
-## Short-term plan
+## Short-term plan `r fa2("map-marked")`
 
 > [Full 5 year timeline found on website.](https://steno-aarhus.github.io/dif-project/#deliverables-and-milestones)
 
@@ -259,4 +272,4 @@ contribute back to them. (Explain "forking").
 
 class: middle
 
-## Interested in being involved or learning more? Let us know!
+## Interested in being involved or learning more? `r emoji("geek")` Let us know! `r emoji("raising_hand")`

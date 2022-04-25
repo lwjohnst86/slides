@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>A framework for an open and scalable infrastructure for health data exemplified by the DD2 initiative</title>
+    <meta charset="utf-8" />
+    <script src="libs/header-attrs/header-attrs.js"></script>
+    <script src="libs/xaringanExtra-progressBar/progress-bar.js"></script>
+    <link rel="stylesheet" href="xaringan-themer.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+# A framework for an open and scalable infrastructure for health data exemplified by the DD2 initiative
+
+---
+
+
+layout: true
+
+
+
+&lt;style type="text/css"&gt;
+.footer-right {
+    background-color: #FFFFFF;
+    position: absolute;
+    bottom: 10px;
+    right: 8px;
+    height: 60px;
+    width: 30%;
+    font-size: 11pt;
+}
+&lt;/style&gt;
+
+
+
+.footer-right[
+Website: [steno-aarhus.github.io/dif-project](https://steno-aarhus.github.io/dif-project)  
+Slides: [slides.lwjohnst.com/steno/2022-04-26](https://slides.lwjohnst.com/steno/2022-04-26/)
+]
+
+---
+
+<style>.xe__progress-bar__container {
+  top:0;
+  opacity: 1;
+  position:absolute;
+  right:0;
+  left: 0;
+}
+.xe__progress-bar {
+  height: 0.25em;
+  background-color: #990033;
+  width: calc(var(--slide-current) / var(--slide-total) * 100%);
+}
+.remark-visible .xe__progress-bar {
+  animation: xe__progress-bar__wipe 200ms forwards;
+  animation-timing-function: cubic-bezier(.86,0,.07,1);
+}
+@keyframes xe__progress-bar__wipe {
+  0% { width: calc(var(--slide-previous) / var(--slide-total) * 100%); }
+  100% { width: calc(var(--slide-current) / var(--slide-total) * 100%); }
+}</style>
+
+<div>
+<style type="text/css">.xaringan-extra-logo {
+width: 60px;
+height: 128px;
+z-index: 0;
+background-image: url(../../common/sdca-logo.png);
+background-size: contain;
+background-repeat: no-repeat;
+position: absolute;
+top:1em;right:1em;
+}
+</style>
+<script>(function () {
+  let tries = 0
+  function addLogo () {
+    if (typeof slideshow === 'undefined') {
+      tries += 1
+      if (tries < 10) {
+        setTimeout(addLogo, 100)
+      }
+    } else {
+      document.querySelectorAll('.remark-slide-content:not(.title-slide):not(.inverse):not(.hide_logo)')
+        .forEach(function (slide) {
+          const logo = document.createElement('a')
+          logo.classList = 'xaringan-extra-logo'
+          logo.href = 'https://www.stenoaarhus.dk/'
+          slide.appendChild(logo)
+        })
+    }
+  }
+  document.addEventListener('DOMContentLoaded', addLogo)
+})()</script>
+</div>
+
+???
+
+## Setting the stage
+
+Imagine that you are a new professor, just starting getting a group and research
+programme going... or solo researcher or a small research group starts a study
+to have data for their PhD students, but have limited funds and technical
+expertise.
+
+- Or, you are a small startup company trying get investment and build income
+quickly... in the research realm so need to follow best practices/requirements
+for data management... relies on data collection for business. Needs to get
+operational quickly, but doesn't yet have funds to hire technical personnel.
+
+- Or, you are a large, multi-national/center consortium that wants to keep better
+track of who's working on what, and how to discover and share data added to the
+project... or has an aim of widely disseminating their data for maximal, and
+cost-effective, use by their collaborators and others.
+
+All of these could use the framework to abide by the best practices in FAIR data
+management.
+
+---
+
+## Data Infrastructure Framework (DIF) Project
+
+???
+
+We're still working out a better name, but for now we're calling it DIF
+
+These aims may seem vague, but bare with me.
+
+--
+
+1. **Primary aim**: Create and implement an efficient, scalable, and open source
+data infrastructure framework that connects data collectors, researchers,
+clinicians, and other stakeholders, with the data, documentation, and findings
+(starting within the DD2 study)
+
+--
+
+2. **Secondary aim**: Create this framework so that *other research groups and
+companies*, who are unable or can't build something similar, can relatively
+easily implement it and modify as needed for their own purposes.
+
+--
+
+&gt; In short: Make a software product that makes it easier to find, store, and
+use data for research projects that abide by best practices, and make it so
+that it is easy and free to use for others.
+
+???
+
+Again, these might not be really tangible to grasp what this actually means.
+
+---
+
+class: middle
+
+## Why is this important? 🤔
+
+**Large trends across science in computing, data quantity, accountability, transparency**
+
+???
+
+Increasing need in science for... 
+
+- Computational tools and technologies
+- Secure and reliable IT infrastructure
+- Greater openness and transparency
+- More reproducibility of studies
+- Highly technical skills and knowledge
+*... especially in relation to data management.*
+
+Questions like:
+
+- How do store your data? In what file format?
+- Where do you store your data and how do you name the files?
+- How do you keep track of changes to the data?
+- (For multi-center studies) Who has which datasets and how do you combine them together?
+- How do you or your collaborators find out what variables there are in the data, what do they mean?
+- When there are errors or problems in your data, and you've already published
+with or analyzed on it, how can you easily determine which publications used the
+in correct data and how can you easily update the publications with the correct
+data?
+- How can you easily share your data with colleagues or reviewers to check your 
+findings?
+
+---
+
+class: middle
+
+## Past and current barriers <svg aria-hidden="true" role="img" viewBox="0 0 448 512" style="height:1em;width:0.88em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:#da9100;overflow:visible;position:relative;"><path d="M400 224h-24v-72C376 68.2 307.8 0 224 0S72 68.2 72 152v72H48c-26.5 0-48 21.5-48 48v192c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48V272c0-26.5-21.5-48-48-48zm-104 0H152v-72c0-39.7 32.3-72 72-72s72 32.3 72 72v72z"/></svg>: Lack of funding, awareness, understanding, skill, and knowledge
+
+???
+
+- Funding agencies don't fully recognize these challenges, so don't provide
+funding
+- Researchers aren't aware of or understand the issues, or don't have skills to tackle them
+- People with needed technical skills leave for industry
+
+---
+
+class: middle
+
+## Recent new funding 💰: NNF Data Science Research Infrastructure 5 year grant
+
+.footnote[Which lead to this DIF Project and getting the funding for it 🤩]
+
+???
+
+Development of new ... methods and technologies within data science, ..., data
+engineering, ...
+
+---
+
+## <svg aria-hidden="true" role="img" viewBox="0 0 496 512" style="height:1em;width:0.97em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:#da9100;overflow:visible;position:relative;"><path d="M225.38 233.37c-12.5 12.5-12.5 32.76 0 45.25 12.49 12.5 32.76 12.5 45.25 0 12.5-12.5 12.5-32.76 0-45.25-12.5-12.49-32.76-12.49-45.25 0zM248 8C111.03 8 0 119.03 0 256s111.03 248 248 248 248-111.03 248-248S384.97 8 248 8zm126.14 148.05L308.17 300.4a31.938 31.938 0 0 1-15.77 15.77l-144.34 65.97c-16.65 7.61-33.81-9.55-26.2-26.2l65.98-144.35a31.938 31.938 0 0 1 15.77-15.77l144.34-65.97c16.65-7.6 33.8 9.55 26.19 26.2z"/></svg> Guiding principles 
+
+1. Follow and enable FAIR principles
+
+2. Openly licensed and re-usable (e.g. CC-BY, MIT) 
+
+3. State-of-the-art principles and tools in software and UI design
+
+4. Friendly to beginner and non-technical users
+
+???
+
+---
+
+&lt;img src="images/detailed-schematic.png" width="58%" style="display: block; margin: auto;" /&gt;
+
+---
+
+&lt;img src="images/layers.png" width="58%" style="display: block; margin: auto;" /&gt;
+
+---
+
+&lt;img src="images/user-1.png" width="58%" style="display: block; margin: auto;" /&gt;
+
+---
+
+&lt;img src="images/user-2.png" width="58%" style="display: block; margin: auto;" /&gt;
+
+---
+
+&lt;img src="images/user-3.png" width="58%" style="display: block; margin: auto;" /&gt;
+
+---
+
+&lt;img src="images/user-4.png" width="58%" style="display: block; margin: auto;" /&gt;
+
+---
+
+class: middle
+
+## What similar infrastructures exist?
+
+Found in most large companies, some research based ones (UK Biobank)...
+
+... but few have the product be the infrastructure itself
+
+???
+
+Show it off?
+
+One plan is to do as much of a search as possible for similar projects. Unlike 
+scientific papers, it's not as easy to find software projects.
+
+We know of two similar projects, one in Oslo related to a brain mapping project
+and another in the US called gen3 that's managed by the University of Chicago.
+Depending on how they fit our needs and aims, we might "fork" their projects and
+contribute back to them. (Explain "forking").
+
+---
+
+## Short-term plan <svg aria-hidden="true" role="img" viewBox="0 0 576 512" style="height:1em;width:1.12em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:#da9100;overflow:visible;position:relative;"><path d="M288 0c-69.59 0-126 56.41-126 126 0 56.26 82.35 158.8 113.9 196.02 6.39 7.54 17.82 7.54 24.2 0C331.65 284.8 414 182.26 414 126 414 56.41 357.59 0 288 0zM20.12 215.95A32.006 32.006 0 0 0 0 245.66v250.32c0 11.32 11.43 19.06 21.94 14.86L160 448V214.92c-8.84-15.98-16.07-31.54-21.25-46.42L20.12 215.95zM288 359.67c-14.07 0-27.38-6.18-36.51-16.96-19.66-23.2-40.57-49.62-59.49-76.72v182l192 64V266c-18.92 27.09-39.82 53.52-59.49 76.72-9.13 10.77-22.44 16.95-36.51 16.95zm266.06-198.51L416 224v288l139.88-55.95A31.996 31.996 0 0 0 576 426.34V176.02c0-11.32-11.43-19.06-21.94-14.86z"/></svg>
+
+&gt; [Full 5 year timeline found on website.](https://steno-aarhus.github.io/dif-project/#deliverables-and-milestones)
+
+- Hire software/data engineers and build team as soon as possible
+
+- Developing "Minimum Viable Product" of first component within ~2 years
+
+- Emphasize making training and documentation targeted to non-technical users throughout project
+
+---
+
+class: middle
+
+## Interested in being involved or learning more? 🤓 Let us know! 🙋
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"slideNumberFormat": "",
+"ratio": "16:9",
+"countIncrementalSlides": false
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>
