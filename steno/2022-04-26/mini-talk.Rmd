@@ -1,0 +1,191 @@
+---
+# For Niels to BI team.
+title: "A framework for an open and scalable infrastructure for health data exemplified by the DD2 initiative"
+output:
+  xaringan::moon_reader:
+    lib_dir: libs
+    css: "xaringan-themer.css"
+    nature:
+      slideNumberFormat: ""
+      ratio: "16:9"
+      countIncrementalSlides: false
+---
+
+layout: true
+
+
+```{r setup, include=FALSE}
+options(htmltools.dir.version = FALSE)
+knitr::opts_chunk$set(
+  echo = FALSE,
+  message = FALSE,
+  warning = FALSE,
+  fig.align = "center"
+)
+```
+
+```{r print-pdf, eval=FALSE}
+# To print to PDF
+pagedown::chrome_print(here::here("steno/2022-04-26/mini-talk.html"))
+```
+
+```{css}
+.footer-right {
+    background-color: #FFFFFF;
+    position: absolute;
+    bottom: 10px;
+    right: 8px;
+    height: 60px;
+    width: 30%;
+    font-size: 11pt;
+}
+```
+
+```{r xaringan-themer, include=FALSE}
+library(xaringanthemer)
+style_mono_accent(
+    base_color = "#990033",
+    base_font_size = "22px",
+    text_font_size = "1.3rem", 
+    text_font_google = google_font("Nanum Gothic"),
+    header_font_google = google_font("Merriweather Sans", "300")
+)
+```
+
+.footer-right[
+Website: [steno-aarhus.github.io/dif-project](https://steno-aarhus.github.io/dif-project)  
+Slides: [slides.lwjohnst.com/steno/2022-04-26](https://slides.lwjohnst.com/steno/2022-04-26/)
+]
+
+---
+
+```{r progress-bar}
+xaringanExtra::use_progress_bar(color = "#990033", location = "top")
+```
+
+```{r logo-sdca}
+xaringanExtra::use_logo(
+  image_url = "../../common/sdca-logo.png",
+  link_url = "https://www.stenoaarhus.dk/",
+  width = "60",
+)
+```
+
+## Data Infrastructure Framework (DIF) Project
+
+1. **Primary aim**: Create and implement an efficient, scalable, and open source
+data infrastructure framework that connects data collectors, researchers,
+clinicians, and other stakeholders, with the data, documentation, and findings
+(starting within the DD2 study)
+
+2. **Secondary aim**: Create this framework so that *other research groups and
+companies*, who are unable or can't build something similar, can relatively
+easily implement it and modify as needed for their own purposes.
+
+> In short: Make a software product that makes it easier to find, store, and
+use data for research projects that abide by best practices, and make it so
+that it is easy and free to use for others.
+
+---
+
+## Target users
+
+1. 
+
+2.
+
+3. 
+
+---
+
+
+class: middle
+
+## Its importance linked to several large trends across science
+
+**Large trends across science in computing, data quantity, accountability, transparency**
+
+???
+
+Increasing need in science for... 
+
+- Computational tools and technologies
+- Secure and reliable IT infrastructure
+- Greater openness and transparency
+- More reproducibility of studies
+- Highly technical skills and knowledge
+*... especially in relation to data management.*
+
+
+
+Questions like:
+
+- How do store your data? In what file format?
+- Where do you store your data and how do you name the files?
+- How do you keep track of changes to the data?
+- (For multi-center studies) Who has which datasets and how do you combine them together?
+- How do you or your collaborators find out what variables there are in the data, what do they mean?
+- When there are errors or problems in your data, and you've already published
+with or analyzed on it, how can you easily determine which publications used the
+in correct data and how can you easily update the publications with the correct
+data?
+- How can you easily share your data with colleagues or reviewers to check your 
+findings?
+
+---
+
+## Guiding principles underlying DIF Project
+
+1. Follow and enable FAIR principles
+
+2. Openly licensed and re-usable (e.g. CC-BY, MIT) 
+
+3. State-of-the-art principles and tools in software and UI design
+
+4. Friendly to beginner and non-technical users
+
+---
+
+```{r fig-detailed-schematic, out.width="58%"}
+knitr::include_graphics("images/detailed-schematic.png")
+```
+
+---
+
+class: middle
+
+## What similar infrastructures exist?
+
+Found in most large companies, some research based ones (UK Biobank)...
+
+... but few have the product be the infrastructure itself
+
+???
+
+Show it off?
+
+One plan is to do as much of a search as possible for similar projects. Unlike 
+scientific papers, it's not as easy to find software projects.
+
+We know of two similar projects, one in Oslo related to a brain mapping project
+and another in the US called gen3 that's managed by the University of Chicago.
+Depending on how they fit our needs and aims, we might "fork" their projects and
+contribute back to them. (Explain "forking").
+
+---
+
+## Short-term plan `r fa2("map-marked")`
+
+> [Full 5 year timeline found on website.](https://steno-aarhus.github.io/dif-project/#deliverables-and-milestones)
+
+- Hire software/data engineers and build team as soon as possible
+
+- Developing "Minimum Viable Product" of first component within ~2 years
+
+- Emphasize making training and documentation targeted to non-technical users throughout project
+
+---
+
+class: middle
+
+## Interested in being involved or learning more? `r emoji("geek")` Let us know! `r emoji("raising_hand")`
