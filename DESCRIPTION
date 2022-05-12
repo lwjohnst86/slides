@@ -19,6 +19,7 @@ Imports:
     Cairo,
     emojifont,
     emoji,
-    svglite
+    svglite,
+    pagedown
 Remotes: 
     gadenbuie/xaringanExtra
