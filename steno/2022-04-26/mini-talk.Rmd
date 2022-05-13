@@ -26,7 +26,8 @@ knitr::opts_chunk$set(
 
 ```{r print-pdf, eval=FALSE}
 # To print to PDF
-pagedown::chrome_print(here::here("steno/2022-04-26/mini-talk.html"))
+# Doesn't work yet, need to figure out how to include the logo...
+# pagedown::chrome_print(here::here("steno/2022-04-26/mini-talk.html"))
 ```
 
 ```{css}
@@ -54,7 +55,6 @@ style_mono_accent(
 
 .footer-right[
 Website: [steno-aarhus.github.io/dif-project](https://steno-aarhus.github.io/dif-project)  
-Slides: [slides.lwjohnst.com/steno/2022-04-26](https://slides.lwjohnst.com/steno/2022-04-26/)
 ]
 
 ---
@@ -90,46 +90,34 @@ that it is easy and free to use for others.
 
 ## Target users
 
-1. 
+1. Anyone, such as new researchers/PIs, small-to-medium sized enterprises,
+collecting or working with data for scientific purposes and who want/need to
+adhere to best practices but who don't have the technical skills or knowledge
+necessary.
 
-2.
+2. Anyone, such as PhD students or new postdocs, who want to discover and learn
+about what data and variables are available that they can or will use.
 
-3. 
+3. Anyone, like administrators of multi-center projects, who need to 
+track changes and additions to data as well as who is using which variables for
+what.
 
 ---
 
+## Aim to help answer questions like:
 
-class: middle
+- How and where do store your data and in what file format?
 
-## Its importance linked to several large trends across science
+- How do you keep track of changes to the data and which versions researchers are using? Necessary if, for instance, data is audited
 
-**Large trends across science in computing, data quantity, accountability, transparency**
+- How do you, your collaborators, or trainees find out what variables there are
+in the data and what do they mean?
 
-???
+- *When* errors or problems happen in your data, and *if* you've already
+published with or analyzed on it, how do you determine which publications used
+the incorrect data? 
 
-Increasing need in science for... 
-
-- Computational tools and technologies
-- Secure and reliable IT infrastructure
-- Greater openness and transparency
-- More reproducibility of studies
-- Highly technical skills and knowledge
-*... especially in relation to data management.*
-
-
-
-Questions like:
-
-- How do store your data? In what file format?
-- Where do you store your data and how do you name the files?
-- How do you keep track of changes to the data?
-- (For multi-center studies) Who has which datasets and how do you combine them together?
-- How do you or your collaborators find out what variables there are in the data, what do they mean?
-- When there are errors or problems in your data, and you've already published
-with or analyzed on it, how can you easily determine which publications used the
-in correct data and how can you easily update the publications with the correct
-data?
-- How can you easily share your data with colleagues or reviewers to check your 
+- How can you easily share your data with colleagues or reviewers to check your
 findings?
 
 ---
@@ -152,29 +140,7 @@ knitr::include_graphics("images/detailed-schematic.png")
 
 ---
 
-class: middle
-
-## What similar infrastructures exist?
-
-Found in most large companies, some research based ones (UK Biobank)...
-
-... but few have the product be the infrastructure itself
-
-???
-
-Show it off?
-
-One plan is to do as much of a search as possible for similar projects. Unlike 
-scientific papers, it's not as easy to find software projects.
-
-We know of two similar projects, one in Oslo related to a brain mapping project
-and another in the US called gen3 that's managed by the University of Chicago.
-Depending on how they fit our needs and aims, we might "fork" their projects and
-contribute back to them. (Explain "forking").
-
----
-
-## Short-term plan `r fa2("map-marked")`
+## Short-term plan
 
 > [Full 5 year timeline found on website.](https://steno-aarhus.github.io/dif-project/#deliverables-and-milestones)
 
@@ -184,8 +150,3 @@ contribute back to them. (Explain "forking").
 
 - Emphasize making training and documentation targeted to non-technical users throughout project
 
----
-
-class: middle
-
-## Interested in being involved or learning more? `r emoji("geek")` Let us know! `r emoji("raising_hand")`
