@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>Implementing an open and scalable infrastructure for the DD2 data</title>
+    <meta charset="utf-8" />
+    <script src="libs/header-attrs/header-attrs.js"></script>
+    <script src="libs/xaringanExtra-progressBar/progress-bar.js"></script>
+    <link rel="stylesheet" href="xaringan-themer.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+.title[
+# Implementing an open and scalable infrastructure for the DD2 data
+]
+
+---
+
+
+layout: true
+
+
+
+&lt;style type="text/css"&gt;
+.footer-right {
+    background-color: #FFFFFF;
+    position: absolute;
+    bottom: 10px;
+    right: 8px;
+    height: 60px;
+    width: 30%;
+    font-size: 11pt;
+}
+&lt;/style&gt;
+
+
+
+.footer-right[
+Website: [steno-aarhus.github.io/dif-project](https://steno-aarhus.github.io/dif-project)  
+Slides: [slides.lwjohnst.com/misc/2022-08-15](https://slides.lwjohnst.com/misc/2022-08-15/)
+]
+
+---
+
+<style>.xe__progress-bar__container {
+  top:0;
+  opacity: 1;
+  position:absolute;
+  right:0;
+  left: 0;
+}
+.xe__progress-bar {
+  height: 0.25em;
+  background-color: #990033;
+  width: calc(var(--slide-current) / var(--slide-total) * 100%);
+}
+.remark-visible .xe__progress-bar {
+  animation: xe__progress-bar__wipe 200ms forwards;
+  animation-timing-function: cubic-bezier(.86,0,.07,1);
+}
+@keyframes xe__progress-bar__wipe {
+  0% { width: calc(var(--slide-previous) / var(--slide-total) * 100%); }
+  100% { width: calc(var(--slide-current) / var(--slide-total) * 100%); }
+}</style>
+
+<div>
+<style type="text/css">.xaringan-extra-logo {
+width: 60px;
+height: 128px;
+z-index: 0;
+background-image: url(../../common/sdca-logo.png);
+background-size: contain;
+background-repeat: no-repeat;
+position: absolute;
+top:1em;right:1em;
+}
+</style>
+<script>(function () {
+  let tries = 0
+  function addLogo () {
+    if (typeof slideshow === 'undefined') {
+      tries += 1
+      if (tries < 10) {
+        setTimeout(addLogo, 100)
+      }
+    } else {
+      document.querySelectorAll('.remark-slide-content:not(.title-slide):not(.inverse):not(.hide_logo)')
+        .forEach(function (slide) {
+          const logo = document.createElement('a')
+          logo.classList = 'xaringan-extra-logo'
+          logo.href = 'https://www.stenoaarhus.dk/'
+          slide.appendChild(logo)
+        })
+    }
+  }
+  document.addEventListener('DOMContentLoaded', addLogo)
+})()</script>
+</div>
+
+???
+
+&lt;!-- 
+Details:  
+
+- ~20 min presentation
+- Specific to DD2
+- Informal, ask questions
+- More discussion based
+
+Outline:
+
+- Aims
+- General description of DIF (image)
+- General timeline
+- Short-term plan
+- Questions
+    - In discussion with company to help, Jens give details?
+        - How can we fit in with those plans?
+    - Timeline for hiring data manager?
+        - Data manager to map all data, resources, and documentation
+--&gt;
+
+I assume you all are familiar enough with the general purpose of this project,
+that is, to help maximize the utility and general usage of the DD2 resource for
+researchers and eventually for diabetes patients. So I'll get into the aims
+right away, briefly describe what this project looks like from a conceptual level,
+go briefly over the timeline, and where we are right now and the next immediate steps.
+Then I have a couple questions that I'd like us to discuss a bit. 
+
+We'll keep this really informal, so just jump in and ask questions whenever you want.
+
+---
+
+## Aims of the Data Infrastructure Framework (DIF) Project 
+
+???
+
+We're still working out a better name, but for now we're calling it DIF
+
+These aims are for the full project itself, and may seem vague, but bare with me.
+
+--
+
+1. **Primary aim**: Create and implement an efficient, scalable, and open source
+data infrastructure framework that connects multiple stakeholders with the data,
+documentation, and findings
+
+???
+
+Just for some clarification, infrastructure here meaning the computational 
+structure of the data and all its support structures, for instance, how the files
+and folders are structured, where the data files are saved and what file format,
+how to connect to data. In many ways like the roads and buildings of a city,
+where data is the people moving about.
+
+"Framework" on the other hand is the bundle or package that contains the
+instructions to create an infrastructure, that someone can take and use to
+create the infrastructure somewhere else. You can think of this as the blueprint
+for building a city.
+
+--
+
+2. **Secondary aim**: Create this framework so that *other research groups and
+companies*, who are unable or can't build something similar, can relatively
+easily implement it and modify as needed for their own purposes.
+
+--
+
+&gt; In short: Make a software product that makes it easier to find, store, and
+use data for research projects that abide by best practices, and make it so
+that it is easy and free to use for others.
+
+---
+
+## <svg aria-hidden="true" role="img" viewBox="0 0 512 512" style="height:1em;width:1em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:#da9100;overflow:visible;position:relative;"><path d="M288 256C288 273.7 273.7 288 256 288C238.3 288 224 273.7 224 256C224 238.3 238.3 224 256 224C273.7 224 288 238.3 288 256zM0 256C0 114.6 114.6 0 256 0C397.4 0 512 114.6 512 256C512 397.4 397.4 512 256 512C114.6 512 0 397.4 0 256zM325.1 306.7L380.6 162.4C388.1 142.1 369 123.9 349.6 131.4L205.3 186.9C196.8 190.1 190.1 196.8 186.9 205.3L131.4 349.6C123.9 369 142.1 388.1 162.4 380.6L306.7 325.1C315.2 321.9 321.9 315.2 325.1 306.7V306.7z"/></svg> Guiding principles 
+
+1. Follow and enable FAIR principles
+
+2. Openly licensed and re-usable (e.g. CC-BY, MIT) 
+
+3. State-of-the-art principles and tools in software and UI design
+
+4. Built from software that may be more familiar to researchers/academia
+
+5. Friendly to beginner and non-technical users
+
+???
+
+FAIR = Findable Accessible Interoperable Reusable
+
+---
+
+&lt;img src="images/detailed-schematic.png" width="58%" style="display: block; margin: auto;" /&gt;
+
+---
+
+&lt;img src="images/layers.png" width="58%" style="display: block; margin: auto;" /&gt;
+
+---
+
+&lt;img src="images/user-1.png" width="58%" style="display: block; margin: auto;" /&gt;
+
+---
+
+&lt;img src="images/user-2.png" width="58%" style="display: block; margin: auto;" /&gt;
+
+---
+
+## General timeline
+
+&gt; [Full 5 year timeline found on website.](https://steno-aarhus.github.io/dif-project/#fig-gantt-chart)
+
+???
+
+By User 1 I mean any process to get the data into the format needed for the backend.
+I'm aware there are already well developed pipelines for getting DD2 data into a
+database format, right? So we'll need some way of connecting a pipeline to feed
+into the DIF's backend. 
+
+This timeline was stretched to account for various potential delays, so estimates
+could realistically be shortened by maybe 30-40%... but best to keep conservative.
+
+Once we've gotten to the User 1 MVP, we'd like to start testing it out on DD2, to
+find any potential issues and so on. So within the next year, year and a half
+we could begin meaningfully contributing to the DD2 database.
+
+---
+
+## Next steps 
+
+- Already hired RSE and DBA starting Sept
+
+- Onboard the team, have two-day welcome and brainstorming session in Sept
+    - Detail and agree on tasks for next several months
+    - Agree on longer term plan
+
+- Aim for "Minimum Viable Product" of first component within ~1 to 1.5 years
+
+---
+
+## General questions on next steps
+
+???
+
+Thinking of questions for next steps, some big, immediate ones that come to mind
+are:
+
+--
+
+- Company helping out with this?
+    - How can we fit in with those plans?
+
+- Co-hiring data manager for DD2 and this project, any timelines or things to
+discuss/consider?
+
+???
+
+Data manager to map all data, resources, and documentation.
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"slideNumberFormat": "",
+"ratio": "16:9",
+"countIncrementalSlides": false
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+// add `data-at-shortcutkeys` attribute to <body> to resolve conflicts with JAWS
+// screen reader (see PR #262)
+(function(d) {
+  let res = {};
+  d.querySelectorAll('.remark-help-content table tr').forEach(tr => {
+    const t = tr.querySelector('td:nth-child(2)').innerText;
+    tr.querySelectorAll('td:first-child .key').forEach(key => {
+      const k = key.innerText;
+      if (/^[a-z]$/.test(k)) res[k] = t;  // must be a single letter (key)
+    });
+  });
+  d.body.setAttribute('data-at-shortcutkeys', JSON.stringify(res));
+})(document);
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>

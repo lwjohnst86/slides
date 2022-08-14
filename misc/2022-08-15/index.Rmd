@@ -1,5 +1,5 @@
 ---
-# For DD2 
+# For DD2 meeting
 title: "Implementing an open and scalable infrastructure for the DD2 data"
 output:
   xaringan::moon_reader:
@@ -84,6 +84,7 @@ Outline:
 
 - Aims
 - General description of DIF (image)
+- General timeline
 - Short-term plan
 - Questions
     - In discussion with company to help, Jens give details?
@@ -92,15 +93,14 @@ Outline:
         - Data manager to map all data, resources, and documentation
 -->
 
-**Setting the stage**
+I assume you all are familiar enough with the general purpose of this project,
+that is, to help maximize the utility and general usage of the DD2 resource for
+researchers and eventually for diabetes patients. So I'll get into the aims
+right away, briefly describe what this project looks like from a conceptual level,
+go briefly over the timeline, and where we are right now and the next immediate steps.
+Then I have a couple questions that I'd like us to discuss a bit. 
 
-- Or, you are a large, multi-national/center consortium that wants to keep better
-track of who's working on what, and how to discover and share data added to the
-project... or has an aim of widely disseminating their data for maximal, and
-cost-effective, use by their collaborators and others.
-
-All of these could use the framework to abide by the best practices in FAIR data
-management.
+We'll keep this really informal, so just jump in and ask questions whenever you want.
 
 ---
 
@@ -115,9 +115,21 @@ These aims are for the full project itself, and may seem vague, but bare with me
 --
 
 1. **Primary aim**: Create and implement an efficient, scalable, and open source
-data infrastructure framework that connects data collectors, researchers,
-clinicians, and other stakeholders, with the data, documentation, and findings
-(starting within the DD2 study)
+data infrastructure framework that connects multiple stakeholders with the data,
+documentation, and findings
+
+???
+
+Just for some clarification, infrastructure here meaning the computational 
+structure of the data and all its support structures, for instance, how the files
+and folders are structured, where the data files are saved and what file format,
+how to connect to data. In many ways like the roads and buildings of a city,
+where data is the people moving about.
+
+"Framework" on the other hand is the bundle or package that contains the
+instructions to create an infrastructure, that someone can take and use to
+create the infrastructure somewhere else. You can think of this as the blueprint
+for building a city.
 
 --
 
@@ -131,10 +143,6 @@ easily implement it and modify as needed for their own purposes.
 use data for research projects that abide by best practices, and make it so
 that it is easy and free to use for others.
 
-???
-
-Again, these might not be really tangible to grasp what this actually means.
-
 ---
 
 ## `r fa2("compass")` Guiding principles 
@@ -145,9 +153,13 @@ Again, these might not be really tangible to grasp what this actually means.
 
 3. State-of-the-art principles and tools in software and UI design
 
-4. Friendly to beginner and non-technical users
+4. Built from software that may be more familiar to researchers/academia
+
+5. Friendly to beginner and non-technical users
 
 ???
+
+FAIR = Findable Accessible Interoperable Reusable
 
 ---
 
@@ -175,24 +187,53 @@ knitr::include_graphics("images/user-2.png")
 
 ---
 
-```{r fig-user-3, out.width="58%"}
-knitr::include_graphics("images/user-3.png")
-```
+## General timeline
+
+> [Full 5 year timeline found on website.](https://steno-aarhus.github.io/dif-project/#fig-gantt-chart)
+
+???
+
+By User 1 I mean any process to get the data into the format needed for the backend.
+I'm aware there are already well developed pipelines for getting DD2 data into a
+database format, right? So we'll need some way of connecting a pipeline to feed
+into the DIF's backend. 
+
+This timeline was stretched to account for various potential delays, so estimates
+could realistically be shortened by maybe 30-40%... but best to keep conservative.
+
+Once we've gotten to the User 1 MVP, we'd like to start testing it out on DD2, to
+find any potential issues and so on. So within the next year, year and a half
+we could begin meaningfully contributing to the DD2 database.
 
 ---
 
-```{r fig-user-4, out.width="58%"}
-knitr::include_graphics("images/user-4.png")
-```
+## Next steps 
+
+- Already hired RSE and DBA starting Sept
+
+- Onboard the team, have two-day welcome and brainstorming session in Sept
+    - Detail and agree on tasks for next several months
+    - Agree on longer term plan
+
+- Aim for "Minimum Viable Product" of first component within ~1 to 1.5 years
 
 ---
 
-## Short-term plan `r fa2("map-marked")`
+## General questions on next steps
 
-> [Full 5 year timeline found on website.](https://steno-aarhus.github.io/dif-project/#deliverables-and-milestones)
+???
 
-- Hire software/data engineers and build team as soon as possible
+Thinking of questions for next steps, some big, immediate ones that come to mind
+are:
 
-- Developing "Minimum Viable Product" of first component within ~2 years
+--
 
-- Emphasize making training and documentation targeted to non-technical users throughout project
+- Company helping out with this?
+    - How can we fit in with those plans?
+
+- Co-hiring data manager for DD2 and this project, any timelines or things to
+discuss/consider?
+
+???
+
+Data manager to map all data, resources, and documentation.
