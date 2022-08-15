@@ -23,8 +23,8 @@ knitr::opts_chunk$set(
 )
 library(emoji)
 
-fa2 <- function(icon) {
-    fontawesome::fa(name = icon, fill = "#da9100")
+fa2 <- function(icon, fill = "#da9100") {
+    fontawesome::fa(name = icon, fill = fill)
 }
 ```
 
@@ -44,16 +44,16 @@ fa2 <- function(icon) {
 library(xaringanthemer)
 style_mono_accent(
     base_color = "#990033",
-    base_font_size = "22px",
-    text_font_size = "1.3rem", 
+    base_font_size = "20px",
+    text_font_size = "1.1rem", 
     text_font_google = google_font("Nanum Gothic"),
     header_font_google = google_font("Merriweather Sans", "300")
 )
 ```
 
 .footer-right[
-Website: [steno-aarhus.github.io/dif-project](https://steno-aarhus.github.io/dif-project)  
-Slides: [slides.lwjohnst.com/steno/2022-04-26](https://slides.lwjohnst.com/steno/2022-04-26/)
+Slides: [slides.lwjohnst.com/misc/2022-08-17](https://slides.lwjohnst.com/misc/2022-08-17/)
+Licensed under CC-BY `r fa2("creative-commons-by", "#990033")`
 ]
 
 ---
@@ -80,17 +80,14 @@ Outline (do in order but don't need to complete):
 
 - DIF Project
 - r-cubed
-- ukbAid and ecc-cmd-ukb?
 
 -->
 
 # Outline: My current projects
 
-1. NNF-funded Data Infrastructure Framework Project
+1. NNF-funded Data Infrastructure Framework (DIF) Project
 
-2. Reproducible Research in R hands-on courses
-
-3. Collaborative project using the UK Biobank
+2. Reproducible Research in R hands-on courses with Danish Diabetes Academy
 
 ???
 
@@ -122,6 +119,10 @@ cost-effective, use by their collaborators and others.
 All of these could use the framework to abide by the best practices in FAIR data
 management.
 
+---
+
+## Aims of the DIF Project
+
 We're still working out a better name, but for now we're calling it DIF
 
 These aims may seem vague, but bare with me.
@@ -132,6 +133,21 @@ These aims may seem vague, but bare with me.
 data infrastructure framework that connects data collectors, researchers,
 clinicians, and other stakeholders, with the data, documentation, and findings
 (starting within the DD2 study)
+
+.footnote[Check out [DIF Project Website](https://steno-aarhus.github.io/dif-project/).]
+
+???
+
+Just for some clarification, infrastructure here meaning the computational 
+structure of the data and all its support structures, for instance, how the files
+and folders are structured, where the data files are saved and what file format,
+how to connect to data. In many ways like the roads and buildings of a city,
+where data is the people moving about.
+
+"Framework" on the other hand is the bundle or package that contains the
+instructions to create an infrastructure, that someone can take and use to
+create the infrastructure somewhere else. You can think of this as the blueprint
+for building a city.
 
 --
 
@@ -144,6 +160,7 @@ easily implement it and modify as needed for their own purposes.
 > In short: Make a software product that makes it easier to find, store, and
 use data for research projects that abide by best practices, and make it so
 that it is easy and free to use for others.
+
 
 ???
 
@@ -218,9 +235,13 @@ engineering, ...
 
 3. State-of-the-art principles and tools in software and UI design
 
-4. Friendly to beginner and non-technical users
+4. Built from software that may be more familiar to researchers/academia
+
+5. Friendly to beginner and non-technical users
 
 ???
+
+FAIR = Findable Accessible Interoperable Reusable
 
 ---
 
@@ -262,419 +283,46 @@ knitr::include_graphics("images/user-4.png")
 
 class: middle
 
-## What similar infrastructures exist?
+## Interested in being involved or learning more? `r emoji("geek")` Let me know! `r emoji("raising_hand")`
 
-Found in most large companies, some research based ones (UK Biobank)...
-
-... but few have the product be the infrastructure itself
-
-???
-
-Show it off?
-
-One plan is to do as much of a search as possible for similar projects. Unlike 
-scientific papers, it's not as easy to find software projects.
-
-We know of two similar projects, one in Oslo related to a brain mapping project
-and another in the US called gen3 that's managed by the University of Chicago.
-Depending on how they fit our needs and aims, we might "fork" their projects and
-contribute back to them. (Explain "forking").
-
----
-
-## Short-term plan `r fa2("map-marked")`
-
-> [Full 5 year timeline found on website.](https://steno-aarhus.github.io/dif-project/#deliverables-and-milestones)
-
-- Hire software/data engineers and build team as soon as possible
-
-- Developing "Minimum Viable Product" of first component within ~2 years
-
-- Emphasize making training and documentation targeted to non-technical users throughout project
+.footnote[Check out [DIF Project Website](https://steno-aarhus.github.io/dif-project/).]
 
 ---
 
 class: middle
 
-## Interested in being involved or learning more? `r emoji("geek")` Let us know! `r emoji("raising_hand")`
-
-# Outline
-
-<!-- 10 min -->
-
-- Key points
-- Introduction to course and attendees
-- Key principles used while creating/updating course
-    - Lessons learned
-- Experiences of effectiveness and impact (within Denmark)
-- Summary
-
-???
-
-Hi everyone, thanks for coming to listen to my talk. I'm Luke and I work as a
-postdoc at the Steno Diabetes Center in Aarhus Denmark. If you want to check out
-these slides, there's a link to them in the footer of each slide.
-
-So, since this is an audience of other trainers, I'm going to focus on the
-topics of practicals of teaching and on curriculum development.
-
-(Go over outline).
-
-While talking about key principles and lessons learned, it will tie back
-to some of the key messages.
-
----
-
-# *Actionable* key `r emo::ji("key")` points
-
-???
-
-Before I begin, I want to say a couple of caveats about these key messages.
-Here, I'm assuming that the learners are working/full-time researchers
-(including PhD students), not necessarily in an undergraduate context and
-related to learning data analysis or more practical type skills.
-
---
-
-1. Have material be online, easily found
-    - Follow it (almost) exactly, deviate only if necessary
-1. Encourage participants to instruct future workshops
-    - Provide onboarding documentation and support
-1. Emphasize code of conduct and safety of the learning space
-    - *Embody* it
-1. Use and weave in reading, listening, doing, and discussing activities *in class*
-
-???
-
-(Go over the messages).
+# Reproducible Research in R (r-cubed) courses
 
 ---
 
 class: middle
 
-# Reproducible Research in R (R3 or r-cubed) course/workshop for PhD students and postdocs *doing biomedical research*
+## Reproducibility, a core principle of science, is rarely done 
 
-.footnote[
-- Website: [r-cubed.rostools.org](https://r-cubed.rostools.org)
-- JOSE paper: [10.21105/jose.00122](https://jose.theoj.org/papers/10.21105/jose.00122)
-- Also intermediate course: [r-cubed-intermediate.rostools.org](https://r-cubed-intermediate.rostools.org/)
-]
+- Reproducibility: Same data + same analysis = same results?
+- Replication: Same design + different data + same analysis = same results?
 
 ???
 
-Now getting into the course itself. In Denmark, a course is anything from a couple 
-days to a couple weeks, while in North America this might be called a workshop.
-The course is teaching reproducible research in R to PhD students and postdocs who
-do biomedical research, largely diabetes research. 
-
-This course is 3 full days, composing of 5 code along sessions where the
-instructor types and the learners follow along, a few lectures, and a final
-group project. For more info on the course, check out the links below.
-
----
-
-class: middle
-
-# Course arose from need for skills in data analysis `r emo::ji("woman_technologist_medium_skin_tone")`
-
-## ... and for more awareness on reproducibility and open science `r emo::ji("exploding_head")`
-
-???
-
-While I've been teaching these general topics since my Masters, this course
-specifically I started during my postdoc because one, there was a need for more
-computational skills in my field and two, because the awareness around
-reproducibility and open science was very lacking.
-
----
-
-class: middle
-
-# (Some) Key `r emo::ji("key")` principles when developing the material and learned from the feedback
-
-???
-
-When developing this course along with updating each time we run it, there
-were some key principles that we used to form the foundation for the entire content
-of the course. And I'll be covering some of them for most of the talk.
-
----
-
-## Use evidence based learning and teaching best practices `r emo::ji("woman_teacher_light_skin_tone")`
-
-???
-
-The first one is, of course, building the curriculum based on evidence around learning
-and on teaching best practices.
-
---
-
-1. Collect (and use) anonymous and critical feedback often! Including from instructors
-
-???
-
-### 1
-
-Like any research, in order to build and then improve something you need to actively
-get feedback, often. I made a Google Forms survey that asks generally, what
-worked and what could be improved, at the end of each day. Then I use that to
-fix, remove, or keep things.
-
---
-
-2. Multiple activities to learning *in class* (reading, doing, listening,
-discussing, teaching, group, and solo)
-
-???
-
-### 2
-
-Learning requires multiple different angles repeating basically the same information
-in a different way until it gets remembered and saved into long-term memory.
-In this way, during the course we get learners to do multiple tasks like reading
-activities, hands-on exercises, listening, and so on. 
-
-In relation to reading, one thing I found was talking about a concept always had
-some variance in saying it each time I ran the course or when another instructor
-did the specific session. Plus, we have many people who have English as a second
-language, so the amount of information you could convey orally was much less
-than by reading. 
-
-It also slows us down, because, I do it, its very easy to go too fast through the material.
-After they read a section, as the instructor we would briefly go over the topic
-again, to reinforce the concept. After adding the reading activities and getting
-the feedback, there was consistent and strong positive comments about that, so
-we kept it and added more.
-
---
-
-3. Strong and focused narrative tied to learning outcome: Less is more
-
-???
-
-### 3
-
-The narrative throughout the whole curriculum should be laser focused on the
-learning outcome.
-
-Brains can only hold so much information in them at any one time, so the key
-thing while building material is keep things lean and focused on what the
-learning outcome and objectives. Each time we've ran the course, we've stripped
-out more and more.
-
-Don't deviate from the material. Plus, everytime I deviate too much from the
-material because I have some expert knowledge that I want to share from
-excitedness, I see it in the feedback that it confused them or that if I talk
-about it it should be in the material.
-
---
-
-4. Limit lectures and slides (largely used for conceptual/ranting topics)
-
-
-???
-
-### 4
-
-Lastly, lectures are some of the poorest form of memory retention, so we severely
-limit them to only very abstract topics or things to rant about, like how un-open
-science is. 
-
----
-
-class: middle
-
-## Openly licensed `r fa2("fab fa-creative-commons-by")` and easily accessible `r fa2("fas fa-wifi")`
-
-???
-
-The next key principle is to ensure the material is maximally used and re-used.
-This means applying an open license to it and having it easily accessible online.
-
-I think this is a bit of a misunderstood area. I see a lot of for instance university
-courses that don't have their material publicly available, thinking that they 
-need to keep it only for people paying or attending the class. While I understand 
-that idea, I think that's a shame and maybe misguided because people don't
-usually take courses for the content itself, generally, they take them to be
-taught. They come for teachers and the experience, not the content alone.
-
-And we see it in the feedback, there is always very strong and consistent
-positive feedback talking about how great it is that the material is online and
-easily accessible.
-
----
-
-class: middle
-
-## Safe `r fa2("fas fa-hand-holding-heart")` and supportive `r fa2("fas fa-hands-helping")` environment
-
-.footnote[Through a code of conduct, explicit expectations of participants and
-instructors, as well as detailed and descriptive syllabus.]
-
-???
-
-This next principle is something I think is so important... and that is establish
-and maintaining an environment that is safe and supportive for learning. Have the
-explicit code of conduct on expected behaviour of everyone involved at the forefront and 
-have instructors embody this attitude. Learning is so dependent on the learners
-motivation and interest and engagement with the content... and if they don't feel
-safe, they won't learn as much as they could.
-
-And it's so easy to unconsciously use dismissive language like saying
-"simply" or hand-waving a topic away when you're teaching. But it can lead to
-undermining learners confidence and trust in themselves, particularly for
-underrepresented or minority groups within science. So constantly self-reflecting
-is really vital to this topic.
-
----
-
-class: middle
-
-## Design material for participants *as well as* potential/new instructors 
-
-.footnote[As well as potential contributors (i.e. the participants).]
-
-???
-
-Lastly, the material isn't only for the participants, it's also for future instructors
-and contributors. Since it is written with the idea that learners will read it
-during the course or afterwards, this also gives new instructors something to 
-use to prepare for teaching their session or course itself if they want.
-Interspersed throughout the text are messages to the instructors on top of
-an instructor guide giving advice and tips on how to prepare, what to do,
-and how to teach. We hope that, structured as it is, anyone can take the course
-and try to teach it themselves to others.
-
----
-
-class: middle
-
-# Experiences of effectiveness and impact (within Denmark `r emo::ji("denmark")`)
-
-.footnote[Feedback data is found on the [GitLab repository](https://gitlab.com/rostools/r-cubed/-/tree/main/feedback).]
-
-???
-
-Alright, I've gone over the key principles for the course, how effective and impactful
-has it been? We've ran the course through the Danish Diabetes Academy here in
-Denmark, which is an organization that provides funding, networking events, and
-educational events and courses to diabetes researchers. They collect evaluations
-for the course and both this course as well as the intermediate one are both
-the highest rated and most in-demand courses that they offer. Plus based on
-the feedback we collect, we can see how much the participants really enjoy the
-course and often recommend it their colleagues. If you want to read some of the 
-feedback we get, they are found in our GitLab repository, the link is there in
-the footnote of this slide.
-
----
-
-# Summary and recap
-
-1. Have material be online, easily found
-    - Follow it (almost) exactly, deviate only if necessary
-1. Encourage participants to instruct future workshops
-    - Provide onboarding documentation and support
-1. Emphasize code of conduct and the safety of the space to learn
-    - *Embody* it
-1. Use and weave in reading, listening, doing, and discussing *in class*
-
-???
-
-Anyway, I could talk about this for a long time. But to end, let's go back to
-the key messages. I talked about (go over messages).
-
---
-
-### Try out the material and give us feedback on it! `r emo::ji("nerd")`
-
-???
-
-And to end, please, if you try out the material, lets us know! We'd love more
-feedback on it! Thanks for listening!
-
-
-```{r setup, include=FALSE}
-library(tidyverse)
-poster_title <- 
-    "Shifting Science and Research Culture Towards Openness and Reproducibility Through Education and Training"
-
-# Set some options and text by output
-image_dpi <- 200
-
-knitr::opts_chunk$set(
-  echo = FALSE,
-  dev = "svg",
-  dpi = image_dpi,
-  comment = "#>",
-  message = FALSE,
-  warning = FALSE
-)
-```
-
-```{r make-images, eval=FALSE, include=FALSE}
-webshot2::webshot(
-    "https://r-cubed.rostools.org/",
-    file = here::here("2021/dda-ws/images/r-cubed-website.png"),
-    vwidth = 1050,
-    vheight = 575
-)
-
-webshot2::webshot(
-    "https://r-cubed-intermediate.rostools.org/",
-    file = here::here("2021/dda-ws/images/r-cubed-intermediate-website.png"),
-    vwidth = 1050,
-    vheight = 575
-)
-```
-
-```{r generate-poster, eval=FALSE, include=FALSE}
-source(here::here("R/generate-poster.R"), echo = FALSE)
-# For printing
-generate_poster_pdf(
-    input_file = here::here("2021/dda-ws/index.Rmd"),
-    output_file = here::here("2021/dda-ws/poster-print.pdf"),
-    paper_size = "A1"
-)
-
-generate_poster_pdf(
-    input_file = here::here("2021/dda-ws/index.Rmd"),
-    output_file = here::here("2021/dda-ws/poster.pdf"),
-    paper_size = "A3",
-    web_output = TRUE
-)
-
-generate_poster_html(
-    input_file = here::here("2021/dda-ws/index.Rmd"),
-    output_file = here::here("2021/dda-ws/index.html")
-)
-```
-
-### Reproducibility, a core principle of science, is rarely done 
-
-- Reproducibility is when the same result is *independently* produced by others
-using the same data and same code/analysis plan. 
-- Estimating the reproducibility of scientific studies is currently very difficult 
-because of:
-    - Nearly non-existent publishing of code/data
-    - General lack of awareness of and training in it
 - *Non-replication* is a known major problem, but extent of non-reproducible
 results is unknown. Barriers to addressing the problem include:
     - Lack of incentives to be reproducible
     - Emphasis on novelty and original work
 
-### We don't share as much as we should 
+---
 
-```{r}
-cap_sharing_figure <- "
+## We don't share as much as we should 
+
+.footnote[
 There are few studies on the extent of code and data availability, and whether study results
 can be reproduced. Figure shows results of some of them:
 1) [10.1177/2515245920918872](https://doi.org/10.1177/2515245920918872),
 2) [10.1007/s11306-017-1299-3](https://link.springer.com/article/10.1007/s11306-017-1299-3),
 3) [10.1371/journal.pone.0251194](https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0251194).
-"
-```
+]
 
-```{r fig-sharing, fig.width=7, fig.height=2, fig.cap=cap_sharing_figure}
+```{r fig-sharing, fig.width=7, fig.height=3, out.width="80%", dpi=300}
+library(tidyverse)
 tribble(
     ~study, ~text, ~value, ~total,
     1,"Data available", 41, 62,
@@ -713,60 +361,76 @@ tribble(
     )
 ```
 
-### Fundamental changes are needed, including education and training 
+???
 
-|||
-|--|--|
-|Our **aim** was then to create an open, re-usable, and beginner-friendly learning module on how biomedical researchers can do **R**eproducible **R**esearch using the **R** statistical program (course is abbreviated to "r-cubed" or R3). |**Using key principles**: Evidence-based learning and teaching practices; Mixture of activities (practicing, listening, reading, typing, discussing); Openly licensed (CC-BY); Publicly accessible; Create safe and supportive environment for learning; Use modern and beginner-friendly software and workflows (e.g. R); Documentation to also re-use for other instructors.|
+- Estimating the reproducibility of scientific studies is currently very difficult 
+because of:
+    - Nearly non-existent publishing of code/data
+    - General lack of awareness of and training in it
 
-### Introductory course details and website 
+---
 
-```{r}
-cap_r_cubed_website <- "
-Website that has material for introductory course: [r-cubed.rostools.org](https://r-cubed.rostools.org/). See our paper (DOI: [10.21105/jose.00122](https://jose.theoj.org/papers/10.21105/jose.00122)) describing the course and how to use it."
-```
+class: middle
 
-```{r img-r-cubed-website, fig.cap=cap_r_cubed_website}
-knitr::include_graphics("images/r-cubed-website.png")
-```
+## We in research need more skills in data analysis `r emo::ji("woman_technologist_medium_skin_tone")`
 
-### Intermediate course details and website 
+### ... and for more awareness and training on reproducibility and open science `r emo::ji("exploding_head")`
 
-```{r}
-cap_r_cubed_intermediate_website <- "Website with the material for the intermediate course:  [r-cubed-intermediate.rostools.org](https://r-cubed-intermediate.rostools.org/). 
-"
-```
+???
 
-```{r img-r-cubed-intermediate-website, fig.cap=cap_r_cubed_intermediate_website}
-knitr::include_graphics("images/r-cubed-intermediate-website.png")
-```
+While I've been teaching these general topics since my Masters, this course
+specifically I started during my postdoc because one, there was a need for more
+computational skills in my field and two, because the awareness around
+reproducibility and open science was very lacking.
 
-### Skills from the course are in demand and needed 
+---
 
-We've done the introductory course 4 times and intermediate 3 times with the DDA. 
-The responses to the pre-course survey question about what they want and expect
-to learn emphasize the need of these skills and knowledge:
+class: middle
 
-- *"... would like to have a more structured workflow ... and to have some tools for reproducibility"*
-- *"[To] manage data in a more organized way..."* and *"Version control. Sharing of code."*
-- *"Git and good practice in the context of reproducible and open science"*
-- *"Better structure in my data analyses so that in the future I can clearly see, what I have done and why."*
-- *"...create pipelines for my analysis that is more reproducible, readable, and
-that can be easily re-used for my future self and for my collaborators and
-colleagues"*
-- *"Structured, reproducible approach to using R and [G]it for future use in analyses"*
-- *"...information about open science and reproducibility..."*
-- *"... components about the reproducibility crisis and Open Science problems,
-so that we could have a context for why we should be incorporating R in our
-standard practice."*
+## Reproducible Research in R (R3 or r-cubed) course/workshop for PhD students and postdocs *doing biomedical research*
 
-### Next steps and plans
+- Introduction course: [r-cubed.rostools.org](https://r-cubed.rostools.org)
+    - JOSE paper: [10.21105/jose.00122](https://jose.theoj.org/papers/10.21105/jose.00122)
+- Intermediate course: [r-cubed-intermediate.rostools.org](https://r-cubed-intermediate.rostools.org/)
 
-Possible plans include developing an advanced course, short online tutorials,
-a video series of the material, and to run frequent (online) coding review
-sessions. 
+???
 
-*Are you interested in being involved in any of these or current projects? Contact us!*
+The course is teaching reproducible research in R to PhD students and postdocs who
+do biomedical research, largely diabetes research. 
+Participants are working/full-time researchers (including PhD students), not
+necessarily in an undergraduate context and related to learning data analysis or
+more practical type skills.
 
-**And of course, a HUGE thanks to DDA for hosting these courses and allowing them to grow** 
-`r paste0(rep(emo::ji("heart"), times = 2), collapse = " ")`
+This course is 3 full days, composing of 5 code along sessions where the
+instructor types and the learners follow along, a few lectures, and a final
+group project. For more info on the course, check out the links below.
+
+---
+
+class: middle
+
+## Key `r emo::ji("key")` features of course
+
+1. Multiple activities to learning *in class* (reading, doing, listening,
+discussing, teaching, group, and solo)
+
+1. Openly licensed `r fa2("fab fa-creative-commons-by")` and easily accessible `r fa2("fas fa-wifi")` online
+
+1. Written not just for participants but also (future) instructors
+
+1. Largely hands-on (code-along), limit lectures and slides
+
+???
+
+Briefly discuss before showing website.
+
+---
+
+class: middle
+
+## Try out the material and give us feedback on it! `r emo::ji("nerd")`
+
+???
+
+And to end, please, if you try out the material, lets us know! We'd love more
+feedback on it! Thanks for listening!
