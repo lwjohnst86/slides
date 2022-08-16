@@ -95,6 +95,8 @@ We'll go through this outline in this order, not expecting to cover them all.
 
 ---
 
+class: middle
+
 # Data Infrastructure Framework (DIF) Project
 
 ???
@@ -123,6 +125,8 @@ management.
 
 ## Aims of the DIF Project
 
+???
+
 We're still working out a better name, but for now we're calling it DIF
 
 These aims may seem vague, but bare with me.
@@ -134,7 +138,7 @@ data infrastructure framework that connects data collectors, researchers,
 clinicians, and other stakeholders, with the data, documentation, and findings
 (starting within the DD2 study)
 
-.footnote[Check out [DIF Project Website](https://steno-aarhus.github.io/dif-project/).]
+.footnote[Check out [DIF Project Website](https://steno-aarhus.github.io/dif-project/) for more details.]
 
 ???
 
