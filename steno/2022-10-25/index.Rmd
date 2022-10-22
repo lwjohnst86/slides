@@ -1,0 +1,591 @@
+---
+# For Data Management in Research, a PhD seminar at SDCA
+title: "Open science and FAIR principles TODO: update title"
+author: "Luke Johnston"
+output:
+  xaringan::moon_reader:
+    lib_dir: libs
+    css: "xaringan-themer.css"
+    nature:
+      slideNumberFormat: ""
+      ratio: "16:9"
+      countIncrementalSlides: false
+---
+
+layout: true
+
+```{r setup, include=FALSE}
+options(htmltools.dir.version = FALSE)
+knitr::opts_chunk$set(
+  echo = FALSE,
+  message = FALSE,
+  warning = FALSE,
+  fig.align = "center"
+)
+library(emoji)
+
+fa2 <- function(icon, fill = "#da9100") {
+    fontawesome::fa(name = icon, fill = fill)
+}
+```
+
+```{css}
+.footer-right {
+    background-color: #FFFFFF;
+    position: absolute;
+    bottom: 10px;
+    right: 8px;
+    height: 60px;
+    width: 30%;
+    font-size: 11pt;
+}
+```
+
+```{r xaringan-themer, include=FALSE}
+library(xaringanthemer)
+style_mono_accent(
+    base_color = "#990033",
+    base_font_size = "21px",
+    text_font_size = "1.2rem", 
+    text_font_google = google_font("Nanum Gothic"),
+    header_font_google = google_font("Merriweather Sans", "300")
+)
+```
+
+<!-- TODO: convert this to functions? -->
+
+.footer-right[
+Slides: [slides.lwjohnst.com/steno/2022-10-25](https://slides.lwjohnst.com/steno/2022-10-25/)
+Licensed under CC-BY `r fa2("creative-commons-by", "#990033")`
+]
+
+---
+
+```{r progress-bar}
+xaringanExtra::use_progress_bar(color = "#990033", location = "top")
+```
+
+```{r logo-sdca}
+xaringanExtra::use_logo(
+  image_url = "../../common/sdca-logo.png",
+  link_url = "https://www.stenoaarhus.dk/",
+  width = "60",
+)
+```
+
+<!-- 
+Details:
+
+- Data are the fulcrum of research. Still, within this field, good practices and
+law are tricky to navigate.
+- Total: 1-1.5 hrs. Aim for 1.25 (for a break)
+    - 75 min with discussions and lecture
+- Learning objectives:
+    - 
+
+-->
+
+---
+
+# What is open science? 
+
+## Show of hands, who could explain it?
+
+???
+
+I'll be explaining it anyway.
+
+---
+
+class: middle
+
+## Brief history on open science: Initially about open access to papers
+
+--
+
+> "Open": Usually defined by the copyright license assigned to it (e.g. Creative Commons).
+
+???
+
+Who could explain open access?
+
+License example are these slides (point to footer).
+
+---
+
+## But there are many components to open science... though most are neglected
+
+<center>
+```{r}
+library(DiagrammeR)
+open_science_diagram <- grViz("
+graph neato {
+
+graph [layout = neato, sep = '0.15', overlap = false]
+
+node [fillcolor = none, shape = oval]
+science [label = 'Open\nScience']
+
+node [shape = box, style = 'rounded, filled']
+node [fillcolor = grey40]
+materials [label = 'Open\nMaterials/Methods']
+infra [label = 'Open\nInfrastructure']
+
+node [fillcolor = green4]
+access [label = 'Open\nAccess']
+
+node [fillcolor = green3]
+data [label = 'Open\nData']
+
+node [fillcolor = darkorange2]
+repro [label = 'Open Code\n(Reproducibility)']
+source [label = 'Open\nSource']
+
+science -- {source materials infra repro access data}
+}")
+widgetframe::frameableWidget(open_science_diagram)
+```
+</center>
+
+???
+
+Focus on what gets excluded, e.g. open source, code, open metadata
+standards, open infrastructure, etc
+
+---
+
+## Open science isn't completely binary: It's a spectrum
+
+```{r fig-spectrum-open-science, out.width="80%"}
+knitr::include_graphics("images/spectrum-open-science.png")
+```
+
+\+ Open access (like preprints)  
+\+ Open protocol  
+\+ **Open data/data format**  
+\+ Open analysis plan/code  
+\+ Open source (like software used) (1)
+
+.footnote[(1): Some institutional decisions impair openness. Example: AU
+approves and supports a closed source software (Stata).]
+
+--
+
+> A bit open is better than nothing open.
+
+---
+
+# What is open data?
+
+> Most basic level: Is publicly accessible with an open license.
+
+.footnote[Can be open and follow law, not mutually exclusive, just trickier.]
+
+---
+
+## Is closed data less useful? `r emoji("thinking")` ... it's complicated ... `r emoji("confused")`
+
+With your neighbour, discuss for ~4 minutes why:
+
+1. It might be more complicated than this basic definition 
+
+2. Why data with "closed" licenses can still be useful to others
+
+---
+
+## Data can be closed, but still "more easily accessible" and be useful to science
+
+- Example: UK Biobank as an "open access" data resource (really called "gated-access")
+
+--
+
+### Part of License 
+    
+> "UK Biobank hereby grants to the Applicant a revocable, worldwide,
+royalty-free, non-exclusive, non-transferable licence (but not any ownership
+rights) during the Term to use the Materials for the Permitted Purpose, subject
+to the terms and conditions of this Agreement."
+
+---
+
+## ... but it is even more complicated than that... `r emoji("grimace")`
+
+Again, with your neighbour, discuss for ~4 minutes why being accessible (to
+researchers or the public) doesn't necessarily make it useful.
+
+---
+
+## More to openness than an open license or "open access"
+
+> ... it needs to be FAIR too!
+
+1. Findable
+
+2. Accessible
+
+3. Interoperable
+
+4. Reusable
+
+???
+
+Emphasize that while open data is a thing, the practicalities of it, e.g. the
+"physical" infrastructure of it, isn't always so open or well defined
+
+---
+
+## Interoperable and Reusable: Can it be *easily* integrated or re-used with other tools?
+
+--
+
+**Answer these questions**: 
+
+- If software to import data is closed (e.g. Stata, SAS)... Yes or no?
+
+--
+
+- If file format is closed or proprietary (e.g. Excel, SAS)... Yes or no?
+
+???
+
+For instance, why did Excel change their file ending from xls to xlsx?
+
+Usually software to load closed formats 
+
+--
+
+- If metadata isn't included... Yes or no?
+
+--
+
+- If the variables in the dataset aren't in a standard location... Yes or no?
+
+???
+
+For instance, some are on the first line, others are not.
+
+--
+
+- If a numeric value is used to indicate missingness (e.g. 99)... Yes or no?
+
+---
+
+class: middle
+
+## ... making things FAIR is *hard*! `r emoji("peep")`
+
+.footnote[
+- Even harder when researchers don't understand nor value skill needed for it.
+- There's whole, highly-technical careers dedicated to data/software.
+]
+
+???
+
+A lot of considerations need to go into making a dataset usable and open.
+
+---
+
+# We didn't really need to do worry about this before, why now?
+
+---
+
+## Discussion time (~6 min) `r emoji("comment")`
+
+> Why are these things important? And why now? What are some challenges you've
+faced with data and how it is structured?
+
+???
+
+Time a minute to think about it before sharing.
+
+---
+
+## Many reasons why it is important `r emo::ji("face_with_monocle")`
+
+- Tightly tied to reproducibility
+    - How to verify claim if data can't easily be shared? 
+
+--
+
+- Increase impact and visibility of your work and more re-use
+
+--
+
+- Collection and volume are getting larger and more complex.
+    - Very cost-efficient to fund larger studies that share widely
+
+--
+
+- Cross-country and institute collaboration continues to increase
+    - Need easier ways to collaborate effectively
+
+???
+
+Especially those of the older generation, data was different. We have SO much 
+of it now. The skills needed are way more complicated and difficult. 
+
+--- 
+
+## More time spent considering for these things = less time spent later on
+
+- More restrictions (example: closed copyright, gated-access) means more effort
+and time for both user and owner
+    - Need lawyers for license
+    - Need enforcement systems
+    - Need gated access control systems
+    - Need support personnel for issues
+    
+---
+
+## Example related to licensing
+
+> [UK Biobank Data Showcase](https://biobank.ndph.ox.ac.uk/showcase/index.cgi): "Legal notice: Without a written licence, you may
+not copy, reproduce, republish, download, distribute, make available to the
+public or otherwise use any of the content displayed on this website in whole or
+in part or permit or assist any third party to do the same, except to the extent
+permitted at law."
+
+???
+
+Can't make an R package to help organize or display this information.
+
+Need lawyers if someone violates copyright. 
+
+Need system to report violations.
+
+Need people to check if it is a violation.
+
+A simple switch from this license to a CC-BY means that you don't
+have those issues any more.
+
+---
+
+## So many benefits... Why isn't this normal then?
+
+.footnote[One reason: Not valuing software and data engineering in research environments.]
+
+???
+
+- Mention data engineering here.
+
+---
+        
+# Um, how is data and software engineering relevant?
+
+.footnote[Make computers do more work, so we humans can be creative and think.]
+
+???
+
+Initially more of IT or software engineering work
+
+---
+
+## Globals trends show rise in interest, mainly in industry
+
+```{r fig-google-trends, fig.cap="Source: [Google Trends](https://trends.google.com/trends/explore?date=2012-01-01%202022-10-13&q=%22data%20engineering%22,%22data%20science%22,%22software%20engineering%22)"}
+library(tidyverse)
+library(lubridate)
+library(geomtextpath)
+
+read_csv(
+    here::here("steno/2022-10-25/data/google-trends.csv"),
+    skip = 3,
+    col_types = "cccc",
+    col_names = c(
+        "year_month",
+        "data_engineering",
+        "data_science",
+        "software_engineering"
+    )
+) %>% 
+    pivot_longer(cols = -year_month) %>% 
+    mutate(value = as.numeric(str_remove(value, "<")),
+           date = lubridate::as_date(str_c(year_month, "-01")),
+           name = str_replace_all(name, "_", " ")) %>% 
+    ggplot(aes(x = date, y = value, colour = name, label = name)) +
+    geom_line(size = 1) +
+    scale_color_brewer(palette = "Dark2") +
+    theme_minimal() +
+    ylab("Relative interest in Google searches") +
+    theme(axis.title.x = element_blank(),
+          legend.title = element_blank(),
+          legend.position = c(0.2, 0.8))
+```
+
+---
+
+## How does engineering relate to open and FAIR? By using their principles `r emoji("star-struck")`
+
+.pull-right[
+- Composable
+
+- Modular
+]
+
+.pull-right[
+- Single-purpose
+
+- Interoperable 
+    - (across ALL components)
+]
+
+.footnote[Think of Lego!]
+
+--
+
+> All together -> build ecosystems
+
+---
+
+# So, you're saying engineering can help us do our research better? How?
+
+---
+
+## Discussion time (~6 min)
+
+> How might you think data and software engineering can help?
+
+---
+
+---
+
+## Still is a very new, but rising, area
+
+- Industry better at it than academia
+
+--
+
+- Some companies (`r fa2("google")` `r fa2("facebook")` `r fa2("amazon")`) better at it than others
+    - Many have manual/non-standardized processes, with data in e.g. Excel
+
+--
+
+- Some research institutes (e.g. UK Biobank) better at it than others
+    - Overall, science is far behind best practices
+    
+--
+    
+- Biomedical/health research is further behind than others (e.g. physics, ecology)
+    - Likely because of funding, privacy, and IP issues
+
+---
+
+## Data engineering can make data FAIRer `r emoji("star_struck")`. How?
+
+--
+
+- Building APIs to connect with other ecosystems (A, I, R)
+
+--
+
+- Automatic implementing and checking of metadata and organizational standards (F, A, I, R)
+
+--
+
+- Using modern and efficient database (open) software like Postgres, DuckDB, Parquet (A, I, R)
+
+???
+
+Example: I converted the DST SAS file formats into Parquet storage 
+and can load them into DuckDB... for MUCH faster analysis.
+
+--
+
+- Force use of open file formats, e.g. CSV, JSON (I, R)
+
+--
+
+- Automatic versioning and publishing of data (F, A, R)
+
+--
+
+- Using Git and GitHub to collaboratively build (and share) the infrastructure to manage data (F, I, R)
+
+---
+
+class: middle
+
+## We have a (recent NNF-funded) project on an open infrastructure for data: Data Infrastucture Framework (DIF) Project
+
+.footnote[
+- Project title is WIP.
+- Website: https://steno-aarhus.github.io/dif-project/
+- [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.6511112.svg)](https://doi.org/10.5281/zenodo.6511112)
+]
+
+
+# How can I make my data more open and FAIR?
+
+---
+
+## Practical ways of sharing code
+
+- Main and most commonly used:
+    - [GitHub](https://github.com/)\*
+    - [Zenodo](https://zenodo.org/)\*
+    - [figshare](https://figshare.com/)
+    - [OSF](https://osf.io/)
+
+.footnote[GitHub and Zenodo can be 
+[connected](https://guides.github.com/activities/citable-code/)!]
+
+    - POV of PhD student vs PI/data owner
+    - Advocate for hiring people, of spreading awareness of the need for more
+    time, effort, and funds spent on this
+
+# Summary
+
+- If you're struggling... that is totally normally!
+
+- More to open than the license (file formats, software used, linked metadata)
+
+- Managing FAIR data is hard, start valuing it (and personnel) more
+
+- When getting funding, include budget for data/software engineers
+
+<!--
+---
+
+## Principles-in-action: Inexpensive and automated journal submission and processing with open APIs and infrastructures
+
+[Journal of Open Source Software (JOSS)]()
+
+- Git, GitHub, and GitHub Actions, e.g. Open Journals
+- List cost and blog
+
+workflow
+
+1. Write paper on your GitHub 
+2. Submit to JOSS GitHub Issue -> JOSS ext
+
+    - DE: Our DIF project
+    
+## Real world examples of these principles in action in improving openness
+
+---
+
+## Principles-in-action: Better scholarly writing with R Markdown and Quarto
+
+---
+
+## Easy R package creation with Git, GitHub, and devtools
+
+https://raw.githubusercontent.com/rstudio/cheatsheets/main/package-development.pdf
+
+Because of this, lead to a set of standards and conventions for making packages,
+which has lead to R packages being better at working together and creating a
+more cohesive ecosystem. For instance, standard files for licensing, easy and quick
+connection to Git and GitHub, automated checks of your package, and so on.
+
+- Git and GitHub
+    - Emphasis making websites, openness and accessibility right from the start
+
+- devtools and usethis R packages
+
+class: middle
+
+# But, what about data engineering examples? `r emoji("thinking")`
+
+.footnote[Good example is [Ocean Health Index](http://ohi-science.org/data-science-training/) (DOI: [10.1038/s41559-017-0160](https://doi.org/10.1038/s41559-017-0160)).]
+
+-->
