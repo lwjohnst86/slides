@@ -20,6 +20,10 @@ Imports:
     emojifont,
     emoji,
     svglite,
-    pagedown
+    pagedown,
+    DiagrammeR,
+    widgetframe,
+    ggrepel,
+    geomtextpath
 Remotes: 
     gadenbuie/xaringanExtra
