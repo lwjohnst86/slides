@@ -414,42 +414,7 @@ read_csv(
 
 ---
 
-## How does engineering relate to open and FAIR? By using their principles `r emoji("star-struck")`
-
-.pull-right[
-- Composable
-
-- Modular
-]
-
-.pull-right[
-- Single-purpose
-
-- Interoperable 
-    - (across ALL components)
-]
-
-.footnote[Think of Lego!]
-
---
-
-> All together -> build ecosystems
-
----
-
-# So, you're saying engineering can help us do our research better? How?
-
----
-
-## Discussion time (~6 min)
-
-> How might you think data and software engineering can help?
-
----
-
----
-
-## Still is a very new, but rising, area
+## Still is a very new area
 
 - Industry better at it than academia
 
@@ -467,6 +432,45 @@ read_csv(
     
 - Biomedical/health research is further behind than others (e.g. physics, ecology)
     - Likely because of funding, privacy, and IP issues
+
+---
+
+## How does engineering relate to open and FAIR? 
+
+By making use of some of their principles! `r emoji("star-struck")`
+
+--
+
+.pull-right[
+- Composable
+
+- Modular
+]
+
+.pull-right[
+- Single-purpose
+
+- Interoperable 
+    - (across ALL components of science)
+]
+
+.footnote[Think of Lego!]
+
+--
+
+> All together `r emoji("right_arrow")` build ecosystems
+
+---
+
+## Discussion time (~6 min): How can engineering help?
+
+> Talk with neighbour: How do **you** think data and software engineering can help?
+
+???
+
+Might be making theoretical sense, but how? Practically?
+
+---
 
 ---
 
@@ -513,25 +517,52 @@ class: middle
 - [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.6511112.svg)](https://doi.org/10.5281/zenodo.6511112)
 ]
 
+---
 
 # How can I make my data more open and FAIR?
 
 ---
 
-## Practical ways of sharing code
+## Question: How many work with human data?
+
+---
+
+## Simple first steps to making data FAIRer:
+
+1. Save as CSV.
+
+2. Use consistent and descriptive variable names, example:
+
+    ``` text
+    glucose_0min, glucose_30min, family_history_t2dm, gender, birth_year
+    ```
+
+3. Include a metadata file, example:
+
+    ``` text
+    variable, description
+    glucose_0min, Fasting glucose measured before the glucose challenge. 
+    glucose_30min, Glucose measured 30 minutes after glucose challenge.
+    weight, Weight measured on a standard scale, in underclothes.
+    height, Height measured without shoes.
+    ```
+
+---
+
+## Practical ways of sharing data
 
 - Main and most commonly used:
     - [GitHub](https://github.com/)\*
     - [Zenodo](https://zenodo.org/)\*
-    - [figshare](https://figshare.com/)
     - [OSF](https://osf.io/)
+    - [Dryad]()
 
 .footnote[GitHub and Zenodo can be 
 [connected](https://guides.github.com/activities/citable-code/)!]
 
-    - POV of PhD student vs PI/data owner
-    - Advocate for hiring people, of spreading awareness of the need for more
-    time, effort, and funds spent on this
+- POV of PhD student vs PI/data owner
+- Advocate for hiring people, of spreading awareness of the need for more
+time, effort, and funds spent on this
 
 # Summary
 
