@@ -1,35 +1,37 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>Open science and FAIR principles: Under-valued and under-appreciated</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Luke Johnston" />
+    <script src="libs/header-attrs/header-attrs.js"></script>
+    <script src="libs/xaringanExtra-progressBar/progress-bar.js"></script>
+    <script src="libs/htmlwidgets/htmlwidgets.js"></script>
+    <script src="libs/viz/viz.js"></script>
+    <link href="libs/DiagrammeR-styles/styles.css" rel="stylesheet" />
+    <script src="libs/grViz-binding/grViz.js"></script>
+    <script src="libs/pymjs/pym.v1.min.js"></script>
+    <link rel="stylesheet" href="xaringan-themer.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+.title[
+# Open science and FAIR principles: Under-valued and under-appreciated
+]
+.author[
+### Luke Johnston
+]
+
 ---
-# For Data Management in Research, a PhD seminar at SDCA
-title: "Open science and FAIR principles: Under-valued and under-appreciated"
-author: "Luke Johnston"
-output:
-  xaringan::moon_reader:
-    lib_dir: libs
-    css: "xaringan-themer.css"
-    nature:
-      slideNumberFormat: ""
-      ratio: "16:9"
-      countIncrementalSlides: false
----
+
 
 layout: true
 
-```{r setup, include=FALSE}
-options(htmltools.dir.version = FALSE)
-knitr::opts_chunk$set(
-  echo = FALSE,
-  message = FALSE,
-  warning = FALSE,
-  fig.align = "center"
-)
-library(emoji)
 
-fa2 <- function(icon, fill = "#da9100") {
-    fontawesome::fa(name = icon, fill = fill)
-}
-```
 
-```{css}
+&lt;style type="text/css"&gt;
 .footer-right {
     background-color: #FFFFFF;
     position: absolute;
@@ -39,41 +41,75 @@ fa2 <- function(icon, fill = "#da9100") {
     width: 30%;
     font-size: 11pt;
 }
-```
+&lt;/style&gt;
 
-```{r xaringan-themer, include=FALSE}
-library(xaringanthemer)
-style_mono_accent(
-    base_color = "#990033",
-    base_font_size = "21px",
-    text_font_size = "1.2rem", 
-    text_font_google = google_font("Nanum Gothic"),
-    header_font_google = google_font("Merriweather Sans", "300")
-)
-```
 
-<!-- TODO: convert this to functions? -->
+
+&lt;!-- TODO: convert this to functions? --&gt;
 
 .footer-right[
 Slides: [slides.lwjohnst.com/steno/2022-10-25](https://slides.lwjohnst.com/steno/2022-10-25/)
-Licensed under CC-BY `r fa2("creative-commons-by", "#990033")`
+Licensed under CC-BY <svg aria-hidden="true" role="img" viewBox="0 0 496 512" style="height:1em;width:0.97em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:#990033;overflow:visible;position:relative;"><path d="M314.9 194.4v101.4h-28.3v120.5h-77.1V295.9h-28.3V194.4c0-4.4 1.6-8.2 4.6-11.3 3.1-3.1 6.9-4.7 11.3-4.7H299c4.1 0 7.8 1.6 11.1 4.7 3.1 3.2 4.8 6.9 4.8 11.3zm-101.5-63.7c0-23.3 11.5-35 34.5-35s34.5 11.7 34.5 35c0 23-11.5 34.5-34.5 34.5s-34.5-11.5-34.5-34.5zM247.6 8C389.4 8 496 118.1 496 256c0 147.1-118.5 248-248.4 248C113.6 504 0 394.5 0 256 0 123.1 104.7 8 247.6 8zm.8 44.7C130.2 52.7 44.7 150.6 44.7 256c0 109.8 91.2 202.8 203.7 202.8 103.2 0 202.8-81.1 202.8-202.8 .1-113.8-90.2-203.3-202.8-203.3z"/></svg>
 ]
 
 ---
 
-```{r progress-bar}
-xaringanExtra::use_progress_bar(color = "#990033", location = "top")
-```
+<style>.xe__progress-bar__container {
+  top:0;
+  opacity: 1;
+  position:absolute;
+  right:0;
+  left: 0;
+}
+.xe__progress-bar {
+  height: 0.25em;
+  background-color: #990033;
+  width: calc(var(--slide-current) / var(--slide-total) * 100%);
+}
+.remark-visible .xe__progress-bar {
+  animation: xe__progress-bar__wipe 200ms forwards;
+  animation-timing-function: cubic-bezier(.86,0,.07,1);
+}
+@keyframes xe__progress-bar__wipe {
+  0% { width: calc(var(--slide-previous) / var(--slide-total) * 100%); }
+  100% { width: calc(var(--slide-current) / var(--slide-total) * 100%); }
+}</style>
 
-```{r logo-sdca}
-xaringanExtra::use_logo(
-  image_url = "../../common/sdca-logo.png",
-  link_url = "https://www.stenoaarhus.dk/",
-  width = "60",
-)
-```
+<div>
+<style type="text/css">.xaringan-extra-logo {
+width: 60px;
+height: 128px;
+z-index: 0;
+background-image: url(../../common/sdca-logo.png);
+background-size: contain;
+background-repeat: no-repeat;
+position: absolute;
+top:1em;right:1em;
+}
+</style>
+<script>(function () {
+  let tries = 0
+  function addLogo () {
+    if (typeof slideshow === 'undefined') {
+      tries += 1
+      if (tries < 10) {
+        setTimeout(addLogo, 100)
+      }
+    } else {
+      document.querySelectorAll('.remark-slide-content:not(.title-slide):not(.inverse):not(.hide_logo)')
+        .forEach(function (slide) {
+          const logo = document.createElement('a')
+          logo.classList = 'xaringan-extra-logo'
+          logo.href = 'https://www.stenoaarhus.dk/'
+          slide.appendChild(logo)
+        })
+    }
+  }
+  document.addEventListener('DOMContentLoaded', addLogo)
+})()</script>
+</div>
 
-<!-- 
+&lt;!-- 
 Details:
 
 - Data are the fulcrum of research. Still, within this field, good practices and
@@ -81,7 +117,7 @@ law are tricky to navigate.
 - Total: 1-1.5 hrs. Aim for 1.25 (for a break)
     - 75 min with discussions and lecture
 
--->
+--&gt;
 
 # Learning objectives
 
@@ -133,7 +169,7 @@ before that scientists were very secretive about sharing results.
 
 --
 
-> "Open": Usually defined by the copyright license assigned to it (e.g. [Creative Commons](https://creativecommons.org/)).
+&gt; "Open": Usually defined by the copyright license assigned to it (e.g. [Creative Commons](https://creativecommons.org/)).
 
 .footnote[Definition from [Open Knowledge Foundation](https://opendefinition.org/licenses/) and [Open Source Initiative](https://opensource.org/licenses).]
 
@@ -147,37 +183,13 @@ License example are these slides (point to footer).
 
 ## But there are many components to open science... though most are neglected
 
-<center>
-```{r fig-open-science-components}
-library(DiagrammeR)
-open_science_diagram <- grViz("
-graph neato {
-
-graph [layout = neato, sep = '0.15', overlap = false]
-
-node [fillcolor = none, shape = oval]
-science [label = 'Open\nScience']
-
-node [shape = box, style = 'rounded, filled']
-node [fillcolor = grey40]
-materials [label = 'Open\nMaterials/Methods']
-infra [label = 'Open\nInfrastructure']
-
-node [fillcolor = green4]
-access [label = 'Open\nAccess']
-
-node [fillcolor = green3]
-data [label = 'Open\nData']
-
-node [fillcolor = darkorange2]
-repro [label = 'Open Code\n(Reproducibility)']
-source [label = 'Open\nSource']
-
-science -- {source materials infra repro access data}
-}")
-widgetframe::frameableWidget(open_science_diagram)
-```
-</center>
+&lt;center&gt;
+<div id="htmlwidget-cc70e6fe79952a74e8fb" style="width:504px;height:504px;" class="grViz html-widget"></div>
+<script>HTMLWidgets.pymChild = new pym.Child();HTMLWidgets.addPostRenderHandler(function(){
+                                setTimeout(function(){HTMLWidgets.pymChild.sendHeight();},100);
+                            });</script>
+<script type="application/json" data-for="htmlwidget-cc70e6fe79952a74e8fb">{"x":{"diagram":"\ngraph neato {\n\ngraph [layout = neato, sep = \"0.15\", overlap = false]\n\nnode [fillcolor = none, shape = oval]\nscience [label = \"Open\nScience\"]\n\nnode [shape = box, style = \"rounded, filled\"]\nnode [fillcolor = grey40]\nmaterials [label = \"Open\nMaterials/Methods\"]\ninfra [label = \"Open\nInfrastructure\"]\n\nnode [fillcolor = green4]\naccess [label = \"Open\nAccess\"]\n\nnode [fillcolor = green3]\ndata [label = \"Open\nData\"]\n\nnode [fillcolor = darkorange2]\nrepro [label = \"Open Code\n(Reproducibility)\"]\nsource [label = \"Open\nSource\"]\n\nscience -- {source materials infra repro access data}\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+&lt;/center&gt;
 
 ???
 
@@ -194,9 +206,7 @@ Has anyone ever heard of Open Materials/Methods or Open Infrastructure?
 
 ## Open science isn't completely binary: It's a spectrum
 
-```{r fig-spectrum-open-science, out.width="80%"}
-knitr::include_graphics("images/spectrum-open-science.png")
-```
+&lt;img src="images/spectrum-open-science.png" width="80%" style="display: block; margin: auto;" /&gt;
 
 .pull-left[
 \+ Open access (like preprints)  
@@ -215,7 +225,7 @@ Even within each of these components, "openness" can be a spectrum.
 
 --
 
-> A bit open is better than nothing open.
+&gt; A bit open is better than nothing open.
 
 ???
 
@@ -227,7 +237,7 @@ class: middle
 
 # What is open data?
 
-> Most basic level: Is publicly accessible with an open license.
+&gt; Most basic level: Is publicly accessible with an open license.
 
 .footnote[Can be open and follow law, not mutually exclusive, just trickier.]
 
@@ -239,12 +249,12 @@ possible in many cases (not all, e.g. DST).
 
 ---
 
-## Discussion time (~6 min) `r emoji("comment")`
+## Discussion time (~6 min) 💬
 
-> Is data with a closed license less useful? `r emoji("thinking")` ... it's complicated ... `r emoji("confused")`
-> 
-> 1. Why is it complicated?
-> 2. How can "closed" data still be useful?
+&gt; Is data with a closed license less useful? 🤔 ... it's complicated ... 😕
+&gt; 
+&gt; 1. Why is it complicated?
+&gt; 2. How can "closed" data still be useful?
 
 1. Think on your own for ~1 min .
 
@@ -262,7 +272,7 @@ possible in many cases (not all, e.g. DST).
 
 **Part of UK Biobank's License**
     
-> "UK Biobank hereby grants to the Applicant a revocable, worldwide,
+&gt; "UK Biobank hereby grants to the Applicant a revocable, worldwide,
 royalty-free, non-exclusive, non-transferable licence (but not any ownership
 rights) during the Term to use the Materials for the Permitted Purpose, subject
 to the terms and conditions of this Agreement."
@@ -271,9 +281,9 @@ to the terms and conditions of this Agreement."
 
 class: middle
 
-## Discussion time with everyone (~6 min) `r emoji("comment")`
+## Discussion time with everyone (~6 min) 💬
 
-> ... but it is even more complicated than that... `r emoji("grimace")`. Why
+&gt; ... but it is even more complicated than that... 😬. Why
 doesn't making a dataset accessible (with or without a closed license) make it
 *useful or even usable*?
 
@@ -285,7 +295,7 @@ For instance, UK Biobank is useful, usable, mostly-accessible, but not open.
 
 ## More to openness than an open license or "open access"
 
-> ... it needs to be FAIR too!
+&gt; ... it needs to be FAIR too!
 
 1. Findable
 
@@ -349,7 +359,7 @@ For instance, some are on the first line, others are not.
 
 class: middle
 
-## ... making things FAIR is *hard*! `r emoji("peep")`
+## ... making things FAIR is *hard*! 🫣
 
 .footnote[
 - Even harder when researchers don't understand nor value skill needed for it.
@@ -375,11 +385,11 @@ of an issue.
 
 class: middle
 
-## Discussion time (~6 min) `r emoji("comment")`
+## Discussion time (~6 min) 💬
 
-> - Why are these things important? And why now?
-> 
-> - What are some challenges you've faced with data and how it is structured?
+&gt; - Why are these things important? And why now?
+&gt; 
+&gt; - What are some challenges you've faced with data and how it is structured?
 
 1. Think on your own for ~1 min.
 
@@ -393,7 +403,7 @@ Time a minute to think about it before sharing.
 
 ---
 
-## Many reasons why it is important `r emo::ji("face_with_monocle")`
+## Many reasons why it is important 🧐
 
 - Tightly tied to reproducibility
 
@@ -450,7 +460,7 @@ of it now. The skills needed are way more complicated and difficult.
 
 ## Example related to licensing
 
-> [UK Biobank Data Showcase](https://biobank.ndph.ox.ac.uk/showcase/index.cgi):
+&gt; [UK Biobank Data Showcase](https://biobank.ndph.ox.ac.uk/showcase/index.cgi):
 "Legal notice: Without a written licence, you may not copy, reproduce,
 republish, download, distribute, make available to the public or otherwise use
 any of the content displayed on this website in whole or in part or permit or
@@ -499,37 +509,9 @@ Initially more of IT or software engineering work
 
 ## Globals trends show rise in interest, mainly in industry
 
-```{r fig-google-trends, fig.width=7, fig.height=3, dpi=300, out.width="80%"}
-library(tidyverse)
-library(lubridate)
-library(geomtextpath)
+&lt;img src="index_files/figure-html/fig-google-trends-1.png" width="80%" style="display: block; margin: auto;" /&gt;
 
-read_csv(
-    here::here("steno/2022-10-25/data/google-trends.csv"),
-    skip = 3,
-    col_types = "cccc",
-    col_names = c(
-        "year_month",
-        "data_engineering",
-        "data_science",
-        "software_engineering"
-    )
-) %>% 
-    pivot_longer(cols = -year_month) %>% 
-    mutate(value = as.numeric(str_remove(value, "<")),
-           date = lubridate::as_date(str_c(year_month, "-01")),
-           name = str_replace_all(name, "_", " ")) %>% 
-    ggplot(aes(x = date, y = value, colour = name, label = name)) +
-    geom_line(size = 1) +
-    scale_color_brewer(palette = "Dark2") +
-    theme_minimal() +
-    ylab("Relative interest in Google searches") +
-    theme(axis.title.x = element_blank(),
-          legend.title = element_blank(),
-          legend.position = c(0.2, 0.8))
-```
-
-.footnote[Source: [Google Trends](https://trends.google.com/trends/explore?date=2012-01-01%202022-10-13&q=%22data%20engineering%22,%22data%20science%22,%22software%20engineering%22)]
+.footnote[Source: [Google Trends](https://trends.google.com/trends/explore?date=2012-01-01%202022-10-13&amp;q=%22data%20engineering%22,%22data%20science%22,%22software%20engineering%22)]
 
 ---
 
@@ -537,7 +519,7 @@ read_csv(
 
 --
 
-- Industry > academia
+- Industry &gt; academia
 
 ???
 
@@ -545,7 +527,7 @@ Industry tends to be better at it than academia.
 
 --
 
-- Some companies (`r fa2("google")` `r fa2("facebook")` `r fa2("amazon")`) > others
+- Some companies (<svg aria-hidden="true" role="img" viewBox="0 0 488 512" style="height:1em;width:0.95em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:#da9100;overflow:visible;position:relative;"><path d="M488 261.8C488 403.3 391.1 504 248 504 110.8 504 0 393.2 0 256S110.8 8 248 8c66.8 0 123 24.5 166.3 64.9l-67.5 64.9C258.5 52.6 94.3 116.6 94.3 256c0 86.5 69.1 156.6 153.7 156.6 98.2 0 135-70.4 140.8-106.9H248v-85.3h236.1c2.3 12.7 3.9 24.9 3.9 41.4z"/></svg> <svg aria-hidden="true" role="img" viewBox="0 0 512 512" style="height:1em;width:1em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:#da9100;overflow:visible;position:relative;"><path d="M504 256C504 119 393 8 256 8S8 119 8 256c0 123.8 90.69 226.4 209.3 245V327.7h-63V256h63v-54.64c0-62.15 37-96.48 93.67-96.48 27.14 0 55.52 4.84 55.52 4.84v61h-31.28c-30.8 0-40.41 19.12-40.41 38.73V256h68.78l-11 71.69h-57.78V501C413.3 482.4 504 379.8 504 256z"/></svg> <svg aria-hidden="true" role="img" viewBox="0 0 448 512" style="height:1em;width:0.88em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:#da9100;overflow:visible;position:relative;"><path d="M257.2 162.7c-48.7 1.8-169.5 15.5-169.5 117.5 0 109.5 138.3 114 183.5 43.2 6.5 10.2 35.4 37.5 45.3 46.8l56.8-56S341 288.9 341 261.4V114.3C341 89 316.5 32 228.7 32 140.7 32 94 87 94 136.3l73.5 6.8c16.3-49.5 54.2-49.5 54.2-49.5 40.7-.1 35.5 29.8 35.5 69.1zm0 86.8c0 80-84.2 68-84.2 17.2 0-47.2 50.5-56.7 84.2-57.8v40.6zm136 163.5c-7.7 10-70 67-174.5 67S34.2 408.5 9.7 379c-6.8-7.7 1-11.3 5.5-8.3C88.5 415.2 203 488.5 387.7 401c7.5-3.7 13.3 2 5.5 12zm39.8 2.2c-6.5 15.8-16 26.8-21.2 31-5.5 4.5-9.5 2.7-6.5-3.8s19.3-46.5 12.7-55c-6.5-8.3-37-4.3-48-3.2-10.8 1-13 2-14-.3-2.3-5.7 21.7-15.5 37.5-17.5 15.7-1.8 41-.8 46 5.7 3.7 5.1 0 27.1-6.5 43.1z"/></svg>) &gt; others
 
     - Many have manual/non-standardized processes, with data in e.g. Excel
 
@@ -558,13 +540,13 @@ ad.
 
 --
 
-- Some research institutes (e.g. UK Biobank) > others
+- Some research institutes (e.g. UK Biobank) &gt; others
 
     - Overall, research is far behind best practices
     
 --
     
-- Some fields (physics, ecology) > biomedical/health research
+- Some fields (physics, ecology) &gt; biomedical/health research
 
     - Likely because of funding, privacy, and IP issues
 
@@ -572,7 +554,7 @@ ad.
 
 ## How does engineering relate to open and FAIR? 
 
-By making use of some of their principles! `r emoji("star-struck")`
+By making use of some of their principles! 🤩
 
 --
 
@@ -593,15 +575,15 @@ By making use of some of their principles! `r emoji("star-struck")`
 
 --
 
-> All together `r emoji("right_arrow")` build ecosystems
+&gt; All together ➡️ build ecosystems
 
 ---
 
 class: middle
 
-## Discussion time (~6 min) `r emoji("comment")`
+## Discussion time (~6 min) 💬
 
-> How do **you** think data and software engineering can help?
+&gt; How do **you** think data and software engineering can help?
 
 1. Think on your own for ~1 min.
 
@@ -618,7 +600,7 @@ Might be making theoretical sense, but how? Practically?
 
 ---
 
-## Data engineering can make data FAIRer `r emoji("star_struck")`. How exactly?
+## Data engineering can make data FAIRer 🤩. How exactly?
 
 --
 
@@ -751,9 +733,9 @@ Sharing can also be easy! (depends on size of data though)
 
 class: middle
 
-## Discussion time (~6 min) `r emoji("comment")`
+## Discussion time (~6 min) 💬
 
-> How might you be able to make *your* data more open and FAIR? What are some challenges you foresee?
+&gt; How might you be able to make *your* data more open and FAIR? What are some challenges you foresee?
 
 1. Think on your own for ~1 min.
 
@@ -790,7 +772,7 @@ software used, metadata. Makes your own work easier.
 
 6. Advocacy is first step to making data FAIR and open. Second step, use CSV/open formats
 
-<!--
+&lt;!--
 
 ## Principles-in-action: Inexpensive and automated journal submission and processing with open APIs and infrastructures
 
@@ -802,7 +784,7 @@ software used, metadata. Makes your own work easier.
 workflow
 
 1. Write paper on your GitHub 
-2. Submit to JOSS GitHub Issue -> JOSS ext
+2. Submit to JOSS GitHub Issue -&gt; JOSS ext
 
     - DE: Our DIF project
     
@@ -826,8 +808,127 @@ connection to Git and GitHub, automated checks of your package, and so on.
 
 class: middle
 
-# But, what about data engineering examples? `r emoji("thinking")`
+# But, what about data engineering examples? 🤔
 
 .footnote[Good example is [Ocean Health Index](http://ohi-science.org/data-science-training/) (DOI: [10.1038/s41559-017-0160](https://doi.org/10.1038/s41559-017-0160)).]
 
--->
+--&gt;
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"slideNumberFormat": "",
+"ratio": "16:9",
+"countIncrementalSlides": false
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+// add `data-at-shortcutkeys` attribute to <body> to resolve conflicts with JAWS
+// screen reader (see PR #262)
+(function(d) {
+  let res = {};
+  d.querySelectorAll('.remark-help-content table tr').forEach(tr => {
+    const t = tr.querySelector('td:nth-child(2)').innerText;
+    tr.querySelectorAll('td:first-child .key').forEach(key => {
+      const k = key.innerText;
+      if (/^[a-z]$/.test(k)) res[k] = t;  // must be a single letter (key)
+    });
+  });
+  d.body.setAttribute('data-at-shortcutkeys', JSON.stringify(res));
+})(document);
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>

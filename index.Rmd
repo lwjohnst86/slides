@@ -42,6 +42,7 @@ link %>%
     clipr::write_clip()
 ```
 
+-   **October 25, 2022**: [*Open science and FAIR principles: Under-valued and under-appreciated*](steno/2022-10-25/index.html) talk for the PhD seminar Data management in research at Steno Diabetes Center Aarhus, Denmark
 -   **August 17, 2022**: [*Approaches to open, scalable, and reproducible data management and analysis: Training and software*](misc/2022-08-17/index.html) talk to the Department of Biology and Biological Engineering, Chalmers University of Technology, Sweden
 -   **August 15, 2022**: [*Implementing an open and scalable infrastructure for the DD2 data*](misc/2022-08-15/index.html) talk for the quarterly meeting of the DD2
 -   **August 11, 2022**: [*How (and why) to become more reproducible and open in your research*](au/2022-08-11/index.html) talk for Dr. Oleguer Plana-Ripoll's research group
