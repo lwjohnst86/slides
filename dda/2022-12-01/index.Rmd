@@ -1,0 +1,173 @@
+---
+title: "Using Training to Shift Towards Openness and Reproducibility"
+author: "Luke W. Johnston"
+output:
+  xaringan::moon_reader:
+    lib_dir: libs
+    css: "xaringan-themer.css"
+    nature:
+      slideNumberFormat: ""
+      ratio: "16:9"
+      countIncrementalSlides: false
+---
+
+layout: true
+
+```{r setup, include=FALSE}
+options(htmltools.dir.version = FALSE)
+knitr::opts_chunk$set(
+  echo = FALSE,
+  message = FALSE,
+  warning = FALSE,
+  fig.align = "center"
+)
+library(emoji)
+
+fa2 <- function(icon, fill = "#da9100") {
+    fontawesome::fa(name = icon, fill = fill)
+}
+```
+
+```{css}
+.footer-right {
+    background-color: #FFFFFF;
+    position: absolute;
+    bottom: 10px;
+    right: 8px;
+    height: 60px;
+    width: 30%;
+    font-size: 11pt;
+}
+```
+
+```{r xaringan-themer, include=FALSE}
+library(xaringanthemer)
+style_mono_accent(
+    base_color = "#990033",
+    base_font_size = "21px",
+    text_font_size = "1.2rem", 
+    text_font_google = google_font("Nanum Gothic"),
+    header_font_google = google_font("Merriweather Sans", "300")
+)
+```
+
+<!-- TODO: convert this to functions? -->
+
+.footer-right[
+Slides: [slides.lwjohnst.com/misc/2022-12-01](https://slides.lwjohnst.com/misc/2022-12-01/)
+Licensed under CC-BY `r fa2("creative-commons-by", "#990033")`
+]
+
+---
+
+```{r progress-bar}
+xaringanExtra::use_progress_bar(color = "#990033", location = "top")
+```
+
+```{r logo-sdca}
+xaringanExtra::use_logo(
+  image_url = "../../common/sdca-logo.png",
+  link_url = "https://www.stenoaarhus.dk/",
+  width = "60"
+)
+```
+
+class: middle
+
+# `r emo::ji("warning")` Warning `r emo::ji("warning")`
+
+## Contains advertisement for the courses `r emo::ji("stuck_out_tongue_winking_eye")`
+
+???
+
+Just a small disclaimer...
+
+---
+
+class: middle
+
+# Me, R, and teaching:
+
+## 
+
+---
+
+- History
+    - Why started doing R teaching
+    - What I did at the University of Toronto
+    - Meeting Tore at EASD
+
+- Courses ran with DDA
+    - Links
+        - First did intro, Tore asked about other possible ones, I made an intermediate... then Advanced
+    - Timeline graph
+        - How many did I do
+        - How many attended
+        - Manually insert numbers from feedback
+
+```{r}
+library(tidyverse)
+library(ggrepel)
+intro_courses <- tibble::tibble(
+    level = "introduction",
+    dates = c("2019-03-04", "2019-05-20", "2020-06-22", "2021-06-15", "2022-03-01"),
+    attendees = c(23, 29, 23, 25, 30),
+    location = c("DDA", "DIfE+DZD", "DDA", "DDA", "DDA")
+)
+
+intermediate_courses <- tibble::tibble(
+    level = "intermediate",
+    dates = c("2020-09-08", "2021-06-28", "2021-10-11", "2022-06-21"),
+    attendees = c(20, 23, 19, 30),
+    location = rep("DDA", times = 4)
+)
+
+bind_rows(
+    intro_courses,
+    intermediate_courses
+) %>% 
+    mutate(dates = lubridate::as_date(dates),
+           location = if_else(location == "DDA", "", location),
+           attendees = if_else(level == "intermediate", -attendees, attendees)) %>% 
+    ggplot(aes(x = dates, y = attendees, ymin = 0, ymax = attendees, label = location)) +
+    geom_hline(aes(yintercept = 0)) +
+    geom_pointrange() +
+    geom_text_repel(direction = "y") +
+    coord_cartesian(ylim = c(-40, 40)) +
+    theme_minimal() 
+```
+
+
+---
+
+# What makes these courses different?
+
+---
+
+- Features of the course
+    - Principles?
+        - Inclusion
+        - Openness
+        - Continued involvement
+        - Less is more
+            - Focused
+        - Assessing and improving
+            - Both material and teaching (from peers)
+        - Design for both learner and instructor
+        - It's fun!
+    - Anchored in real-world practice
+        - Focus on how a researcher might *actually* work
+
+
+1. Collect (and use) anonymous and critical feedback often! Including from instructors
+2. Multiple activities to learning *in class* (reading, doing, listening,
+discussing, teaching, group, and solo)
+3. Strong and focused narrative tied to learning outcome: Less is more
+1. Design material for participants *as well as* potential/new instructors 
+1. Have material be online, easily found
+    - Follow it (almost) exactly, deviate only if necessary
+1. Encourage participants to instruct future workshops
+    - Provide onboarding documentation and support
+
+
+
