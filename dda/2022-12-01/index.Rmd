@@ -1,4 +1,5 @@
 ---
+# DDEA Annual Day.
 title: "Using Training to Shift Towards Openness and Reproducibility"
 author: "Luke W. Johnston"
 output:
@@ -74,11 +75,16 @@ xaringanExtra::use_logo(
 
 class: middle
 
-# `r emo::ji("warning")` Warning `r emo::ji("warning")`
+# `r emo::ji("warning")` Disclaimer `r emo::ji("warning")`
 
 ## Contains advertisement for the courses `r emo::ji("stuck_out_tongue_winking_eye")`
 
 ???
+
+For first slide, maybe talk a bit about why this is so important to me.
+
+- Teaching researchers is a different challenge compared to undergrads or more formal university courses.
+    - Need to really ground the learning into something tangibly related to what we researchers face and need.
 
 Just a small disclaimer...
 
@@ -88,7 +94,11 @@ class: middle
 
 # Me, R, and teaching:
 
-## 
+##
+
+???
+
+Why wasn't I taught that I don't need to 
 
 ---
 
@@ -97,17 +107,24 @@ class: middle
     - What I did at the University of Toronto
     - Meeting Tore at EASD
 
+---
+
+```{r}
+knitr::include_url("https://r-cubed.rostools.org/")
+```
+
+
+---
+
 - Courses ran with DDA
     - Links
         - First did intro, Tore asked about other possible ones, I made an intermediate... then Advanced
-    - Timeline graph
-        - How many did I do
-        - How many attended
-        - Manually insert numbers from feedback
 
 ```{r}
 library(tidyverse)
+library(lubridate)
 library(ggrepel)
+
 intro_courses <- tibble::tibble(
     level = "introduction",
     dates = c("2019-03-04", "2019-05-20", "2020-06-22", "2021-06-15", "2022-03-01"),
@@ -126,15 +143,23 @@ bind_rows(
     intro_courses,
     intermediate_courses
 ) %>% 
-    mutate(dates = lubridate::as_date(dates),
-           location = if_else(location == "DDA", "", location),
-           attendees = if_else(level == "intermediate", -attendees, attendees)) %>% 
-    ggplot(aes(x = dates, y = attendees, ymin = 0, ymax = attendees, label = location)) +
+    mutate(
+        dot_labels = glue::glue("{location}\nn={attendees}"),
+        dates = as_date(dates),
+        location = if_else(location == "DDA", "", location),
+        attendees = if_else(level == "intermediate", -attendees, attendees)
+    ) %>% 
+    ggplot(aes(x = dates, y = attendees, ymin = 0, ymax = attendees, label = dot_labels)) +
     geom_hline(aes(yintercept = 0)) +
     geom_pointrange() +
-    geom_text_repel(direction = "y") +
-    coord_cartesian(ylim = c(-40, 40)) +
-    theme_minimal() 
+    geom_text_repel(min.segment.length = Inf) +
+    coord_cartesian(ylim = c(-45, 45), xlim = as_date(c("2019-01-01", "2022-12-01"))) +
+    annotate("text", x = as_date("2020-01-01"), y = 0, label = "Introduction") +
+    theme_minimal() +
+    theme(panel.grid = element_blank(),
+          panel.grid.major.x = element_line("grey90", size = 1),
+          axis.title.y = element_blank(),
+          axis.text.y = element_blank())
 ```
 
 
@@ -158,6 +183,8 @@ bind_rows(
     - Anchored in real-world practice
         - Focus on how a researcher might *actually* work
 
+
+- Or! Use the material yourself to teach your group or others!
 
 1. Collect (and use) anonymous and critical feedback often! Including from instructors
 2. Multiple activities to learning *in class* (reading, doing, listening,
