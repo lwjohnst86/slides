@@ -1,6 +1,7 @@
 ---
 # DDEA Annual Day.
 title: "Using Training to Move Us Towards More Openness and Reproducibility"
+subtitle: "Danish Diabetes and Endocrinology Academy Annual Day"
 author: "Luke W. Johnston"
 output:
   xaringan::moon_reader:
@@ -96,7 +97,7 @@ little it often gets recognized as a legitimate research activity.
 
 Because teaching researchers is a very different challenge than teaching
 undergrads and in other more formal university courses. You really need to
-ground the learning material into something tangibly related to what we as
+ground the learning material into something tangible that we as
 researchers face and need on a frequent basis. And that requires not just
 knowing the science of teaching and learning, but also actually having 
 experience actually doing the research. And that takes up a lot of time to
@@ -124,15 +125,14 @@ knitr::include_url("https://uoftcoders.github.io/studyGroup/", height = "425px")
 
 ???
 
-I want to briefly talk a bit about the history of how I got so much into
-teaching. During my PhD, I was learning how to do data analysis mostly by
+Just a bit of history of why I got so involved in teaching. 
+During my PhD, I was learning how to do data analysis mostly by
 myself, like many many others. I got some help with the other PhD students in
-the group, it wasn't very formal. I had an old laptop that wasn't running
-Windows Vista very well, so I installed Linux to keep using it for work. Unlike
-nowadays where Linux is a very similar experience to Windows, at the time you
-had to use some programming to use Linux. So as I was learning data analysis,
-I also knew there were ways to use the computer to reduce manual work. But 
-everyone who taught me was doing things the very manual way. And I was so
+the group, it wasn't very formal. Not getting into too much detail, but I
+started learning more about programming and computers, so had some knowledge
+that we could do things in a more effective way. So as I was learning data
+analysis, I also knew there were ways to use the computer to reduce manual work.
+But everyone who taught me was doing things the very manual way. And I was so
 confused, why were we not being taught in courses how to do data analysis more
 effectively. As I continued by Masters and PhD, that confusion though, quickly
 turned into frustration that we weren't taught this.
@@ -148,26 +148,6 @@ is a great source of pride for me.
 
 --
 
-```{r}
-knitr::include_url("https://au-cru.github.io/site/", height = "425px")
-```
-
-???
-
-Words: ~70
-
-Then I moved to Denmark and I wanted to do something similar. I started setting
-up this group, called the Aarhus University CRU, but I quickly realized that
-Denmark is different from Canada, surprise! I couldn't do the same thing as I
-did in Canada. I was talking to my previous supervisor Daniel Witte about teaching,
-and he mentioned talking to Tore about running a course through the DDA.
-
----
-
-# Me, R, and teaching in Denmark
-
---
-
 .center[
 ## Enter DDA `r emoji("muscle")` `r emoji("muscle")`
 ]
@@ -176,13 +156,19 @@ and he mentioned talking to Tore about running a course through the DDA.
 
 Words: ~100
 
+Then I moved to Denmark and I wanted to do something similar. I started setting
+up this group, called the Aarhus University CRU, but I quickly realized that
+Denmark is different from Canada, surprise! I couldn't do the same thing as I
+did in Canada. I was talking to my previous supervisor Daniel Witte about teaching,
+and he mentioned talking to Tore about running a course through the DDA.
+
+
 So, during EASD, I met with Tore and told him a bit about the idea of the course...
 and he didn't look convinced, maybe even a bit confused, why people would take
-the course. But, he isn't the type of person to just turn down someone offering
-to run a course. We planned for it the next year... and well, it was quite popular
-and that's when I think he realized... ok, this is something people want. So after
-that first course, he asked "any plans for another, more advanced one"... And 
-I said, "hell yes"!
+the course. But, as he said, he often says yes. So we planned for it the next
+year... and well, it was quite popular and that's when I think he realized...
+ok, this is something people want. So after that first course, he asked "any
+plans for another, more advanced one"... And I said, "hell yes"!
 
 ---
 
@@ -267,7 +253,7 @@ bind_rows(
 
 --
 
-**It's also lots of fun!**
+.center[**It's also lots of fun!**]
 
 ???
 
@@ -332,4 +318,4 @@ knitr::include_url("https://r-cubed-advanced.rostools.org/", height = "500px")
 
 class: middle
 
-## Please use the material! And give me feedback to improve it
+## Please use the material! And give me feedback to improve it `r emoji("grin")`
