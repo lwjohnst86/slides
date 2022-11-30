@@ -1,6 +1,6 @@
 ---
 # DDEA Annual Day.
-title: "Using Training to Shift Towards Openness and Reproducibility"
+title: "Using Training to Move Us Towards More Openness and Reproducibility"
 author: "Luke W. Johnston"
 output:
   xaringan::moon_reader:
@@ -25,7 +25,7 @@ knitr::opts_chunk$set(
 library(emoji)
 
 fa2 <- function(icon, fill = "#da9100") {
-    fontawesome::fa(name = icon, fill = fill)
+  fontawesome::fa(name = icon, fill = fill)
 }
 ```
 
@@ -44,22 +44,24 @@ fa2 <- function(icon, fill = "#da9100") {
 ```{r xaringan-themer, include=FALSE}
 library(xaringanthemer)
 style_mono_accent(
-    base_color = "#990033",
-    base_font_size = "21px",
-    text_font_size = "1.2rem", 
-    text_font_google = google_font("Nanum Gothic"),
-    header_font_google = google_font("Merriweather Sans", "300")
+  base_color = "#990033",
+  base_font_size = "21px",
+  text_font_size = "1.2rem",
+  text_font_google = google_font("Quicksand"),
+  header_font_google = google_font("Josefin Sans")
 )
 ```
 
 <!-- TODO: convert this to functions? -->
 
 .footer-right[
-Slides: [slides.lwjohnst.com/misc/2022-12-01](https://slides.lwjohnst.com/misc/2022-12-01/)
+Slides: [slides.lwjohnst.com/dda/2022-12-01](https://slides.lwjohnst.com/dda/2022-12-01/)
 Licensed under CC-BY `r fa2("creative-commons-by", "#990033")`
 ]
 
 ---
+
+class: middle, center
 
 ```{r progress-bar}
 xaringanExtra::use_progress_bar(color = "#990033", location = "top")
@@ -73,128 +75,261 @@ xaringanExtra::use_logo(
 )
 ```
 
-class: middle
+# `r emoji("warning")` Disclaimer `r emoji("warning")`
 
-# `r emo::ji("warning")` Disclaimer `r emo::ji("warning")`
-
-## Contains advertisement for the courses `r emo::ji("stuck_out_tongue_winking_eye")`
+## Contains advertisement for the courses `r emoji("stuck_out_tongue_winking_eye")`
 
 ???
 
-For first slide, maybe talk a bit about why this is so important to me.
+Words ~240
 
-- Teaching researchers is a different challenge compared to undergrads or more formal university courses.
-    - Need to really ground the learning into something tangibly related to what we researchers face and need.
+Title slide:
 
-Just a small disclaimer...
+When my wonderful colleagues first mentioned they were going to nominate me for
+the award, I was quite nervous because probably like many people, I'm not super
+comfortable getting this type of attention. But I was also excited because it
+meant I could potentially talk more about the course.
+
+I just want to say, just how awesome it is for there to be an award like this.
+I've always talked about how impactful education and networking is, but how
+little it often gets recognized as a legitimate research activity.
+
+Because teaching researchers is a very different challenge than teaching
+undergrads and in other more formal university courses. You really need to
+ground the learning material into something tangibly related to what we as
+researchers face and need on a frequent basis. And that requires not just
+knowing the science of teaching and learning, but also actually having 
+experience actually doing the research. And that takes up a lot of time to
+do both. So even if I didn't get this award, I really appreciate that DDA has
+created it.
+
+Alright, before I start end up talking about how awesome I think DDA is, I
+should move on.
+
+Disclaimer slide:
+
+Like a conflict of interest slide, I felt I should have a disclaimer for this talk,
+because really, I thought this would be a great chance to talk about and advertise
+the course more! So, this is a warning!
 
 ---
 
-class: middle
+# Me, R, and teaching in Canada
 
-# Me, R, and teaching:
-
-##
-
-???
-
-Why wasn't I taught that I don't need to 
-
----
-
-- History
-    - Why started doing R teaching
-    - What I did at the University of Toronto
-    - Meeting Tore at EASD
-
----
+--
 
 ```{r}
-knitr::include_url("https://r-cubed.rostools.org/")
+knitr::include_url("https://uoftcoders.github.io/studyGroup/", height = "425px")
 ```
 
+???
+
+I want to briefly talk a bit about the history of how I got so much into
+teaching. During my PhD, I was learning how to do data analysis mostly by
+myself, like many many others. I got some help with the other PhD students in
+the group, it wasn't very formal. I had an old laptop that wasn't running
+Windows Vista very well, so I installed Linux to keep using it for work. Unlike
+nowadays where Linux is a very similar experience to Windows, at the time you
+had to use some programming to use Linux. So as I was learning data analysis,
+I also knew there were ways to use the computer to reduce manual work. But 
+everyone who taught me was doing things the very manual way. And I was so
+confused, why were we not being taught in courses how to do data analysis more
+effectively. As I continued by Masters and PhD, that confusion though, quickly
+turned into frustration that we weren't taught this.
+
+That's when I realized, if you want something done, do it yourself. So, with
+a few other PhD students from across the university, we started a "coding club"
+where peers taught each other computing skills. This club is still running, and 
+is a great source of pride for me.
 
 ---
 
-- Courses ran with DDA
-    - Links
-        - First did intro, Tore asked about other possible ones, I made an intermediate... then Advanced
+# Me, R, and teaching in Denmark
+
+--
 
 ```{r}
+knitr::include_url("https://au-cru.github.io/site/", height = "425px")
+```
+
+???
+
+Words: ~70
+
+Then I moved to Denmark and I wanted to do something similar. I started setting
+up this group, called the Aarhus University CRU, but I quickly realized that
+Denmark is different from Canada, surprise! I couldn't do the same thing as I
+did in Canada. I was talking to my previous supervisor Daniel Witte about teaching,
+and he mentioned talking to Tore about running a course through the DDA.
+
+---
+
+# Me, R, and teaching in Denmark
+
+--
+
+.center[
+## Enter DDA `r emoji("muscle")` `r emoji("muscle")`
+]
+
+???
+
+Words: ~100
+
+So, during EASD, I met with Tore and told him a bit about the idea of the course...
+and he didn't look convinced, maybe even a bit confused, why people would take
+the course. But, he isn't the type of person to just turn down someone offering
+to run a course. We planned for it the next year... and well, it was quite popular
+and that's when I think he realized... ok, this is something people want. So after
+that first course, he asked "any plans for another, more advanced one"... And 
+I said, "hell yes"!
+
+---
+
+```{r, out.width="90%", dev="svg"}
+#| fig-width: 8
+#| fig-height: 4
+#| echo: false
 library(tidyverse)
 library(lubridate)
-library(ggrepel)
 
 intro_courses <- tibble::tibble(
-    level = "introduction",
-    dates = c("2019-03-04", "2019-05-20", "2020-06-22", "2021-06-15", "2022-03-01"),
-    attendees = c(23, 29, 23, 25, 30),
-    location = c("DDA", "DIfE+DZD", "DDA", "DDA", "DDA")
+  level = "introduction",
+  dates = c("2019-03-04", "2020-06-22", "2021-06-15", "2022-03-01"),
+  attendees = c(23, 23, 25, 30),
 )
 
 intermediate_courses <- tibble::tibble(
-    level = "intermediate",
-    dates = c("2020-09-08", "2021-06-28", "2021-10-11", "2022-06-21"),
-    attendees = c(20, 23, 19, 30),
-    location = rep("DDA", times = 4)
+  level = "intermediate",
+  dates = c("2020-09-08", "2021-06-28", "2021-10-11", "2022-06-21"),
+  attendees = c(20, 23, 19, 30),
+  location = rep("DDA", times = 4)
 )
 
 bind_rows(
-    intro_courses,
-    intermediate_courses
-) %>% 
-    mutate(
-        dot_labels = glue::glue("{location}\nn={attendees}"),
-        dates = as_date(dates),
-        location = if_else(location == "DDA", "", location),
-        attendees = if_else(level == "intermediate", -attendees, attendees)
-    ) %>% 
-    ggplot(aes(x = dates, y = attendees, ymin = 0, ymax = attendees, label = dot_labels)) +
-    geom_hline(aes(yintercept = 0)) +
-    geom_pointrange() +
-    geom_text_repel(min.segment.length = Inf) +
-    coord_cartesian(ylim = c(-45, 45), xlim = as_date(c("2019-01-01", "2022-12-01"))) +
-    annotate("text", x = as_date("2020-01-01"), y = 0, label = "Introduction") +
-    theme_minimal() +
-    theme(panel.grid = element_blank(),
-          panel.grid.major.x = element_line("grey90", size = 1),
-          axis.title.y = element_blank(),
-          axis.text.y = element_blank())
+  intro_courses,
+  intermediate_courses
+) %>%
+  mutate(
+    attendees_labels = glue::glue("n={attendees}"),
+    attendees_y = attendees + 5,
+    dates = as_date(dates),
+    attendees = if_else(level == "intermediate", -attendees, attendees),
+    attendees_y = if_else(level == "intermediate", -attendees_y, attendees_y)
+  ) %>%
+  ggplot() +
+  geom_hline(aes(yintercept = 0)) +
+  geom_pointrange(
+    aes(x = dates, y = attendees, ymin = 0, ymax = attendees, colour = level),
+    size = 0.3
+  ) +
+  scale_colour_viridis_d(begin = 0.2, end = 0.8, option = "inferno") +
+  geom_text(aes(x = dates, y = attendees_y, label = attendees_labels)) +
+  coord_cartesian(ylim = c(-45, 45), xlim = as_date(c("2019-01-01", "2022-12-01"))) +
+  annotate("text", x = as_date("2020-01-01"), y = 5, label = "Introduction") +
+  annotate("text", x = as_date("2020-01-01"), y = -5, label = "Intermediate") +
+  theme_minimal() +
+  guides(colour = "none") +
+  labs(title = "Courses and attendees over the years") +
+  theme(
+    panel.grid = element_blank(),
+    panel.grid.major.x = element_line("grey90", linetype = "dotted"),
+    axis.title = element_blank(),
+    axis.text.y = element_blank()
+  )
 ```
-
 
 ---
 
 # What makes these courses different?
 
+## Guiding principles:
+
+--
+
+.pull-left[
+- Inclusive and open
+
+- Multiple learning activities
+
+- Continually assess and improve
+]
+
+--
+
+.pull-right[
+- Less is more
+
+- Grounded in real-world practice
+
+- Design for learner *and* instructor
+]
+
+--
+
+**It's also lots of fun!**
+
+???
+
+Features of the course
+
+- Openness: Material is online, freely accessible, always.
+  - Openly licensed
+- Less is more
+  - Focused
+- Assessing and improving
+  - Both material and teaching (from peers)
+- Design for both learner and instructor
+  - Easier onboarding
+- Anchored in real-world practice
+  - Focus on how a researcher might *actually* work
+
 ---
 
-- Features of the course
-    - Principles?
-        - Inclusion
-        - Openness
-        - Continued involvement
-        - Less is more
-            - Focused
-        - Assessing and improving
-            - Both material and teaching (from peers)
-        - Design for both learner and instructor
-        - It's fun!
-    - Anchored in real-world practice
-        - Focus on how a researcher might *actually* work
+# What makes these courses different?
 
+## Highly relevant to the modern research environment
 
-- Or! Use the material yourself to teach your group or others!
+- Connect to rise of data science
 
-1. Collect (and use) anonymous and critical feedback often! Including from instructors
-2. Multiple activities to learning *in class* (reading, doing, listening,
-discussing, teaching, group, and solo)
-3. Strong and focused narrative tied to learning outcome: Less is more
-1. Design material for participants *as well as* potential/new instructors 
-1. Have material be online, easily found
-    - Follow it (almost) exactly, deviate only if necessary
-1. Encourage participants to instruct future workshops
-    - Provide onboarding documentation and support
+- Higher demands for openness and verifiability (reproducibility)
 
+- More complex data and analysis problems
 
+---
 
+## Introduction: r-cubed.rostools.org
+
+```{r}
+knitr::include_url("https://r-cubed.rostools.org/", height = "500px")
+```
+
+---
+
+## Intermediate: r-cubed-intermediate.rostools.org
+
+```{r}
+knitr::include_url("https://r-cubed-intermediate.rostools.org/", height = "500px")
+```
+
+---
+
+## Guides: guides.rostools.org
+
+```{r}
+knitr::include_url("https://guides.rostools.org/", height = "500px")
+```
+
+---
+
+## Next step: r-cubed-advanced.rostools.org
+
+```{r}
+knitr::include_url("https://r-cubed-advanced.rostools.org/", height = "500px")
+```
+
+---
+
+class: middle
+
+## Please use the material! And give me feedback to improve it
