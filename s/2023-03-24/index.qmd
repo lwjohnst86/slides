@@ -1,0 +1,269 @@
+---
+title: "Working towards more reproducible and open research"
+date: "2023-03-24"
+author: Luke W. Johnston
+format: 
+  revealjs:
+    fig-align: center
+    from: markdown+emoji
+    theme:
+      - simple
+      - theme.scss
+    progress: true
+    footer: "Licensed under CC-BY 4.0. Slides at [slides.lwjohnst.com](https://slides.lwjohnst.com)"
+editor: 
+  markdown: 
+    wrap: 72
+    canonical: true
+knitr: 
+  opts_chunk: 
+    dpi: 300
+---
+
+# Who am I? :wave:
+
+```{r setup}
+#| include: false
+knitr::opts_chunk$set(
+  echo = FALSE,
+  message = FALSE,
+  warning = FALSE,
+  dev = "CairoPNG",
+  dpi = 300,
+  fig.path = "images/",
+  fig.align = "center",
+  dev.args = list(bg = "transparent")
+)
+
+fa2 <- function(icon, fill = "#da9100") {
+    fontawesome::fa(name = icon, fill = fill)
+}
+```
+
+::: columns
+::: {.column width="50%"}
+![[Luke W.
+Johnston](https://lukewjohnston.com/)](images/portrait.jpeg){style="border-radius: 50%"}
+:::
+
+::: {.column width="50%"}
+-   Team Leader at Steno Diabetes Center Aarhus and Aarhus University,
+    Denmark
+-   Research/work:
+    -   Teach researchers how to be reproducible
+    -   Build software to automate/streamline research
+    -   Do epidemiological research
+:::
+:::
+
+# Goals of this talk :speaker:
+
+## Spread awareness of tools and resources for doing reproducible research (plus examples)
+
+::: columns
+::: {.column width="45%"}
+-   Reproducible documents: [Quarto](https://quarto.org/)
+-   Track file changes: [Git](https://git-scm.com/)
+-   Share code: [GitHub](https://github.com/)
+-   Run analysis/programming: [R](https://cran.r-project.org/)
+:::
+
+::: {.column width="45%"}
+-   Helper R :package::
+    -   [`{targets}`](https://books.ropensci.org/targets/)
+    -   [`{here}`](https://here.r-lib.org/)
+-   Example projects:
+    -   [UK Biobank](https://github.com/steno-aarhus/mesh)
+    -   [Scoping
+        Review](https://github.com/science-collective/scoping-review)
+:::
+:::
+
+::: notes
+-   Mainly to have discussions around these topics
+-   As well as to spread awareness of ways to do reproducible research
+:::
+
+# What is reproducibility? :confused::thinking:
+
+## Question: If you had to explain reproducibility vs replicability right now, could you? {.center}
+
+## Reproducibility: Same data + analysis = same result?
+
+::: center
+![](images/reproducibility.png){width="95%"}
+:::
+
+-   Like baking: Data = ingredients, analysis = recipe
+-   *HOW EXACTLY* a result was determined in a study
+-   *Independent reproduction* = success
+
+::: notes
+Keyword here is *independent*, meaning another research group or
+third-party tests the reproducibility of a study's findings.
+:::
+
+## We don't share as much as we should
+
+::: aside
+Few studies on extent of code and data availability, and whether study
+could be reproduced. Figure shows results of some "meta" studies: 1)
+[10.1177/2515245920918872](https://doi.org/10.1177/2515245920918872), 2)
+[10.1007/s11306-017-1299-3](https://link.springer.com/article/10.1007/s11306-017-1299-3),
+3)
+[10.1371/journal.pone.0251194](https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0251194).
+:::
+
+```{r fig-sharing}
+#| fig-dpi: 300
+#| width: 80%
+#| fig-width: 7
+#| fig-height: 3
+library(tidyverse)
+tribble(
+    ~study, ~text, ~value, ~total,
+    1,"Data available", 41, 62,
+    1,"Code available", 37, 62,
+    1,"Could reproduce", 21, 62,
+    2,"Data available", 2, 27,
+    2,"Code available", 1, 27,
+    2,"Could reproduce", 0, 27,
+    3,"Data available", 14, 57,
+    3,"Code available", 1, 57,
+    3,"Could reproduce", 7, 57,
+) %>% 
+    mutate(
+        study = fct_recode(
+            as_factor(study),
+            "Registered Reports\nin Psychology (n=62) [1]" = "1",
+            "Systematic review of\nmetabolomics studies\n(n=27) [2]" = "2",
+            "Reproducing longitudinal\nanalyses in PLOS ONE\n(n=57) [3]" = "3"
+        ),
+        text = fct_rev(fct_inorder(text)),
+        value = round((value / total) * 100, 0)
+    ) %>% 
+    ggplot(aes(x = text, y = value, label = paste0(value, "%"))) +
+    geom_col(fill = "#8b0000", width = 0.7) +
+    geom_text(nudge_y = 10) +
+    theme_minimal() +
+    coord_flip(ylim = c(0, 100)) +
+    facet_grid(cols = vars(study), scales = "free") +
+    labs(y = "Percent of articles",
+         title = "") +
+    theme(
+        axis.title.y = element_blank(),
+        panel.grid = element_blank(),
+        axis.text.x = element_blank(),
+        axis.title.x = element_text(colour = "grey20", size = 10)
+    )
+```
+
+::: notes
+-   Estimating the reproducibility of scientific studies is currently
+    very difficult because of:
+    -   Nearly non-existent publishing of code/data
+    -   General lack of awareness of and training in it
+:::
+
+## Why are reproducible and open practices important right now? :shrug::thinking:
+
+**They are part of multiple large trends like team science, computing,
+meta-research, higher quality/rigor**
+
+-   Connection to openness
+
+## Both reproducibility and open science are on a spectrum
+
+### *Any* improvement is better than no improvement
+
+::: center
+![](images/spectrum-reproducibility.png){width="80%"}
+:::
+
+*Inspectability* just as important as *actual* reproducibility
+
+. . .
+
+![](images/spectrum-open-science.png){width="80%"}
+
+## :key: *Independently* get the same result with same data and analysis
+
+-   Can someone else bake the same food without either of the
+    ingredients or the recipe?
+
+???
+
+If you were to give me your code and I had access to your data, would I
+know how you got any given result presented in your paper?
+
+## Simple, tangible steps to being more reproducible (in R)
+
+::: columns
+::: {.column width="50%"}
+-   Use RStudio R Projects (`.Rproj` files) and the
+    [`{here}`](https://here.r-lib.org/) package.
+-   Use standardized project folder/file templates (e.g.
+    [`{prodigenr}`](https://rostools.github.io/prodigenr/) package)
+-   Using [Quarto](https://quarto.org/) (or [R
+    Markdown](https://rmarkdown.rstudio.com/))
+:::
+
+::: {.column width="50%"}
+-   Use [Git](https://git-scm.com/) on your R Project
+-   Use [GitHub](https://github.com/) to share your code
+-   Use [`{targets}`](https://books.ropensci.org/targets/) package
+:::
+:::
+
+## Think :thought_balloon: then share :speaking_head: activity
+
+1 minute to think, after we'll share :star-struck:
+
+> 1.  How do you work when doing data analysis? How do you try to be
+>     more open and reproducible?
+> 2.  What are some benefits to being more open and reproducible?
+> 3.  What are some challenges or barriers?
+
+# Revelant examples from my work
+
+## Reproducible Research in R courses
+
+> Main page at [r-cubed.rostools.org](https://r-cubed.rostools.org/)
+
+-   Introductory course:
+    [r-cubed-intro.rostools.org](https://r-cubed-intro.rostools.org/)
+
+-   Intermediate course:
+    [r-cubed-intermediate.rostools.org](https://r-cubed-intermediate.rostools.org/)
+
+-   Advanced course:
+    [r-cubed-advanced.rostools.org](https://r-cubed-advanced.rostools.org/)
+
+## Collaborative UK Biobank project at Steno
+
+::: aside
+-   Group of researchers at Steno Aarhus, using
+    [Trello](https://trello.com) to coordinate things.
+-   [R package](https://github.com/steno-aarhus/ukbAid) to help
+    automate/streamline common tasks.
+-   Work on projects through GitHub, for instance, my
+    [`mesh`](https://github.com/steno-aarhus/mesh) project.
+:::
+
+## Scoping review on current literature on open collaboration
+
+::: aside
+-   Communication and co-working happens in
+    [Discord](https://discord.com/)
+-   We work on the project through
+    [GitHub](https://github.com/science-collective/scoping-review).
+:::
+
+## Seedcase: Software to improve transparency and openness of managing data
+
+::: aside
+-   Developing and coordinating tasks on
+    [GitHub](https://github.com/steno-aarhus/seedcase-project/issues).
+-   Communication and virtual meetings over
+    [Discord](https://discord.com/).
+:::
