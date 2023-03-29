@@ -24,15 +24,15 @@ monochromeR::generate_palette("#4582ec", "go_darker", n_colours = 4, view_palett
 monochromeR::generate_palette("#4582ec", "go_lighter", n_colours = 4, view_palette = TRUE)
 */
 
-$primary: #009966 !default;
-$secondary: #B6E1D3 !default;
+$primary: #0049DA !default;
+$secondary: #DAE5F9 !default;
 
 $presentation-heading-color: $primary !default;
 
 $presentation-font-size-root: 32px !default;
 $presentation-h2-font-size: 1.75em !default;
-$body-bg: #B6E1D3 !default;
-$link-color: #650099 !default;
+$body-bg: #DAE5F9 !default;
+$link-color: #0049DA !default;
 /* sets color of controls as well as links */
 /*
 $body-color: #403E4A;

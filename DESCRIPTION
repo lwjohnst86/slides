@@ -24,6 +24,7 @@ Imports:
     DiagrammeR,
     widgetframe,
     ggrepel,
-    geomtextpath
+    geomtextpath,
+    ggplot2
 Remotes: 
     gadenbuie/xaringanExtra

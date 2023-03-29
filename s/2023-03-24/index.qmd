@@ -1,6 +1,7 @@
 ---
-title: "Working towards more reproducible and open research"
-date: "2023-03-24"
+title: "Working towards research that is more reproducible and open"
+date: "2023-03-31"
+date-format: long
 author: Luke W. Johnston
 format: 
   revealjs:
@@ -17,33 +18,89 @@ editor:
     canonical: true
 knitr: 
   opts_chunk: 
-    dpi: 300
+    echo: false
+    message: false
+    warning: false
+    # dpi: 100
+    dev: "svg"
+    fig.path: "images/"
+    fig.align: "center"
+    dev.args:
+      bg: "transparent"
 ---
 
 # Who am I? :wave:
 
 ```{r setup}
 #| include: false
-knitr::opts_chunk$set(
-  echo = FALSE,
-  message = FALSE,
-  warning = FALSE,
-  dev = "CairoPNG",
-  dpi = 300,
-  fig.path = "images/",
-  fig.align = "center",
-  dev.args = list(bg = "transparent")
-)
+library(emoji)  
+library(ggplot2)  
+library(emojifont)  
+library(tidyverse)
 
-fa2 <- function(icon, fill = "#da9100") {
-    fontawesome::fa(name = icon, fill = fill)
+study_df <- tribble(
+    ~stage, ~icon,
+    "question", "fa-question",
+    "study design", "fa-clipboard",
+    "data", "fa-table",
+    "analysis", "fa-line-chart",
+    "writing", "fa-pencil",
+    "dissemination", "fa-bullhorn"
+) %>%
+    mutate(
+        original = FALSE,
+        reproduction = stage %in% c("data", "analysis", "writing")
+    ) %>% 
+    pivot_longer(
+        cols = c(original, reproduction),
+        names_to = "study",
+        values_to = "state"
+    ) %>% 
+    mutate(
+        study = study %>% 
+            str_to_sentence() %>% 
+            str_replace("_", " ") %>% 
+            fct_inorder(),
+        stage = stage %>%
+            str_to_sentence() %>%
+            fct_inorder() %>%
+            fct_rev()
+        )
+
+plot_research_stages <- function(data) {
+    data %>%
+        mutate(icon = fontawesome(icon)) %>%
+        ggplot(aes(
+            y = fct_rev(study),
+            x = fct_rev(stage),
+            colour = state
+        )) +
+        scale_color_manual(values = c("#0049DA", "#da9100")) +
+        geom_text(
+            aes(label = icon),
+            family = 'fontawesome-webfont',
+            size = 22,
+            show.legend = FALSE
+        ) +
+        coord_equal() +
+        theme_minimal() +
+        theme(
+            plot.margin = margin(t = -3, l = -0.5, b = -2),
+            text = element_text(size = 20),
+            axis.title.x = element_blank(),
+            axis.title.y = element_blank(),
+            axis.line = element_blank(),
+            panel.grid = element_blank(),
+            panel.border = element_blank(),
+            panel.background = element_rect(fill = 'transparent', colour = NA),
+            plot.background = element_rect(fill = 'transparent', colour = NA)
+        )
 }
 ```
 
 ::: columns
 ::: {.column width="50%"}
-![[Luke W.
-Johnston](https://lukewjohnston.com/)](images/portrait.jpeg){style="border-radius: 50%"}
+[![](images/portrait.jpeg){style="border-radius: 50%"}](https://lukewjohnston.com/)
 :::
 
 ::: {.column width="50%"}
@@ -84,15 +141,17 @@ Johnston](https://lukewjohnston.com/)](images/portrait.jpeg){style="border-radiu
 -   As well as to spread awareness of ways to do reproducible research
 :::
 
-# What is reproducibility? :confused::thinking:
+# What is reproducibility? :thinking:
 
-## Question: If you had to explain reproducibility vs replicability right now, could you? {.center}
+## Question: If you had to explain reproducibility vs replicability to everyone, right now, could you? {.center}
 
 ## Reproducibility: Same data + analysis = same result?
 
-::: center
-![](images/reproducibility.png){width="95%"}
-:::
+```{r reproducibility}
+#| fig-width: 10
+#| fig-height: 4
+plot_research_stages(study_df)
+```
 
 -   Like baking: Data = ingredients, analysis = recipe
 -   *HOW EXACTLY* a result was determined in a study
@@ -114,11 +173,9 @@ could be reproduced. Figure shows results of some "meta" studies: 1)
 [10.1371/journal.pone.0251194](https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0251194).
 :::
 
-```{r fig-sharing}
-#| fig-dpi: 300
-#| width: 80%
-#| fig-width: 7
-#| fig-height: 3
+```{r sharing}
+#| fig-width: 10
+#| fig-height: 4
 library(tidyverse)
 tribble(
     ~study, ~text, ~value, ~total,
@@ -143,7 +200,7 @@ tribble(
         value = round((value / total) * 100, 0)
     ) %>% 
     ggplot(aes(x = text, y = value, label = paste0(value, "%"))) +
-    geom_col(fill = "#8b0000", width = 0.7) +
+    geom_col(fill = "#0049DA", width = 0.7) +
     geom_text(nudge_y = 10) +
     theme_minimal() +
     coord_flip(ylim = c(0, 100)) +
@@ -151,10 +208,16 @@ tribble(
     labs(y = "Percent of articles",
          title = "") +
     theme(
+      
+        text = element_text(size = 16),
         axis.title.y = element_blank(),
         panel.grid = element_blank(),
         axis.text.x = element_blank(),
-        axis.title.x = element_text(colour = "grey20", size = 10)
+        axis.title.x = element_text(colour = "grey20", size = 10),
+        axis.line = element_blank(),
+        panel.border = element_blank(),
+        panel.background = element_rect(fill = 'transparent', colour = NA),
+        plot.background = element_rect(fill = 'transparent', colour = NA)
     )
 ```
 
@@ -165,43 +228,40 @@ tribble(
     -   General lack of awareness of and training in it
 :::
 
-## Why are reproducible and open practices important right now? :shrug::thinking:
+## Why are reproducible and open practices important right now? :shrug::thinking: {.center}
 
-**They are part of multiple large trends like team science, computing,
-meta-research, higher quality/rigor**
-
--   Connection to openness
+> They are part of multiple large trends like team science, computing,
+> meta-research, higher quality/rigor
 
 ## Both reproducibility and open science are on a spectrum
 
-### *Any* improvement is better than no improvement
-
-::: center
-![](images/spectrum-reproducibility.png){width="80%"}
+::: aside
+-   *Any* improvement is better than no improvement
+-   *Inspectability* just as important as *actual* reproducibility
 :::
 
-*Inspectability* just as important as *actual* reproducibility
+![](images/spectrum-reproducibility.png){width="85%"}
 
 . . .
 
-![](images/spectrum-open-science.png){width="80%"}
+![](images/spectrum-open-science.png){width="85%"}
 
-## :key: *Independently* get the same result with same data and analysis
+## :key: *Independently* get the same result with same data and analysis {.center}
 
 -   Can someone else bake the same food without either of the
     ingredients or the recipe?
 
-???
-
+::: notes
 If you were to give me your code and I had access to your data, would I
 know how you got any given result presented in your paper?
+:::
 
-## Simple, tangible steps to being more reproducible (in R)
+## Simple, tangible steps to being more reproducible (in R) {.center}
 
 ::: columns
 ::: {.column width="50%"}
 -   Use RStudio R Projects (`.Rproj` files) and the
-    [`{here}`](https://here.r-lib.org/) package.
+    [`{here}`](https://here.r-lib.org/) package
 -   Use standardized project folder/file templates (e.g.
     [`{prodigenr}`](https://rostools.github.io/prodigenr/) package)
 -   Using [Quarto](https://quarto.org/) (or [R
@@ -215,18 +275,20 @@ know how you got any given result presented in your paper?
 :::
 :::
 
-## Think :thought_balloon: then share :speaking_head: activity
+## Think :thought_balloon: then share :speaking_head: activity {.center}
 
-1 minute to think, after we'll share :star-struck:
+> 1 minute to think, after we'll share :star_struck:
 
-> 1.  How do you work when doing data analysis? How do you try to be
->     more open and reproducible?
-> 2.  What are some benefits to being more open and reproducible?
-> 3.  What are some challenges or barriers?
+1.  How do you work when doing data analysis? How do you try to be more
+    open and reproducible?
+
+2.  What are some benefits to being more open and reproducible?
+
+3.  What are some challenges or barriers?
 
 # Revelant examples from my work
 
-## Reproducible Research in R courses
+## Reproducible Research in R courses {.center}
 
 > Main page at [r-cubed.rostools.org](https://r-cubed.rostools.org/)
 
@@ -239,31 +301,29 @@ know how you got any given result presented in your paper?
 -   Advanced course:
     [r-cubed-advanced.rostools.org](https://r-cubed-advanced.rostools.org/)
 
-## Collaborative UK Biobank project at Steno
+## Collaborative UK Biobank project at Steno {.center}
 
-::: aside
 -   Group of researchers at Steno Aarhus, using
     [Trello](https://trello.com) to coordinate things.
+
 -   [R package](https://github.com/steno-aarhus/ukbAid) to help
     automate/streamline common tasks.
+
 -   Work on projects through GitHub, for instance, my
     [`mesh`](https://github.com/steno-aarhus/mesh) project.
-:::
 
-## Scoping review on current literature on open collaboration
+## Scoping review on current literature on open collaboration {.center}
 
-::: aside
 -   Communication and co-working happens in
     [Discord](https://discord.com/)
+
 -   We work on the project through
     [GitHub](https://github.com/science-collective/scoping-review).
-:::
 
-## Seedcase: Software to improve transparency and openness of managing data
+## Seedcase: Software to improve transparency and openness of managing data {.center}
 
-::: aside
 -   Developing and coordinating tasks on
     [GitHub](https://github.com/steno-aarhus/seedcase-project/issues).
+
 -   Communication and virtual meetings over
     [Discord](https://discord.com/).
-:::
