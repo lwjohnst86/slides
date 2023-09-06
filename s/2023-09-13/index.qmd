@@ -1,0 +1,84 @@
+---
+title: "Working towards research that is more reproducible and open"
+date: "2023-03-31"
+date-format: long
+author: Luke W. Johnston
+format: 
+  revealjs:
+    fig-align: center
+    from: markdown+emoji
+    theme:
+      - simple
+      - theme.scss
+    progress: true
+    footer: "Licensed under CC-BY 4.0. Slides at [slides.lwjohnst.com](https://slides.lwjohnst.com)"
+editor: 
+  markdown: 
+    wrap: 72
+    canonical: true
+knitr: 
+  opts_chunk: 
+    echo: false
+    message: false
+    warning: false
+    # dpi: 100
+    dev: "svg"
+    fig.path: "images/"
+    fig.align: "center"
+    dev.args:
+      bg: "transparent"
+---
+
+# Who am I? :wave:
+
+::: columns
+::: {.column width="50%"}
+[![](images/portrait.jpeg){style="border-radius: 50%"}](https://lukewjohnston.com/)
+:::
+
+::: {.column width="50%"}
+-   Team Leader at Steno Diabetes Center Aarhus and Aarhus University,
+    Denmark
+-   Research/work:
+    -   Teach researchers how to be reproducible
+    -   Build software to automate/streamline research
+    -   Do epidemiological research
+:::
+:::
+
+# Outline
+
+A focus on the need behind your project, also seen from NOVO's
+perspective, would be very beneficial for our fellows at this point in
+the process. As well as the value that your tool will bring to e..g. the
+DD2 project and other health data projects and databases outside the
+area of cardiometabolic diseases. You should of course also talk a bit
+about how you are building you tool and your thoughts about what is
+going to happen with the tool after the five-year project period.
+
+-   Need/general background on data infrastructure, open science, etc
+    -   Personal experience
+    -   External partners
+    -   Internally
+    -   NNF
+    -   Startups and other small/medium companies
+-   Existing tools?
+    -   Custom infrastructure/built from scratch
+    -   Limited/not well known/well designed/documented
+-   What we are building
+    -   Team
+    -   Diagrams
+    -   General plan/timeline
+    -   What it does, and doesn't do
+    -   Philosophies and values
+-   Next steps after 5 years
+
+# Goals of this talk :speaker:
+
+## Seedcase: Software to improve transparency and openness of managing data {.center}
+
+-   Developing and coordinating tasks on
+    [GitHub](https://github.com/seedcase-project/seedcase-project/issues).
+
+-   Communication and virtual meetings over
+    [Discord](https://discord.com/).
