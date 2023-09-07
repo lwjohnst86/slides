@@ -16,17 +16,6 @@ editor:
   markdown: 
     wrap: 72
     canonical: true
-knitr: 
-  opts_chunk: 
-    echo: false
-    message: false
-    warning: false
-    # dpi: 100
-    dev: "svg"
-    fig.path: "images/"
-    fig.align: "center"
-    dev.args:
-      bg: "transparent"
 ---
 
 # Who am I? :wave:
