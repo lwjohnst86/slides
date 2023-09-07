@@ -62,6 +62,24 @@ going to happen with the tool after the five-year project period.
     -   Philosophies and values
 -   Next steps after 5 years
 
+# Research is like a family
+
+::: notes
+The star child is the analysis side, and right now, that would be AI and
+machine learning, because its cool, its complicated, people who use it
+usually don't really understand it, and it gives results... well, it
+gives something that we interpret as a result. But the core of
+*anything* in research is... what is the input? Garbage that goes in,
+means you get garbage out. And the data, how its structured, how its
+organized and collected, how its shared, how it's *engineered*, is the
+foundation to anything that happens afterwards. You can *not* have
+valid, reliable, predictable, and usable research without the data.
+
+Of course, below the data foundation is the ground, which would be
+having a valid research question and solid theoretical understanding.
+But I won't focus on that today.
+:::
+
 # Goals of this talk :speaker:
 
 ## Seedcase: Software to improve transparency and openness of managing data {.center}
