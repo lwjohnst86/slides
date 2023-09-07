@@ -1,6 +1,6 @@
 ---
-title: "Working towards research that is more reproducible and open"
-date: "2023-03-31"
+title: "The forgotten child of research: Data engineering and infrastructure"
+date: "2023-09-13"
 date-format: long
 author: Luke W. Johnston
 format: 
