@@ -29,10 +29,14 @@ editor:
 -   Team Leader at Steno Diabetes Center Aarhus and Aarhus University,
     Denmark
 -   Research/work:
-    -   Teach researchers how to be reproducible
+    -   Teach researchers how to practice open and reproducible science
     -   Build software to automate/streamline research
     -   Do epidemiological research
 :::
+:::
+
+::: aside
+[lukewjohnston.com](https://lukewjohnston.com/)
 :::
 
 # Outline
@@ -80,7 +84,23 @@ having a valid research question and solid theoretical understanding.
 But I won't focus on that today.
 :::
 
-# Goals of this talk :speaker:
+# Two main goals of this (informal) talk :speaker:
+
+-   Spread awareness on what is the foundation of our data-driven world
+    and how critical it is!
+    -   What is that foundation? The data itself and the engineering
+        around it
+-   That "innovation" and potential "commercialization" can come from
+    anyway, not just traditional areas like results from research
+    -   Don't limit your thinking to only things that seem directly
+        related to health, clinic, and healthcare systems.
+
+::: notes
+I want to make this talk more informal. I would have much on the slides.
+Very little graphs or figures. Just me and you all chatting and talking.
+The slides I do have are mostly for me to remind me what to talk about,
+but that's it.
+:::
 
 ## Seedcase: Software to improve transparency and openness of managing data {.center}
 
@@ -89,3 +109,15 @@ But I won't focus on that today.
 
 -   Communication and virtual meetings over
     [Discord](https://discord.com/).
+
+# Unmet and (often) unaware needs within health research
+
+## Past personal history and experience
+
+## Internally partners (Steno Aarhus and Aarhus University)
+
+## External partners (DD2)
+
+## Startups and other small- to medium-sized companies
+
+## NNF
