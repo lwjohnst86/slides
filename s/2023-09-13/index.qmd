@@ -8,7 +8,7 @@ format:
     fig-align: center
     from: markdown+emoji
     theme:
-      - simple
+      - dark
       - theme.scss
     progress: true
     footer: "Licensed under CC-BY 4.0. Slides at [slides.lwjohnst.com](https://slides.lwjohnst.com)"
@@ -86,15 +86,6 @@ But I won't focus on that today.
 
 # Two main goals of this (informal) talk :speaker:
 
--   Spread awareness on what is the foundation of our data-driven world
-    and how critical it is!
-    -   What is that foundation? The data itself and the engineering
-        around it
--   That "innovation" and potential "commercialization" can come from
-    anyway, not just traditional areas like results from research
-    -   Don't limit your thinking to only things that seem directly
-        related to health, clinic, and healthcare systems.
-
 ::: notes
 I want to make this talk more informal. I would have much on the slides.
 Very little graphs or figures. Just me and you all chatting and talking.
@@ -102,22 +93,95 @@ The slides I do have are mostly for me to remind me what to talk about,
 but that's it.
 :::
 
+##  {.center}
+
+::: columns
+::: column
+### Spread awareness on foundation of our data-driven world
+
+> What is that foundation? The data itself and the engineering of and
+> around it.
+:::
+
+::: column
+### Innovation and commercialization can come from *anywhere*
+
+> ...not just traditional areas like results from research. No need to
+> limit thinking to things that seem directly related to health, clinic,
+> and healthcare systems.
+:::
+:::
+
+# Unmet and (often) unaware infrastructural needs within health research: Experiences so far
+
+## Personal past experiences: Data management tasks often given to unskilled MSc/PhD students {.center}
+
+## Research organizations: Focus is on beginning and end of research lifecycle (collecting data and publishing), not on the middle {.center}
+
+::: aside
+For instance, at my workplaces of Steno Diabetes Center Aarhus and
+Aarhus University, or our external partner DD2 (group coordinating study
+on diabetes complications)
+:::
+
+## Small- to medium-sized companies: Don't have maturity and/or funds to have internal data engineering team {.center}
+
+## NovoNordiskFonden: Increase impact of funding by expanding use of data from funded projects {.center}
+
+# Many, substantial negative effects of this unmet need
+
+# Limited options and solutions exist within research world
+
+::: aside
+Even within industry, unless it is custom-built solutions.
+:::
+
+## Existing data infrastructure are often custom-built
+
+::: aside
+For instance, UK Biobank.
+:::
+
+## Software solutions often are designed for industry and very jargon-heavy
+
+::: aside
+-   A
+:::
+
+-   What we are building
+    -   Team
+    -   Diagrams
+    -   What it does, and doesn't do
+    -   Philosophies and values
+    -   General plan/timeline
+
+# Our solution: A *framework* for building a modern data infrastructure
+
 ## Seedcase: Software to improve transparency and openness of managing data {.center}
 
--   Developing and coordinating tasks on
-    [GitHub](https://github.com/seedcase-project/seedcase-project/issues).
+## Overview
 
--   Communication and virtual meetings over
-    [Discord](https://discord.com/).
+![From Seedcase Project
+[Design](https://seedcase-project.org/design/software-architecture/context)](https://seedcase-project.org/design/images/context.png)
 
-# Unmet and (often) unaware needs within health research
+## Who are we: The team
 
-## Past personal history and experience
+![](https://pure.au.dk/portal/files/126922720/Sia_Nikolaisen_PURE.jpg){.absolute
+top="200" left="0"}
+![](https://pure.au.dk/portal/files/126922720/Sia_Nikolaisen_PURE.jpg){style="border-radius: 50%"}
+![](https://pure.au.dk/portal/files/126922720/Sia_Nikolaisen_PURE.jpg){style="border-radius: 50%"}
 
-## Internally partners (Steno Aarhus and Aarhus University)
+![](https://pure.au.dk/portal/files/126922720/Sia_Nikolaisen_PURE.jpg){style="border-radius: 50%"}
+![](https://pure.au.dk/portal/files/126922720/Sia_Nikolaisen_PURE.jpg){style="border-radius: 50%"}
 
-## External partners (DD2)
+# Next steps: Ensuring financial sustainability
 
-## Startups and other small- to medium-sized companies
+## Creating a company around Seedcase
 
-## NNF
+> Offer research software development and data engineering services
+
+-   Consulting
+-   Training and education
+-   Adding features
+-   Sponsorship of or embedding in industry
+
