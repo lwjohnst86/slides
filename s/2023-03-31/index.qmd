@@ -3,6 +3,7 @@ title: "Working towards research that is more reproducible and open"
 date: "2023-03-31"
 date-format: long
 author: Luke W. Johnston
+location: "McGill School of Human Nutrition Coding Club: Reproducible Research (virtual)"
 format: 
   revealjs:
     fig-align: center
