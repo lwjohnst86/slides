@@ -1,8 +1,9 @@
 ---
-title: "The forgotten child of research: Data engineering and infrastructure"
+title: "The forgotten child in research: Data engineering and infrastructure"
 date: "2023-09-13"
 date-format: long
 author: Luke W. Johnston
+location: "BioMedical Design Fellowship Programme in Aarhus, Denmark"
 format: 
   revealjs:
     fig-align: center
@@ -11,12 +12,24 @@ format:
       - dark
       - theme.scss
     progress: true
-    footer: "Licensed under CC-BY 4.0. Slides at [slides.lwjohnst.com](https://slides.lwjohnst.com)"
+    footer: "Licensed under CC-BY 4.0.<br>Slides at [slides.lwjohnst.com](https://slides.lwjohnst.com)"
+    embed-resources: true
 editor: 
   markdown: 
     wrap: 72
     canonical: true
 ---
+
+# Some questions before starting :thinking:
+
+::: notes
+I don't know much about you the audience, so I'd like to ask a few
+questions to better understand who you all are.
+:::
+
+## :raising_hand: How many of you have worked with or tried to discover data for projects? {.center}
+
+## :raising_hand: How many of you wish you spent less time on menial/manual tasks related to data? {.center}
 
 # Who am I? :wave:
 
@@ -29,44 +42,45 @@ editor:
 -   Team Leader at Steno Diabetes Center Aarhus and Aarhus University,
     Denmark
 -   Research/work:
-    -   Teach researchers how to practice open and reproducible science
-    -   Build software to automate/streamline research
+    -   Teach how to do open and reproducible science
+    -   Build software to automate research
     -   Do epidemiological research
 :::
 :::
 
-::: aside
-[lukewjohnston.com](https://lukewjohnston.com/)
+# Two main goals of this (informal) talk :speaker:
+
+::: notes
+I want to make this talk more informal. I would have much on the slides.
+Very little graphs or figures. Just me and you all chatting and talking.
+The slides I do have are mostly for me to remind me what to talk about,
+but that's it.
 :::
 
-# Outline
+## Spreading awareness... {.center}
 
-A focus on the need behind your project, also seen from NOVO's
-perspective, would be very beneficial for our fellows at this point in
-the process. As well as the value that your tool will bring to e..g. the
-DD2 project and other health data projects and databases outside the
-area of cardiometabolic diseases. You should of course also talk a bit
-about how you are building you tool and your thoughts about what is
-going to happen with the tool after the five-year project period.
+::: columns
+::: column
+### ... on the vital importance of the foundation of our data-driven world
 
--   Need/general background on data infrastructure, open science, etc
-    -   Personal experience
-    -   External partners
-    -   Internally
-    -   NNF
-    -   Startups and other small/medium companies
--   Existing tools?
-    -   Custom infrastructure/built from scratch
-    -   Limited/not well known/well designed/documented
--   What we are building
-    -   Team
-    -   Diagrams
-    -   General plan/timeline
-    -   What it does, and doesn't do
-    -   Philosophies and values
--   Next steps after 5 years
+> What is that foundation? The data itself and the engineering of and
+> around it.
+:::
 
-# Research is like a family
+::: column
+### ... that innovation and commercialization can come from *anywhere*
+
+> Not to limit thinking to only traditional areas like results from
+> research.
+:::
+:::
+
+::: notes
+No need to limit thinking to things that seem directly related to
+health, clinic, and healthcare systems.
+:::
+
+# The stages and lifecycle of research are like a big family
 
 ::: notes
 The star child is the analysis side, and right now, that would be AI and
@@ -84,104 +98,161 @@ having a valid research question and solid theoretical understanding.
 But I won't focus on that today.
 :::
 
-# Two main goals of this (informal) talk :speaker:
+# Unmet and (often) unaware basic needs in health research
 
 ::: notes
-I want to make this talk more informal. I would have much on the slides.
-Very little graphs or figures. Just me and you all chatting and talking.
-The slides I do have are mostly for me to remind me what to talk about,
-but that's it.
+Needs are the very basic infrastructure around data, managing it,
+structuring it, storing it, accessing it, finding it.
 :::
-
-##  {.center}
-
-::: columns
-::: column
-### Spread awareness on foundation of our data-driven world
-
-> What is that foundation? The data itself and the engineering of and
-> around it.
-:::
-
-::: column
-### Innovation and commercialization can come from *anywhere*
-
-> ...not just traditional areas like results from research. No need to
-> limit thinking to things that seem directly related to health, clinic,
-> and healthcare systems.
-:::
-:::
-
-# Unmet and (often) unaware infrastructural needs within health research: Experiences so far
 
 ## Personal past experiences: Data management tasks often given to unskilled MSc/PhD students {.center}
 
-## Research organizations: Focus is on beginning and end of research lifecycle (collecting data and publishing), not on the middle {.center}
+## In research organizations: Focused on beginning and end of lifecycle (collecting data and publishing), not the middle {.center}
 
 ::: aside
-For instance, at my workplaces of Steno Diabetes Center Aarhus and
-Aarhus University, or our external partner DD2 (group coordinating study
-on diabetes complications)
+Organizations like Steno Diabetes Center Aarhus and Aarhus University,
+or our external partner [DD2](https://dd2.dk/)
 :::
 
-## Small- to medium-sized companies: Don't have maturity and/or funds to have internal data engineering team {.center}
+## In small- to medium-sized companies: Don't have maturity and/or funds to have internal data engineering team {.center}
 
 ## NovoNordiskFonden: Increase impact of funding by expanding use of data from funded projects {.center}
 
 # Many, substantial negative effects of this unmet need
 
-# Limited options and solutions exist within research world
+::: notes
+:::
+
+## Examples often distill down to wasted time and money {.center}
+
+::: columns
+::: column
+-   Retractions because of data processing error (e.g. with Excel)
+
+-   Wasted time looking for data or resolving issues with data
+:::
+
+::: column
+-   Time spent learning niche skill to understand or structure data
+
+-   Unusable data because of lack of documentation (e.g. units of
+    measure)
+:::
+:::
+
+# Limited options and solutions for data infrastructure within research world
 
 ::: aside
 Even within industry, unless it is custom-built solutions.
 :::
 
-## Existing data infrastructure are often custom-built
+## ... they are often custom-built {.center}
 
 ::: aside
 For instance, UK Biobank.
 :::
 
-## Software solutions often are designed for industry and very jargon-heavy
+## ... they are often designed for industry, expensive, or "over-engineered" {.center}
 
 ::: aside
--   A
+-   Scale: Many petabytes of data, not typical in research
+-   Price: Cost per unit of storage per year is too much for most
+    research budgets
+-   Privacy: Health data comes with special legal and security concerns
+-   Features: Things industry needs, but research doesn't
 :::
 
--   What we are building
-    -   Team
-    -   Diagrams
-    -   What it does, and doesn't do
-    -   Philosophies and values
-    -   General plan/timeline
+## ... they are often heavy on the tech jargon {.center}
+
+::: aside
+-   Tech jargon: "observability", "data governance", "Hadoop", "data
+    model", "data normalization", "node", "graph"
+:::
+
+::: notes
+Not something the typical or even most researchers would be familiar
+with, would need a specialized personnel to even understand what to use
+and how.
+
+So learning these things takes time out of your research work that could
+be spent on running experiments, doing analyses, interpreting results,
+and publishing reports.
+:::
 
 # Our solution: A *framework* for building a modern data infrastructure
 
-## Seedcase: Software to improve transparency and openness of managing data {.center}
+::: notes
+Think of it like a blueprint. There are lots of buildings that have
+already been built. But how do you go about building one from scratch?
+Its a lot of work to figure out the basics of just starting. What we
+want to provide is a bit like an opinionated blueprint and set of "rare
+materials", as well as instructions, for how to build a data
+infrastructure.
 
-## Overview
+A bit like building an IKEA furniture.
+:::
 
-![From Seedcase Project
-[Design](https://seedcase-project.org/design/software-architecture/context)](https://seedcase-project.org/design/images/context.png)
+## Seedcase: Improving discoverability, structure, and management of research data {.center}
+
+::: aside
+> Seedcase is to data infrastructures like IKEA is to furniture
+
+Website: [seedcase-project.org](https://seedcase-project.org/)
+:::
+
+## Designed for typical use cases of doing research
+
+![From Seedcase Project [Design
+Docs](https://seedcase-project.org/design/software-architecture/context)](https://seedcase-project.org/design/images/context.png)
+
+::: notes
+-   Won't help with the legal issues around your data (e.g. GDPR)
+:::
+
+## Central philosophies and value {.center}
+
+1.  Follow FAIR (Findable, Accessible, Interoperable, and Reusable),
+    open, and transparent principles
+
+2.  Openly licensed and re-usable
+
+3.  Use state-of-the-art principles and tools
+
+4.  Friendly to beginners and non-tech people
 
 ## Who are we: The team
 
-![](https://pure.au.dk/portal/files/126922720/Sia_Nikolaisen_PURE.jpg){.absolute
-top="200" left="0"}
-![](https://pure.au.dk/portal/files/126922720/Sia_Nikolaisen_PURE.jpg){style="border-radius: 50%"}
-![](https://pure.au.dk/portal/files/126922720/Sia_Nikolaisen_PURE.jpg){style="border-radius: 50%"}
+::: columns
+::: {#hcenter .column width="50%"}
+![[Sia Kromann
+Nikolaisen](https://pure.au.dk/portal/en/persons/sia-kromann-nicolaisen(955ac2de-afa2-42e6-abe1-aa6f68aeada8).html)<br>DD2
+Data
+Manager](https://pure.au.dk/portal/files/126922720/Sia_Nikolaisen_PURE.jpg){.portrait
+.portrait-sia}
 
-![](https://pure.au.dk/portal/files/126922720/Sia_Nikolaisen_PURE.jpg){style="border-radius: 50%"}
-![](https://pure.au.dk/portal/files/126922720/Sia_Nikolaisen_PURE.jpg){style="border-radius: 50%"}
+![[Kristiane Beicher](https://github.com/K-Beicher)<br>Database
+Administrator](https://avatars.githubusercontent.com/u/112945740?v=4){.portrait}
+:::
 
-# Next steps: Ensuring financial sustainability
+::: {.column width="50%"}
+![[Richard Ding](https://github.com/rqding)<br>Research Software
+Engineer](https://avatars.githubusercontent.com/u/11335826?v=4){.portrait}
+
+![[Signe Kirk Brødbæk](https://github.com/signekb)<br>Research Software
+Engineer](https://avatars.githubusercontent.com/u/40836345?v=4){.portrait}
+:::
+:::
+
+# Future steps: Ensuring financial sustainability
 
 ## Creating a company around Seedcase
 
-> Offer research software development and data engineering services
+> Offer research software development and data engineering services,
+> keeping product free and open source
 
 -   Consulting
 -   Training and education
 -   Adding features
--   Sponsorship of or embedding in industry
-
+-   Sponsorship from industry
+-   Embedding it early in newly funded projects
+-   Cloud-based products?
