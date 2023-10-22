@@ -1,10 +1,6 @@
 Package: slides
-Authors@R: 
-    person(given = "Luke",
-           family = "Johnston",
-           role = c("aut", "cre"),
-           email = "lwjohnst@gmail.com",
-           comment = c(ORCID = "0000-0003-4169-2616"))
+Version: 1.0
+Type: Website
 Encoding: UTF-8
 Imports: 
     dagitty,
