@@ -38,11 +38,12 @@ link %>%
     ) %>%
     arrange(desc(date)) %>%
     mutate(date = stamp_date("March 1, 1999", locale = "POSIX")(as_date(date))) %>%
-    slice(1:2) %>%
+    slice(1) %>%
     glue::glue_data("- **{date}**: [*{title}*]({link}) talk for {location}") %>%
     clipr::write_clip()
 ```
 
+-   **October 26, 2023**: [*Open Science in health: Practical perspectives and actions toward openness*](s/2023-10-26/index.html) talk for CNAP Annual Seminar in Aalborg, Denmark
 -   **September 13, 2023**: [*The forgotten child in research: Data engineering and infrastructure*](s/2023-09-13/index.html) talk for BioMedical Design Fellowship Programme in Aarhus, Denmark
 -   **March 31, 2023**: [*Working towards research that is more reproducible and open*](s/2023-03-31/index.html) talk for McGill School of Human Nutrition Coding Club: Reproducible Research (virtual)
 -   **October 25, 2022**: [*Open science and FAIR principles: Under-valued and under-appreciated*](steno/2022-10-25/index.html) talk for the PhD seminar Data management in research at Steno Diabetes Center Aarhus, Denmark
