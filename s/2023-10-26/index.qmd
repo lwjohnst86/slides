@@ -1,0 +1,507 @@
+---
+title: "Open Science in health: Practical perspectives and actions toward openness"
+date: "2023-10-26"
+date-format: long
+author: Luke W. Johnston
+location: "CNAP Annual Seminar in Aalborg, Denmark"
+format: 
+  revealjs:
+    fig-align: center
+    from: markdown+emoji
+    theme:
+      - dark
+      - theme.scss
+    progress: true
+    footer: "Licensed under CC-BY 4.0.<br>Slides at [slides.lwjohnst.com](https://slides.lwjohnst.com)"
+    embed-resources: true
+editor: 
+  markdown: 
+    wrap: 72
+    canonical: true
+---
+
+::: content-hidden
+# Preparation notes
+
+## Discussed before hand
+
+Open Science is an increasingly important component in research
+dissemination and research assessment, and is a policy priority for
+large national and international funding agencies. At the same time,
+Open Science can be abstract and include varying elements and focus
+areas.
+
+The VBN Team introduces the concept of Open Science and the new research
+indicator at Aalborg University within a context of Open Science. They
+will also cover and discuss how and why to open up, giving an
+international, national, and AAU perspective. Specific topics are
+*Opening up your research -- the how and why* and *Open Science -
+Benefits, challenges and hidden dilemmas across career stages and
+disciplines*.
+
+## My section
+
+Experiences and recommendations for scientists to incorporate more
+openness in their research to apply Open Science Principles for
+individual career benefits as well as institutional visibility and
+impact.
+
+Studies should theoretically be highly transparent and easily
+verifiable, which is a core principle of the scientific method. And yet,
+current practices in academia place limited value and emphasis on this
+principle.
+
+Open science is simply science done right and is the way forward for
+improving scientific application and increasing public trust.
+Pre-registering studies, sharing data and code, and making analyses
+publicly accessible are just a few of the ways to incorporate more
+openness in scientific work.
+
+## Outline
+
+-   Who am I
+-   Quick recap of what open science is
+-   Exercises:
+    -   How do you do work? Programs, collaboration, communication.
+    -   How might the way you work hinder (or help) you do open science?
+-   Quick recap of barriers/challenges and benefits
+-   Exercises:
+    -   What challenges do you see to doing open science *in your
+        current environment*?
+    -   What benefits do you see to doing open science *in your current
+        environment*?
+-   Simple practical ways of doing open science
+    -   Examples:
+        -   Steno UK Biobank project
+        -   Scoping review
+        -   Courses/teaching material (r-cubed)
+        -   My PhD studies and thesis
+        -   Presentations: Slides and posters
+-   Exercises:
+    -   What are some ways you could change or improve your work to
+        start following open scientific principles?
+    -   What are some short term steps to take to implement more
+        openness in your current environment?
+    -   What are some longer term steps to take?
+-   Summary and take home messages
+:::
+
+# Objectives: A practical perspective
+
+::: columns
+::: {.column width="50%"}
+**Main objectives**:
+
+-   Focus on a *very practical* view to doing it
+-   Doing open science is hard work
+-   Provide time to reflect, share, and discuss
+:::
+
+::: {.column width="50%"}
+**Learning objectives**:
+
+-   Reflect (and share) on your own current workflows and tools
+-   How to implement these changes: Barriers and benefits
+-   Hear from others' experiences and their thoughts
+:::
+:::
+
+# Who am I? :wave:
+
+::: columns
+::: {.column width="50%"}
+[![](images/portrait.jpeg){style="border-radius: 50%"}](https://lukewjohnston.com/)
+:::
+
+::: {.column width="50%"}
+-   Team Leader at Steno Diabetes Center Aarhus and Aarhus University,
+    Denmark
+-   Research/work:
+    -   Teach how to do open and reproducible science
+    -   Build software to automate research
+    -   Do epidemiological research
+:::
+:::
+
+# A quick review of Open Science, from a practical view
+
+## Open Science is a massive concept with a massive ecosystem
+
+![All the different "open" components of Open
+Science](images/open-science-components.png)
+
+::: notes
+Key thing I want to focus on here... is that it is massive and can be
+very overwhelming.
+:::
+
+## Open science is a spectrum, something is better than nothing {.center}
+
+## Reality: We don't share as much as we should
+
+::: aside
+Few studies on extent of code and data availability, and whether study
+could be reproduced. Figure shows results of some "meta" studies: 1)
+[10.1177/2515245920918872](https://doi.org/10.1177/2515245920918872), 2)
+[10.1007/s11306-017-1299-3](https://link.springer.com/article/10.1007/s11306-017-1299-3),
+3)
+[10.1371/journal.pone.0251194](https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0251194).
+:::
+
+```{r sharing}
+#| fig-width: 10
+#| fig-height: 4
+library(tidyverse)
+tribble(
+    ~study, ~text, ~value, ~total,
+    1,"Data available", 41, 62,
+    1,"Code available", 37, 62,
+    1,"Could reproduce", 21, 62,
+    2,"Data available", 2, 27,
+    2,"Code available", 1, 27,
+    2,"Could reproduce", 0, 27,
+    3,"Data available", 14, 57,
+    3,"Code available", 1, 57,
+    3,"Could reproduce", 7, 57,
+) %>% 
+    mutate(
+        study = fct_recode(
+            as_factor(study),
+            "Registered Reports\nin Psychology (n=62) [1]" = "1",
+            "Systematic review of\nmetabolomics studies\n(n=27) [2]" = "2",
+            "Reproducing longitudinal\nanalyses in PLOS ONE\n(n=57) [3]" = "3"
+        ),
+        text = fct_rev(fct_inorder(text)),
+        value = round((value / total) * 100, 0)
+    ) %>% 
+    ggplot(aes(x = text, y = value, label = paste0(value, "%"))) +
+    geom_col(fill = "gray20", width = 0.7) +
+    geom_text(nudge_y = 10) +
+    theme_minimal() +
+    coord_flip(ylim = c(0, 100)) +
+    facet_grid(cols = vars(study), scales = "free") +
+    labs(y = "Percent of articles",
+         title = "") +
+    theme(
+      
+        text = element_text(size = 16),
+        axis.title.y = element_blank(),
+        panel.grid = element_blank(),
+        axis.text.x = element_blank(),
+        axis.title.x = element_text(colour = "grey20", size = 10),
+        axis.line = element_blank(),
+        panel.border = element_blank(),
+        panel.background = element_rect(fill = 'transparent', colour = NA),
+        plot.background = element_rect(fill = 'transparent', colour = NA)
+    )
+```
+
+::: notes
+-   Estimating the reproducibility of scientific studies is currently
+    very difficult because of:
+    -   Nearly non-existent publishing of code/data
+    -   General lack of awareness of and training in it
+:::
+
+## Think :thought_balloon:, then share :speech_balloon:
+
+> \~4 min: *How exactly* do you work? Consider these questions:
+>
+> -   Where do you save your files? How do you name them?
+> -   What apps do you use for work tasks?
+> -   How do you collaborate and coordinate with others? Email? Shared
+>     folders?
+
+-   For \~2 min, *to yourself*, think about the questions.
+-   For \~2 min, share your thoughts with the person next to you.
+
+## Think :thought_balloon:, then share :speech_balloon:
+
+> \~5 min: How might the way you work *hinder or help* you with open
+> science?
+
+-   For \~1 min, *to yourself*, think about the question.
+-   For \~2 min, share with the person next to you.
+-   For \~2 min, we'll discuss as a group.
+
+# A quick review of Barriers and Benefits, from a practical view
+
+## Multiple benefits, from personal to philosophical
+
+-   It's a core principle of the scientific method: Verification
+
+. . .
+
+-   Learning more from others: For PhD students to senior researchers
+
+. . .
+
+-   More exposure and visibility: More output to show and be seen
+
+. . .
+
+-   So few are doing open science, this is a great niche!
+
+. . .
+
+-   Easier and quicker collaboration (aside from the learning part)
+
+. . .
+
+-   Finding better opportunities outside of academia
+
+::: notes
+And the last one is that one reason you don't see a lot of researchers
+sharing their code or being more reproducible is.. they end up getting
+picked up by industry and paid really well or decide to leave academia
+because of the barriers.
+
+Just as an example, I found a Norwegian group who had a really
+inefficient workflow and decided to re-build their workflow to make use
+of programming, to be reproducible, to have a pipeline. I looked up the
+lead author as well as several other of the co-authors and guess what...
+many of them now work in really great companies as data scientists or
+software engineers, probably making a lot of money and having
+potentially a less stressful life.
+:::
+
+## Strong instutional barriers, such as ... {.center}
+
+::: notes
+You will encounter a lot of resistance, a lot of barriers and hardship.
+:::
+
+## Lack of adequate awareness, support, infrastructure, training {.center}
+
+::: notes
+At the institutional level, there is no real awareness of this, no
+support or infrastructure. You're basically doing this on your own.
+Which probably isn't that uncommon anyway.
+
+Your organization is moving in the right direction to resolve this
+issue, but actions tell more than words.
+:::
+
+## Research culture values publications over all else {.center}
+
+What would you spend your time on if we didn't have this
+publication-obsession?
+
+::: notes
+Research culture and incentives pretty much only care about publishing
+journal articles. Creating software tools or datasets to be shared, meh.
+Making teaching materials to help other researchers, meh. Communicating
+your science to the public and doing outreach, meh. Doing actual science
+that might take years and not lead to any "hard papers", meh.
+
+Imagine if the number of publications and where you published didn't
+matter for getting funding or getting a research job. What would you
+spend your time on? What would you do differently compared to now?
+:::
+
+## Legal and privacy concerns about sharing data, intellectual property protection, patents {.center}
+
+::: notes
+Legal and privacy concerns are big topics that institutions in
+particular focus on a lot, about ownership and so on, since research can
+lead to commercialization and the potential for profit. For individual
+researchers, we often worry about these concerns too much and sometimes
+stops us from doing work because we're afraid we're doing something
+wrong
+:::
+
+## Strong personal barriers like ... {.center}
+
+## Fear of ... {.center}
+
+-   Fear of being scooped or ideas being stolen
+-   Errors and public humiliation
+
+::: notes
+And there aren't just institutional barriers. We as researchers have
+fears of being scooped, of embarrassment and humiliation for your
+methods being *gasp* wrong. Which is actually just part of science.
+:::
+
+## Overwhelmed with everything that we *should* do better {.center}
+
+::: notes
+It is also really overwhelming, having so many things to think about to
+make sure you're doing solid science. No researcher in the past had to
+consider and think and know as much as we have to know and to do.
+Another reason why we need more team science, to distribute the tasks
+and skills.
+:::
+
+## Need to constantly stay updated {.center}
+
+::: notes
+You also have to constantly stay updated, and that can be tiring.
+:::
+
+## Think :thought_balloon:, then share :speech_balloon:
+
+> \~5 min: Think of *your own current working environment*. What would
+> be some practical *benefits* to yourself and your group to practicing
+> open science?
+
+-   For \~1 min, *to yourself*, think about the question
+
+-   For \~2 min, share with the person next to you
+
+-   For \~2 min, we'll have a group-wide sharing of some of the thoughts
+
+## Think :thought_balloon:, then share :speech_balloon:
+
+> \~5 min: Think of *your own current working environment*. What would
+> be some basic *challenges or barriers* to yourself and your group to
+> practicing open science?
+
+-   For \~1 min, *to yourself*, think about the question.
+
+-   For \~2 min, share with the person next to you
+
+-   For \~2 min, we'll have a group-wide sharing of some of the thoughts
+
+# Practical tips for being more open in your research
+
+## Some core principles
+
+-   Use open source tools wherever possible
+
+-   Use plain text as often as possible
+
+-   Upload and share publicly early and often
+
+-   Upload and share publicly as many things as possible
+
+-   Archive to get a DOI/version for major milestones
+
+## Core tools and services to help be more open
+
+| Task                                       | Tool/service                                                                 |
+|--------------------------------------------|------------------------------------------------------------------------------|
+| Reproducible papers                        | [Markdown](https://commonmark.org/) tools like [Quarto](https://quarto.org/) |
+| Track changes to files and version them    | [Git](https://git-scm.com/) (software)                                       |
+| Share content like text or code            | [GitHub](https://github.com/) (service)                                      |
+| Conduct analysis or do programming         | [R](https://cran.r-project.org/) or [Python](https://www.python.org/)        |
+| Archive a milestone, like first submission | [Zenodo](https://zenodo.org/) or [OSF](https://osf.io/)                      |
+
+## Potential social actions to use to be more open
+
+-   Do code/paper reviews through *through GitHub*
+
+. . .
+
+-   Instead of emailing documents around, send links a GitHub repository
+
+. . .
+
+-   Require writing *everything* in Markdown
+
+. . .
+
+-   Run (in)formal training sessions for learning R/Python
+
+. . .
+
+-   Agree on a standard folder and file structure for projects
+
+. . .
+
+-   Require papers be uploaded to an archive *before submission* to a
+    journal
+
+::: notes
+Now that we're getting more into thinking about benefits and barriers,
+we can get into thinking about potential actions to take to be more
+reproducible and open. Before getting into brainstorming activities, I
+want to give you some ideas for actions to help prime your thinking.
+:::
+
+## Think :thought_balloon:, then share :speech_balloon:
+
+> \~6 minutes: What are some ways you could *personally* change or
+> improve your work to start following more open scientific principles?
+
+-   For \~1 min, *to yourself*, think about the questions
+
+-   For \~2 min, share your thoughts with the person next to you
+
+-   For \~3 min, we'll have a group-wide sharing of some of the thoughts
+
+## Brainstorm :cloud_with_lightning:, then share :speech_balloon:
+
+> \~6 minutes: What are some possible actions you and your research
+> group could practically do ***relatively easily and within the
+> short-term (\<6 months)*** to be more open?
+
+-   For \~3 min, brainstorm with the person next to you on possible
+    actions to take
+
+-   For \~3 min, we'll briefly go over and discuss some of the ideas
+
+# Examples from my work for inspiration
+
+## Reproducible Research in R courses {.center}
+
+> Main page at [r-cubed.rostools.org](https://r-cubed.rostools.org/)
+
+-   Introductory course:
+    [r-cubed-intro.rostools.org](https://r-cubed-intro.rostools.org/)
+
+-   Intermediate course:
+    [r-cubed-intermediate.rostools.org](https://r-cubed-intermediate.rostools.org/)
+
+-   Advanced course:
+    [r-cubed-advanced.rostools.org](https://r-cubed-advanced.rostools.org/)
+
+## Collaborative UK Biobank project at Steno {.center}
+
+-   Group of researchers at Steno Aarhus, using
+    [Trello](https://trello.com) and [GitHub]() to coordinate things.
+
+-   [R package](https://github.com/steno-aarhus/ukbAid) and [website]()
+    to help automate/streamline common research tasks.
+
+## Scoping review on current literature on open collaboration {.center}
+
+-   Communication and co-working happens in
+    [Discord](https://discord.com/)
+
+-   We work on the project through
+    [GitHub](https://github.com/science-collective/scoping-review).
+
+## Slides and posters {.center}
+
+-   Made with Quarto, uploaded to GitHub, and made into a website
+    -   Slides: [website](https://slides.lwjohnst.com) and
+        [GitLab](https://gitlab.com/lwjohnst/slides)
+    -   Posters: [website](https://posters.lwjohnst.com) and
+        [GitLab](https://gitlab.com/lwjohnst/posters)
+
+## PhD thesis and papers {.center}
+
+-   [Thesis](https://gitlab.com/lwjohnst/thesis)
+
+-   [Study 1](https://github.com/lwjohnst86/plDiabetes-manuscript)
+
+-   [Study 2](https://github.com/lwjohnst86/nefa-code)
+
+-   [Study 3](https://github.com/lwjohnst86/tagDiabetes)
+
+# Summary and take home messages
+
+-   Write and publish a study's protocol *before* the analysis is done
+-   Use plain text to write (Markdown), e.g. with Quarto
+-   Use open source analysis software (R, Python)
+-   Use Git/version control
+-   Share content (text and code) through Git hosting sites like GitHub
+-   Use DOI archiving services like Zenodo or OSF
+
+## Extra resources for learning
+
+-   [Open Sciency](https://opensciency.github.io/sprint-content/)
+-   [Open Science
+    Handbook](https://open-science-training-handbook.github.io/Open-Science-Training-Handbook_EN/)
+-   [FOSTER Open Science](https://www.fosteropenscience.eu/toolkit)

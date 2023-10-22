@@ -1,0 +1,52 @@
+/*-- scss:defaults --*/
+
+@import url(https://fonts.googleapis.com/css?family=Comfortaa);
+@import url(https://fonts.googleapis.com/css?family=Josefin+Sans);
+@import url(https://fonts.googleapis.com/css2?family=PT+Mono);
+
+$font-family-serif: "Comfortaa", sans-serif !default;
+$font-family-sans-serif: "Comfortaa", sans-serif !default;
+$font-family-monospace: "PT Mono", monospace !default;
+$presentation-heading-font: "Josefin Sans", sans-serif !default;
+$body-bg: darkslategray !default;
+$presentation-font-size-root: 28px !default;
+$presentation-h2-font-size: 2em !default;
+
+/*-- scss:rules --*/
+
+.reveal .progress {
+  height: 6px;
+  top: 0;
+}
+
+.reveal .slide-logo {
+  top: 0;
+}
+
+.reveal .footer {
+  font-size: 0.8rem !important;
+}
+
+.reveal .slide aside {
+  bottom: unset !important;
+}
+
+.reveal .portrait {
+  border-radius: 50%;
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+}
+
+.reveal .portrait-sia {
+  object-position: 50% 10%;
+}
+
+figcaption {
+  text-align: center !important;
+  font-size: 0.8rem !important;
+}
+
+hcenter {
+  text-align: center;
+}
