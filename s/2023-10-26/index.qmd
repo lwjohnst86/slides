@@ -86,6 +86,23 @@ openness in scientific work.
 -   Summary and take home messages
 :::
 
+# Who am I? :wave:
+
+::: columns
+::: {.column width="50%"}
+[![](images/portrait.jpeg){style="border-radius: 50%"}](https://lukewjohnston.com/)
+:::
+
+::: {.column width="50%"}
+-   Team Leader at Steno Diabetes Center Aarhus and Aarhus University,
+    Denmark
+-   Research/work:
+    -   Teach how to do open and reproducible science
+    -   Build software to automate research
+    -   Do epidemiological research
+:::
+:::
+
 # Objectives: A practical perspective
 
 ::: columns
@@ -103,23 +120,6 @@ openness in scientific work.
 -   Reflect (and share) on your own current workflows and tools
 -   How to implement these changes: Barriers and benefits
 -   Hear from others' experiences and their thoughts
-:::
-:::
-
-# Who am I? :wave:
-
-::: columns
-::: {.column width="50%"}
-[![](images/portrait.jpeg){style="border-radius: 50%"}](https://lukewjohnston.com/)
-:::
-
-::: {.column width="50%"}
--   Team Leader at Steno Diabetes Center Aarhus and Aarhus University,
-    Denmark
--   Research/work:
-    -   Teach how to do open and reproducible science
-    -   Build software to automate research
-    -   Do epidemiological research
 :::
 :::
 
