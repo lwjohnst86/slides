@@ -1,5 +1,5 @@
 ---
-title: "Open Science in health: Practical perspectives and actions toward openness"
+title: "Open Science in Health: Practical perspectives and actions toward openness"
 date: "2023-10-26"
 date-format: long
 author: Luke W. Johnston
@@ -127,8 +127,9 @@ openness in scientific work.
 
 ## Open Science is a massive concept with a massive ecosystem
 
-![All the different "open" components of Open
-Science](images/open-science-components.png)
+![All the different "open" components of Open Science. Source: [Foster
+Open
+Science](https://www.fosteropenscience.eu/resources)](images/open-science-components.png)
 
 ::: notes
 Key thing I want to focus on here... is that it is massive and can be
