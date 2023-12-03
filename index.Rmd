@@ -43,6 +43,7 @@ link %>%
     clipr::write_clip()
 ```
 
+-   **December 04, 2023**: [*Research Operations 'Space': Improving and streamlining the entire research lifecycle*](s/2023-12-04/index.html) talk for the Steno Diabetes Center Epidemiology Group at the Annual Meeting in Aarhus, Denmark.
 -   **October 26, 2023**: [*Open Science in Health: Practical perspectives and actions toward openness*](s/2023-10-26/index.html) talk for CNAP Annual Seminar in Aalborg, Denmark
 -   **September 13, 2023**: [*The forgotten child in research: Data engineering and infrastructure*](s/2023-09-13/index.html) talk for BioMedical Design Fellowship Programme in Aarhus, Denmark
 -   **March 31, 2023**: [*Working towards research that is more reproducible and open*](s/2023-03-31/index.html) talk for McGill School of Human Nutrition Coding Club: Reproducible Research (virtual)

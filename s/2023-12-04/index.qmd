@@ -1,0 +1,89 @@
+---
+title: "Research Operations 'Space': Improving and streamlining the entire research lifecycle"
+date: "2023-12-04"
+date-format: long
+author: Luke W. Johnston
+location: "Epidemiology Group at Steno Diabetes Center Aarhus, Denmark"
+format: 
+  revealjs:
+    fig-align: center
+    from: markdown+emoji
+    theme:
+      - dark
+      - theme.scss
+    progress: true
+    footer: "Licensed under CC-BY 4.0.<br>Slides at [slides.lwjohnst.com](https://slides.lwjohnst.com)"
+    embed-resources: true
+editor: 
+  markdown: 
+    wrap: 72
+    canonical: true
+---
+
+## Overarching aim of space {.center}
+
+-   Connect and collaborate with researchers/staff to build tools to
+    make work easier
+
+-   Run training sessions on skills used across research
+
+::: aside
+"Formal" launch mid-next year
+:::
+
+# Activities
+
+## Steno Research Ops {.center}
+
+> Reduce non-creative or non-social work by automating or streamlining
+> them.
+>
+> Create training material that helps simplify work that can't be
+> automated or streamlined.\
+> --- <https://steno-aarhus.github.io/research-ops/>
+
+## Seedcase Project {.center}
+
+> Develop software to make it easier to build, manage, share, find, and
+> get data.\
+> --- <https://seedcase-project.org/>
+
+## UK Biobank {.center}
+
+> Documentation and R package to simplify work with the UK Biobank.\
+> --- <https://github.com/steno-aarhus/ukbAid>
+
+## Common Docs {.center}
+
+> Resources and support for conducting research at Steno Diabetes Center
+> Aarhus.\
+> --- <https://steno-aarhus.github.io/research/>
+
+## Multi-day formal courses {.center}
+
+> Reproducible Research in R: Intro course\
+> --- <https://r-cubed-intro.rostools.org/>
+
+> Reproducible Research in R: Intermediate course\
+> --- <https://r-cubed-intermediate.rostools.org/>
+
+> Reproducible Research in R: Advanced course\
+> --- <https://r-cubed-advanced.rostools.org/>
+
+## Ongoing informal training {.center}
+
+> Virtual Coding Club\
+> --- <https://coding-club.rostools.org/>
+
+> In-person Coding Café (led by Daniel)\
+> --- <https://coding-cafe-sdca-au.netlify.app/>
+
+## Next year's plans {.center}
+
+> Reproducible Research in R: In Server Environments course\
+> --- <https://github.com/rostools/r-cubed-ise>
+
+> Packaging R code to maximise re-use and impact\
+> --- <https://github.com/rostools/r-pkg-intro>
+
+> An introductory course to a collaborative workflow with Git and GitHub
