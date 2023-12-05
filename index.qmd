@@ -1,0 +1,17 @@
+---
+title: "Presentation slides"
+description: |
+  Slides for presentations that I've given.
+title: "Listing Example"
+listing:
+  id: sample-listings
+  contents: 
+    - posts
+    - archived-items.yaml
+  sort: "date desc"
+  type: table
+---
+
+## Current listing
+
+## Previous slides
