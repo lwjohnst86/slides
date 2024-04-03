@@ -43,6 +43,7 @@ link %>%
     clipr::write_clip()
 ```
 
+-   **April 04, 2024**: [*Modern, fast, and powerful approaches to working with data on Denmark Statistics*](s/2024-04-04/index.html) talk to the Register Space session at Steno Diabetes Center Aarhus, Denmark.
 -   **December 04, 2023**: [*Research Operations 'Space': Improving and streamlining the entire research lifecycle*](s/2023-12-04/index.html) talk for the Steno Diabetes Center Epidemiology Group at the Annual Meeting in Aarhus, Denmark.
 -   **October 26, 2023**: [*Open Science in Health: Practical perspectives and actions toward openness*](s/2023-10-26/index.html) talk for CNAP Annual Seminar in Aalborg, Denmark
 -   **September 13, 2023**: [*The forgotten child in research: Data engineering and infrastructure*](s/2023-09-13/index.html) talk for BioMedical Design Fellowship Programme in Aarhus, Denmark
