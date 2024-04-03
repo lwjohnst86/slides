@@ -1,0 +1,216 @@
+---
+title: 'Modern, fast, and powerful approaches to working with data on Denmark Statistics'
+date: "2024-04-04"
+date-format: long
+author: Luke W. Johnston
+location: "Register Space session at Steno Diabetes Center Aarhus, Denmark"
+format: 
+  revealjs:
+    fig-align: center
+    from: markdown+emoji
+    theme:
+      - dark
+      - theme.scss
+    progress: true
+    footer: "Licensed under CC-BY 4.0.<br>Slides at [slides.lwjohnst.com](https://slides.lwjohnst.com)"
+    embed-resources: true
+editor: 
+  markdown: 
+    wrap: 72
+    canonical: true
+---
+
+# Outline of talk {.center}
+
+-   Rationale and aim
+-   Efficient storage and loading of data with Parquet file format
+-   Fast and powerful data processing with DuckDB (or Arrow)
+-   (Optional if time) Faster analyses using parallal processing in R
+
+# Rationale for this talk {.center}
+
+## We are woefully behind in the tools we use and knowledge we have on data engineering and programming {.center}
+
+## And this impacts our ability to do research effectively and productively {.center}
+
+## Why is this important? {.center}
+
+-   Speed impacts time to results
+
+-   Ability to do more complex analysis with more data
+
+-   Resources (which cost money)
+
+# Aim of this talk {.center}
+
+1.  Spread awareness of tools to do research faster and let you focus on
+    the science and knowledge generation.
+
+2.  Spread knowledge of current practices in structuring and using data.
+
+3.  **Strongly** advocate for and give rationale to using R, especially
+    within DST.
+
+# Parquet file format {.center}
+
+::: aside
+<https://parquet.apache.org/>
+:::
+
+## Parquet is a column-based data storage format
+
+Most data formats are row-based, like CSV. Newer formats tend to be
+column-based.
+
+::: columns
+::: column
+### Row-based
+
+``` text
+name,sex,age
+Tim,M,30
+Jenny,F,25
+```
+:::
+
+::: {.column .fragment}
+### Column-based
+
+``` text
+name,Tim,Jenny
+sex,M,F
+age,30,25
+```
+:::
+:::
+
+## Column-based storage has many advantages
+
+::: columns
+::: column
+### Compression
+
+``` text
+name,Tim,Sam,Jenny
+sex,M,F,F
+age,30,30,25
+```
+
+...becomes...
+
+``` text
+name,Tim,Jenny,Sam
+sex,M,F{2}
+age,30{2},25
+```
+:::
+
+::: {.column .fragment}
+### Loading
+
+-   Computers read by lines
+-   Per line = same data type
+-   Only read needed columns
+
+``` text
+sex,M,F
+age,30,25
+```
+:::
+:::
+
+## Parquet is 50-75% smaller than other formats {.center}
+
+| File type            | Size (MB)    |
+|----------------------|--------------|
+| SAS (`.sas7bdat`)    | 1.45 Gb      |
+| CSV (`.csv`)         | \~90% of SAS |
+| Stata (`.dta`)       | 745 Mb       |
+| Parquet (`.parquet`) | 398 Mb       |
+
+: File size between CSV, Parquet, Stata, and SAS for `bef` register for
+2017.
+
+## Can partition data by a value (e.g. year) and load all at once {.center}
+
+``` text
+bef/year=2018/part-0.parquet
+bef/year=2019/part-0.parquet
+bef/year=2020/part-0.parquet
+bef/year=2021/part-0.parquet
+bef/year=2022/part-0.parquet
+```
+
+. . .
+
+Load in R with `arrow` package:
+
+``` r
+bef <- arrow::open_dataset("bef")
+```
+
+> Loads all years fraction of a second (compare to \~5 min for one year
+> without using Parquet)
+
+## SAS and Python can load Parquet but not Stata {.center}
+
+# DuckDB {.center}
+
+::: aside
+<https://duckdb.org/>
+:::
+
+## DuckDB is a recent SQL engine designed for analytical queries {.center}
+
+## SQL, or Structured Query Language, is a language for managing and querying databases {.center}
+
+## Is impressively fast {.center}
+
+-   Faster than almost all other tools
+
+    -   Relatively complex queries (joins, group by, aggregates) on 55
+        Gb takes \< 7.5 min [^1]
+
+    -   Generally, simpler queries take \< 10 seconds for massive
+        datasets
+
+-   Easily connects with Parquet datasets
+
+[^1]: From benchmark results
+    [page](https://duckdblabs.github.io/db-benchmark/).
+
+## Example in DST {.center}
+
+> 1. Load all 45 years of BEF
+> 2. Drop all missing PNR
+> 3. Group by year
+> 4. Count sex 
+
+. . .
+
+**Takes \< 6 seconds**
+
+## Can be easily used in R {.center}
+
+Integrates with `tidyverse`:
+
+``` r
+library(tidyverse)
+library(arrow)
+open_dataset("path/to/bef") %>%
+  to_duckdb() %>% 
+  filter(PNR != "") %>% 
+  count(year, KOEN) 
+```
+
+## Python can use DuckDB, but not Stata or SAS {.center}
+
+# Inside DARTER Project? {.center}
+
+-   Install `dstDataPrep` package in `workspace/luke/dstDataPrep/`
+
+-   List all databases we have with
+    `dstDataPrep::list_databases()`
+
+-   Access and easily load our databases with
+    `dstDataPrep::load_databases()` (e.g. `"bef"`)
