@@ -181,10 +181,10 @@ bef <- arrow::open_dataset("bef")
 
 ## Example in DST {.center}
 
-> 1. Load all 45 years of BEF
-> 2. Drop all missing PNR
-> 3. Group by year
-> 4. Count sex 
+> 1.  Load all 45 years of BEF
+> 2.  Drop all missing PNR
+> 3.  Group by year
+> 4.  Count sex
 
 . . .
 
@@ -205,12 +205,38 @@ open_dataset("path/to/bef") %>%
 
 ## Python can use DuckDB, but not Stata or SAS {.center}
 
+# Parallel processing {.center}
+
+## Running multiple sessions or cores at once {.center}
+
+## Incredibly easy to do in R with `furrr` {.center}
+
+``` r
+library(tidyverse)
+library(furrr)
+plan(multisession)
+# model_formula and generate_results are 
+# created elsewhere
+future_map(
+  model_formula, 
+  generate_results
+)
+```
+
+::: aside
+`furrr` = `future` + `purrr` packages
+:::
+
+## Greatly reduce time to results {.center}
+
+> Example: Converting 1800 SAS files to Parquet takes \<12 hours,
+> compared to \>7 days
+
 # Inside DARTER Project? {.center}
 
 -   Install `dstDataPrep` package in `workspace/luke/dstDataPrep/`
 
--   List all databases we have with
-    `dstDataPrep::list_databases()`
+-   List all databases we have with `dstDataPrep::list_databases()`
 
 -   Access and easily load our databases with
     `dstDataPrep::load_databases()` (e.g. `"bef"`)

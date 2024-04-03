@@ -1406,6 +1406,35 @@ Luke W. Johnston
 <section id="python-can-use-duckdb-but-not-stata-or-sas" class="slide level2 center">
 <h2>Python can use DuckDB, but not Stata or SAS</h2>
 </section></section>
+<section>
+<section id="parallel-processing" class="title-slide slide level1 center">
+<h1>Parallel processing</h1>
+
+</section>
+<section id="running-multiple-sessions-or-cores-at-once" class="slide level2 center">
+<h2>Running multiple sessions or cores at once</h2>
+</section>
+<section id="incredibly-easy-to-do-in-r-with-furrr" class="slide level2 center">
+<h2>Incredibly easy to do in R with <code>furrr</code></h2>
+<div class="sourceCode" id="cb9"><pre class="sourceCode numberSource .r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb9-2"><a href></a><span class="fu">library</span>(furrr)</span>
+<span id="cb9-3"><a href></a><span class="fu">plan</span>(multisession)</span>
+<span id="cb9-4"><a href></a><span class="co"># model_formula and generate_results are </span></span>
+<span id="cb9-5"><a href></a><span class="co"># created elsewhere</span></span>
+<span id="cb9-6"><a href></a><span class="fu">future_map</span>(</span>
+<span id="cb9-7"><a href></a>  model_formula, </span>
+<span id="cb9-8"><a href></a>  generate_results</span>
+<span id="cb9-9"><a href></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
+<aside><div>
+<p><code>furrr</code> = <code>future</code> + <code>purrr</code> packages</p>
+</div></aside></section>
+<section id="greatly-reduce-time-to-results" class="slide level2 center">
+<h2>Greatly reduce time to results</h2>
+<blockquote>
+<p>Example: Converting 1800 SAS files to Parquet takes &lt;12 hours, compared to &gt;7 days</p>
+</blockquote>
+</section></section>
 <section id="inside-darter-project" class="title-slide slide level1 center">
 <h1>Inside DARTER Project?</h1>
 <ul>
