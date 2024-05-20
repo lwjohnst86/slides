@@ -1,0 +1,414 @@
+---
+title: 'Building a culture that uses open knowledge management for effective collaboration and open research'
+date: "2024-05-23"
+date-format: long
+# author: Luke W. Johnston
+location: "Research Retreat for Steno Diabetes Center Aarhus, Denmark"
+format: 
+  revealjs:
+    fig-align: center
+    from: markdown+emoji
+    theme:
+      - dark
+      - theme.scss
+    progress: true
+    footer: "Licensed under CC-BY 4.0.<br>Slides at [slides.lwjohnst.com](https://slides.lwjohnst.com)"
+    embed-resources: true
+editor: 
+  markdown: 
+    wrap: 72
+    canonical: true
+---
+
+# Culture is social learning
+
+Specifically of an established group's knowledge and behaviours *over
+time*
+
+::: notes
+Before getting started, it might b
+
+Since the theme of this retreat is on "Research Culture", let's start
+things off with, what is culture exactly? Generally, culture is the
+process of socially learning a group's knowledge, rituals, and
+behaviours over time when they are part of or exposed to that group.
+
+The
+
+This includes how we do research, how we communicate, how we share
+knowledge, and how we learn from each other. This is what we will be
+talking about today.
+:::
+
+## We can do science because we learned it from others {.center}
+
+More researchers doing something = more opportunities to learn
+
+::: notes
+Because our society has a research "sub"-culture, we're able to learn
+from other researchers on how to do research. Starting from
+undergraduate studies, through to PhD graduate work, into postdoc
+positions, and continuing throughout our careers as researchers, we
+learn from others in our field how to do and not to do things, what
+expectations are placed on our work, and how to behave and communicate
+our work.
+
+Importantly, it isn't just that there are others doing research and
+spread the culture for it, a big factor is also that with more people
+doing research in addition to sharing it, and it is consistent enough
+over many years, that is when a solid cultural foundation can form.
+
+So research fields with fewer researchers, or who don't share enough, or
+if the field is new, there might not yet be a strong strong culture on
+how to do research more effectively compared to larger, older fields.
+Because when there are more people doing research, you have more
+opportunities to learn and grow.
+
+Just as an example, if you want to do register based research, one of
+the best places to learn to how to do that effectively is in the Nordic
+countries. Because there is the data for it, people can do the work, get
+the experience, and share it with trainees or newcomers. And then it
+starts becomes a feedback loop, as more people learn, more do, which
+gives more chance to learn and improve.
+:::
+
+## Researchers tend to move around a lot {.center}
+
+-   Postdocs to other institutions
+-   PhD students graduate
+-   TAP/staff to other labs or contracts end
+
+::: notes
+Remember that I said culture is learning over time in an established
+group. In research, and to some degree in industry, people tend to move
+around a lot. Postdocs move to other institutions, PhD students
+graduate, TAP/staff move to other labs or their contracts end. This can
+make it difficult to maintain a consistent culture without some form of
+structure to help support it.
+:::
+
+## Moving benefit: personally gain experience, bring new knowledge and ideas {.center}
+
+Some knowledge is gained...
+
+::: notes
+There's a lot of benefits to moving around. You as an individual
+researcher can gain a lot of knowledge, experience, and skills. You can
+also bring new knowledge and ideas to any of the places you move to, on
+top of building your network and opportunities for collaborations.
+
+So we as an aggregate group can overall gain knowledge when movement
+happens.
+:::
+
+## Moving cost: group dynamic changes, culture has to be (re)learned {.center}
+
+Knowledge is also lost...
+
+::: notes
+But there definitely is a cost to moving around. Group dynamics change,
+culture needs to adapt, which can interrupt the flow of knowledge and
+learning. Knowledge one group member gains, that they don't share
+because of lack of structure to encourage sharing, goes with them and
+doesn't stay with the group. New members have to learn the culture,
+especially for basic things like admin, where to find resources, and who
+to ask for help.
+
+Without some formal structure to help retain the knowledge, we lose out
+on this source of knowledge to contribute to the group.
+:::
+
+## :thinking: How *exactly* do you communicate and share within Steno/your group? {.center}
+
+Take a minute and think about this
+
+::: notes
+With these things in mind, I want you all to think for a minute to help
+get you into the frame of mind for the rest of this presentation. Think
+about how exactly you communicate and share things within Steno and your
+group.
+
+How do you share knowledge when someone asks a question or you learn
+something about how to do your research more effectively? Via email?
+Write it in a Word doc somewhere in a shared drive? How easy is it to
+share or save knowledge you've gained or been asked about?
+
+I'm going to let you think about it for a bit, and wait before moving
+on.
+
+> Note: Give them actual time, say, take approximately half a minute to
+> think about it.
+:::
+
+## :thinking: Is your way of communicating and sharing easy for newcomers? {.center}
+
+Take a minute and think about this
+
+::: notes
+Doing the same thing, but a bit in the reverse, imagine you are a
+newcomer to the group or Steno. How easy is it to find that information
+that you normally share or communicate? How easy is it to know who to
+ask? Might you be frustrated with finding this internal knowledge?
+
+Like with before, I'm going to let you think about it for a bit.
+
+> Maybe half a minute, I don't think it needs to be too long.
+:::
+
+# Core questions:
+
+> What do *you* do for internal (organizational or group) knowledge
+> management? How could *you* improve it?
+
+::: notes
+Hopefully I've gotten you into the right frame of mind, because the core
+of this presentation is to ask: What do *you* do when it comes to
+internal knowledge sharing and management? Not what Steno as an
+organization does, but you as an individual. How might you improve on
+it?
+:::
+
+# Open knowledge management is...
+
+::: notes
+So what is knowledge management? And what can make it be open?
+:::
+
+## A *formal* approach to sharing, creating, and managing knowledge {.center}
+
+Specifically within an organization or group.
+
+::: notes
+Knowledge management is a set of formal and structured methods and
+processes to sharing, creating, and managing data, specifically within
+an organizational or group setting. While we humans will naturally build
+an implicit and unstructured culture to allow social learning, knowledge
+management as a concept is a formal, described, and explicit approach
+than what we humans intuitively and instinctively will do.
+:::
+
+## That is done in an open, accessible, transparent way {.center}
+
+Usually publicly online
+
+::: notes
+A lot of knowledge management processes and methods were created in the
+context of an industry or corporate setting, where being open doesn't
+often provide a competitive market advantage. But we're in science,
+where part of the philosophy is some level of transparency and openness
+in our work, so that findings and claims can be critiqued and verified.
+
+In this case, using an open knowledge management approach provides more
+opportunity for us to become better researchers and for our research
+findings can be more rigorous and higher quality.
+:::
+
+## That stores knowledge from "where's the printer" to "how to run this assay" {.center}
+
+Any knowledge generated or needed could be recorded
+
+::: notes
+And this isn't just for knowledge on how to do your research, it also
+includes basic things, like "who to ask for this specific help", "how do
+I run this specific assay with the machine we have", "where's the
+printer", and "what's a good configuration for my computer to do data
+analysis effectively".
+
+Any type of knowledge that is generated could be stored in some way and
+re-used. You can never know when some bit of knowledge will be useful to
+someone else.
+:::
+
+## That includes multidisciplinary methods {.center}
+
+1.  Technological: Wikis, document sharing, IT infrastructure
+2.  Cultural: Values of sharing, documenting, openness
+3.  Organizational: Mentor-mentee, incentive structures, prioritized
+
+::: notes
+Knowledge management encompasses many multidisciplinary methods and
+angles to achieve it's goal. It includes, increasingly, technological
+methods, like using wikis, posts on websites, document sharing tools,
+and general IT infrastructure to help store and retrieve knowledge.
+
+It includes cultural methods, like having values of sharing, which we
+researchers often already generally have because of the way we do
+science. It includes having a culture of recording things down, of being
+open with our work and how to do things.
+
+It also includes organizational methods, like having buddy-type systems,
+having incentive or prioritization structures that encourage more
+recording, storing, and sharing knowledge.
+
+In general, we researchers and research organizations tend to be quite
+good at one-to-one, direct sharing of knowledge, such as through group
+meetings, supervisor-student and peer-to-peer relationships, as well as
+general sharing through publications and conferences. But we're not as
+good at sharing knowledge within organizations and groups in a more
+formal, written, and structured way, as this often requires a greater
+need for organizational and technological support to be effective.
+:::
+
+# Open knowledge management can help innovation and collaboration
+
+::: notes
+Knowledge management is well known within industry to help ensure
+maintaining a competitive advantage in the market.
+:::
+
+## Internal knowledge easily lost without a formal knowledge management system {.center}
+
+This applies to both research and industry
+
+::: notes
+:::
+
+## Open research is still new---less researchers are doing it {.center}
+
+Less people = less chances to learn and use
+
+. . .
+
+More people sharing openly = faster to learn and improve
+
+::: notes
+Science is incredibly hard, and doing open science can make it harder
+because it is still relatively new and few researchers actually practice
+it.
+:::
+
+## Like any investment, it takes time but pays off in the long run {.center}
+
+::: notes
+:::
+
+# Basic principles to start
+
+::: columns
+::: {.column width="42.5%"}
+-   Documentation-focused culture
+    -   Limit emails, meetings
+    -   Write short posts instead
+    -   Use FAQ to ask/answer questions
+    -   Use group task tracker
+    -   Continuously improve
+:::
+
+::: {.column width="5%"}
+:::
+
+::: {.column width="42.5%"}
+-   Something is better than nothing
+-   Central location
+-   Make work visible
+-   Easy to search
+-   Easy to edit
+-   Open wherever possible
+:::
+:::
+
+::: notes
+:::
+
+## One example: Steno Common Docs {.center}
+
+> Resources and support for conducting research at SDCA.\
+> --- <https://steno-aarhus.github.io/research/>
+
+::: notes
+:::
+
+# Activity: Think :think: pair :speech_balloon: share :loudspeaker: {.smaller}
+
+> How do you look for knowledge/info in your group/Steno to do your
+> work? Is it easy to find? Do you have to verbally ask someone or send
+> an email? Does it take a lot of time and energy?
+
+> How do you go about sharing knowledge? Is it easy to do? Is it easy to
+> find later?
+
+1.  2 min: Think about these questions and write down
+2.  8 min: Discuss with your neighbor
+3.  10 min: Group-wide discussion
+
+::: notes
+> Note: Emphasize the "how do *you* do these things", rather than how
+> does Steno or the group.
+
+think, how do you look for information or knowledge on some research
+aspect within your group or within Steno/AU?
+
+Is there a central place you can go to? Is it easy to search and find?
+
+Does it involve asking someone directly? Is there a problem with this?
+(takes someone's time, knowledge is lost if it is only verbal)
+
+think, when you have information or knowledge that might be useful to
+others, do you have a common place to put it? Is it easy to add it, to
+edit content?
+:::
+
+# Examples of open knowledge management within Steno
+
+::: notes
+For those interested in what we're doing across Steno and AU, here are a
+few examples that highlight how structured knowledge management can look
+like and how it can be practiced. I won't go over these in much detail,
+but just very quickly will show them to you. You can always go to this
+website (show link on bottom of slide) for the links and information.
+
+> Note: No need to spend too much time on this, let them know it is
+> mostly for reference.
+:::
+
+## Various Steno groups {.center}
+
+> Resources, slides, sessions for groups across Steno (e.g. epi-stats,
+> registers, internationalization).\
+> --- <https://steno-aarhus.github.io/research/directory.html>
+
+## UK Biobank research group {.center}
+
+> Documentation and R package to share knowledge and simplify work with
+> the UK Biobank.\
+> --- <https://steno-aarhus.github.io/ukbAid/>
+
+## DARTER project website {.center}
+
+> Documentation on variables and registers within DARTER project.\
+> --- <https://steno-aarhus.github.io/darter-project/>
+
+## Seedcase Project Team {.center}
+
+> Team Documentation: Open knowledge sharing as we learn how to work
+> together and build software.\
+> --- <https://team.seedcase-project.org>
+
+::: note
+Develop software and teaching resources to make it easier to build,
+manage, share, find, and get data.
+:::
+
+## Seedcase Project Community {.center}
+
+> Community Documentation: Sharing contributing guides, general
+> knowledge for those outside of the team.\
+> --- <https://community.seedcase-project.org>
+
+# Some resources for further learning {.smaller .scrollable}
+
+-   [Wikipedia: Knowledge
+    Management](https://en.wikipedia.org/wiki/Knowledge_management)
+-   [Atlassian: What is Knowledge
+    Management?](https://www.atlassian.com/itsm/knowledge-management)
+-   [Zendesk: What is Knowledge Management? A guide for
+    2024](https://www.zendesk.com/dk/blog/knowledge-management/#)
+-   [Knowledge management in project
+    environments](https://doi.org/10.4102/sajbm.v36i3.634)
+-   [Identification of Knowledge Management Barriers in Scientific R&D
+    Projects in Czech Academic
+    Environment](http://dx.doi.org/10.28991/HIJ-2023-04-01-02)
+-   [Knowledge Management Practices in a Successful Research and
+    Development
+    Organization](https://www.community-of-knowledge.de/beitrag/knowledge-management-practices-in-a-successful-research-and-development-organization/index.html)
+
