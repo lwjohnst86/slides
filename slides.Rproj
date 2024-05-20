@@ -17,6 +17,7 @@ StripTrailingWhitespace: Yes
 
 BuildType: Website
 
-MarkdownWrap: Sentence
+MarkdownWrap: Column
+MarkdownWrapAtColumn: 72
 MarkdownReferences: Document
 MarkdownCanonical: Yes
