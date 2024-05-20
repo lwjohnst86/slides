@@ -43,26 +43,94 @@ link %>%
     clipr::write_clip()
 ```
 
--   **April 04, 2024**: [*Modern, fast, and powerful approaches to working with data on Denmark Statistics*](s/2024-04-04/index.html) talk to the Register Space session at Steno Diabetes Center Aarhus, Denmark.
--   **December 04, 2023**: [*Research Operations 'Space': Improving and streamlining the entire research lifecycle*](s/2023-12-04/index.html) talk for the Steno Diabetes Center Epidemiology Group at the Annual Meeting in Aarhus, Denmark.
--   **October 26, 2023**: [*Open Science in Health: Practical perspectives and actions toward openness*](s/2023-10-26/index.html) talk for CNAP Annual Seminar in Aalborg, Denmark
--   **September 13, 2023**: [*The forgotten child in research: Data engineering and infrastructure*](s/2023-09-13/index.html) talk for BioMedical Design Fellowship Programme in Aarhus, Denmark
--   **March 31, 2023**: [*Working towards research that is more reproducible and open*](s/2023-03-31/index.html) talk for McGill School of Human Nutrition Coding Club: Reproducible Research (virtual)
--   **October 25, 2022**: [*Open science and FAIR principles: Under-valued and under-appreciated*](steno/2022-10-25/index.html) talk for the PhD seminar Data management in research at Steno Diabetes Center Aarhus, Denmark
--   **August 17, 2022**: [*Approaches to open, scalable, and reproducible data management and analysis: Training and software*](misc/2022-08-17/index.html) talk to the Department of Biology and Biological Engineering, Chalmers University of Technology, Sweden
--   **August 15, 2022**: [*Implementing an open and scalable infrastructure for the DD2 data*](misc/2022-08-15/index.html) talk for the quarterly meeting of the DD2
--   **August 11, 2022**: [*How (and why) to become more reproducible and open in your research*](au/2022-08-11/index.html) talk for Dr. Oleguer Plana-Ripoll's research group
--   **April 26, 2022**: [*A framework for an open and scalable infrastructure for health data exemplified by the DD2 initiative*](steno/2022-04-26/index.html) talk for the Steno Epidemiology and Biostatistics Network meeting
--   **April 25, 2022**: [*Workshop on reproducibility and open science*](au/2022-04-25/index.html) for the National Center for Register-based Research's (NCRR) Retreat Day
--   **January 13, 2022**: [*A framework for an open and scalable infrastructure for health data exemplified by the DD2 initiative*](steno/2022-01-13/index.html) talk for Steno Thursdays
--   **November 18, 2021**: [*Shifting Science and Research Culture Towards Openness and Reproducibility Through Education and Training*](misc/2021-11-18/index.html) talk for the [Life Science Trainers](https://lifescitrainers.org/2021/11/09/november-2021-how-i-teach-life-scientists-r/)
--   **July 06, 2021**: [*NetCoupler: Inferring causal pathways between high-dimensional metabolomics data and external factors*](user/2021-07-06/index.html) talk for the useR! 2021 conference
--   **May 21, 2021**: [*NetCoupler: Inferring causal pathways between high-dimensional metabolic data and external factors*](des/2021-05-21/index.html) talk for Danish Epidemiological Society Annual Meeting
--   **February 08, 2021**: [*Reproducibility and code sharing in science: Why it's important and how to do it*](steno/2021-02-08/index.html) talk for the Diabetes Epidemiology group at Steno Diabetes Center Aarhus
--   **January 08, 2021**: [*Expert Corner for the Basic Human Nutrition course*](misc/2021-01-08/index.html) talk for a University of Toronto Basic Human Nutrition Course
--   **December 16, 2020**: [*NetCoupler: Inferring causal pathways between high-dimensional metabolic data and external factors*](iarc/2020-12-16/index.html) talk for IARC Nutritional Methodology and Biostatistics Group
--   **November 26, 2020**: [*Tools and workflows for improving the process for scientific research to meet modern demands*](steno/2020-11-26/index.html) talk for Steno Thursdays in Aarhus
--   **February 06, 2020**: [*MELD Project:* M*etabolic consequences of* E*arly* L*ife adversity and risk for type 2* D*iabetes*](steno/2020-02-06/index.html) talk for Steno Thursdays in Aarhus
--   **February 04, 2020**: [*MELD Project: The* M*etabolic consequences of adverse* E*arly* L*ife conditions and subsequent risk for adult type 2* D*iabetes*](dda/2020-02-04/index.html) talk for Danish Diabetes Academy Start-up Meeting for Funded Projects
--   **September 12, 2019**: [*A data-driven approach at characterizing heterogeneity in neuropathy assessments*](au-ph/2019-09-12/index.html) talk for Work-In-Progress meeting at Public Health in Aarhus University
--   **August 15, 2019**: [*Analyzing high dimensional metabolic data in epidemiological studies*](au-ph/2019-08-15/slides.html) talk for weekly Section for Epidemiology meeting at Public Health in Aarhus University
+-   **May 23, 2024**: [*Building a culture that uses open knowledge
+    management for effective collaboration and open
+    research*](s/2024-05-23/index.html) talk (done by Daniel Ibsen in my
+    place) for Steno Aarhus Research Retreat.
+-   **April 04, 2024**: [*Modern, fast, and powerful approaches to
+    working with data on Denmark Statistics*](s/2024-04-04/index.html)
+    talk to the Register Space session at Steno Diabetes Center Aarhus,
+    Denmark.
+-   **December 04, 2023**: [*Research Operations 'Space': Improving and
+    streamlining the entire research
+    lifecycle*](s/2023-12-04/index.html) talk for the Steno Diabetes
+    Center Epidemiology Group at the Annual Meeting in Aarhus, Denmark.
+-   **October 26, 2023**: [*Open Science in Health: Practical
+    perspectives and actions toward openness*](s/2023-10-26/index.html)
+    talk for CNAP Annual Seminar in Aalborg, Denmark
+-   **September 13, 2023**: [*The forgotten child in research: Data
+    engineering and infrastructure*](s/2023-09-13/index.html) talk for
+    BioMedical Design Fellowship Programme in Aarhus, Denmark
+-   **March 31, 2023**: [*Working towards research that is more
+    reproducible and open*](s/2023-03-31/index.html) talk for McGill
+    School of Human Nutrition Coding Club: Reproducible Research
+    (virtual)
+-   **October 25, 2022**: [*Open science and FAIR principles:
+    Under-valued and under-appreciated*](steno/2022-10-25/index.html)
+    talk for the PhD seminar Data management in research at Steno
+    Diabetes Center Aarhus, Denmark
+-   **August 17, 2022**: [*Approaches to open, scalable, and
+    reproducible data management and analysis: Training and
+    software*](misc/2022-08-17/index.html) talk to the Department of
+    Biology and Biological Engineering, Chalmers University of
+    Technology, Sweden
+-   **August 15, 2022**: [*Implementing an open and scalable
+    infrastructure for the DD2 data*](misc/2022-08-15/index.html) talk
+    for the quarterly meeting of the DD2
+-   **August 11, 2022**: [*How (and why) to become more reproducible and
+    open in your research*](au/2022-08-11/index.html) talk for Dr.
+    Oleguer Plana-Ripoll's research group
+-   **April 26, 2022**: [*A framework for an open and scalable
+    infrastructure for health data exemplified by the DD2
+    initiative*](steno/2022-04-26/index.html) talk for the Steno
+    Epidemiology and Biostatistics Network meeting
+-   **April 25, 2022**: [*Workshop on reproducibility and open
+    science*](au/2022-04-25/index.html) for the National Center for
+    Register-based Research's (NCRR) Retreat Day
+-   **January 13, 2022**: [*A framework for an open and scalable
+    infrastructure for health data exemplified by the DD2
+    initiative*](steno/2022-01-13/index.html) talk for Steno Thursdays
+-   **November 18, 2021**: [*Shifting Science and Research Culture
+    Towards Openness and Reproducibility Through Education and
+    Training*](misc/2021-11-18/index.html) talk for the [Life Science
+    Trainers](https://lifescitrainers.org/2021/11/09/november-2021-how-i-teach-life-scientists-r/)
+-   **July 06, 2021**: [*NetCoupler: Inferring causal pathways between
+    high-dimensional metabolomics data and external
+    factors*](user/2021-07-06/index.html) talk for the useR! 2021
+    conference
+-   **May 21, 2021**: [*NetCoupler: Inferring causal pathways between
+    high-dimensional metabolic data and external
+    factors*](des/2021-05-21/index.html) talk for Danish Epidemiological
+    Society Annual Meeting
+-   **February 08, 2021**: [*Reproducibility and code sharing in
+    science: Why it's important and how to do
+    it*](steno/2021-02-08/index.html) talk for the Diabetes Epidemiology
+    group at Steno Diabetes Center Aarhus
+-   **January 08, 2021**: [*Expert Corner for the Basic Human Nutrition
+    course*](misc/2021-01-08/index.html) talk for a University of
+    Toronto Basic Human Nutrition Course
+-   **December 16, 2020**: [*NetCoupler: Inferring causal pathways
+    between high-dimensional metabolic data and external
+    factors*](iarc/2020-12-16/index.html) talk for IARC Nutritional
+    Methodology and Biostatistics Group
+-   **November 26, 2020**: [*Tools and workflows for improving the
+    process for scientific research to meet modern
+    demands*](steno/2020-11-26/index.html) talk for Steno Thursdays in
+    Aarhus
+-   **February 06, 2020**: [*MELD Project:* M*etabolic consequences of*
+    E*arly* L*ife adversity and risk for type 2*
+    D*iabetes*](steno/2020-02-06/index.html) talk for Steno Thursdays in
+    Aarhus
+-   **February 04, 2020**: [*MELD Project: The* M*etabolic consequences
+    of adverse* E*arly* L*ife conditions and subsequent risk for adult
+    type 2* D*iabetes*](dda/2020-02-04/index.html) talk for Danish
+    Diabetes Academy Start-up Meeting for Funded Projects
+-   **September 12, 2019**: [*A data-driven approach at characterizing
+    heterogeneity in neuropathy
+    assessments*](au-ph/2019-09-12/index.html) talk for Work-In-Progress
+    meeting at Public Health in Aarhus University
+-   **August 15, 2019**: [*Analyzing high dimensional metabolic data in
+    epidemiological studies*](au-ph/2019-08-15/slides.html) talk for
+    weekly Section for Epidemiology meeting at Public Health in Aarhus
+    University
+
