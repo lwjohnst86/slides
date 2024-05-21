@@ -252,8 +252,11 @@ need for organizational and technological support to be effective.
 # Open knowledge management can help innovation and collaboration
 
 ::: notes
-Knowledge management is well known within industry to help ensure
-maintaining a competitive advantage in the market.
+Knowledge management is well known and used within industry to help
+ensure that companies maintain a competitive advantage in the market. In
+academia and research, it isn't as commonly used, even though it can
+help improve collaboration and innovation because of the increased
+sharing of knowledge.
 :::
 
 ## Internal knowledge easily lost without a formal knowledge management system {.center}
@@ -261,6 +264,13 @@ maintaining a competitive advantage in the market.
 This applies to both research and industry
 
 ::: notes
+Because researchers move around quite a bit, a lot of internal knowledge
+can get lost when there isn't a formal knowledge system in place. By
+using a knowledge management system, we can keep more of that knowledge
+gained from the movement of researchers. More knowledge retained means
+there are more chances for innovative ideas to be created *and* further
+developed, faster than would otherwise be the case. Like, it is easier
+to collaborate when we can make use of shared resources and knowledge.
 :::
 
 ## Open research is still new---less researchers are doing it {.center}
@@ -272,14 +282,25 @@ Less people = less chances to learn and use
 More people sharing openly = faster to learn and improve
 
 ::: notes
-Science is incredibly hard, and doing open science can make it harder
+Likewise, when there are less researchers doing something, there is less
+knowledge on that topic and it makes it harder to do. Science is
+incredibly hard to do well, and doing open science can make it harder
 because it is still relatively new and few researchers actually practice
 it.
+
+So by sharing more variety of knowledge than the traditional publication
+output, sharing more widely internally in formal systems, we can learn
+and improve faster than we would otherwise.
 :::
 
 ## Like any investment, it takes time but pays off in the long run {.center}
 
 ::: notes
+And like anything, it is an investment that takes some to do and setup,
+but pays off very well in the future. For individual researchers at any
+given point in time, the pay off isn't as tangible or strong, but as an
+organization, or as a group, the return on investment can be quite
+substantial and seen much faster than at the individual level.
 :::
 
 # Basic principles to start
@@ -308,6 +329,14 @@ it.
 :::
 
 ::: notes
+There are many technological tools available to help with knowledge
+management, though most of them are designed with a corporate setting in
+mind.
+
+However, there are a few, non-technological, principles to follow to
+start implementing a formal knowledge management system.
+
+> *Note*: These principles can be listed or expanded on as desired.
 :::
 
 ## One example: Steno Common Docs {.center}
@@ -316,36 +345,35 @@ it.
 > --- <https://steno-aarhus.github.io/research/>
 
 ::: notes
+An example of one such system that we are doing in Steno is the Common
+Docs, where we've been increasingly moving documentation and other
+resources to a central location to make it easier to find and share
+knowledge.
 :::
 
-# Activity: Think :think: pair :speech_balloon: share :loudspeaker: {.smaller}
+## Activity: Think :thinking: pair :speech_balloon: share :loudspeaker: {.smaller}
 
 > How do you look for knowledge/info in your group/Steno to do your
 > work? Is it easy to find? Do you have to verbally ask someone or send
 > an email? Does it take a lot of time and energy?
 
 > How do you go about sharing knowledge? Is it easy to do? Is it easy to
-> find later?
+> find later? Is it easy for others to find and use?
 
-1.  2 min: Think about these questions and write down
-2.  8 min: Discuss with your neighbor
+1.  2 min: Think about these questions and, if you want, write down
+    thoughts
+2.  8 min: Discuss the questions with your neighbor
 3.  10 min: Group-wide discussion
 
 ::: notes
 > Note: Emphasize the "how do *you* do these things", rather than how
-> does Steno or the group.
+> does Steno or the group. I think a big part of this presentation is
+> getting them to think and discuss the topic.
 
-think, how do you look for information or knowledge on some research
-aspect within your group or within Steno/AU?
-
-Is there a central place you can go to? Is it easy to search and find?
-
-Does it involve asking someone directly? Is there a problem with this?
-(takes someone's time, knowledge is lost if it is only verbal)
-
-think, when you have information or knowledge that might be useful to
-others, do you have a common place to put it? Is it easy to add it, to
-edit content?
+Time for an activity! We'll do a think-pair-share, where we'll think
+about and discuss these questions. First, you'll have a couple of
+minutes to read these questions, then some time to share and discuss
+with your neighbour, and lastly, we'll discuss all as a group.
 :::
 
 # Examples of open knowledge management within Steno
@@ -384,9 +412,9 @@ website (show link on bottom of slide) for the links and information.
 > together and build software.\
 > --- <https://team.seedcase-project.org>
 
-::: note
-Develop software and teaching resources to make it easier to build,
-manage, share, find, and get data.
+::: notes
+Seedcase: Develop software and teaching resources to make it easier to
+build, manage, share, find, and get data.
 :::
 
 ## Seedcase Project Community {.center}
@@ -411,4 +439,3 @@ manage, share, find, and get data.
 -   [Knowledge Management Practices in a Successful Research and
     Development
     Organization](https://www.community-of-knowledge.de/beitrag/knowledge-management-practices-in-a-successful-research-and-development-organization/index.html)
-
