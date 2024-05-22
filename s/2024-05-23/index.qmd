@@ -2,7 +2,9 @@
 title: 'Building a culture that uses open knowledge management for effective collaboration and open research'
 date: "2024-05-23"
 date-format: long
-# author: Luke W. Johnston
+author:
+  - Luke W. Johnston
+  - Daniel B. Ibsen
 location: "Research Retreat for Steno Diabetes Center Aarhus, Denmark"
 format: 
   revealjs:
@@ -20,20 +22,104 @@ editor:
     canonical: true
 ---
 
-# Culture is social learning
-
-Specifically of an established group's knowledge and behaviours *over
-time*
+# The Polymath problem
 
 ::: notes
-Before getting started, it might b
+Tim Gowers, a mathematician from Cambridge University and a recipient of
+the Fields Medal, also known as the Nobel Prize of math, tried to do
+something different in January 2009.
 
+He was working on an important and unresolved math problem. One that no
+one has ever been able to solve.
+
+He already had a blog and now he tried to solve the problem in the open
+and asked anyone to help him solve the problem.
+
+In the first 7 hours, nothing happened. But then, a mathematician named
+Jozsef Solymosi from the University of British Colombia posted a comment
+with a suggestion to solve the problem. Minutes later, a high-school
+teacher from Arizona gave his suggestion. Just after that, Terence Tao,
+another Fields Medal recipient, chimed in.
+
+The ball had started rolling.
+
+Over the next 37 days, 27 people wrote 800 comments, with more than
+170,000 words.
+
+Just 37 days after the project started, the problem was solved.
+:::
+
+## Reinventing discovery {.center}
+
+By using online **open collaboration**, they solved a complex unsolved
+problem.
+
+A shift in research practice (=a shift in culture), solved what was
+thought unsolvable - in record time!
+
+## What worked well in this project {.center}
+
+They were, with **open** online tools, able to:
+
+-   amplify **collective intelligence**
+-   have a dynamic division of labour
+-   modularize the collaboration
+-   conversational critical mass
+-   restructuring expert attention
+
+::: notes
+Collective intelligence: knowledge has now been decentralized. We are
+many great minds in specific domains.
+
+Division of labour: who does what? clear division is import. Have the
+right person do the right job.
+
+Modularizing: 2 thing, 1) small concrete tasks (for the right person),
+2) modularizing is also an effective way of building something big -
+think of LEGO
+
+Critical mass: needs to be enough to keep the discussion going
+
+Restructuring attention: complex projects have many places to look.
+There needs to be a system for this.
+:::
+
+## The problems we solve are getting bigger and bigger, and more and more complex {.center}
+
+Getting a good life with diabetes and preventing diabetes are complex
+problems
+
+. . .
+
+More and more people are needed to solve the problem. Bigger and bigger
+organizations are needed.
+
+. . .
+
+To solve the complex problems we need to change/update our research
+culture
+
+::: notes
+The methods we have previously used may not be effective to solve the
+big societal problems we face today.
+
+Changing the way we work, our research culture, may move us faster in
+the right direction.
+
+Note: SDCA is also getting bigger.
+:::
+
+# Culture is social learning
+
+Culture = *"the process of socially learning a group's knowledge,
+rituals, and behaviours over time when they are part of or exposed to
+that group."*
+
+::: notes
 Since the theme of this retreat is on "Research Culture", let's start
 things off with, what is culture exactly? Generally, culture is the
 process of socially learning a group's knowledge, rituals, and
 behaviours over time when they are part of or exposed to that group.
-
-The
 
 This includes how we do research, how we communicate, how we share
 knowledge, and how we learn from each other. This is what we will be
@@ -74,8 +160,8 @@ gives more chance to learn and improve.
 
 ## Researchers tend to move around a lot {.center}
 
--   Postdocs to other institutions
 -   PhD students graduate
+-   Postdocs to other institutions
 -   TAP/staff to other labs or contracts end
 
 ::: notes
@@ -120,7 +206,7 @@ on this source of knowledge to contribute to the group.
 
 ## :thinking: How *exactly* do you communicate and share within Steno/your group? {.center}
 
-Take a minute and think about this
+Take 30 sec and think about this...
 
 ::: notes
 With these things in mind, I want you all to think for a minute to help
@@ -135,14 +221,11 @@ share or save knowledge you've gained or been asked about?
 
 I'm going to let you think about it for a bit, and wait before moving
 on.
-
-> Note: Give them actual time, say, take approximately half a minute to
-> think about it.
 :::
 
 ## :thinking: Is your way of communicating and sharing easy for newcomers? {.center}
 
-Take a minute and think about this
+Take 30 sec and think about this
 
 ::: notes
 Doing the same thing, but a bit in the reverse, imagine you are a
@@ -151,8 +234,6 @@ that you normally share or communicate? How easy is it to know who to
 ask? Might you be frustrated with finding this internal knowledge?
 
 Like with before, I'm going to let you think about it for a bit.
-
-> Maybe half a minute, I don't think it needs to be too long.
 :::
 
 # Core questions:
@@ -171,7 +252,10 @@ it?
 # Open knowledge management is...
 
 ::: notes
-So what is knowledge management? And what can make it be open?
+This leads us to knowledge management? What is it and what can make it
+be open?
+
+This is also a tool to amplify our collective intelligence.
 :::
 
 ## A *formal* approach to sharing, creating, and managing knowledge {.center}
@@ -184,7 +268,7 @@ processes to sharing, creating, and managing data, specifically within
 an organizational or group setting. While we humans will naturally build
 an implicit and unstructured culture to allow social learning, knowledge
 management as a concept is a formal, described, and explicit approach
-than what we humans intuitively and instinctively will do.
+than what we intuitively and instinctively will do.
 :::
 
 ## That is done in an open, accessible, transparent way {.center}
@@ -221,15 +305,13 @@ someone else.
 
 ## That includes multidisciplinary methods {.center}
 
-1.  Technological: Wikis, document sharing, IT infrastructure
-2.  Cultural: Values of sharing, documenting, openness
-3.  Organizational: Mentor-mentee, incentive structures, prioritized
+1.  Cultural: Values of sharing, documenting, openness
+2.  Organizational: Mentor-mentee, incentive structures, prioritized
+3.  Technological: Wikis, document sharing, IT infrastructure
 
 ::: notes
 Knowledge management encompasses many multidisciplinary methods and
-angles to achieve it's goal. It includes, increasingly, technological
-methods, like using wikis, posts on websites, document sharing tools,
-and general IT infrastructure to help store and retrieve knowledge.
+angles to achieve it's goal.
 
 It includes cultural methods, like having values of sharing, which we
 researchers often already generally have because of the way we do
@@ -240,23 +322,30 @@ It also includes organizational methods, like having buddy-type systems,
 having incentive or prioritization structures that encourage more
 recording, storing, and sharing knowledge.
 
+It includes, increasingly, technological methods, like using wikis,
+posts on websites, document sharing tools, and general IT infrastructure
+to help store and retrieve knowledge.
+
 In general, we researchers and research organizations tend to be quite
 good at one-to-one, direct sharing of knowledge, such as through group
 meetings, supervisor-student and peer-to-peer relationships, as well as
-general sharing through publications and conferences. But we're not as
-good at sharing knowledge within organizations and groups in a more
-formal, written, and structured way, as this often requires a greater
-need for organizational and technological support to be effective.
+general sharing through publications and conferences.
+
+But we're not as good at sharing knowledge within organizations and
+groups in a more formal, written, and structured way, as this often
+requires a greater need for organizational and technological support to
+be effective.
 :::
 
 # Open knowledge management can help innovation and collaboration
 
 ::: notes
 Knowledge management is well known and used within industry to help
-ensure that companies maintain a competitive advantage in the market. In
-academia and research, it isn't as commonly used, even though it can
+ensure that companies maintain a competitive advantage in the market.
+
+In academia and research, it isn't as commonly used, even though it can
 help improve collaboration and innovation because of the increased
-sharing of knowledge.
+sharing of knowledge and solving complex problems.
 :::
 
 ## Internal knowledge easily lost without a formal knowledge management system {.center}
@@ -439,3 +528,5 @@ build, manage, share, find, and get data.
 -   [Knowledge Management Practices in a Successful Research and
     Development
     Organization](https://www.community-of-knowledge.de/beitrag/knowledge-management-practices-in-a-successful-research-and-development-organization/index.html)
+-   [Reinventing Discovery by Michael
+    Nielsen](https://www.amazon.com/Reinventing-Discovery-New-Networked-Science/dp/0691160198)
