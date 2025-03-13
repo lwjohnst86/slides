@@ -1,0 +1,14 @@
+# Integrating open and reproducible practices within a research organization
+
+Advocating for and implementing open and reproducible practices within a
+research organization can be extremely challenging. During this talk,
+Luke will share his experiences on and struggles with advocating for
+more openness and reproducibility within research environments and how
+this led to multiple organization-wide changes at the Steno Diabetes
+Center Aarhus. He will go over some practical examples of what practices
+are now being integrated within Steno Aarhus, with a focus on three main
+areas of work: using the UK Biobank, DP-Next project, and general GitHub
+use. He will also talk about the role of fostering and building a
+community around these practices can greatly help in their adoption, and
+how it can offset some of the stressful challenges that come along with
+these changes.
