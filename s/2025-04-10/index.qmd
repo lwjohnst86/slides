@@ -1,0 +1,266 @@
+---
+title: 'Integrating open and reproducible practices within a research organization'
+date: "2025-04-10"
+date-format: long
+author:
+  - Luke W. Johnston
+location: "Pioneer Centre for AI at University of Copenhagen, Denmark"
+format: 
+  revealjs:
+    fig-align: center
+    from: markdown+emoji
+    theme:
+      - dark
+      - theme.scss
+    progress: true
+    footer: "Licensed under CC-BY 4.0.<br>Slides at [slides.lwjohnst.com](https://slides.lwjohnst.com)"
+    embed-resources: true
+editor: 
+  markdown: 
+    wrap: 72
+    canonical: true
+---
+
+# Who am I? :wave:
+
+::::: columns
+::: {.column width="50%"}
+[![](images/portrait.jpeg){style="border-radius: 50%"}](https://lukewjohnston.com/)
+:::
+
+::: {.column width="50%"}
+-   Team Leader at Steno Diabetes Center Aarhus and Aarhus University,
+    Denmark
+-   Current main work:
+    -   Teach how to do open and reproducible science
+    -   Build software to automate research, especially around data
+        management
+    -   Design structures to enable open and reproducible science
+:::
+:::::
+
+## Teaching work includes 3 workshops in R {.center}
+
+-   [r-cubed-intro.rostools.org](https://r-cubed-intro.rostools.org/)
+-   [r-cubed-intermediate.rostools.org](https://r-cubed-intermediate.rostools.org/)
+-   [r-cubed-advanced.rostools.org](https://r-cubed-advanced.rostools.org/)
+
+## Software to simplify and automate research tasks {.center}
+
+-   [Seedcase Project](https://seedcase-project.org/): Building FAIR,
+    organized, and modern infrastructures for research data
+
+::: notes
+We are a team of 4, with two research software engineers, a database
+administrator/developer, and myself. Working full-time, on a project
+that has several products.
+:::
+
+# Objective of this talk:
+
+Share experiences and struggles of getting an organization to adopt
+more open and reproducible practices.
+
+## Three areas of focus: UK Biobank, DP-Next, community-building/using GitHub across Steno Aarhus {.center}
+
+# UK Biobank
+
+## Two main aims of this project {.center}
+
+> -   To build up a process and workflow for effective collaboration
+>     that follows best practices and principles in openness,
+>     reproducibility, and scientific rigor.
+> -   To build a community around a shared project at Steno Aarhus in
+>     order to create a better research culture ...
+
+## Achieve by using many reproducible and open practices on sub-projects {.center}
+
+-   Fully reproducible analysis
+-   Version control
+-   Code-based extraction of data
+-   Code reviews throughout
+-   Publish protocol, preprint, and code
+
+::: notes
+Walk-through this section:
+https://steno-aarhus.github.io/ukbAid/#next-steps
+:::
+
+## My personal aim: Automate/streamline many project organization/management tasks {.center}
+
+::: notes
+Go back to the image and highlight areas I wanted to automate.
+:::
+
+## Biggest challenge: Working with RAP is a mess {.center}
+
+RAP = Research Analysis Platform from DNAnexus
+
+::: notes
+This challenge represents a lot of the struggles I had with this project
+in general. E.g. RAP has/had lack of support for R projects, mostly
+targeted Python users (but still not well).
+:::
+
+## Documentation was/is near to the lowest priority they had {.center}
+
+::: notes
+Extremely difficult to navigate the website and find information or
+guides. Kinda to the point that UK Biobank themselves had to write
+guides for using it.
+:::
+
+## Extracting a subset of data was way too difficult
+
+::::: columns
+::: column
+-   Behaviour of some of their code changed.
+-   Nearly impossible to test out code locally.
+-   Would often fail without explanation when ran on their servers.
+:::
+
+::: column
+![](images/commit-rap-is-weird.png)
+
+![](images/commit-rap-different-from-ukb.png)
+:::
+:::::
+
+::: notes
+(coming from someone who is very technically inclined and knowledgeable)
+:::
+
+## But finally created an R package to help others out {.center}
+
+<https://github.com/steno-aarhus/ukbAid>
+
+::: notes
+This was a huge effort, and took a lot of time and debugging and diving
+into the technical details of RAP to get to this point.
+
+Go over the "working with RAP" section.
+
+Briefly go over admin section.
+
+Then go to completed projects and show Niels' project.
+:::
+
+## Next challenge: Reviewing code, which was enlightening {.center}
+
+"It runs", doesn't mean it outputs what you think it does.
+
+-   <https://github.com/steno-aarhus/leha/pull/16>
+-   <https://github.com/steno-aarhus/legliv/pull/20/files>
+-   <https://github.com/steno-aarhus/legliv/pull/7/files>
+
+::: notes
+It was very difficult to balance between giving constructive feedback,
+but also enough and in a way that taught the person how to code in a
+better way or if the code didn't actually do what they thought it did.
+There was a lot of that actually. "It runs", but it might not do what
+you think it does.
+
+Highlights such how far we researchers are from being able to code
+effectively and in many cases correctly.
+:::
+
+## But also an immense amount of work and time {.center}
+
+::: notes
+Doing a code review is very difficult. It takes a lot of mental energy
+to understand what someone else is doing when they way they do it isn't
+well thought out, well structured, or even semantically/syntactically
+correct.
+:::
+
+## Basically done by only me {.center}
+
+## Pressure to publish and limited training = lower priority for reproducibility {.center}
+
+-   Limited understanding or effective use of GitHub
+
+-   PhD students and postdocs don't get rewarded for getting it right,
+    they get rewarded for publishing
+
+::: notes
+So they focus on that (they don't embrace the reason, they only
+intellectually understand it)
+:::
+
+## I had to step back because it was burning me out {.center}
+
+## Important thing I learned: We desperately need TEAMS! {.center}
+
+# DP-Next
+
+> ...developing a sustainably effective strategy for prevention of Type
+> 2 Diabetes
+
+<https://dp-next.github.io/>
+
+## Work package 1: Better research in less time and fewer resources {.center}
+
+<https://dp-next.github.io/wp1-ros/>
+
+::: notes
+Show a bit of the design principles, to help as a guide.
+:::
+
+## Lessons learned from UK Biobank experience {.center}
+
+-   Strong "top-down" approach
+-   Establish tech leads group
+-   Emphasize more training
+-   Have a clearer roadmap
+
+## Big challenges: Majority of researchers don't know how to use GitHub {.center}
+
+So: Lots of training and education needed
+
+# Community-building across Steno Aarhus
+
+## Rant a lot :mega: so people know the issues {.center}
+
+## Rant and repeat regularly, people start to listen :thinking: {.center}
+
+## Rant so much, people start agreeing and working to resolve the rants! :tada: {.center}
+
+## Through the ranting, Steno Aarhus adopted using GitHub {.center}
+
+At least for building websites and hosting material on projects
+
+## Initial reason to use GitHub: Place to store common documents :memo: {.center}
+
+-   Website: <https://steno-aarhus.github.io/research/>
+-   GitHub: <https://github.com/steno-aarhus/research>
+
+## Several project website being hosted there {.center}
+
+<https://steno-aarhus.github.io/research/directory.html>
+
+## UK Biobank sub-projects are managed through it {.center}
+
+## New challenges regularly :roll_eyes: {.center}
+
+For example:
+
+-   Training and education (uncertainty, anxiety)
+
+-   Web accessibility mis-understandings
+
+## But having a community helps to not feel alone {.center}
+
+# To sum it up
+
+## Lessons learned {.center}
+
+-   We need more digitally-technical people in research!
+-   We need this work to be recognized and incentivised
+-   We need this work to be funded
+-   We need team science!
+
+## Implementing change... {.center}
+
+Rant and don't stop ranting!
+
+(...while also working to improve things and providing solutions)
