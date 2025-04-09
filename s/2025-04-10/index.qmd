@@ -29,17 +29,15 @@ editor:
 :::
 
 ::: {.column width="50%"}
--   Team Leader at Steno Diabetes Center Aarhus and Aarhus University,
-    Denmark
--   Current main work:
+-   Team Leader, Steno Diabetes Center Aarhus and Aarhus University
+-   Current work:
     -   Teach how to do open and reproducible science
-    -   Build software to automate research, especially around data
-        management
-    -   Design structures to enable open and reproducible science
+    -   Build research software, mainly around data management
+    -   Design ways to enable open and reproducible science
 :::
 :::::
 
-## Teaching work includes 3 workshops in R {.center}
+## Teaching work: 3 workshops in R {.center}
 
 -   [r-cubed-intro.rostools.org](https://r-cubed-intro.rostools.org/)
 -   [r-cubed-intermediate.rostools.org](https://r-cubed-intermediate.rostools.org/)
@@ -58,8 +56,8 @@ that has several products.
 
 # Objective of this talk:
 
-Share experiences and struggles of getting an organization to adopt
-more open and reproducible practices.
+Share experiences and struggles of getting an organization to adopt more
+open and reproducible practices.
 
 ## Three areas of focus: UK Biobank, DP-Next, community-building/using GitHub across Steno Aarhus {.center}
 
@@ -81,9 +79,10 @@ more open and reproducible practices.
 -   Code reviews throughout
 -   Publish protocol, preprint, and code
 
+See: <https://steno-aarhus.github.io/ukbAid/#next-steps>
+
 ::: notes
-Walk-through this section:
-https://steno-aarhus.github.io/ukbAid/#next-steps
+Walk-through the website.
 :::
 
 ## My personal aim: Automate/streamline many project organization/management tasks {.center}
@@ -92,9 +91,12 @@ https://steno-aarhus.github.io/ukbAid/#next-steps
 Go back to the image and highlight areas I wanted to automate.
 :::
 
-## Biggest challenge: Working with RAP is a mess {.center}
+## UK Biobank and RAP a great opportunity to do reproducibility {.center}
 
-RAP = Research Analysis Platform from DNAnexus
+-   RAP = Research Analysis Platform from DNAnexus
+-   Clean, empty environment every time you start up
+
+## Biggest challenge: Working with RAP is a mess {.center}
 
 ::: notes
 This challenge represents a lot of the struggles I had with this project
@@ -103,6 +105,10 @@ targeted Python users (but still not well).
 :::
 
 ## Documentation was/is near to the lowest priority they had {.center}
+
+. . .
+
+... UK Biobank had to write their own guides
 
 ::: notes
 Extremely difficult to navigate the website and find information or
