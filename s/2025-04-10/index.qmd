@@ -252,7 +252,7 @@ For example:
 
 -   Training and education (uncertainty, anxiety)
 
--   Web accessibility mis-understandings
+-   Web accessibility misunderstandings
 
 ## But having a community helps to not feel alone {.center}
 
