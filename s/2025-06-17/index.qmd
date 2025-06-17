@@ -1,0 +1,463 @@
+---
+title: "(Non-) Reproducibility: Or, what are we even doing? And how can we improve?"
+date: "2025-06-17"
+date-format: long
+author:
+  - Luke W. Johnston
+location: "Neurobiology Research Unit at Rigshospitalet, Copenhagen University Hospital, Copenhagen, Denmark"
+format: 
+  revealjs:
+    fig-align: center
+    from: markdown+emoji
+    theme:
+      - dark
+      - theme.scss
+    progress: true
+    footer: "Licensed under CC-BY 4.0.<br>Slides at [slides.lwjohnst.com](https://slides.lwjohnst.com)"
+    embed-resources: true
+editor: 
+  markdown: 
+    wrap: 72
+    canonical: true
+---
+
+::: notes
+Go over my role, work, teaching, and software.
+
+A bit of a warning, I like to rant. Vibeke mentioned this was one of the
+reasons we wanted me to come give a talk. But this is a different kind
+of rant, that will get deep and maybe a bit uncomfortable.
+
+During a recent research retreat at Steno Aarhus, we had a workshop on
+presenting our work. And one activity was to write down a "pitch",
+something you can easily present in 3 minutes or so.
+
+As I started writing notes down for a potential presentation... one
+emotion in particular kept coming up: rage. Pure rage. Rage that
+colleasced into one question.
+:::
+
+# Why are we ok with this?
+
+::: notes
+Why are we collectively ok with this? With the way things are?
+
+With being expected to do, basically everything, for a research project.
+Stats, coding, writing, funding, data management, teaching, mentoring,
+reviewing, project management, outreach, communication... With feeling
+like we can never do good enough, can't really do things right or even
+do things well because of pressure to get things done. With data being a
+mess and no one taking responsibility and saying, "stop all work, we are
+fixing this now", with often having to do things on your own or with
+very little support, and definitely not much support at the organization
+level.
+
+Why are we ok with having PhD students do things outside the scope of
+their PhD and skills? Why should I have had to organise that mess of a
+dataset just to be able to use it for my PhD? When I had no fucking
+experience or training or knowledge in how to do that? And also be
+expected to get the right answer and do the right thing? Why should I
+have to learn how to code on my own and try to "just do stuff and get
+results/output"?
+
+Why does no one actually review my code? How the fuck was I supposed to
+know I was doing anything right? Why could I not just easily see the
+code of others to learn from, without having to ask them to share it?
+Why was the code not in an easy to find place?
+
+Why are we ok with this?
+
+Industry has full teams dedicated to just one of these areas... we have
+to do it all by ourselves or a few people... and have no experience or
+training to do it, and expected to get the right answers to support
+claims we make... how do we even know we are getting the right answers?
+
+And all the while, we're expected to publish our work at "enough" of a
+pace to be "competitive" and to show we are doing work? Even if you
+aren't sure your results are right, we just have to get it done.
+
+Why are we ok with this?
+:::
+
+# If we aren't ok with this, what can we do?
+
+::: notes
+What can we do about fixing these problems?
+
+First off, that's a massive topic, that I personally have begun to
+believe is not possible to fix until we burn everything down and start
+over.
+:::
+
+## ... at an individual group or collaborator level {.center}
+
+::: notes
+But instead, I've started shifting to focusing on what can be fixed in a
+single group or with your collaborators.
+
+It's easier to focus on, we all have much more control over that level.
+
+The next is, what part do we want to fix? There is a fuck ton of things
+that are wrong. So what could we focus on?
+:::
+
+## ... within reproducibility and the connected open science {.center}
+
+::: notes
+For me, that's mainly around reproducibility and directly tied to it is
+open science.
+
+So let me focus down on reproducibility and open science, and I'll talk
+a bit about what I've been doing in that space. Reproducibility is
+something that we researchers could ideally easily do. And since it
+depends on access to both data and code, sharing code is also stupid
+easy.
+:::
+
+# Same data, same code, same results?
+
+What's the current state of that?
+
+::: notes
+So, same data, same code, same results, right? But nope, it isn't that
+way.
+:::
+
+## Very low reproducibility in most of science {.smaller}
+
+::: {layout-ncol="2"}
+```{r}
+#| echo: false
+#| fig-height: 6
+library(tidyverse)
+theme_set(
+  theme_minimal() +
+    theme(
+      plot.background = element_rect(fill = "#E9E9E9"),
+      axis.title = element_blank(),
+      axis.text.y = element_text(size = 18),
+      axis.text.x = element_blank(),
+      axis.ticks = element_blank(),
+      axis.line = element_blank()
+    )
+)
+
+search <- tribble(
+  ~item, ~description, ~value, ~order,
+  "Articles", "Found among all articles", 3467, 1,
+  "GitHub\nrepos", "Those with a GitHub link and at least one notebook", 2660, 2
+) |>
+  mutate(
+    item = fct_rev(fct_reorder(item, order))
+  )
+
+ggplot(search, aes(y = item, x = value, label = value)) +
+  geom_col(fill = "#203C6E") +
+  geom_text(nudge_x = 200, size = 5.5)
+```
+
+```{r}
+#| echo: false
+#| fig-height: 6
+repro_results <- tribble(
+  ~item, ~description, ~value, ~order,
+  "Total notebooks", "Total notebook files found in all the repositories", 27271, 1,
+  "Notebook repo\nwas valid", "File names were correct, dependency information was available, no local modules were needed.", 15817, 2,
+  "Could install\ndependencies", "Could install dependencies without errors.", 10388, 3,
+  "Finished executing\nwithout errors", "Could run without any errors.", 1203, 4,
+  "Same results\nas paper", "When the results of the paper matched what the execution results output.", 879, 5
+) |>
+  mutate(
+    percent = str_c(value, "\n(", round(value / max(value) * 100), "%)"),
+    item = fct_rev(fct_reorder(item, order))
+  )
+
+ggplot(repro_results, aes(y = item, x = value, label = percent)) +
+  geom_col(fill = "#203C6E") +
+  geom_text(nudge_x = 1700, size = 5.5)
+```
+:::
+
+[DOI:
+10.1093/gigascience/giad113](https://academic.oup.com/gigascience/article/doi/10.1093/gigascience/giad113/7516267?login=false)
+
+## Even in institutional code and data archive, *executability* is low! {.center}
+
+-   Code taken from [Harvard Dataverse Project](https://dataverse.org/)
+    data repositories
+-   Only 25% could be *executed* without some "cleaning up"
+-   After some automatic cleaning, \~50% could *execute*
+
+[DOI:
+10.1038/s41597-022-01143-6](https://www.nature.com/articles/s41597-022-01143-6)
+
+::: notes
+Recent large study on general reproducibility of projects that shared
+code.
+
+Initially only 25% of the R scripts could be *executed* (doesn't mean
+results were reproduced though). After doing automatic and some manual
+code cleaning, than about half could be executed. That's not bad.
+
+Since scripts were taken from Dataverse.org, researchers who upload
+their code and projects to it probably are a bit more aware and
+knowledgeable about general reproducibility and coding then the average
+researcher, so the results are a bit biased.
+:::
+
+## Why are we ok with this? {.center}
+
+Verification is key to calling it science...
+
+::: notes
+Why are we ok with this? What are we even doing? The key thing that
+separates pseudoscience and religion is the philosophical principle that
+whatever you claim you have to prove. Does this look like we are doing
+any proving? I haven't even touch on the results from replication
+studies. So, can we even say that we're doing science?
+:::
+
+# My experiences: UK Biobank project at Steno Aarhus {.center}
+
+::: notes
+My experiences with a group project at Steno Aarhus using the UK
+Biobank, as well as experiences generally across Steno Aarhus.
+:::
+
+## Two main aims {.center}
+
+> -   To build up a process and workflow for effective collaboration
+>     that follows best practices and principles in openness,
+>     reproducibility, and scientific rigor.
+> -   To build a community around a shared project at Steno Aarhus in
+>     order to create a better research culture ...
+
+## Achieve by using many reproducible and open practices on sub-projects {.center}
+
+-   Fully reproducible analysis
+-   Version control
+-   Code-based extraction of data
+-   Code reviews throughout
+-   Publish protocol, preprint, and code
+
+See: <https://steno-aarhus.github.io/ukbAid/#next-steps>
+
+::: notes
+Walk-through the website.
+:::
+
+## My personal aim: Automate/streamline many project organization/management tasks {.center}
+
+::: notes
+Go back to the image and highlight areas I wanted to automate.
+:::
+
+## UK Biobank and RAP was a great opportunity to do full reproducibility {.center}
+
+-   RAP = Research Analysis Platform from DNAnexus
+-   Clean, empty environment every time you start up
+
+## Flows between environments
+
+![](flow.png){width=80%}
+
+```{mermaid}
+%%| eval: false
+%% I couldn't get this to work.
+flowchart LR
+  data[(UK Biobank database<br>on RAP server)]
+  analysis(Analysis<br>environment<br>on RAP)
+  github(GitHub<br>repository<br>for project)
+  local(Researcher's<br>local computer)
+
+  data -- download --> analysis
+  github <-- pull/push --> analysis
+  github <-- pull/push --> local
+```
+
+## Biggest challenge: Working with RAP is a mess {.center}
+
+::: notes
+This challenge represents a lot of the struggles I had with this project
+in general. E.g. RAP has/had lack of support for R projects, mostly
+targeted Python users (but still not well).
+:::
+
+## Documentation was/is near to the lowest priority they had {.center}
+
+## But finally created an R package to help others out {.center}
+
+<https://github.com/steno-aarhus/ukbAid>
+
+::: notes
+This was a huge effort, and took a lot of time and debugging and diving
+into the technical details of RAP to get to this point.
+
+Go over the "working with RAP" section.
+
+Briefly go over admin section.
+
+Then go to completed projects and show Niels' project.
+:::
+
+## Next challenge: Reviewing code, which was enlightening {.center}
+
+"It runs", doesn't mean it outputs what you think it does.
+
+-   <https://github.com/steno-aarhus/leha/pull/16>
+-   <https://github.com/steno-aarhus/legliv/pull/20/files>
+-   <https://github.com/steno-aarhus/legliv/pull/7/files>
+
+::: notes
+It was very difficult to balance between giving constructive feedback,
+but also enough and in a way that taught the person how to code in a
+better way or if the code didn't actually do what they thought it did.
+There was a lot of that actually. "It runs", but it might not do what
+you think it does.
+
+Highlights such how far we researchers are from being able to code
+effectively and in many cases correctly.
+:::
+
+## But also an immense amount of work and time {.center}
+
+::: notes
+Doing a code review is very difficult. It takes a lot of mental energy
+to understand what someone else is doing when they way they do it isn't
+well thought out, well structured, or even semantically/syntactically
+correct.
+:::
+
+## Basically done by only me {.center}
+
+## Pressure to publish and limited training = lower priority for reproducibility {.center}
+
+-   Limited understanding or effective use of GitHub
+
+-   PhD students and postdocs don't get rewarded for getting it right,
+    they get rewarded for publishing
+
+::: notes
+So they focus on that (they don't embrace the reason, they only
+intellectually understand it)
+:::
+
+## I stepped back, I was burning out {.center}
+
+## Important lesson: We desperately need TEAMS! {.center}
+
+## Success 1: Everyone *had* to use Git/GitHub {.center}
+
+<https://github.com/orgs/steno-aarhus/teams/ukbiobank-team/repositories>
+
+::: notes
+Everyone *has* to use Git and GitHub, so everyone has to learn it, which
+has helped that aim of my plan.
+:::
+
+## Success 2: Code published after paper published {.center}
+
+Advantage: I controlled their GitHub repo (via the organization)
+
+<https://steno-aarhus.github.io/ukbAid/projects.html#completed>
+
+::: notes
+I control the GitHub org, so when they publish the paper, I make the
+repo public and put it on Zenodo. They have no choice.
+:::
+
+# My experiences: Steno Aarhus using GitHub
+
+## Rant a lot :mega: and repeat regularly {.center}
+
+## Ranted enough, Steno Aarhus adopted using GitHub {.center}
+
+At least for building websites and hosting material on projects
+
+## Initially used GitHub to put common documents :memo: {.center}
+
+Website: <https://steno-aarhus.github.io/research/>\
+GitHub: <https://github.com/steno-aarhus/research>
+
+## Several project website being hosted there {.center}
+
+<https://steno-aarhus.github.io/>
+
+# Strategies at the individual level
+
+::: notes
+There's only so much an individual can do, in particular those without a
+lot of power to make changes. I don't want anyone to feel like they
+individually should be responsible for things to change, especially PhD
+students and short-term postdocs, or that they should be fixing
+everything.
+:::
+
+## Rant, be vocal, and don't be ok with it {.center}
+
+Be angry, be mad! :rage:
+
+## Expect more from your collaborators and organisation/group {.center}
+
+And verbalise it! :face_with_symbols_over_mouth:
+
+# Strategies at the group or organisational level
+
+## Strong top-down enforcement of practices {.center}
+
+::: notes
+Strong top-down enforcement of practices. PhD student doing thesis?
+Sorry, you can't defend until all the code is published and (ideally)
+independently reproduced (or at least reviewed by several others).
+
+Can't expect PhD students to do it, or postdocs, or whatever. If you
+control or have influence on how the group does things, this
+responsibility is completely on you.
+:::
+
+## Make someone, with power, responsible for the practices {.center}
+
+Both overseeing but also doing the work as needed
+
+::: notes
+Assigning someone as the responsible person for ensuring reproducibility
+and (someone else?) uploading code to an archive/GitHub.
+:::
+
+## Make group-specific package to handle common tasks {.center}
+
+And assign and support someone to build and maintain it
+
+## Have clear expectations and requirements, e.g. on tools {.center}
+
+-   Git, GitHub
+-   Quarto (Markdown)
+-   Targets (if R)
+-   Justfile/Makefile (for general build management)
+-   Snakemake/prefect/nextflow (for Python)
+
+::: notes
+Tools that encourage/enable reproducibility and open science
+:::
+
+# More resources and information
+
+<https://lukewjohnston.com/>
+
+## Teaching {.center}
+
+-   [r-cubed-intro.rostools.org](https://r-cubed-intro.rostools.org/)
+-   [r-cubed-intermediate.rostools.org](https://r-cubed-intermediate.rostools.org/)
+-   [r-cubed-advanced.rostools.org](https://r-cubed-advanced.rostools.org/)
+-   [github-intro.rostools.org](https://github-intro.rostools.org/)
+
+## My current work and collaborations {.center}
+
+-   [Seedcase Project](https://seedcase-project.org/): Building FAIR,
+    organized, and modern infrastructures for research data
+-   [DP-Next](https://dp-next.github.io/): "...developing a sustainably
+    effective strategy for prevention of Type 2 Diabetes". My focus on
+    "doing better research in less time and fewer resources"
+-   [ON-LiMiT](https://github.com/on-limit-study): "An intervention
+    study for remission of type 2 diabetes with diet and exercise". My
+    focus is on building a fantastic database for them.
