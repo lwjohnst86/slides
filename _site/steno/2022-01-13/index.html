@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>A framework for an open and scalable infrastructure for health data exemplified by the DD2 initiative</title>
+    <meta charset="utf-8" />
+    <script src="libs/header-attrs/header-attrs.js"></script>
+    <script src="libs/xaringanExtra-progressBar/progress-bar.js"></script>
+    <link rel="stylesheet" href="xaringan-themer.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+# A framework for an open and scalable infrastructure for health data exemplified by the DD2 initiative
+
+---
+
+
+layout: true
+
+
+
+&lt;style type="text/css"&gt;
+.footer-right {
+    background-color: #FFFFFF;
+    position: absolute;
+    bottom: 8px;
+    right: 5px;
+    height: 60px;
+    width: 30%;
+    font-size: 10pt;
+}
+&lt;/style&gt;
+
+
+
+.footer-right[
+Project description: [steno-aarhus.github.io/dif-project](https://steno-aarhus.github.io/dif-project)  
+Slides: [slides.lwjohnst.com/steno/2022-01-13](https://slides.lwjohnst.com/steno/2022-01-13/)
+]
+
+---
+
+<style>.xe__progress-bar__container {
+  top:0;
+  opacity: 1;
+  position:absolute;
+  right:0;
+  left: 0;
+}
+.xe__progress-bar {
+  height: 0.25em;
+  background-color: #990033;
+  width: calc(var(--slide-current) / var(--slide-total) * 100%);
+}
+.remark-visible .xe__progress-bar {
+  animation: xe__progress-bar__wipe 200ms forwards;
+  animation-timing-function: cubic-bezier(.86,0,.07,1);
+}
+@keyframes xe__progress-bar__wipe {
+  0% { width: calc(var(--slide-previous) / var(--slide-total) * 100%); }
+  100% { width: calc(var(--slide-current) / var(--slide-total) * 100%); }
+}</style>
+
+<div>
+<style type="text/css">.xaringan-extra-logo {
+width: 60px;
+height: 128px;
+z-index: 0;
+background-image: url(../../common/sdca-logo.png);
+background-size: contain;
+background-repeat: no-repeat;
+position: absolute;
+top:1em;right:1em;
+}
+</style>
+<script>(function () {
+  let tries = 0
+  function addLogo () {
+    if (typeof slideshow === 'undefined') {
+      tries += 1
+      if (tries < 10) {
+        setTimeout(addLogo, 100)
+      }
+    } else {
+      document.querySelectorAll('.remark-slide-content:not(.title-slide):not(.inverse):not(.hide_logo)')
+        .forEach(function (slide) {
+          const logo = document.createElement('a')
+          logo.classList = 'xaringan-extra-logo'
+          logo.href = 'https://www.stenoaarhus.dk/'
+          slide.appendChild(logo)
+        })
+    }
+  }
+  document.addEventListener('DOMContentLoaded', addLogo)
+})()</script>
+</div>
+
+&lt;!-- 30 min, ~20 slides --&gt;
+
+## Purpose of talk and "take home messages"
+
+**Will cover**:
+
+- Introduce the project
+
+- Bring awareness to issue and its importance
+
+- How project will help as a (potential) solution
+
+--
+
+**Won't cover**:
+
+- Any technical details of the project (it's more of a software/data engineering project)
+
+???
+
+Not cover... 
+
+Another caveat, since this is a newly started project, that is way more of the
+computational and technical side maybe many of you are interested in hearing about.
+
+I could talk easily talk about all the technical details of this project for
+many hours, but I will spare you that.
+
+Because of this the talk will be on the shorter side, unless people
+have questions that get more into the details... 
+
+---
+
+## Background: Increasing need in science for...
+
+- Computational tools and technologies
+
+- Secure and reliable IT infrastructure
+
+- Greater openness and transparency
+
+- More reproducibility of studies
+
+- Highly technical skills and knowledge
+
+--
+
+*... especially in relation to data management.*
+
+???
+
+Questions like:
+
+- How do store your data? In what file format?
+- Where do you store your data and how do you name the files?
+- How do you keep track of changes to the data?
+- (For multi-center studies) Who has which datasets and how do you combine them together?
+- How do you or your collaborators find out what variables there are in the data, what do they mean?
+- When there are errors or problems in your data, and you've already published
+with or analyzed on it, how can you easily determine which publications used the
+in correct data and how can you easily update the publications with the correct
+data?
+- How can you easily share your data with colleagues or reviewers to check your 
+findings?
+
+---
+
+## Current barriers to addressing these needs
+
+- Funding agencies don't fully recognize these challenges, so don't provide
+funding
+
+--
+
+- Researchers aren't aware of or understand the issues, or don't have skills to tackle them
+
+--
+
+- People with needed technical skills leave for industry
+
+---
+
+class: middle
+
+## Recent new funding: NNF Data Science Research Infrastructure 5 year grant
+
+### ... which lead to this current project
+
+.footnote[And getting the funding for it.]
+
+???
+
+&gt; Development of new ... methods and technologies within data science, ..., data
+engineering, ...
+
+---
+
+class: middle
+
+## Brief backstory: 
+
+### Application process started by the DD2 study to update their own infrastructure and SDCA was asked to join
+
+???
+
+Not going to go into DD2.
+
+Myself, Alisa, and Annelli were asked to join in the application process
+and we ended up taking the lead on it and expanding it into a project that could
+be used by more than just the DD2 study.
+
+---
+
+## Aims of the Framework
+
+???
+
+These aims may seem vague, but bare with me.
+
+--
+
+1. **Primary aim**: Create and implement an efficient, scalable, and open source
+data infrastructure framework that connects data collectors, researchers,
+clinicians, and other stakeholders, with the data, documentation, and findings
+(starting within the DD2 study)
+
+--
+
+2. **Secondary aim**: Create this framework so that *other research groups and
+companies*, who are unable or can't build something similar, can relatively
+easily implement it and modify as needed for their own purposes.
+
+--
+
+&gt; In short: Make a software product that makes it easier to find, store, and
+use data for research projects, and make it so that it is easy and free to use 
+for others.
+
+???
+
+Again, these might not be really tangible to grasp what this actually means.
+That's where visuals are really powerful.
+
+---
+
+.center[
+![Detailed schematic of the framework for building a data infrastructure for scientific studies.](images/detailed-schematic.svg)
+]
+
+---
+
+## A few example uses of this Framework
+
+1. Solo researcher or a small research group starts a study to have data for
+their PhD students, but have limited funds and technical expertise.
+
+--
+
+2. A small startup company that relies on data collection for business needs to get
+operational quickly, but doesn't yet have funds to hire technical personnel.
+
+--
+
+3. A large multi-center, multi-country study has an aim of widely disseminating
+their data for maximal, and cost-effective, use by their collaborators and others.
+
+???
+
+All of these could use the framework to abide by the best practices in FAIR data
+management.
+
+---
+
+## Guiding principles of Framework
+
+1. Follow and enable FAIR principles
+
+2. Openly licensed and re-usable (e.g. CC-BY) 
+
+3. State-of-the-art principles and tools in software design
+
+4. Friendly to beginner and non-technical users
+
+---
+
+## Short-term plan
+
+&gt; [Full 5 year timeline found on website.](https://steno-aarhus.github.io/dif-project/#deliverables-and-milestones)
+
+- Hire software/data engineers as soon as possible
+
+- Developing "Minimum Viable Product" of first component within ~2 years
+
+- Emphasize making training and documentation targeted to non-technical users throughout project
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"slideNumberFormat": "",
+"ratio": "16:9",
+"countIncrementalSlides": false
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>

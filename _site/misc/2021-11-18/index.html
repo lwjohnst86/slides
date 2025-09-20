@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>Shifting Science and Research Culture Towards Openness and Reproducibility Through Education and Training</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Luke W. Johnston" />
+    <script src="libs/header-attrs/header-attrs.js"></script>
+    <script src="libs/xaringanExtra-progressBar/progress-bar.js"></script>
+    <link rel="stylesheet" href="xaringan-themer.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+# Shifting Science and Research Culture Towards Openness and Reproducibility Through Education and Training
+### Luke W. Johnston
+
+---
+
+
+layout: true
+
+
+
+&lt;style type="text/css"&gt;
+.footer-left {
+    background-color: #FFFFFF;
+    position: absolute;
+    bottom: 8px;
+    left: 20px;
+    height: 60px;
+    width: 30%;
+    font-size: 14pt;
+}
+
+.footer-right {
+    background-color: #FFFFFF;
+    position: absolute;
+    bottom: 8px;
+    right: 5px;
+    height: 50px;
+    width: 30%;
+    font-size: 14pt;
+}
+&lt;/style&gt;
+
+
+
+.footer-left[
+<a href="https://www.danishdiabetesacademy.dk">
+<img src="../../common/dda-logo.png" width="95px"/>
+</a><a href="https://www.stenoaarhus.dk/">
+<img src="../../common/sdca-logo.png" width="60px"/>
+</a>
+]
+
+.footer-right[
+[slides.lwjohnst.com/misc/2021-11-18](https://slides.lwjohnst.com/misc/2021-11-18/)
+]
+
+---
+
+<style>.xe__progress-bar__container {
+  top:0;
+  opacity: 1;
+  position:absolute;
+  right:0;
+  left: 0;
+}
+.xe__progress-bar {
+  height: 0.25em;
+  background-color: #A35624;
+  width: calc(var(--slide-current) / var(--slide-total) * 100%);
+}
+.remark-visible .xe__progress-bar {
+  animation: xe__progress-bar__wipe 200ms forwards;
+  animation-timing-function: cubic-bezier(.86,0,.07,1);
+}
+@keyframes xe__progress-bar__wipe {
+  0% { width: calc(var(--slide-previous) / var(--slide-total) * 100%); }
+  100% { width: calc(var(--slide-current) / var(--slide-total) * 100%); }
+}</style>
+
+<div>
+<style type="text/css">.xaringan-extra-logo {
+width: 55px;
+height: 128px;
+z-index: 0;
+background-image: url(https://gitlab.com/uploads/-/system/project/avatar/15345313/apple-touch-icon.png);
+background-size: contain;
+background-repeat: no-repeat;
+position: absolute;
+top:1em;right:1em;
+}
+</style>
+<script>(function () {
+  let tries = 0
+  function addLogo () {
+    if (typeof slideshow === 'undefined') {
+      tries += 1
+      if (tries < 10) {
+        setTimeout(addLogo, 100)
+      }
+    } else {
+      document.querySelectorAll('.remark-slide-content:not(.title-slide):not(.inverse):not(.hide_logo)')
+        .forEach(function (slide) {
+          const logo = document.createElement('a')
+          logo.classList = 'xaringan-extra-logo'
+          logo.href = 'https://r-cubed.rostools.org/'
+          slide.appendChild(logo)
+        })
+    }
+  }
+  document.addEventListener('DOMContentLoaded', addLogo)
+})()</script>
+</div>
+
+# Outline
+
+&lt;!-- 10 min --&gt;
+
+- Key points
+- Introduction to course and attendees
+- Key principles used while creating/updating course
+    - Lessons learned
+- Experiences of effectiveness and impact (within Denmark)
+- Summary
+
+???
+
+Hi everyone, thanks for coming to listen to my talk. I'm Luke and I work as a
+postdoc at the Steno Diabetes Center in Aarhus Denmark. If you want to check out
+these slides, there's a link to them in the footer of each slide.
+
+So, since this is an audience of other trainers, I'm going to focus on the
+topics of practicals of teaching and on curriculum development.
+
+(Go over outline).
+
+While talking about key principles and lessons learned, it will tie back
+to some of the key messages.
+
+---
+
+# *Actionable* key 🔑 points
+
+???
+
+Before I begin, I want to say a couple of caveats about these key messages.
+Here, I'm assuming that the learners are working/full-time researchers
+(including PhD students), not necessarily in an undergraduate context and
+related to learning data analysis or more practical type skills.
+
+--
+
+1. Have material be online, easily found
+    - Follow it (almost) exactly, deviate only if necessary
+1. Encourage participants to instruct future workshops
+    - Provide onboarding documentation and support
+1. Emphasize code of conduct and safety of the learning space
+    - *Embody* it
+1. Use and weave in reading, listening, doing, and discussing activities *in class*
+
+???
+
+(Go over the messages).
+
+---
+
+class: middle
+
+# Reproducible Research in R (R3 or r-cubed) course/workshop for PhD students and postdocs *doing biomedical research*
+
+.footnote[
+- Website: [r-cubed.rostools.org](https://r-cubed.rostools.org)
+- JOSE paper: [10.21105/jose.00122](https://jose.theoj.org/papers/10.21105/jose.00122)
+- Also intermediate course: [r-cubed-intermediate.rostools.org](https://r-cubed-intermediate.rostools.org/)
+]
+
+???
+
+Now getting into the course itself. In Denmark, a course is anything from a couple 
+days to a couple weeks, while in North America this might be called a workshop.
+The course is teaching reproducible research in R to PhD students and postdocs who
+do biomedical research, largely diabetes research. 
+
+This course is 3 full days, composing of 5 code along sessions where the
+instructor types and the learners follow along, a few lectures, and a final
+group project. For more info on the course, check out the links below.
+
+---
+
+class: middle
+
+# Course arose from need for skills in data analysis 👩🏽‍💻
+
+## ... and for more awareness on reproducibility and open science 🤯
+
+???
+
+While I've been teaching these general topics since my Masters, this course
+specifically I started during my postdoc because one, there was a need for more
+computational skills in my field and two, because the awareness around
+reproducibility and open science was very lacking.
+
+---
+
+class: middle
+
+# (Some) Key 🔑 principles when developing the material and learned from the feedback
+
+???
+
+When developing this course along with updating each time we run it, there
+were some key principles that we used to form the foundation for the entire content
+of the course. And I'll be covering some of them for most of the talk.
+
+---
+
+## Use evidence based learning and teaching best practices 👩🏻‍🏫
+
+???
+
+The first one is, of course, building the curriculum based on evidence around learning
+and on teaching best practices.
+
+--
+
+1. Collect (and use) anonymous and critical feedback often! Including from instructors
+
+???
+
+### 1
+
+Like any research, in order to build and then improve something you need to actively
+get feedback, often. I made a Google Forms survey that asks generally, what
+worked and what could be improved, at the end of each day. Then I use that to
+fix, remove, or keep things.
+
+--
+
+2. Multiple activities to learning *in class* (reading, doing, listening,
+discussing, teaching, group, and solo)
+
+???
+
+### 2
+
+Learning requires multiple different angles repeating basically the same information
+in a different way until it gets remembered and saved into long-term memory.
+In this way, during the course we get learners to do multiple tasks like reading
+activities, hands-on exercises, listening, and so on. 
+
+In relation to reading, one thing I found was talking about a concept always had
+some variance in saying it each time I ran the course or when another instructor
+did the specific session. Plus, we have many people who have English as a second
+language, so the amount of information you could convey orally was much less
+than by reading. 
+
+It also slows us down, because, I do it, its very easy to go too fast through the material.
+After they read a section, as the instructor we would briefly go over the topic
+again, to reinforce the concept. After adding the reading activities and getting
+the feedback, there was consistent and strong positive comments about that, so
+we kept it and added more.
+
+--
+
+3. Strong and focused narrative tied to learning outcome: Less is more
+
+???
+
+### 3
+
+The narrative throughout the whole curriculum should be laser focused on the
+learning outcome.
+
+Brains can only hold so much information in them at any one time, so the key
+thing while building material is keep things lean and focused on what the
+learning outcome and objectives. Each time we've ran the course, we've stripped
+out more and more.
+
+Don't deviate from the material. Plus, everytime I deviate too much from the
+material because I have some expert knowledge that I want to share from
+excitedness, I see it in the feedback that it confused them or that if I talk
+about it it should be in the material.
+
+--
+
+4. Limit lectures and slides (largely used for conceptual/ranting topics)
+
+
+???
+
+### 4
+
+Lastly, lectures are some of the poorest form of memory retention, so we severely
+limit them to only very abstract topics or things to rant about, like how un-open
+science is. 
+
+---
+
+class: middle
+
+## Openly licensed <svg aria-hidden="true" role="img" viewBox="0 0 496 512" style="height:1em;width:0.97em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:#2471a3;overflow:visible;position:relative;"><path d="M314.9 194.4v101.4h-28.3v120.5h-77.1V295.9h-28.3V194.4c0-4.4 1.6-8.2 4.6-11.3 3.1-3.1 6.9-4.7 11.3-4.7H299c4.1 0 7.8 1.6 11.1 4.7 3.1 3.2 4.8 6.9 4.8 11.3zm-101.5-63.7c0-23.3 11.5-35 34.5-35s34.5 11.7 34.5 35c0 23-11.5 34.5-34.5 34.5s-34.5-11.5-34.5-34.5zM247.6 8C389.4 8 496 118.1 496 256c0 147.1-118.5 248-248.4 248C113.6 504 0 394.5 0 256 0 123.1 104.7 8 247.6 8zm.8 44.7C130.2 52.7 44.7 150.6 44.7 256c0 109.8 91.2 202.8 203.7 202.8 103.2 0 202.8-81.1 202.8-202.8.1-113.8-90.2-203.3-202.8-203.3z"/></svg> and easily accessible <svg aria-hidden="true" role="img" viewBox="0 0 640 512" style="height:1em;width:1.25em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:#2471a3;overflow:visible;position:relative;"><path d="M634.91 154.88C457.74-8.99 182.19-8.93 5.09 154.88c-6.66 6.16-6.79 16.59-.35 22.98l34.24 33.97c6.14 6.1 16.02 6.23 22.4.38 145.92-133.68 371.3-133.71 517.25 0 6.38 5.85 16.26 5.71 22.4-.38l34.24-33.97c6.43-6.39 6.3-16.82-.36-22.98zM320 352c-35.35 0-64 28.65-64 64s28.65 64 64 64 64-28.65 64-64-28.65-64-64-64zm202.67-83.59c-115.26-101.93-290.21-101.82-405.34 0-6.9 6.1-7.12 16.69-.57 23.15l34.44 33.99c6 5.92 15.66 6.32 22.05.8 83.95-72.57 209.74-72.41 293.49 0 6.39 5.52 16.05 5.13 22.05-.8l34.44-33.99c6.56-6.46 6.33-17.06-.56-23.15z"/></svg>
+
+???
+
+The next key principle is to ensure the material is maximally used and re-used.
+This means applying an open license to it and having it easily accessible online.
+
+I think this is a bit of a misunderstood area. I see a lot of for instance university
+courses that don't have their material publicly available, thinking that they 
+need to keep it only for people paying or attending the class. While I understand 
+that idea, I think that's a shame and maybe misguided because people don't
+usually take courses for the content itself, generally, they take them to be
+taught. They come for teachers and the experience, not the content alone.
+
+And we see it in the feedback, there is always very strong and consistent
+positive feedback talking about how great it is that the material is online and
+easily accessible.
+
+---
+
+class: middle
+
+## Safe <svg aria-hidden="true" role="img" viewBox="0 0 576 512" style="height:1em;width:1.12em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:#2471a3;overflow:visible;position:relative;"><path d="M275.3 250.5c7 7.4 18.4 7.4 25.5 0l108.9-114.2c31.6-33.2 29.8-88.2-5.6-118.8-30.8-26.7-76.7-21.9-104.9 7.7L288 36.9l-11.1-11.6C248.7-4.4 202.8-9.2 172 17.5c-35.3 30.6-37.2 85.6-5.6 118.8l108.9 114.2zm290 77.6c-11.8-10.7-30.2-10-42.6 0L430.3 402c-11.3 9.1-25.4 14-40 14H272c-8.8 0-16-7.2-16-16s7.2-16 16-16h78.3c15.9 0 30.7-10.9 33.3-26.6 3.3-20-12.1-37.4-31.6-37.4H192c-27 0-53.1 9.3-74.1 26.3L71.4 384H16c-8.8 0-16 7.2-16 16v96c0 8.8 7.2 16 16 16h356.8c14.5 0 28.6-4.9 40-14L564 377c15.2-12.1 16.4-35.3 1.3-48.9z"/></svg> and supportive <svg aria-hidden="true" role="img" viewBox="0 0 640 512" style="height:1em;width:1.25em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:#2471a3;overflow:visible;position:relative;"><path d="M488 192H336v56c0 39.7-32.3 72-72 72s-72-32.3-72-72V126.4l-64.9 39C107.8 176.9 96 197.8 96 220.2v47.3l-80 46.2C.7 322.5-4.6 342.1 4.3 357.4l80 138.6c8.8 15.3 28.4 20.5 43.7 11.7L231.4 448H368c35.3 0 64-28.7 64-64h16c17.7 0 32-14.3 32-32v-64h8c13.3 0 24-10.7 24-24v-48c0-13.3-10.7-24-24-24zm147.7-37.4L555.7 16C546.9.7 527.3-4.5 512 4.3L408.6 64H306.4c-12 0-23.7 3.4-33.9 9.7L239 94.6c-9.4 5.8-15 16.1-15 27.1V248c0 22.1 17.9 40 40 40s40-17.9 40-40v-88h184c30.9 0 56 25.1 56 56v28.5l80-46.2c15.3-8.9 20.5-28.4 11.7-43.7z"/></svg> environment
+
+.footnote[Through a code of conduct, explicit expectations of participants and
+instructors, as well as detailed and descriptive syllabus.]
+
+???
+
+This next principle is something I think is so important... and that is establish
+and maintaining an environment that is safe and supportive for learning. Have the
+explicit code of conduct on expected behaviour of everyone involved at the forefront and 
+have instructors embody this attitude. Learning is so dependent on the learners
+motivation and interest and engagement with the content... and if they don't feel
+safe, they won't learn as much as they could.
+
+And it's so easy to unconsciously use dismissive language like saying
+"simply" or hand-waving a topic away when you're teaching. But it can lead to
+undermining learners confidence and trust in themselves, particularly for
+underrepresented or minority groups within science. So constantly self-reflecting
+is really vital to this topic.
+
+---
+
+class: middle
+
+## Design material for participants *as well as* potential/new instructors 
+
+.footnote[As well as potential contributors (i.e. the participants).]
+
+???
+
+Lastly, the material isn't only for the participants, it's also for future instructors
+and contributors. Since it is written with the idea that learners will read it
+during the course or afterwards, this also gives new instructors something to 
+use to prepare for teaching their session or course itself if they want.
+Interspersed throughout the text are messages to the instructors on top of
+an instructor guide giving advice and tips on how to prepare, what to do,
+and how to teach. We hope that, structured as it is, anyone can take the course
+and try to teach it themselves to others.
+
+---
+
+class: middle
+
+# Experiences of effectiveness and impact (within Denmark 🇩🇰)
+
+.footnote[Feedback data is found on the [GitLab repository](https://gitlab.com/rostools/r-cubed/-/tree/main/feedback).]
+
+???
+
+Alright, I've gone over the key principles for the course, how effective and impactful
+has it been? We've ran the course through the Danish Diabetes Academy here in
+Denmark, which is an organization that provides funding, networking events, and
+educational events and courses to diabetes researchers. They collect evaluations
+for the course and both this course as well as the intermediate one are both
+the highest rated and most in-demand courses that they offer. Plus based on
+the feedback we collect, we can see how much the participants really enjoy the
+course and often recommend it their colleagues. If you want to read some of the 
+feedback we get, they are found in our GitLab repository, the link is there in
+the footnote of this slide.
+
+---
+
+# Summary and recap
+
+1. Have material be online, easily found
+    - Follow it (almost) exactly, deviate only if necessary
+1. Encourage participants to instruct future workshops
+    - Provide onboarding documentation and support
+1. Emphasize code of conduct and the safety of the space to learn
+    - *Embody* it
+1. Use and weave in reading, listening, doing, and discussing *in class*
+
+???
+
+Anyway, I could talk about this for a long time. But to end, let's go back to
+the key messages. I talked about (go over messages).
+
+--
+
+### Try out the material and give us feedback on it! 🤓
+
+???
+
+And to end, please, if you try out the material, lets us know! We'd love more
+feedback on it! Thanks for listening!
+
+# Appendix
+
+Why not use existing material from e.g. Carpentries?
+
+- No strong narrative thread
+- Jumping around with concepts without reusing them again later
+- Using older workflows/packages
+- Emphasis/focus on writing software
+- Not targeted to biomedical researchers
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"slideNumberFormat": "",
+"ratio": "16:9",
+"countIncrementalSlides": false
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>
