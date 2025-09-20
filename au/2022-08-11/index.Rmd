@@ -56,9 +56,9 @@ style_mono_accent(
 ```
 
 ```{r data-prep-for-figures, include=FALSE}
-library(emoji)  
-library(ggplot2)  
-library(emojifont)  
+library(emoji)
+library(ggplot2)
+library(emojifont)
 library(tidyverse)
 
 study_df <- tribble(
@@ -74,16 +74,16 @@ study_df <- tribble(
         original = FALSE,
         reproduction = stage %in% c("data", "analysis", "writing"),
         open_science = TRUE
-    ) %>% 
+    ) %>%
     pivot_longer(
         cols = c(original, reproduction, open_science),
         names_to = "study",
         values_to = "state"
-    ) %>% 
+    ) %>%
     mutate(
-        study = study %>% 
-            str_to_sentence() %>% 
-            str_replace("_", " ") %>% 
+        study = study %>%
+            str_to_sentence() %>%
+            str_replace("_", " ") %>%
             fct_inorder(),
         stage = stage %>%
             str_to_sentence() %>%
@@ -123,7 +123,7 @@ plot_research_stages <- function(data) {
 ```
 
 .footer-left[
-Slides: [slides.lwjohnst.com/au/2022-08-11](https://slides.lwjohnst.com/au/2022-08-11/)  
+Slides: [slides.lwjohnst.com/au/2022-08-11](https://slides.lwjohnst.com/au/2022-08-11/)
 Licensed under CC-BY `r fa2("creative-commons-by", "#990033")`
 ]
 
@@ -156,7 +156,7 @@ xaringanExtra::use_logo(
 ---
 
 
-## Learning objectives of this workshop: 
+## Learning objectives of this workshop:
 
 1. Become aware of what reproducible and open practices are
 
@@ -202,11 +202,11 @@ and replicability?
 
 ---
 
-## Reproducibility: Same data + analysis = same result? 
+## Reproducibility: Same data + analysis = same result?
 
 ```{r fig-reproducibility, out.width="85%", fig.width=6, fig.height=2}
-study_df %>% 
-    filter(study != "Open science") %>% 
+study_df %>%
+    filter(study != "Open science") %>%
     plot_research_stages()
 ```
 
@@ -261,11 +261,11 @@ knitr::include_graphics("images/spectrum-reproducibility.png")
 
 --
 
-\+ One folder per manuscript (with associated files)  
-\+ Use relative file paths (`data/project-data.csv` vs `C:/User1/some-data-file.csv`)  
-\+ Version controlled (like with Git)  
+\+ One folder per manuscript (with associated files)
+\+ Use relative file paths (`data/project-data.csv` vs `C:/User1/some-data-file.csv`)
+\+ Version controlled (like with Git)
 \+ Reproducible document system
-\+ Automated and explicit pipeline management (re-generate results with single command)  
+\+ Automated and explicit pipeline management (re-generate results with single command)
 
 ???
 
@@ -291,7 +291,7 @@ class: middle
 
 ???
 
-If you were to give me your code and I had access to your data, would 
+If you were to give me your code and I had access to your data, would
 I know how you got any given result presented in your paper?
 
 ---
@@ -299,7 +299,7 @@ I know how you got any given result presented in your paper?
 ## Open science occurs at all stages of research
 
 ```{r fig-open-science, out.width="80%", fig.width=6, fig.height=2.75}
-study_df %>% 
+study_df %>%
     plot_research_stages()
 ```
 
@@ -309,16 +309,16 @@ Components of open science are in all stages of research.
 
 ---
 
-## Open science is also a spectrum 
+## Open science is also a spectrum
 
 ```{r fig-spectrum-open-science, out.width="80%"}
 knitr::include_graphics("images/spectrum-open-science.png")
 ```
 
-\+ Open access (like preprints)  
-\+ Open protocol  
-\+ **Open data/data format**  
-\+ **Open analysis plan/code**  
+\+ Open access (like preprints)
+\+ Open protocol
+\+ **Open data/data format**
+\+ **Open analysis plan/code**
 \+ **Open source (like software used)** (1)
 
 .footnote[(1): Example, AU institutionally approves and supports a closed source
@@ -363,7 +363,7 @@ capacity, to what gets supported and what doesn't)?
 
 ---
 
-## Possible social and technical actions to moving toward openness and reproducibility 
+## Possible social and technical actions to moving toward openness and reproducibility
 
 --
 
@@ -371,12 +371,12 @@ capacity, to what gets supported and what doesn't)?
 - Do code reviews, pair programming/analysis
 
 - Reviewing (pre-analysis)
-    - Data cleaning plan 
+    - Data cleaning plan
     - Data analysis plan
 
 - Agreeing to all write and publish protocols with analysis plans for projects
 ]
-    
+
 --
 
 .pull-left[
@@ -391,13 +391,13 @@ group
 ???
 
 Now that we're getting more into thinking about benefits and barriers, we
-can get into thinking about potential actions to take to be more reproducible and 
+can get into thinking about potential actions to take to be more reproducible and
 open. Before getting into brainstorming activities, I want to give you some
 ideas for actions to help prime your thinking.
 
 - Work with/pressure DST to make it easier to download code from server to
 eventually share (something we'll start doing more at SDCA)
-  
+
 ---
 
 ## 10 min activity: Think `r emoji("thought_balloon")`, brainstorm, then share `r fa2("comments")` *short-term, easier* options
@@ -412,7 +412,7 @@ open and reproducible?
 
 - For 2 min, decide on one person to write down some of the ideas on the sheet of paper
 
-- For 3 min, we'll briefly go over and discuss some of the ideas 
+- For 3 min, we'll briefly go over and discuss some of the ideas
 
 ---
 
@@ -428,13 +428,13 @@ and reproducible?
 
 - For 2 min, decide on one person to write down some of the ideas on the sheet of paper
 
-- For 3 min, we'll briefly go over and discuss some of the ideas 
+- For 3 min, we'll briefly go over and discuss some of the ideas
 
 ---
 
 ## Resources
 
-- Introduction course to Reproducible Research in R: 
+- Introduction course to Reproducible Research in R:
 [r-cubed.rostools.org](https://r-cubed.rostools.org/)
     - [Further learning resources](https://r-cubed.rostools.org/resources.html#further-learning)
 

@@ -1,7 +1,7 @@
 ~110 words/ min = 3300 words
 
 Probably for many of you, this title is a bit vague on what I'm planning
-on talking about. And I did this intentionally, largely because its a 
+on talking about. And I did this intentionally, largely because its a
 very general and broad topic.
 
 So, what is this talk about? When I was thinking about how to structure this
@@ -21,7 +21,7 @@ Lastly, what are the tools and workflows?
 
 So we start with the first question.
 
-When I'm referring to scientific research, I'm referring to some of the 
+When I'm referring to scientific research, I'm referring to some of the
 fundamental philosophies that underlie science. There are many, but the one
 I'm focusing on here is that any claims made are verified in some way. Otherwise
 anyone can make a claim.
@@ -61,11 +61,11 @@ So, based on this, what are the modern demands?
 
 Well, the modern demands are tied to the current state of scientific verification.
 It's already well established that the replicability of scientific studies is
-pretty low. Several large scale efforts, such as the Many Labs Project or the 
-Reproducibility Project, which is does more replication than reproducing, have 
+pretty low. Several large scale efforts, such as the Many Labs Project or the
+Reproducibility Project, which is does more replication than reproducing, have
 shown that most studies aren't replicable.
 
-But when it comes to reproducibility, we really have no idea. 
+But when it comes to reproducibility, we really have no idea.
 For one, very few studies publish or share their data. And sharing code,
 this is almost non-existent in biomedical research. While sharing data in
 biomedical research has some unique challenges, there are no such barriers
@@ -74,15 +74,15 @@ when it comes to code.
 There are slowly some studies looking into reproducibility. There was a recent
 study done to examine reproducibility of Registered Reports, which would
 arguably be by default higher quality and where the authors may already be more
-likely to be familiar with sharing data and code. Even in this case, a bit over 
-half shared their analysis code and only a third of the studies results could be 
+likely to be familiar with sharing data and code. Even in this case, a bit over
+half shared their analysis code and only a third of the studies results could be
 reproduced.
 
-So, the current demands are that research become more replicable and more 
+So, the current demands are that research become more replicable and more
 reproducible and that research output should be more than just the manuscript
 and should include data, code, methods and so on.
 
-So, this leads right into what needs to be improved. And what tools can we 
+So, this leads right into what needs to be improved. And what tools can we
 researchers use. While replicability is an area that needs improvement,
 I'm going to focus on reproducibility.
 
@@ -90,12 +90,12 @@ Reproducibility works on a spectrum, where a study can be less or more
 reproducible and that more reproducible is better than less. So any improvement
 we can make is better than nothing. The gold standard of reproducibility would
 be you or an independent researcher simply click a "Go" button and all
-the results in the manuscript are generated directly and automatically from the 
+the results in the manuscript are generated directly and automatically from the
 code and data. But this is quite difficult to achieve in real-life.
 
 However, the first step we need to take is to start using version control.
 
 Many of you have probably seen something like this, where you have multiple
-files of a manuscript for example, with slightly different file names to 
+files of a manuscript for example, with slightly different file names to
 indicate a new version. This is a very very basic form of version control that
-is highly manual and 
+is highly manual and

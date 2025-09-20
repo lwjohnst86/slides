@@ -19,7 +19,7 @@ layout: true
 <img src="../../common/sdca-logo.png" alt="SDCA", width="55">
 <a href="https://slides.lwjohnst.com/misc/2021-01-08/">slides.lwjohnst.com/misc/2021-01-08</a>
 </span>
-</div> 
+</div>
 
 ```{r setup, include=FALSE}
 options(htmltools.dir.version = FALSE)
@@ -63,10 +63,10 @@ style_mono_accent(
 # Who am I?
 
 .pull-left[
-- I'm Luke Johnston `r emo::ji("wave")` 
+- I'm Luke Johnston `r emo::ji("wave")`
 - `r fa2("briefcase")`: Postdoctoral researcher
 - `r fa2("globe-europe")`: Steno Diabetes Center Aarhus, Denmark
-- `r fa2("user-graduate")`: 
+- `r fa2("user-graduate")`:
     - BSc in Kinesiology from University of Waterloo
     - MSc and PhD in Nutritional Sciences from UofT
 ]
@@ -81,7 +81,7 @@ knitr::include_graphics(image_misc_path("luke-pic.jpg"))
 
 ---
 
-# Career path `r fa2("route")` 
+# Career path `r fa2("route")`
 
 - High school: `r emo::ji("thinking")` in sports medicine
 
@@ -156,11 +156,11 @@ links between metabolism and disease (like diabetes).
     - High need for computational `r emo::ji("computer")` skills, tools, and
     training in research
     - Academia has many many major flaws that need fixing `r emo::ji("wrench")`
-    - Working in research is very rewarding and amazing! 
+    - Working in research is very rewarding and amazing!
 
 --
 
-- Biggest pieces of advice: 
+- Biggest pieces of advice:
     - Follow what interests and motivates you
     - Enjoy and cultivate relationships with others (you may end up collaborating
     together!)

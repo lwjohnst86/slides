@@ -19,9 +19,9 @@ layout: true
 <div class="my-footer">
 <span>
 <img src="`r lwj::logo('dda')`" alt="DDA", width="75">
-<img src="`r lwj::logo('sdca')`" alt="SDCA", width="55"> 
+<img src="`r lwj::logo('sdca')`" alt="SDCA", width="55">
 </span>
-</div> 
+</div>
 
 ```{r setup, include=FALSE}
 options(htmltools.dir.version = FALSE)
@@ -103,7 +103,7 @@ metabolic capacity and risk for T2D.
 ### Objectives
 
 1. Investigate how specific early life conditions affect risk of T2D nationally
-1. Extend and generalise NetCoupler algorithm 
+1. Extend and generalise NetCoupler algorithm
 ([github.com/NetCoupler](https://github.com/NetCoupler/NetCoupler))
     - Estimates direct and mediating pathways in high dimensional metabolic data
 1. Identify mediating pathways of metabolic capacity between early
@@ -179,7 +179,7 @@ knitr::include_graphics(image_nc_path("nc-causal-pathways.png"))
 
 ---
 
-## General timeline 
+## General timeline
 
 ```{r img-timeline}
 knitr::include_graphics("images/timeline.svg")
@@ -228,9 +228,9 @@ class: center, middle
 
 # Challenges:
 
-- Navigating Statistics Denmark website and documentation 
+- Navigating Statistics Denmark website and documentation
 
-- Translating Danish words for variables and registers 
+- Translating Danish words for variables and registers
     - ... and knowing what to look for
 
 - Finding other datasets to use for linkage

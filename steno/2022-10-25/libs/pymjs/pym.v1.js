@@ -40,7 +40,7 @@
     * @method _getParameterByName
     * @inner
     *
-    * @param {String} name The name of the paramter to get from the URL.
+    * @param {String} name The name of the parameter to get from the URL.
     */
     var _getParameterByName = function(name) {
         var regex = new RegExp("[\\?&]" + name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]') + '=([^&#]*)');
@@ -55,7 +55,7 @@
 
     /**
      * Check the message to make sure it comes from an acceptable xdomain.
-     * Defaults to '*' but can be overriden in config.
+     * Defaults to '*' but can be overridden in config.
      *
      * @method _isSafeMessage
      * @inner
@@ -755,7 +755,7 @@
          */
         this.parentUrl = null;
         /**
-         * The settings for the child instance. Can be overriden by passing a config object to the child constructor
+         * The settings for the child instance. Can be overridden by passing a config object to the child constructor
          * i.e.: var pymChild = new pym.Child({renderCallback: render, xdomain: "\\*\.npr\.org"})
          *
          * @memberof module:pym.Child.settings
@@ -1113,4 +1113,3 @@
 
     return lib;
 });
-

@@ -18,7 +18,7 @@ layout: true
 <div class="footer">
 <img src="resources/au_logo_black.png" alt="Aarhus University", width="160">
 https://gitlab.com/lwjohnst/neuropathy.clusters
-</div> 
+</div>
 
 ```{r setup, include=FALSE}
 stop("WON'T WORK, NEEDS ORIGINAL DATA SOURCE.")
@@ -54,7 +54,7 @@ neuropathy_data <- wrangle_neuropathy_data(project_data)
 
 ---
 
-## PURPOSE: 
+## PURPOSE:
 
 Get feedback, comments on two issues:
 
@@ -102,8 +102,8 @@ responses?
 ## Study and measurements
 
 ```{r methods-inline}
-sample_size <- neuropathy_data$all_vars %>% 
-    select(-ID) %>% 
+sample_size <- neuropathy_data$all_vars %>%
+    select(-ID) %>%
     dim()
 num_persons <- sample_size[1]
 num_items <- sample_size[2]
@@ -118,14 +118,14 @@ num_items <- sample_size[2]
 ## Rationale on statistical analysis
 
 ```{r}
-fake_data <- matrix(dimnames = list(rep(NA, 8), c("ID", str_c("A", 1:6))), ncol = 7, nrow = 8) %>% 
-    as_tibble() %>% 
-    mutate(ID = 1:8) %>% 
-    mutate_at(vars(-ID), ~sample(c("present", "absent"), 8, replace = TRUE)) 
+fake_data <- matrix(dimnames = list(rep(NA, 8), c("ID", str_c("A", 1:6))), ncol = 7, nrow = 8) %>%
+    as_tibble() %>%
+    mutate(ID = 1:8) %>%
+    mutate_at(vars(-ID), ~sample(c("present", "absent"), 8, replace = TRUE))
 
-base_table <- fake_data %>% 
-    kable() %>% 
-    kable_styling(bootstrap_options = c("striped", "condensed")) %>% 
+base_table <- fake_data %>%
+    kable() %>%
+    kable_styling(bootstrap_options = c("striped", "condensed")) %>%
     column_spec(1, bold = TRUE)
 
 base_table
@@ -136,8 +136,8 @@ base_table
 ## Groups by row: Hierarchical cluster (HCA)
 
 ```{r}
-base_table %>% 
-    row_spec(1:6, background = "lightblue") %>% 
+base_table %>%
+    row_spec(1:6, background = "lightblue") %>%
     row_spec(7:8, background = "lightgreen")
 ```
 
@@ -146,8 +146,8 @@ base_table %>%
 ## "Groups" by variable: Factor analysis
 
 ```{r}
-base_table %>% 
-    column_spec(2:3, background = "lightblue") %>% 
+base_table %>%
+    column_spec(2:3, background = "lightblue") %>%
     column_spec(4:7, background = "lightgreen")
 ```
 
@@ -155,7 +155,7 @@ base_table %>%
 
 class: middle, center
 
-# FIRST ISSUE: 
+# FIRST ISSUE:
 
 ### Both methods data-specific, with fixed groups.
 
@@ -165,19 +165,19 @@ class: middle, center
 
 class: middle, center
 
-# My idea for implementation: 
+# My idea for implementation:
 
 ### Run methods on resampled sets (4-fold CV, x 25)
 
 ---
 
 ```{r}
-fake_data %>% 
-    filter(row_number(ID) %in% c(1, 3, 6, 7)) %>% 
-    kable() %>% 
-    kable_styling(bootstrap_options = c("striped", "condensed")) %>% 
-    column_spec(1, bold = TRUE) %>% 
-    row_spec(c(4), background = "lightgreen") %>% 
+fake_data %>%
+    filter(row_number(ID) %in% c(1, 3, 6, 7)) %>%
+    kable() %>%
+    kable_styling(bootstrap_options = c("striped", "condensed")) %>%
+    column_spec(1, bold = TRUE) %>%
+    row_spec(c(4), background = "lightgreen") %>%
     row_spec(1:3, background = "lightblue")
 ```
 
@@ -186,12 +186,12 @@ fake_data %>%
 &nbsp;
 
 ```{r}
-fake_data %>% 
-    filter(row_number(ID) %in% c(2, 5, 7, 8)) %>% 
-    kable() %>% 
-    kable_styling(bootstrap_options = c("striped", "condensed")) %>% 
-    column_spec(1, bold = TRUE) %>% 
-    row_spec(3:4, background = "lightgreen") %>% 
+fake_data %>%
+    filter(row_number(ID) %in% c(2, 5, 7, 8)) %>%
+    kable() %>%
+    kable_styling(bootstrap_options = c("striped", "condensed")) %>%
+    column_spec(1, bold = TRUE) %>%
+    row_spec(3:4, background = "lightgreen") %>%
     row_spec(1:2, background = "lightblue")
 ```
 
@@ -212,7 +212,7 @@ hca_results$all_vars %>%
 
 class: middle, center
 
-# SECOND ISSUE: 
+# SECOND ISSUE:
 
 ### What are common responses by group?
 
@@ -224,9 +224,9 @@ class: middle, center
 hca_with_assessments$all_vars$k3 %>%
     tidy_hca_neuropathy() %>%
     filter(NeuropathyValue != "pass") %>%
-    select(ClusterNumber, Questionnaire, AssessmentResponse, MeanPercent) %>% 
-    sample_n(50) %>% 
-    arrange(ClusterNumber, desc(MeanPercent)) %>% 
+    select(ClusterNumber, Questionnaire, AssessmentResponse, MeanPercent) %>%
+    sample_n(50) %>%
+    arrange(ClusterNumber, desc(MeanPercent)) %>%
     kable() %>%
     kable_styling(bootstrap_options = c("striped", "condensed")) %>%
     scroll_box(height = "350px")

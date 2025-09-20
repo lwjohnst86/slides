@@ -54,7 +54,7 @@ HTMLWidgets.widget({
             var obj = {
               id: nodeid,
               //fill: node_path.attributes.fill.nodeValue,
-              //outerHMTL: node_path.outerHTML,
+              //outerHTML: node_path.outerHTML,
               nodeValues: text_array
             };
             // Send *obj* to Shiny's inputs (input$[id]+_click  e.g.: input$vtree_click))

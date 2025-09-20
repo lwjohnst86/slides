@@ -4,7 +4,7 @@ date: "2023-10-26"
 date-format: long
 author: Luke W. Johnston
 location: "CNAP Annual Seminar in Aalborg, Denmark"
-format: 
+format:
   revealjs:
     fig-align: center
     from: markdown+emoji
@@ -14,8 +14,8 @@ format:
     progress: true
     footer: "Licensed under CC-BY 4.0.<br>Slides at [slides.lwjohnst.com](https://slides.lwjohnst.com)"
     embed-resources: true
-editor: 
-  markdown: 
+editor:
+  markdown:
     wrap: 72
     canonical: true
 ---
@@ -164,7 +164,7 @@ tribble(
     3,"Data available", 14, 57,
     3,"Code available", 1, 57,
     3,"Could reproduce", 7, 57,
-) %>% 
+) %>%
     mutate(
         study = fct_recode(
             as_factor(study),
@@ -174,7 +174,7 @@ tribble(
         ),
         text = fct_rev(fct_inorder(text)),
         value = round((value / total) * 100, 0)
-    ) %>% 
+    ) %>%
     ggplot(aes(x = text, y = value, label = paste0(value, "%"))) +
     geom_col(fill = "gray20", width = 0.7) +
     geom_text(nudge_y = 10) +
@@ -184,7 +184,7 @@ tribble(
     labs(y = "Percent of articles",
          title = "") +
     theme(
-      
+
         text = element_text(size = 16),
         axis.title.y = element_blank(),
         panel.grid = element_blank(),

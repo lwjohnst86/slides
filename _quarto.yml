@@ -1,6 +1,6 @@
 project:
   type: website
-  render: 
+  render:
     - "*.qmd"
 
 website:
@@ -14,7 +14,7 @@ website:
     location: navbar
     type: textbox
   navbar:
-    left: 
+    left:
       - text: Home
         href: index.qmd
     right:
@@ -29,8 +29,8 @@ website:
     tools:
       - icon: github
         href: https://github.com/lwjohnst86/slides
-    
-  page-footer: 
+
+  page-footer:
     center:
       - text: "License CC-BY 4.0"
 
@@ -40,12 +40,12 @@ format:
     theme:
       - yeti
 
-editor: 
-  markdown: 
+editor:
+  markdown:
     wrap: 72
     canonical: true
 
 date-format: long
 
-execute: 
+execute:
   freeze: auto

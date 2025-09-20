@@ -480,7 +480,7 @@
       // With a few exceptions, we'll want to simply use the bindingDef's
       // version of methods if they are available, otherwise fall back to
       // Shiny's defaults. NOTE: If Shiny's output bindings gain additional
-      // methods in the future, and we want them to be overrideable by
+      // methods in the future, and we want them to be overridable by
       // HTMLWidget binding definitions, then we'll need to add them to this
       // list.
       delegateMethod(shinyBinding, bindingDef, "getId");
@@ -671,7 +671,7 @@
 
   /*
   / Shiny 1.4 bumped jQuery from 1.x to 3.x which means jQuery's
-  / on-ready handler (i.e., $(fn)) is now asyncronous (i.e., it now
+  / on-ready handler (i.e., $(fn)) is now asynchronous (i.e., it now
   / really means $(setTimeout(fn)).
   / https://jquery.com/upgrade-guide/3.0/#breaking-change-document-ready-handlers-are-now-asynchronous
   /
@@ -873,7 +873,7 @@
 
   // Takes a new-style instance-bound definition, and returns an
   // old-style class-bound definition. This saves us from having
-  // to rewrite all the logic in this file to accomodate both
+  // to rewrite all the logic in this file to accommodate both
   // types of definitions.
   function createLegacyDefinitionAdapter(defn) {
     var result = {
@@ -900,4 +900,3 @@
     return result;
   }
 })();
-

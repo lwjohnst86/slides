@@ -2,7 +2,7 @@ Package: slides
 Version: 1.0
 Type: Website
 Encoding: UTF-8
-Imports: 
+Imports:
     dagitty,
     fontawesome,
     ggdag,
@@ -22,5 +22,5 @@ Imports:
     ggrepel,
     geomtextpath,
     ggplot2
-Remotes: 
+Remotes:
     gadenbuie/xaringanExtra

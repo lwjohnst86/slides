@@ -1234,7 +1234,7 @@ const kFuseMaxWait = 125;
 
 async function fuseSearch(query, fuse, fuseOptions) {
   let index = fuse;
-  // Fuse.js using the Bitap algorithm for text matching which runs in
+  // Fuse.js using the Bitmap algorithm for text matching which runs in
   // O(nm) time (no matter the structure of the text). In our case this
   // means that long search terms mixed with large index gets very slow
   //

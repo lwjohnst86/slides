@@ -22,7 +22,7 @@ layout: true
 <img src="../../common/sdca-logo.png" alt="SDCA", width="55">
 <a href="https://slides.lwjohnst.com/steno/2021-02-08/">slides.lwjohnst.com/steno/2021-02-08</a>
 </span>
-</div> 
+</div>
 
 ```{r setup, include=FALSE}
 library(xaringanthemer)
@@ -102,10 +102,10 @@ studies <- init_experiments(
         "estimate",
         "claim"
     )
-) 
+)
 studies["analyst", "Reproducing"] <- "incorrect"
 
-sci_figure(studies, 
+sci_figure(studies,
     stage_names = c(
         "Question",
         "Study Design",
@@ -137,7 +137,7 @@ sci_figure(studies,
 ## Reproducibility in biomedical science
 
 .pull-left[
-- Already know *replication* is a major problem 
+- Already know *replication* is a major problem
     - e.g. Many Labs Project, OSC Project, Reproducibility Project
 
 - Don't know extent of *reproducibility*
@@ -154,8 +154,8 @@ tribble(
     "Data available", 41,
     "Code available", 37,
     "Could reproduce", 21
-) %>% 
-    mutate(text = fct_inorder(text)) %>% 
+) %>%
+    mutate(text = fct_inorder(text)) %>%
     ggplot(aes(x = text, y = value, label = value)) +
     geom_col(fill = "#214c78", width = 0.7) +
     geom_text(nudge_y = 3) +
@@ -164,7 +164,7 @@ tribble(
     theme_minimal() +
     labs(y = "Articles",
          title = "Reproducibility of Registered\nReports in Psychology [3]") +
-    theme(axis.title.x = element_blank(), 
+    theme(axis.title.x = element_blank(),
           panel.grid = element_blank())
 ```
 
@@ -286,7 +286,7 @@ class: middle, center
     - Code is written to be read by yourself and others [1]
 
 .footnote[
-[1]: Otherwise we'd all write in 
+[1]: Otherwise we'd all write in
 [Assembly](https://upload.wikimedia.org/wikipedia/commons/f/f3/Motorola_6800_Assembly_Language.png).
 ]
 ???
@@ -313,5 +313,5 @@ Assembly or binary (lowest level programming language)
     - [figshare](https://figshare.com/)
     - [OSF](https://osf.io/)
 
-.footnote[GitHub and Zenodo can be 
+.footnote[GitHub and Zenodo can be
 [connected](https://guides.github.com/activities/citable-code/)!]

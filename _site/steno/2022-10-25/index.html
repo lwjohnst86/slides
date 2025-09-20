@@ -109,7 +109,7 @@ top:1em;right:1em;
 })()</script>
 </div>
 
-&lt;!-- 
+&lt;!--
 Details:
 
 - Data are the fulcrum of research. Still, within this field, good practices and
@@ -144,7 +144,7 @@ Not going to read these in detail, briefly summarize
 
 class: middle
 
-# What is open science? 
+# What is open science?
 
 ## Show of hands, who could explain it?
 
@@ -164,7 +164,7 @@ class: middle
 Who could explain open access?
 
 Depending on how you define open, could be accessible to more people. If that's
-the case, "open" science started when journals came into existence, because 
+the case, "open" science started when journals came into existence, because
 before that scientists were very secretive about sharing results.
 
 --
@@ -209,13 +209,13 @@ Has anyone ever heard of Open Materials/Methods or Open Infrastructure?
 &lt;img src="images/spectrum-open-science.png" width="80%" style="display: block; margin: auto;" /&gt;
 
 .pull-left[
-\+ Open access (like preprints)  
-\+ Open protocol  
-\+ **Open data/data format**  
+\+ Open access (like preprints)
+\+ Open protocol
+\+ **Open data/data format**
 ]
 
 .pull-right[
-\+ Open analysis plan/code  
+\+ Open analysis plan/code
 \+ Open source (like software used)
 ]
 
@@ -243,8 +243,8 @@ class: middle
 
 ???
 
-Want to note about the previous talk, you can have both openness and still follow 
-the law on privacy and security. Takes a bit more work but its definitely 
+Want to note about the previous talk, you can have both openness and still follow
+the law on privacy and security. Takes a bit more work but its definitely
 possible in many cases (not all, e.g. DST).
 
 ---
@@ -252,7 +252,7 @@ possible in many cases (not all, e.g. DST).
 ## Discussion time (~6 min) 💬
 
 &gt; Is data with a closed license less useful? 🤔 ... it's complicated ... 😕
-&gt; 
+&gt;
 &gt; 1. Why is it complicated?
 &gt; 2. How can "closed" data still be useful?
 
@@ -271,7 +271,7 @@ possible in many cases (not all, e.g. DST).
 --
 
 **Part of UK Biobank's License**
-    
+
 &gt; "UK Biobank hereby grants to the Applicant a revocable, worldwide,
 royalty-free, non-exclusive, non-transferable licence (but not any ownership
 rights) during the Term to use the Materials for the Permitted Purpose, subject
@@ -320,7 +320,7 @@ Let's focus on the I and R of FAIR.
 
 --
 
-**Answer these questions**: 
+**Answer these questions**:
 
 - If the software to import, export, or load the data is closed (e.g. Stata, SAS)... Yes or no?
 
@@ -336,7 +336,7 @@ Keyword: easily.
 
 For instance, why did Excel change their file ending from xls to xlsx?
 
-Usually open software to load closed formats needs to be back engineered, 
+Usually open software to load closed formats needs to be back engineered,
 since companies don't share how they encoded things. E.g. LibreOffice for docx
 
 --
@@ -378,7 +378,7 @@ class: middle
 
 ???
 
-A few decades ago this wasn't really an issue at all, or at least not that big 
+A few decades ago this wasn't really an issue at all, or at least not that big
 of an issue.
 
 ---
@@ -388,7 +388,7 @@ class: middle
 ## Discussion time (~6 min) 💬
 
 &gt; - Why are these things important? And why now?
-&gt; 
+&gt;
 &gt; - What are some challenges you've faced with data and how it is structured?
 
 1. Think on your own for ~1 min.
@@ -427,8 +427,8 @@ Time a minute to think about it before sharing.
 
 ???
 
-Especially those of the older generation, data was different. We have SO much 
-of it now. The skills needed are way more complicated and difficult. 
+Especially those of the older generation, data was different. We have SO much
+of it now. The skills needed are way more complicated and difficult.
 
 ---
 
@@ -439,7 +439,7 @@ of it now. The skills needed are way more complicated and difficult.
 --
 
 .pull-left[
-- More restrictions (example: closed copyright, gated-access) 
+- More restrictions (example: closed copyright, gated-access)
     - Need lawyers for license
     - Need enforcement systems
     - Need gated access control systems
@@ -455,7 +455,7 @@ of it now. The skills needed are way more complicated and difficult.
     - Need software license to access/use data
 ]
 
-    
+
 ---
 
 ## Example related to licensing
@@ -470,7 +470,7 @@ assist any third party to do the same, except to the extent permitted at law."
 
 Can't make an R package to help organize or display this information.
 
-Need lawyers if someone violates copyright. 
+Need lawyers if someone violates copyright.
 
 Need system to report violations.
 
@@ -533,7 +533,7 @@ Industry tends to be better at it than academia.
 
 ???
 
-Surprising number of cases where someone is hired as a data scientist or data 
+Surprising number of cases where someone is hired as a data scientist or data
 engineer and their entire job is spent fixing issues with the process being in
 Excel and having to do manual stuff. Stuff that was not described in the job
 ad.
@@ -543,16 +543,16 @@ ad.
 - Some research institutes (e.g. UK Biobank) &gt; others
 
     - Overall, research is far behind best practices
-    
+
 --
-    
+
 - Some fields (physics, ecology) &gt; biomedical/health research
 
     - Likely because of funding, privacy, and IP issues
 
 ---
 
-## How does engineering relate to open and FAIR? 
+## How does engineering relate to open and FAIR?
 
 By making use of some of their principles! 🤩
 
@@ -567,7 +567,7 @@ By making use of some of their principles! 🤩
 .pull-right[
 - Single-purpose
 
-- Interoperable 
+- Interoperable
     - (across ALL components of science)
 ]
 
@@ -593,8 +593,8 @@ class: middle
 
 ???
 
-So I want to hear what you think might help you out? Whether you know a bit or 
-nothing about engineering, what can you 
+So I want to hear what you think might help you out? Whether you know a bit or
+nothing about engineering, what can you
 
 Might be making theoretical sense, but how? Practically?
 
@@ -616,7 +616,7 @@ Might be making theoretical sense, but how? Practically?
 
 ???
 
-Example: I converted the DST SAS file formats into Parquet storage 
+Example: I converted the DST SAS file formats into Parquet storage
 and can load them into DuckDB... for MUCH faster analysis.
 
 --
@@ -638,7 +638,7 @@ class: middle
 
 ## Example: We have a (recent NNF-funded) project on an open infrastructure for data:
 
-### Data Infrastucture Framework (DIF) Project (title WIP)
+### Data Infrastructure Framework (DIF) Project (title WIP)
 
 .footnote[
 - Website: https://steno-aarhus.github.io/dif-project/
@@ -669,12 +669,12 @@ If you don't work with personal data, you have it easy!
 
 ## Simple first steps to making data FAIRer:
 
-1. Advocate for making data open and FAIR (push for funding, hiring, learning) 
+1. Advocate for making data open and FAIR (push for funding, hiring, learning)
 
 ???
 
-This is the biggest thing you can do to make it FAIRer. This is especially 
-important if you personally don't own or have control over what happens to the 
+This is the biggest thing you can do to make it FAIRer. This is especially
+important if you personally don't own or have control over what happens to the
 data.
 
 --
@@ -700,7 +700,7 @@ raw data or your results as a data file, save as a CSV.
 
     ``` text
     variable, description
-    glucose_0min, Fasting glucose measured before the glucose challenge. 
+    glucose_0min, Fasting glucose measured before the glucose challenge.
     glucose_30min, Glucose measured 30 minutes after glucose challenge.
     weight, Weight measured on a standard scale, in underclothes.
     height, Height measured without shoes.
@@ -783,11 +783,11 @@ software used, metadata. Makes your own work easier.
 
 workflow
 
-1. Write paper on your GitHub 
+1. Write paper on your GitHub
 2. Submit to JOSS GitHub Issue -&gt; JOSS ext
 
     - DE: Our DIF project
-    
+
 ## Real world examples of these principles in action in improving openness
 
 ## Principles-in-action: Better scholarly writing with R Markdown and Quarto

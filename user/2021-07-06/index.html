@@ -25,7 +25,7 @@ class: center, middle, inverse, title-slide
 
 layout: true
 
-&lt;!-- To UseR 2021 
+&lt;!-- To UseR 2021
 
 Bio:
 
@@ -38,7 +38,7 @@ Slides are found here: https://slides.lwjohnst.com/user/2021-07-06/
 &lt;div class="my-footer"&gt;
 Slides: &lt;a href="https://slides.lwjohnst.com/user/2021-07-06/"&gt;slides.lwjohnst.com/user/2021-07-06&lt;/a&gt;
 &lt;br&gt;Package: &lt;a href="https://github.com/NetCoupler/NetCoupler/"&gt;github.com/NetCoupler/NetCoupler&lt;/a&gt;
-&lt;/div&gt; 
+&lt;/div&gt;
 
 
 
@@ -137,7 +137,7 @@ diabetes, or how an exposure might influence an outcome through the network.
 
 ---
 
-## Main features of NetCoupler 
+## Main features of NetCoupler
 
 
 .pull-left[
@@ -162,9 +162,9 @@ diabetes, or how an exposure might influence an outcome through the network.
 
 The main features of NetCoupler are that it finds the most likely network
 structure, it can include exposure and/or outcome variables, and it can identify
-potential causal links involving the metabolic network. 
+potential causal links involving the metabolic network.
 
-NetCoupler is also quite flexible in the type of models you can use in it, 
+NetCoupler is also quite flexible in the type of models you can use in it,
 so you could use models like linear or logistic
 regression or Cox proportional hazard models. Because these
 models can be used, you can also adjust for potential confounding factors that might
@@ -178,22 +178,22 @@ packages tidygraph or ggraph.
 
 &lt;img src="../../iarc/2020-12-16/images/netcoupler-process.svg" title="Diagram with four distinct areas representing the phases.
 First phase shows a network of nodes called N commnected by lines that has been derived.
-Second phase shows one node, called the index node, as an example of being iteratively selected, 
+Second phase shows one node, called the index node, as an example of being iteratively selected,
 along with the other nodes it is connected to, called neighbour nodes.
 Third phase shows a series of diagrams that are calculated for all combinations of
 the index node with its neighbouring nodes. There are eight of these diagrams. Each
 diagram represents a model for the next phase.
 Fourth phase shows that each model from the previous phase is classified into
-direct, ambigious, or no effect. This classification happens separately for 
+direct, ambiguous, or no effect. This classification happens separately for
 exposures, called E, and outcomes, called O." alt="Diagram with four distinct areas representing the phases.
 First phase shows a network of nodes called N commnected by lines that has been derived.
-Second phase shows one node, called the index node, as an example of being iteratively selected, 
+Second phase shows one node, called the index node, as an example of being iteratively selected,
 along with the other nodes it is connected to, called neighbour nodes.
 Third phase shows a series of diagrams that are calculated for all combinations of
 the index node with its neighbouring nodes. There are eight of these diagrams. Each
 diagram represents a model for the next phase.
 Fourth phase shows that each model from the previous phase is classified into
-direct, ambigious, or no effect. This classification happens separately for 
+direct, ambiguous, or no effect. This classification happens separately for
 exposures, called E, and outcomes, called O." width="90%" style="display: block; margin: auto;" /&gt;
 
 ???
@@ -216,36 +216,36 @@ that would be eight different combinations representing eight models.
 The fourth phase is taking all these models and linking them with either
 an exposure or an outcome variable, as well as any confounding factors. Based on
 specific thresholds, the link between exposure or outcome and the index node is
-classified as either direct, ambigious, or no effect.
+classified as either direct, ambiguous, or no effect.
 
 ---
 
 ## Graphical model output allows visual inference of *potential* pathways
 
 &lt;img src="../../au-ph/2019-08-15/images/nc-causal-pathways.png" title="Diagram showing how the results from NetCoupler might look.
-Four lines originate from the exposure node on the left side, 
-two thicker lines with arrows indicating direct effects 
-and two thinner lines indicating ambigious effects. These four lines connect
+Four lines originate from the exposure node on the left side,
+two thicker lines with arrows indicating direct effects
+and two thinner lines indicating ambiguous effects. These four lines connect
 to four metabolic variables, marked in red. All other metabolic variables,
 as circles with the letter M, are connected with each other by one or two lines.
-Four lines originate from four metabolic variables, also marked in red, 
+Four lines originate from four metabolic variables, also marked in red,
 and end at the outcome variable.
-Two are the direct effect lines and two are the ambigious lines." alt="Diagram showing how the results from NetCoupler might look.
-Four lines originate from the exposure node on the left side, 
-two thicker lines with arrows indicating direct effects 
-and two thinner lines indicating ambigious effects. These four lines connect
+Two are the direct effect lines and two are the ambiguous lines." alt="Diagram showing how the results from NetCoupler might look.
+Four lines originate from the exposure node on the left side,
+two thicker lines with arrows indicating direct effects
+and two thinner lines indicating ambiguous effects. These four lines connect
 to four metabolic variables, marked in red. All other metabolic variables,
 as circles with the letter M, are connected with each other by one or two lines.
-Four lines originate from four metabolic variables, also marked in red, 
+Four lines originate from four metabolic variables, also marked in red,
 and end at the outcome variable.
-Two are the direct effect lines and two are the ambigious lines." width="85%" style="display: block; margin: auto;" /&gt;
+Two are the direct effect lines and two are the ambiguous lines." width="85%" style="display: block; margin: auto;" /&gt;
 
 ???
 
 The final graphical model output can allow for visual inference of the potential
 pathways. For instance, in this example figure, NetCoupler might classify
-two direct effects, represented by the thicker lines with arrows, 
-and two ambigious effects, represented by the thinner lines, between an exposure or
+two direct effects, represented by the thicker lines with arrows,
+and two ambiguous effects, represented by the thinner lines, between an exposure or
 an outcome and individual metabolic variables. We can then visually trace
 the pathway from the exposure, through the metabolic variables, and to the outcome,
 and infer that the metabolic variables along this path, marked as red here, may
@@ -276,7 +276,7 @@ be along the causal pathway.
 
 ???
 
-We're actively working on this R package and there are still limitations and 
+We're actively working on this R package and there are still limitations and
 areas to improve.
 
 Conceptually, figuring out how to meaningfully visualize the results has been
@@ -304,7 +304,7 @@ class: middle
 ???
 
 If you want to see how to use NetCoupler, more detail is on the NetCoupler website
-found in the footer. 
+found in the footer.
 
 Thanks for listening!
     </textarea>

@@ -99,7 +99,7 @@ Because teaching researchers is a very different challenge than teaching
 undergrads and in other more formal university courses. You really need to
 ground the learning material into something tangible that we as
 researchers face and need on a frequent basis. And that requires not just
-knowing the science of teaching and learning, but also actually having 
+knowing the science of teaching and learning, but also actually having
 experience actually doing the research. And that takes up a lot of time to
 do both. So even if I didn't get this award, I really appreciate that DDA has
 created it.
@@ -125,7 +125,7 @@ knitr::include_url("https://uoftcoders.github.io/studyGroup/", height = "425px")
 
 ???
 
-Just a bit of history of why I got so involved in teaching. 
+Just a bit of history of why I got so involved in teaching.
 During my PhD, I was learning how to do data analysis mostly by
 myself, like many many others. I got some help with the other PhD students in
 the group, it wasn't very formal. Not getting into too much detail, but I
@@ -139,7 +139,7 @@ turned into frustration that we weren't taught this.
 
 That's when I realized, if you want something done, do it yourself. So, with
 a few other PhD students from across the university, we started a "coding club"
-where peers taught each other computing skills. This club is still running, and 
+where peers taught each other computing skills. This club is still running, and
 is a great source of pride for me.
 
 ---

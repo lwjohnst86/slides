@@ -4,7 +4,7 @@ window.QuartoSupport = function () {
     return /print-pdf/gi.test(window.location.search);
   }
 
-  // implement controlsAudo
+  // implement controlsAudio
   function controlsAuto(deck) {
     const config = deck.getConfig();
     if (config.controlsAuto === true) {
@@ -31,7 +31,7 @@ window.QuartoSupport = function () {
             const fullscreen = !!window.document.fullscreen;
             const dataPreviewLink = el.getAttribute("data-preview-link");
 
-            // if there is a local specifcation then use that
+            // if there is a local specification then use that
             if (dataPreviewLink) {
               if (
                 dataPreviewLink === "true" ||

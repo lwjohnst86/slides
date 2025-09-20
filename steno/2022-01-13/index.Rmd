@@ -55,7 +55,7 @@ style_mono_accent(
 ```
 
 .footer-right[
-Project description: [steno-aarhus.github.io/dif-project](https://steno-aarhus.github.io/dif-project)  
+Project description: [steno-aarhus.github.io/dif-project](https://steno-aarhus.github.io/dif-project)
 Slides: [slides.lwjohnst.com/steno/2022-01-13](https://slides.lwjohnst.com/steno/2022-01-13/)
 ]
 
@@ -93,7 +93,7 @@ xaringanExtra::use_logo(
 
 ???
 
-Not cover... 
+Not cover...
 
 Another caveat, since this is a newly started project, that is way more of the
 computational and technical side maybe many of you are interested in hearing about.
@@ -102,7 +102,7 @@ I could talk easily talk about all the technical details of this project for
 many hours, but I will spare you that.
 
 Because of this the talk will be on the shorter side, unless people
-have questions that get more into the details... 
+have questions that get more into the details...
 
 ---
 
@@ -135,7 +135,7 @@ Questions like:
 with or analyzed on it, how can you easily determine which publications used the
 in correct data and how can you easily update the publications with the correct
 data?
-- How can you easily share your data with colleagues or reviewers to check your 
+- How can you easily share your data with colleagues or reviewers to check your
 findings?
 
 ---
@@ -172,7 +172,7 @@ engineering, ...
 
 class: middle
 
-## Brief backstory: 
+## Brief backstory:
 
 ### Application process started by the DD2 study to update their own infrastructure and SDCA was asked to join
 
@@ -208,7 +208,7 @@ easily implement it and modify as needed for their own purposes.
 --
 
 > In short: Make a software product that makes it easier to find, store, and
-use data for research projects, and make it so that it is easy and free to use 
+use data for research projects, and make it so that it is easy and free to use
 for others.
 
 ???
@@ -250,7 +250,7 @@ management.
 
 1. Follow and enable FAIR principles
 
-2. Openly licensed and re-usable (e.g. CC-BY) 
+2. Openly licensed and re-usable (e.g. CC-BY)
 
 3. State-of-the-art principles and tools in software design
 

@@ -4,7 +4,7 @@ date: "2023-03-31"
 date-format: long
 author: Luke W. Johnston
 location: "McGill School of Human Nutrition Coding Club: Reproducible Research (virtual)"
-format: 
+format:
   revealjs:
     fig-align: center
     from: markdown+emoji
@@ -13,12 +13,12 @@ format:
       - theme.scss
     progress: true
     footer: "Licensed under CC-BY 4.0. Slides at [slides.lwjohnst.com](https://slides.lwjohnst.com)"
-editor: 
-  markdown: 
+editor:
+  markdown:
     wrap: 72
     canonical: true
-knitr: 
-  opts_chunk: 
+knitr:
+  opts_chunk:
     echo: false
     message: false
     warning: false
@@ -34,9 +34,9 @@ knitr:
 
 ```{r setup}
 #| include: false
-library(emoji)  
-library(ggplot2)  
-library(emojifont)  
+library(emoji)
+library(ggplot2)
+library(emojifont)
 library(tidyverse)
 
 study_df <- tribble(
@@ -51,16 +51,16 @@ study_df <- tribble(
     mutate(
         original = FALSE,
         reproduction = stage %in% c("data", "analysis", "writing")
-    ) %>% 
+    ) %>%
     pivot_longer(
         cols = c(original, reproduction),
         names_to = "study",
         values_to = "state"
-    ) %>% 
+    ) %>%
     mutate(
-        study = study %>% 
-            str_to_sentence() %>% 
-            str_replace("_", " ") %>% 
+        study = study %>%
+            str_to_sentence() %>%
+            str_replace("_", " ") %>%
             fct_inorder(),
         stage = stage %>%
             str_to_sentence() %>%
@@ -189,7 +189,7 @@ tribble(
     3,"Data available", 14, 57,
     3,"Code available", 1, 57,
     3,"Could reproduce", 7, 57,
-) %>% 
+) %>%
     mutate(
         study = fct_recode(
             as_factor(study),
@@ -199,7 +199,7 @@ tribble(
         ),
         text = fct_rev(fct_inorder(text)),
         value = round((value / total) * 100, 0)
-    ) %>% 
+    ) %>%
     ggplot(aes(x = text, y = value, label = paste0(value, "%"))) +
     geom_col(fill = "#0049DA", width = 0.7) +
     geom_text(nudge_y = 10) +
@@ -209,7 +209,7 @@ tribble(
     labs(y = "Percent of articles",
          title = "") +
     theme(
-      
+
         text = element_text(size = 16),
         axis.title.y = element_blank(),
         panel.grid = element_blank(),
@@ -287,7 +287,7 @@ know how you got any given result presented in your paper?
 
 3.  What are some challenges or barriers?
 
-# Revelant examples from my work
+# Relevant examples from my work
 
 ## Reproducible Research in R courses {.center}
 

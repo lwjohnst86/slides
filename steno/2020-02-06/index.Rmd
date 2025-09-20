@@ -48,7 +48,7 @@ fa2 <- function(.icon) {
 <img src="../../common/sdca-logo.png" alt="SDCA", width="55">
 <a href="https://slides.lwjohnst.com/steno/2020-02-06/">slides.lwjohnst.com/steno/2020-02-06</a>
 </span>
-</div> 
+</div>
 
 ```{r xaringan-themer, include=FALSE}
 library(xaringanthemer)
@@ -158,7 +158,7 @@ For my project, I won't be covering the adversity of excess.
 
 
 - To address 2., need to develop an analytic algorithm
-    
+
 ???
 
 I'm being intentionally vague about meaning of "early childhood conditions" because
@@ -200,7 +200,7 @@ class: center, middle
 
 ---
 
-## Modern studies generate lots of metabolic data 
+## Modern studies generate lots of metabolic data
 
 .pull-left[
 - -omics type data
@@ -372,7 +372,7 @@ About transparency of process to making claim.
 
 class: center, middle
 
-## Question: 
+## Question:
 
 ## How many know or have heard or know about <u>open science</u>?
 
@@ -380,7 +380,7 @@ class: center, middle
 
 class: center, middle
 
-## Question: 
+## Question:
 
 ## ...or <u>open access, open methods, open data, or open source</u>?
 

@@ -24,7 +24,7 @@ layout: true
 <img src="../../common/sdca-logo.png" alt="SDCA", width="55">
 <a href="https://slides.lwjohnst.com/steno/2020-11-26/">slides.lwjohnst.com/steno/2020-11-26</a>
 </span>
-</div> 
+</div>
 
 ```{r setup, include=FALSE}
 library(xaringanthemer)
@@ -109,7 +109,7 @@ class: middle, center
 ???
 
 What does philosophy have to do with this? It's important to bring this up
-because it is the basis to understand why the tools I'll talk about are 
+because it is the basis to understand why the tools I'll talk about are
 important.
 
 - Verification... *How* claim was made is more important than the claim itself. Anyone can make a claim, but a philosophy of science is that any
@@ -148,7 +148,7 @@ copy of)
 ]
 
 .footnote[
-1. [Plessar, 2018](https://www.frontiersin.org/articles/10.3389/fninf.2017.00076/full#B9), also from an American Statistical Association [statement](https://www.amstat.org/asa/files/pdfs/POL-ReproducibleResearchRecommendations.pdf).  
+1. [Plessar, 2018](https://www.frontiersin.org/articles/10.3389/fninf.2017.00076/full#B9), also from an American Statistical Association [statement](https://www.amstat.org/asa/files/pdfs/POL-ReproducibleResearchRecommendations.pdf).
 2. Or rather "irreplicability crisis".
 ]
 
@@ -174,11 +174,11 @@ studies <- init_experiments(
         "estimate",
         "claim"
     )
-) 
+)
 studies["analyst", "Reproducing"] <- "different"
 studies[c("analyst", "experimenter", "data", "code"), "Replicating"] <- "different"
 
-sci_figure(studies, 
+sci_figure(studies,
     stage_names = c(
         "Question",
         "Study Design",
@@ -209,7 +209,7 @@ Study design, methods, and analysis need:
 
 - Easy to access to *any* researcher
 
-- Record of activity 
+- Record of activity
 
 .footnote[
 1. For both replicating and reproducing.
@@ -236,7 +236,7 @@ class: middle, center
 ## Current state of verification in science
 
 .pull-left[
-- Already know *replication* is a major problem 
+- Already know *replication* is a major problem
     - e.g. Many Labs Project, OSC Project, Reproducibility Project
 
 - Don't know extent of *reproducibility*
@@ -253,8 +253,8 @@ tribble(
     "Data available", 41,
     "Code available", 37,
     "Could reproduce", 21
-) %>% 
-    mutate(text = fct_inorder(text)) %>% 
+) %>%
+    mutate(text = fct_inorder(text)) %>%
     ggplot(aes(x = text, y = value, label = value)) +
     geom_col(fill = "#214c78", width = 0.7) +
     geom_text(nudge_y = 3) +
@@ -263,7 +263,7 @@ tribble(
     theme_minimal() +
     labs(y = "Articles",
          title = "Reproducibility of Registered\nReports in Psychology [3]") +
-    theme(axis.title.x = element_blank(), 
+    theme(axis.title.x = element_blank(),
           panel.grid = element_blank())
 ```
 
@@ -338,12 +338,12 @@ knitr::include_graphics(image_steno_path("reproducibility-spectrum.jpg"))
 
 ???
 
-As I mentioned earlier, reproducibility is about taking the same data and the 
+As I mentioned earlier, reproducibility is about taking the same data and the
 same analysis plan with the code and having someone else reproduce the
 exact same findings as the original authors.
 
-There are various degrees of this and we in health research have challenges 
-with the data side of the issue, but sharing the 
+There are various degrees of this and we in health research have challenges
+with the data side of the issue, but sharing the
 
 Not same as keeping backups like when e.g. using Dropbox
 
@@ -369,7 +369,7 @@ However, this is a highly informal system and very prone to error and mistakes.
 
 --
 
-Think about these questions: 
+Think about these questions:
 
 - Do you have many files of different versions of a manuscript do you have, including getting feedback from co-authors, etc?
 
@@ -430,7 +430,7 @@ don't work or are quite difficult.
 
 - Better project management
 
-- Greater visibility 
+- Greater visibility
 
 - Greater potential for gaining collaborators
 
@@ -454,4 +454,4 @@ single version of each file, rather than multiple versions of the same file.
 
 - Solo research project: [Code for a paper from PhD](https://github.com/lwjohnst86/tagDiabetes)
 
-- Team-based and national/local teaching project: [r-cubed](https://gitlab.com/rostools/r-cubed) 
+- Team-based and national/local teaching project: [r-cubed](https://gitlab.com/rostools/r-cubed)

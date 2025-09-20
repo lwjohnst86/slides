@@ -4,7 +4,7 @@ date: "2024-04-04"
 date-format: long
 author: Luke W. Johnston
 location: "Register Space session at Steno Diabetes Center Aarhus, Denmark"
-format: 
+format:
   revealjs:
     fig-align: center
     from: markdown+emoji
@@ -14,8 +14,8 @@ format:
     progress: true
     footer: "Licensed under CC-BY 4.0.<br>Slides at [slides.lwjohnst.com](https://slides.lwjohnst.com)"
     embed-resources: true
-editor: 
-  markdown: 
+editor:
+  markdown:
     wrap: 72
     canonical: true
 ---
@@ -198,9 +198,9 @@ Integrates with `tidyverse`:
 library(tidyverse)
 library(arrow)
 open_dataset("path/to/bef") %>%
-  to_duckdb() %>% 
-  filter(PNR != "") %>% 
-  count(year, KOEN) 
+  to_duckdb() %>%
+  filter(PNR != "") %>%
+  count(year, KOEN)
 ```
 
 ## Python can use DuckDB, but not Stata or SAS {.center}
@@ -215,10 +215,10 @@ open_dataset("path/to/bef") %>%
 library(tidyverse)
 library(furrr)
 plan(multisession)
-# model_formula and generate_results are 
+# model_formula and generate_results are
 # created elsewhere
 future_map(
-  model_formula, 
+  model_formula,
   generate_results
 )
 ```

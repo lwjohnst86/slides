@@ -2,7 +2,7 @@
 title: "NetCoupler: Inferring causal pathways between high-dimensional metabolic data and external factors"
 author: |
     Luke W. Johnston
-    
+
     Steno Diabetes Center Aarhus, Denmark
 output:
   xaringan::moon_reader:
@@ -24,7 +24,7 @@ layout: true
 <img src="../../common/sdca-logo.png" alt="SDCA", width="55">
 <a href="https://slides.lwjohnst.com/iarc/2020-12-16/">slides.lwjohnst.com/iarc/2020-12-16</a>
 </span>
-</div> 
+</div>
 
 ```{r setup, include=FALSE}
 options(htmltools.dir.version = FALSE)
@@ -114,7 +114,7 @@ class: center, middle
 
 ---
 
-## Modern studies generate a mass of metabolic data 
+## Modern studies generate a mass of metabolic data
 
 .pull-left[
 - -omics type data
@@ -230,7 +230,7 @@ class: middle, center
 ## Initial development
 
 .pull-left[
-- Developed by Clemens Wittenbecher for his 
+- Developed by Clemens Wittenbecher for his
 [PhD thesis](https://publishup.uni-potsdam.de/opus4-ubp/frontdoor/deliver/index/docId/40459/file/wittenbecher_diss.pdf)
 
 - Algorithm that:
@@ -304,7 +304,7 @@ knitr::include_graphics(image_iarc_path("netcoupler-github.png"))
 --
 
 - Inputs/outputs generally
-[tibbles](https://tibble.tidyverse.org/)/dataframes or 
+[tibbles](https://tibble.tidyverse.org/)/dataframes or
 [tidygraph tibbles](https://tidygraph.data-imaginist.com/)
 
 --
@@ -328,10 +328,10 @@ knitr::include_graphics(image_iarc_path("netcoupler-input-output.png"))
 ## Example code
 
 ```{r, eval=FALSE, echo=TRUE}
-std_data <- dataset %>% 
+std_data <- dataset %>%
     nc_standardize(starts_with("metabolite"))
-network <- std_data %>% 
-    nc_estimate_network(starts_with("metabolite")) %>% 
+network <- std_data %>%
+    nc_estimate_network(starts_with("metabolite")) %>%
     as_edge_tbl()
 ```
 

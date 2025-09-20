@@ -2,7 +2,7 @@
 title: "NetCoupler: Inferring causal pathways between high-dimensional metabolic data and external factors"
 author: |
     Luke W. Johnston
-    
+
     Steno Diabetes Center Aarhus, Denmark
 output:
   xaringan::moon_reader:
@@ -26,7 +26,7 @@ layout: true
 <img src="../../common/sdca-logo.png" alt="SDCA", width="55">
 <a href="https://slides.lwjohnst.com/des/2021-05-21/">slides.lwjohnst.com/des/2021-05-21</a>
 </span>
-</div> 
+</div>
 
 ```{r setup, include=FALSE}
 options(htmltools.dir.version = FALSE)
@@ -198,7 +198,7 @@ class: middle
 ## Initial development
 
 .pull-left[
-- Developed by Clemens Wittenbecher for his 
+- Developed by Clemens Wittenbecher for his
 [PhD thesis](https://publishup.uni-potsdam.de/opus4-ubp/frontdoor/deliver/index/docId/40459/file/wittenbecher_diss.pdf)
 
 - Algorithm that:

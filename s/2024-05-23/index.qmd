@@ -6,7 +6,7 @@ author:
   - Luke W. Johnston
   - Daniel B. Ibsen
 location: "Research Retreat for Steno Diabetes Center Aarhus, Denmark"
-format: 
+format:
   revealjs:
     fig-align: center
     from: markdown+emoji
@@ -16,8 +16,8 @@ format:
     progress: true
     footer: "Licensed under CC-BY 4.0.<br>Slides at [slides.lwjohnst.com](https://slides.lwjohnst.com)"
     embed-resources: true
-editor: 
-  markdown: 
+editor:
+  markdown:
     wrap: 72
     canonical: true
 ---

@@ -47,14 +47,14 @@ library(xaringanthemer)
 style_mono_accent(
     base_color = "#990033",
     base_font_size = "22px",
-    text_font_size = "1.3rem", 
+    text_font_size = "1.3rem",
     text_font_google = google_font("Nanum Gothic"),
     header_font_google = google_font("Merriweather Sans", "300")
 )
 ```
 
 .footer-right[
-Website: [steno-aarhus.github.io/dif-project](https://steno-aarhus.github.io/dif-project)  
+Website: [steno-aarhus.github.io/dif-project](https://steno-aarhus.github.io/dif-project)
 ]
 
 ---
@@ -98,7 +98,7 @@ necessary.
 2. Anyone, such as PhD students or new postdocs, who want to discover and learn
 about what data and variables are available that they can or will use.
 
-3. Anyone, like administrators of multi-center projects, who need to 
+3. Anyone, like administrators of multi-center projects, who need to
 track changes and additions to data as well as who is using which variables for
 what.
 
@@ -115,7 +115,7 @@ in the data and what do they mean?
 
 - *When* errors or problems happen in your data, and *if* you've already
 published with or analyzed on it, how do you determine which publications used
-the incorrect data? 
+the incorrect data?
 
 - How can you easily share your data with colleagues or reviewers to check your
 findings?
@@ -126,7 +126,7 @@ findings?
 
 1. Follow and enable FAIR principles
 
-2. Openly licensed and re-usable (e.g. CC-BY, MIT) 
+2. Openly licensed and re-usable (e.g. CC-BY, MIT)
 
 3. State-of-the-art principles and tools in software and UI design
 
@@ -149,4 +149,3 @@ knitr::include_graphics("images/detailed-schematic.png")
 - Developing "Minimum Viable Product" of first component within ~2 years
 
 - Emphasize making training and documentation targeted to non-technical users throughout project
-

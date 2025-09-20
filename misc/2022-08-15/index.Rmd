@@ -45,14 +45,14 @@ library(xaringanthemer)
 style_mono_accent(
     base_color = "#990033",
     base_font_size = "22px",
-    text_font_size = "1.3rem", 
+    text_font_size = "1.3rem",
     text_font_google = google_font("Nanum Gothic"),
     header_font_google = google_font("Merriweather Sans", "300")
 )
 ```
 
 .footer-right[
-Website: [steno-aarhus.github.io/dif-project](https://steno-aarhus.github.io/dif-project)  
+Website: [steno-aarhus.github.io/dif-project](https://steno-aarhus.github.io/dif-project)
 Slides: [slides.lwjohnst.com/misc/2022-08-15](https://slides.lwjohnst.com/misc/2022-08-15/)
 ]
 
@@ -72,8 +72,8 @@ xaringanExtra::use_logo(
 
 ???
 
-<!-- 
-Details:  
+<!--
+Details:
 
 - ~20 min presentation
 - Specific to DD2
@@ -98,13 +98,13 @@ that is, to help maximize the utility and general usage of the DD2 resource for
 researchers and eventually for diabetes patients. So I'll get into the aims
 right away, briefly describe what this project looks like from a conceptual level,
 go briefly over the timeline, and where we are right now and the next immediate steps.
-Then I have a couple questions that I'd like us to discuss a bit. 
+Then I have a couple questions that I'd like us to discuss a bit.
 
 We'll keep this really informal, so just jump in and ask questions whenever you want.
 
 ---
 
-## Aims of the Data Infrastructure Framework (DIF) Project 
+## Aims of the Data Infrastructure Framework (DIF) Project
 
 ???
 
@@ -120,7 +120,7 @@ documentation, and findings
 
 ???
 
-Just for some clarification, infrastructure here meaning the computational 
+Just for some clarification, infrastructure here meaning the computational
 structure of the data and all its support structures, for instance, how the files
 and folders are structured, where the data files are saved and what file format,
 how to connect to data. In many ways like the roads and buildings of a city,
@@ -145,11 +145,11 @@ that it is easy and free to use for others.
 
 ---
 
-## `r fa2("compass")` Guiding principles 
+## `r fa2("compass")` Guiding principles
 
 1. Follow and enable FAIR principles
 
-2. Openly licensed and re-usable (e.g. CC-BY, MIT) 
+2. Openly licensed and re-usable (e.g. CC-BY, MIT)
 
 3. State-of-the-art principles and tools in software and UI design
 
@@ -196,7 +196,7 @@ knitr::include_graphics("images/user-2.png")
 By User 1 I mean any process to get the data into the format needed for the backend.
 I'm aware there are already well developed pipelines for getting DD2 data into a
 database format, right? So we'll need some way of connecting a pipeline to feed
-into the DIF's backend. 
+into the DIF's backend.
 
 This timeline was stretched to account for various potential delays, so estimates
 could realistically be shortened by maybe 30-40%... but best to keep conservative.
@@ -207,7 +207,7 @@ we could begin meaningfully contributing to the DD2 database.
 
 ---
 
-## Next steps 
+## Next steps
 
 - Already hired RSE and DBA starting Sept
 

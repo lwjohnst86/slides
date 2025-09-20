@@ -23,7 +23,7 @@ layout: true
 <img src="../../common/sdca-logo.png" alt="SDCA", width="55">
 <a href="https://slides.lwjohnst.com/steno/2021-10-04/">slides.lwjohnst.com/steno/2021-10-04</a>
 </span>
-</div> 
+</div>
 
 ```{r setup, include=FALSE}
 library(xaringanthemer)
@@ -88,4 +88,3 @@ knitr::include_graphics(image_iarc_path("ukbiobank-netcoupler-results.png"))
 
 Very preliminary results using UK Biobank data.
 ]
-
