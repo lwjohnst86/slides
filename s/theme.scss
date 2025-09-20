@@ -1,17 +1,22 @@
 /*-- scss:defaults --*/
 
-@import url(https://fonts.googleapis.com/css?family=Comfortaa);
-@import url(https://fonts.googleapis.com/css?family=Josefin+Sans);
+@import url(https://fonts.googleapis.com/css?family=Fira+Sans);
+@import url(https://fonts.googleapis.com/css?family=Titillium+Web);
+@import url(https://fonts.googleapis.com/css?family=Maven+Pro);
+@import url(https://fonts.googleapis.com/css?family=Urbanist);
 @import url(https://fonts.googleapis.com/css2?family=PT+Mono);
 
-$font-family-serif: "Comfortaa", sans-serif !default;
-$font-family-sans-serif: "Comfortaa", sans-serif !default;
-$font-family-monospace: "PT Mono", monospace !default;
-$presentation-heading-font: "Josefin Sans", sans-serif !default;
-$body-bg: darkslategray !default;
-$presentation-font-size-root: 36px !default;
-$presentation-h2-font-size: 1.75em !default;
+$font-family-serif: "Urbanist", sans-serif !default;
+$font-family-sans-serif: "Urbanist", sans-serif !default;
+$font-family-monospace: "Urbanist", monospace !default;
+$presentation-heading-font: "Urbanist", sans-serif !default;
+$font-weight-normal: 500;
+$body-bg: slategray !default;
+$presentation-font-size-root: 32px !default;
+$presentation-h2-font-size: 1.8em !default;
 $presentation-line-height: 1.5;
+$code-block-font-size: 1em;
+$code-block-bg: lighten($body-bg, 10%);
 $link-color: paleturquoise;
 
 /*-- scss:rules --*/

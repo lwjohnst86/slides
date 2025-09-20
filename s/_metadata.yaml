@@ -1,0 +1,13 @@
+format: 
+  revealjs:
+    fig-align: center
+    from: markdown+emoji
+    theme:
+      - dark
+      - theme.scss
+    progress: true
+    footer: "Licensed under CC-BY 4.0.<br>Slides at [slides.lwjohnst.com](https://slides.lwjohnst.com)"
+    embed-resources: true
+
+date-format: long
+author: Luke W. Johnston
