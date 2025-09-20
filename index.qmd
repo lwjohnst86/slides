@@ -1,17 +1,117 @@
 ---
-title: "Presentation slides"
-description: |
-  Slides for presentations that I've given.
-title: "Listing Example"
+title: "Presentations"
 listing:
-  id: sample-listings
-  contents: 
-    - posts
-    - archived-items.yaml
-  sort: "date desc"
-  type: table
+  - id: "quarto-based"
+    contents: s
+    template: listing.ejs
+    sort-ui: false
+    filter-ui: false
+    sort: "date desc"
 ---
 
-## Current listing
+The slides below were created using [Quarto](https://quarto.org/) (as is
+this website). I originally built this website using the
+[distill](https://rstudio.github.io/distill/) R package, with the slides
+created using R Markdown via the
+[xaringan](https://slides.yihui.org/xaringan/) package. I have been in
+the (very slow) process of converting everything over to Quarto. The
+benefit of Quarto is that I can create a Markdown version of the slides,
+and Quarto will generate them into HTML slides and list them below
+automatically. But that also means that some of my older slides I have
+to manually link (see the section below). That's why there are two
+sections listing my presentations.
 
-## Previous slides
+::: {#quarto-based}
+:::
+
+## Previous presentations
+
+These slides were created using [R
+Markdown](https://rmarkdown.rstudio.com/), and haven't been converted to
+Quarto yet.
+
+-   **October 25, 2022**: [*Open science and FAIR principles:
+    Under-valued and under-appreciated*](steno/2022-10-25/index.html)
+    talk for the PhD seminar Data management in research at Steno
+    Diabetes Center Aarhus, Denmark
+
+-   **August 17, 2022**: [*Approaches to open, scalable, and
+    reproducible data management and analysis: Training and
+    software*](misc/2022-08-17/index.html) talk to the Department of
+    Biology and Biological Engineering, Chalmers University of
+    Technology, Sweden
+
+-   **August 15, 2022**: [*Implementing an open and scalable
+    infrastructure for the DD2 data*](misc/2022-08-15/index.html) talk
+    for the quarterly meeting of the DD2
+
+-   **August 11, 2022**: [*How (and why) to become more reproducible and
+    open in your research*](au/2022-08-11/index.html) talk for Dr.
+    Oleguer Plana-Ripoll's research group
+
+-   **April 26, 2022**: [*A framework for an open and scalable
+    infrastructure for health data exemplified by the DD2
+    initiative*](steno/2022-04-26/index.html) talk for the Steno
+    Epidemiology and Biostatistics Network meeting
+
+-   **April 25, 2022**: [*Workshop on reproducibility and open
+    science*](au/2022-04-25/index.html) for the National Center for
+    Register-based Research's (NCRR) Retreat Day
+
+-   **January 13, 2022**: [*A framework for an open and scalable
+    infrastructure for health data exemplified by the DD2
+    initiative*](steno/2022-01-13/index.html) talk for Steno Thursdays
+
+-   **November 18, 2021**: [*Shifting Science and Research Culture
+    Towards Openness and Reproducibility Through Education and
+    Training*](misc/2021-11-18/index.html) talk for the [Life Science
+    Trainers](https://lifescitrainers.org/2021/11/09/november-2021-how-i-teach-life-scientists-r/)
+
+-   **July 06, 2021**: [*NetCoupler: Inferring causal pathways between
+    high-dimensional metabolomics data and external
+    factors*](user/2021-07-06/index.html) talk for the useR! 2021
+    conference
+
+-   **May 21, 2021**: [*NetCoupler: Inferring causal pathways between
+    high-dimensional metabolic data and external
+    factors*](des/2021-05-21/index.html) talk for Danish Epidemiological
+    Society Annual Meeting
+
+-   **February 08, 2021**: [*Reproducibility and code sharing in
+    science: Why it's important and how to do
+    it*](steno/2021-02-08/index.html) talk for the Diabetes Epidemiology
+    group at Steno Diabetes Center Aarhus
+
+-   **January 08, 2021**: [*Expert Corner for the Basic Human Nutrition
+    course*](misc/2021-01-08/index.html) talk for a University of
+    Toronto Basic Human Nutrition Course
+
+-   **December 16, 2020**: [*NetCoupler: Inferring causal pathways
+    between high-dimensional metabolic data and external
+    factors*](iarc/2020-12-16/index.html) talk for IARC Nutritional
+    Methodology and Biostatistics Group
+
+-   **November 26, 2020**: [*Tools and workflows for improving the
+    process for scientific research to meet modern
+    demands*](steno/2020-11-26/index.html) talk for Steno Thursdays in
+    Aarhus
+
+-   **February 06, 2020**: [*MELD Project:* M*etabolic consequences of*
+    E*arly* L*ife adversity and risk for type 2*
+    D*iabetes*](steno/2020-02-06/index.html) talk for Steno Thursdays in
+    Aarhus
+
+-   **February 04, 2020**: [*MELD Project: The* M*etabolic consequences
+    of adverse* E*arly* L*ife conditions and subsequent risk for adult
+    type 2* D*iabetes*](dda/2020-02-04/index.html) talk for Danish
+    Diabetes Academy Start-up Meeting for Funded Projects
+
+-   **September 12, 2019**: [*A data-driven approach at characterizing
+    heterogeneity in neuropathy
+    assessments*](au-ph/2019-09-12/index.html) talk for Work-In-Progress
+    meeting at Public Health in Aarhus University
+
+-   **August 15, 2019**: [*Analyzing high dimensional metabolic data in
+    epidemiological studies*](au-ph/2019-08-15/slides.html) talk for
+    weekly Section for Epidemiology meeting at Public Health in Aarhus
+    University

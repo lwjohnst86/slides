@@ -1,0 +1,51 @@
+project:
+  type: website
+  render: 
+    - "*.qmd"
+
+website:
+  title: "Luke's Slides"
+  description: Presentation slides
+  repo-url: https://github.com/lwjohnst86/slides
+  site-url: https://slides.lwjohnst.com
+  repo-branch: main
+  repo-actions: [issue, edit, source]
+  search:
+    location: navbar
+    type: textbox
+  navbar:
+    left: 
+      - text: Home
+        href: index.qmd
+    right:
+      - text: Sites
+        menu:
+          - text: Main
+            href: https://lukewjohnston.com
+          - text: CV
+            href: https://cv.lukewjohnston.com
+          - text: Posters
+            href: https://posters.lwjohnst.com
+    tools:
+      - icon: github
+        href: https://github.com/lwjohnst86/slides
+    
+  page-footer: 
+    center:
+      - text: "License CC-BY 4.0"
+
+format:
+  html:
+    from: markdown+emoji
+    theme:
+      - yeti
+
+editor: 
+  markdown: 
+    wrap: 72
+    canonical: true
+
+date-format: long
+
+execute: 
+  freeze: auto
