@@ -329,7 +329,7 @@ window.document.addEventListener("DOMContentLoaded", function (_event) {
     return undefined;
   };
 
-  const manageSidebarVisibility = (el, placeholderDescriptor) => {
+  const manageSidebarVisiblity = (el, placeholderDescriptor) => {
     let isVisible = true;
     let elRect;
 
@@ -553,19 +553,19 @@ window.document.addEventListener("DOMContentLoaded", function (_event) {
   }
 
   // Manage the visibility of the toc and the sidebar
-  const marginScrollVisibility = manageSidebarVisibility(marginSidebarEl, {
+  const marginScrollVisibility = manageSidebarVisiblity(marginSidebarEl, {
     id: "quarto-toc-toggle",
     titleSelector: "#toc-title",
     dismissOnClick: true,
   });
-  const sidebarScrollVisibility = manageSidebarVisibility(sidebarEl, {
+  const sidebarScrollVisiblity = manageSidebarVisiblity(sidebarEl, {
     id: "quarto-sidebarnav-toggle",
     titleSelector: ".title",
     dismissOnClick: false,
   });
   let tocLeftScrollVisibility;
   if (leftTocEl) {
-    tocLeftScrollVisibility = manageSidebarVisibility(leftTocEl, {
+    tocLeftScrollVisibility = manageSidebarVisiblity(leftTocEl, {
       id: "quarto-lefttoc-toggle",
       titleSelector: "#toc-title",
       dismissOnClick: true,
@@ -671,7 +671,7 @@ window.document.addEventListener("DOMContentLoaded", function (_event) {
 
   const hideOverlappedSidebars = () => {
     marginScrollVisibility(toRegions(rightElementObserver.getVisibleEntries()));
-    sidebarScrollVisibility(toRegions(leftElementObserver.getVisibleEntries()));
+    sidebarScrollVisiblity(toRegions(leftElementObserver.getVisibleEntries()));
     if (tocLeftScrollVisibility) {
       tocLeftScrollVisibility(
         toRegions(leftElementObserver.getVisibleEntries())
