@@ -28,7 +28,8 @@ sections listing my presentations.
 
 These slides were created using [R
 Markdown](https://rmarkdown.rstudio.com/), and haven't been converted to
-Quarto yet.
+Quarto yet. They don't render very nicely though, because of the
+different ways that distill and xaringan worked compared to Quarto.
 
 -   **October 25, 2022**: [*Open science and FAIR principles:
     Under-valued and under-appreciated*](steno/2022-10-25/index.html)
