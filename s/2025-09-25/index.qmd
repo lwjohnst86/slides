@@ -1,0 +1,619 @@
+---
+title: "Denmark Statistics and large health data: We don't know what we're doing"
+date: "2025-09-25"
+location: "Department of Urology, Aarhus University Hospital, Denmark"
+---
+
+::: content-hidden
+We think it could be interesting to hear about you perspectives on
+working with Statistics Denmark and your views on working with health
+data on a large scale. Does this make sense to you?
+
+My experience with working on DST has largely been much more on the
+technical/programming side (how to do analyses much faster, etc), on the
+reproducibility/validity of scientific research (in general but also
+specific to working with larger data), and a lot of ranting about how
+DST decided to organise their data (it is very out-dated),
+
+45 minutes \~ 40 slides?
+:::
+
+# Who am I? :wave: :wave:
+
+## History {.center}
+
+-   MSc and PhD in Nutritional Science in Toronto, Canada
+
+-   (Previous) Research in diabetes epidemiology
+
+-   Team leader at SDCA for the [Seedcase
+    Project](https://seedcase-project.org), an NNF funded software
+    project to simplify building FAIR data
+
+::: notes
+I started out doing more "traditional" research but have gradually been
+moving towards more computationally technical work, like software
+development and data engineering.
+
+As I continued my research career, I got more and more into building
+software and creating courses to teach researchers about better
+programming practices. This also meant that I had less and less time to
+publish papers, because, there's only so much time in a day.
+
+As I go along, keep this in mind, because it highlights a big issue we
+have in research.
+:::
+
+## My work on large data {.center}
+
+-   [ukbAid](https://steno-aarhus.github.io/ukbAid/): R package and
+    website
+
+-   [DARTER Project](https://steno-aarhus.github.io/darter-project/):
+    Website of application to and documentation on a DST project
+
+# Rationale for this talk {.center}
+
+::: aside
+Aside from being asked to present on it :zany_face:
+:::
+
+## We are woefully behind on data engineering and programming practices {.center}
+
+::: aside
+Especially when working with massive data
+:::
+
+## This impacts how we do effective and accurate research {.center}
+
+## This is important because: {.center}
+
+-   Validity of results
+
+-   Speed impacts time to results
+
+-   Ability to do more complex analysis with more data
+
+-   Resources (which cost money)
+
+# Aim of this talk {.center}
+
+1.  Highlight issues with Denmark Statistics and the research using the
+    registers (and any other large data)
+
+2.  Spread awareness of how critical programming skills are, especially
+    for large data
+
+3.  Showcase a few tools for doing research faster, so you can focus on
+    doing science
+
+::: notes
+Also keep this very informal, ask questions at any point.
+:::
+
+# Outline
+
+-   Issues with DST
+
+-   Need for dedicated programming expertise
+
+-   Questionable reproducibility and validity
+
+# Denmark Statistics, the good *and* the bad
+
+::: aside
+Anyone do research with DST?
+:::
+
+## The good: Amazing resource, gold mine of data {.center}
+
+::: aside
+*Nearly* unique in the world!
+:::
+
+## And the bad... {.center}
+
+::: notes
+Application alone is a massive barrier to working with the data, but I
+won't talk about that in this talk, just to highlight that it is a big
+issue.
+
+All of these things are important to remember later on in the
+presentation.
+:::
+
+## Everyone works on same server {.center}
+
+-   Same resources that everyone uses, no queue system
+
+-   If someone else uses a lot of memory, that can break your analysis
+
+::: aside
+*Waste of resources, slows research*
+:::
+
+::: notes
+So that basically means, it's best to work on the weekends or evenings
+for simple stuff. And hope that for longer analyses, no one else hoards
+all the memory and crashing your analysis.
+
+Remember how I mentioned about why this is important? This is a massive
+waste of resources and time and effort, if analyses just crash because
+someone else is using too much memory.
+
+It also slows down research because of something so stupid as this.
+:::
+
+## Everyone in a "project" works in the same folder {.center}
+
+::::: columns
+::: column
+``` text
+project/
+├── luke/
+│   └── analysis/
+└── omar/
+    └── paper/
+```
+:::
+
+::: {.column .fragment}
+Collaboration is difficult:
+
+-   *Anyone* can edit anything
+-   No way to know who changed what and when (no "version control")
+-   No easy way to review and improve colleagues' code
+:::
+:::::
+
+::: notes
+No version control or separation of sub-projects.
+
+I'll come back to this reviewing thing later.
+:::
+
+## Data format: Proprietary SAS format {.center}
+
+For example, BEF register:
+
+``` text
+bef2018.sas7bdat
+bef2019.sas7bdat
+bef2020.sas7bdat
+bef2021.sas7bdat
+bef2022.sas7bdat
+```
+
+. . .
+
+Takes many minutes to load one year of data (in R)
+
+::: notes
+This means, if you use R, or Python, or Stata, you have to load these,
+which can take many minutes per file, just to load it.
+
+These are important to know for later.
+:::
+
+## Data updates make more work for us {.center}
+
+``` text
+bef2021.sas7bdat
+bef2022.sas7bdat
+December_2023/bef2022.sas7bdat
+December_2023/bef2023.sas7bdat
+```
+
+> Can you see the issue?
+
+::: notes
+One problem, sometimes there's a new version of a year you already had.
+But you don't know what's been changed. You have to spend time checking
+what changed and if it messes things up for you. The second problem is,
+the updates are in a new folder. So trying to build an automated
+pipeline to load the data in is a bit of a pain because the structure
+changes for each update.
+
+These seem like small things, but these are the things that mess up how
+code works and runs. These things are what make it hard to build
+effective analyses and effective software to ideally simplify your life
+while working with the registers.
+:::
+
+## Metadata is confusing and poorly documented {.center}
+
+-   Variables are not consistent across years
+
+-   Finding the metadata is difficult
+
+::: notes
+Metadata is a big problem. Documentation is relatively poor for most of
+the variables, it's in another location that requires you to dig into
+it. Values in some variables that are numbers but actually are
+categories... but the documentation for what those numbers mean isn't in
+the same place. So requires searching.
+:::
+
+## DST is either unaware of or indifferent to improving things {.center}
+
+::: notes
+There's so much potential there, but DST doesn't seem to value research
+and improvements. Or at least, from their actions and infrastructure so
+far, it doesn't seem like it.
+:::
+
+## Confusing business practices {.center}
+
+-   Charge for storage, not compute time
+
+-   Billable hours for things that should be automated and instant
+
+::: notes
+-   DST's pricing model is questionable. Billable hours for data
+    extraction that should actually be nearly instant if done properly.
+    Charge for storage, but using a storage format that is extremely
+    space inefficient.
+:::
+
+# Need programming expertise, especially for large data
+
+::: aside
+An organization should be responsible for having a well-designed setup,
+otherwise, its on the researcher. But that's not their expertise.
+:::
+
+## Example: DST should use Parquet for data format {.center}
+
+Most data formats are row-based, like CSV or SAS. Newer formats tend to
+be column-based like Parquet.
+
+. . .
+
+::::: columns
+::: column
+### Row-based
+
+``` text
+name,sex,age
+Tim,M,30
+Jenny,F,25
+```
+:::
+
+::: {.column .fragment}
+### Column-based
+
+``` text
+name,Tim,Jenny
+sex,M,F
+age,30,25
+```
+:::
+:::::
+
+## Column-based storage has many advantages
+
+::::: columns
+::: column
+### Compression
+
+``` text
+name,Tim,Sam,Jenny
+sex,M,F,F
+age,30,30,25
+```
+
+...becomes...
+
+``` text
+name,Tim,Jenny,Sam
+sex,M,F{2}
+age,30{2},25
+```
+:::
+
+::: {.column .fragment}
+### Loading
+
+-   Computers read by lines
+-   Per line = same data type
+-   Only read needed columns
+
+``` text
+sex,M,F
+age,30,25
+```
+:::
+:::::
+
+## Parquet is 50-75% smaller than other formats {.center}
+
+| File type            | Size (MB)    |
+|----------------------|--------------|
+| SAS (`.sas7bdat`)    | 1.45 Gb      |
+| CSV (`.csv`)         | \~90% of SAS |
+| Stata (`.dta`)       | 745 Mb       |
+| Parquet (`.parquet`) | 398 Mb       |
+
+: File size between CSV, Parquet, Stata, and SAS for `bef` register for
+2017.
+
+::: notes
+Why doesn't DST use Parquet? It's a clearly better format. Unless they
+keep SAS because it uses so much storage, which they charge for.
+
+e.g. when someone uses Stata, they need to copy the data to the folder
+and convert to Stata format... which basically doubles the amount of
+storage used... thus increasing costs for the researcher.
+
+My own experience: 500 GB of SAS data converted to Parquet is only 80
+GB.
+:::
+
+## Can partition data by a value (e.g. year) and load all at once {.center}
+
+``` text
+bef/year=2018/part-0.parquet
+bef/year=2019/part-0.parquet
+bef/year=2020/part-0.parquet
+bef/year=2021/part-0.parquet
+bef/year=2022/part-0.parquet
+```
+
+. . .
+
+Load in R with `arrow` package:
+
+``` r
+bef <- arrow::open_dataset("bef")
+```
+
+> Loads all years in fraction of a second, compared to \~5 min for one
+> year without using Parquet
+
+## DuckDB is a recent SQL engine designed for analytical queries {.center}
+
+::: aside
+<https://duckdb.org/>
+:::
+
+## SQL, or Structured Query Language, is a language for managing and querying databases {.center}
+
+## Is impressively fast {.center}
+
+-   Faster than almost all other tools
+
+    -   Relatively complex queries (joins, group by, aggregates) on 55
+        Gb takes \< 7.5 min [^1]
+
+    -   Generally, simpler queries take \< 10 seconds for massive
+        datasets
+
+-   Easily connects with Parquet datasets
+
+[^1]: From this
+    [presentation](https://www.youtube.com/watch?v=8qzVV7eEiaI) and
+    [this](https://www.youtube.com/watch?v=t2BjZ5hSjHo) one
+
+## Example in DST {.center}
+
+> 1.  Load all 45 years of BEF
+> 2.  Drop all missing PNR
+> 3.  Group by year
+> 4.  Count sex
+
+. . .
+
+**Takes \< 6 seconds**
+
+## Can be easily used in R {.center}
+
+Integrates with `tidyverse`:
+
+``` r
+library(tidyverse)
+library(arrow)
+open_dataset("path/to/bef") %>%
+  to_duckdb() %>%
+  filter(PNR != "") %>%
+  count(year, KOEN)
+```
+
+## Parallel processing: Running multiple sessions or cores at once {.center}
+
+## Incredibly easy to do in R with `furrr` {.center}
+
+``` r
+library(tidyverse)
+library(furrr)
+plan(multisession)
+# model_formula and generate_results are
+# created elsewhere
+future_map(
+  model_formula,
+  generate_results
+)
+```
+
+::: aside
+`furrr` = `future` + `purrr` packages
+:::
+
+## Greatly reduce time to results {.center}
+
+> Example: Converting 1800 SAS files to Parquet takes \<12 hours,
+> compared to \>7 days
+
+# Reproducibility and validity of research from large data
+
+::: notes
+Background on reproducibility, a bit of rant there.
+
+Mention tho that I believe knowledge generated from science is still
+better than things made up out of thin air.
+:::
+
+## Reproducibility is already a big issue {.center}
+
+::: {layout-ncol="2"}
+```{r}
+#| echo: false
+#| fig-height: 6
+library(tidyverse)
+theme_set(
+  theme_minimal() +
+    theme(
+      plot.background = element_rect(fill = "#E9E9E9"),
+      axis.title = element_blank(),
+      axis.text.y = element_text(size = 18),
+      axis.text.x = element_blank(),
+      axis.ticks = element_blank(),
+      axis.line = element_blank()
+    )
+)
+
+search <- tribble(
+  ~item, ~description, ~value, ~order,
+  "Articles", "Found among all articles", 3467, 1,
+  "GitHub\nrepos", "Those with a GitHub link and at least one notebook", 2660, 2
+) |>
+  mutate(
+    item = fct_rev(fct_reorder(item, order))
+  )
+
+ggplot(search, aes(y = item, x = value, label = value)) +
+  geom_col(fill = "#203C6E") +
+  geom_text(nudge_x = 200, size = 5.5)
+```
+
+```{r}
+#| echo: false
+#| fig-height: 6
+repro_results <- tribble(
+  ~item, ~description, ~value, ~order,
+  "Total notebooks", "Total notebook files found in all the repositories", 27271, 1,
+  "Notebook repo\nwas valid", "File names were correct, dependency information was available, no local modules were needed.", 15817, 2,
+  "Could install\ndependencies", "Could install dependencies without errors.", 10388, 3,
+  "Finished executing\nwithout errors", "Could run without any errors.", 1203, 4,
+  "Same results\nas paper", "When the results of the paper matched what the execution results output.", 879, 5
+) |>
+  mutate(
+    percent = str_c(value, "\n(", round(value / max(value) * 100), "%)"),
+    item = fct_rev(fct_reorder(item, order))
+  )
+
+ggplot(repro_results, aes(y = item, x = value, label = percent)) +
+  geom_col(fill = "#203C6E") +
+  geom_text(nudge_x = 1700, size = 5.5)
+```
+:::
+
+[DOI:
+10.1093/gigascience/giad113](https://academic.oup.com/gigascience/article/doi/10.1093/gigascience/giad113/7516267?login=false)
+
+## Analyzing, and reproducing, large data requires programming skills {.center}
+
+-   With massive data, you really need to know how to code and
+    programming
+
+-   But, researchers are not trained for this kind of skill
+
+::: notes
+Hoping your skills and knowledge are enough to do the analysis, without
+actually knowing if they are good enough.
+:::
+
+## No one reviews code, so, no one knows if it's correct {.center}
+
+-   This problem is bigger than people realize.
+
+::: aside
+Or rather, *very* few formally review code.
+:::
+
+::: notes
+I've done a few formal code reviews and ... it's not good. I had to stop
+reviewing things because it was just too much work and too stressful.
+Until a cultural change happens, I'm very pessimistic about things.
+Given code that I've seen so far, I think this is a bigger problem to
+the accuracy of research from registers than a lot of people realise.
+
+I get it, researchers are not taught these things. Nor do they have a
+lot of time, they have so many things to do. In my team, where we build
+software, we review every single change or addition to the code. It's
+hard work. It takes a lot of time to learn to make some changes that are
+easy to review. And it takes a lot of time to understand what the person
+is trying to do with the code.
+
+And this is with three of us, including me, who have a lot of
+programming and software development experience.
+:::
+
+## "Science as amateur software development" {.center}
+
+> "But the code runs!"
+
+::: aside
+From this academic
+[presentation](https://www.youtube.com/watch?v=8qzVV7eEiaI).
+:::
+
+::: notes
+The state of programming and software development in research is abysmal
+to say the least.
+
+The problem that researchers aren't even really aware of this problem No
+funding goes to it, there are few courses on it, it isn't required, we
+cannot hire skilled personnel for this either because it isn't funded
+nor valued. What ends up happening? You get numbers from running the
+analysis... But now do you even know it's right? Programming is *hard*,
+way harder than doing research.
+:::
+
+## Working in DST makes reproducibility harder {.center}
+
+-   Hard to effectively review code
+
+-   Hard to collaborate together
+
+::: notes
+So makes it harder to have several people working on a project, for
+example, if one person has more expertise in programming/coding.
+:::
+
+## DST's organization makes it difficult to do effective and reproducible research {.center}
+
+-   No version control
+
+-   Use proprietary data formats
+
+-   No queue system
+
+-   No training materials or courses
+
+## Science is not about trust, it's about verification {.center}
+
+::: aside
+Some trust is needed, but shouldn't be dependent on it.
+:::
+
+::: notes
+The whole point of science is verification. Otherwise we are no
+different from pseudoscience. If we can't verify that the results are
+correct, by looking at the code and reviewing it and running it, how can
+we know and trust it?
+:::
+
+## It's difficult to trust what researchers do in DST {.center}
+
+# What to do?
+
+## If reviewing papers, request or demand code is accessible {.center}
+
+::: aside
+You don't have to review it, just ask for it.
+:::
+
+## Recognize, value, and reward those with programming expertise {.center}
+
+## Pressure DST to improve things {.center}
