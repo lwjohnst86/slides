@@ -89,9 +89,13 @@ Especially when working with massive data
 
 ::: notes
 Also keep this very informal, ask questions at any point.
+
+There's a lot of issues with how DST is organised and structured. I
+won't go into all of them, but instead will focus on some of the more
+basic, fundamental ones.
 :::
 
-# Outline
+## General "roadmap" :map:
 
 -   Issues with DST
 
@@ -161,8 +165,8 @@ project/
 Collaboration is difficult:
 
 -   *Anyone* can edit anything
--   No way to know who changed what and when (no "version control")
--   No easy way to review and improve colleagues' code
+-   Can't know who changed what and when (no "version control")
+-   Not easy to review and improve other's code
 :::
 :::::
 
@@ -242,18 +246,9 @@ and improvements. Or at least, from their actions and infrastructure so
 far, it doesn't seem like it.
 :::
 
-## Confusing business practices {.center}
+## Highlights lack of engineering and design expertise at DST {.center}
 
--   Charge for storage, not compute time
-
--   Billable hours for things that should be automated and instant
-
-::: notes
--   DST's pricing model is questionable. Billable hours for data
-    extraction that should actually be nearly instant if done properly.
-    Charge for storage, but using a storage format that is extremely
-    space inefficient.
-:::
+-   Puts tech burden onto researchers
 
 # Need programming expertise, especially for large data
 
@@ -368,8 +363,8 @@ Load in R with `arrow` package:
 bef <- arrow::open_dataset("bef")
 ```
 
-> Loads all years in fraction of a second, compared to \~5 min for one
-> year without using Parquet
+> Load all years in \< 1 sec, compared to \~5 min for one year from SAS
+> format
 
 ## DuckDB is a recent SQL engine designed for analytical queries {.center}
 
@@ -419,38 +414,25 @@ open_dataset("path/to/bef") %>%
   count(year, KOEN)
 ```
 
-## Parallel processing: Running multiple sessions or cores at once {.center}
+## So... why is this important? Seems like easy stuff! {.center}
 
-## Incredibly easy to do in R with `furrr` {.center}
-
-``` r
-library(tidyverse)
-library(furrr)
-plan(multisession)
-# model_formula and generate_results are
-# created elsewhere
-future_map(
-  model_formula,
-  generate_results
-)
-```
-
-::: aside
-`furrr` = `future` + `purrr` packages
-:::
-
-## Greatly reduce time to results {.center}
-
-> Example: Converting 1800 SAS files to Parquet takes \<12 hours,
-> compared to \>7 days
+-   Because it highlights a lack of expertise and understanding of some
+    basic things
 
 # Reproducibility and validity of research from large data
 
-::: notes
-Background on reproducibility, a bit of rant there.
+Reproducibility: same data + same code = same results?
 
-Mention tho that I believe knowledge generated from science is still
-better than things made up out of thin air.
+::: notes
+Background on reproducibility, explain what
+
+Which ties into reproducibility, which is when the same data and the
+same code are run independently of the original authors, to get the same
+results.
+
+But if the expertise for coding, for basic understandings of computeres
+and data, are lacking, it's difficult to actually ensure
+reproducibility.
 :::
 
 ## Reproducibility is already a big issue {.center}
@@ -532,6 +514,9 @@ Or rather, *very* few formally review code.
 :::
 
 ::: notes
+Who has reviewed code here, like gone through all of it, not just looked
+at it?
+
 I've done a few formal code reviews and ... it's not good. I had to stop
 reviewing things because it was just too much work and too stressful.
 Until a cultural change happens, I'm very pessimistic about things.
@@ -572,24 +557,22 @@ way harder than doing research.
 
 ## Working in DST makes reproducibility harder {.center}
 
--   Hard to effectively review code
+::: ::: {.columns} ::: {.column} - Hard to review code
 
--   Hard to collaborate together
+-   Hard to collaborate
 
-::: notes
-So makes it harder to have several people working on a project, for
-example, if one person has more expertise in programming/coding.
-:::
-
-## DST's organization makes it difficult to do effective and reproducible research {.center}
-
--   No version control
+-   No version control ::: ::: {.column}
 
 -   Use proprietary data formats
 
 -   No queue system
 
--   No training materials or courses
+-   No training materials or courses ::: :::
+
+::: notes
+So makes it harder to have several people working on a project, for
+example, if one person has more expertise in programming/coding.
+:::
 
 ## Science is not about trust, it's about verification {.center}
 
@@ -602,6 +585,9 @@ The whole point of science is verification. Otherwise we are no
 different from pseudoscience. If we can't verify that the results are
 correct, by looking at the code and reviewing it and running it, how can
 we know and trust it?
+
+Mention tho that I believe knowledge generated from science is still
+better than things made up out of thin air.
 :::
 
 ## It's difficult to trust what researchers do in DST {.center}
