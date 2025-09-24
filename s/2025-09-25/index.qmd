@@ -95,7 +95,7 @@ won't go into all of them, but instead will focus on some of the more
 basic, fundamental ones.
 :::
 
-## General "roadmap" :map:
+## General "roadmap" :world_map: {.center}
 
 -   Issues with DST
 
@@ -117,6 +117,10 @@ Anyone do research with DST?
 
 ## And the bad... {.center}
 
+::: aside
+For this talk, only basic things
+:::
+
 ::: notes
 Application alone is a massive barrier to working with the data, but I
 won't talk about that in this talk, just to highlight that it is a big
@@ -128,9 +132,9 @@ presentation.
 
 ## Everyone works on same server {.center}
 
--   Same resources that everyone uses, no queue system
+-   No queue system for analyses
 
--   If someone else uses a lot of memory, that can break your analysis
+-   Can crash your analysis if others use more memory
 
 ::: aside
 *Waste of resources, slows research*
@@ -148,7 +152,7 @@ someone else is using too much memory.
 It also slows down research because of something so stupid as this.
 :::
 
-## Everyone in a "project" works in the same folder {.center}
+## Everyone works in same folder in a project {.center}
 
 ::::: columns
 ::: column
@@ -170,13 +174,17 @@ Collaboration is difficult:
 :::
 :::::
 
+::: aside
+Slows research down
+:::
+
 ::: notes
 No version control or separation of sub-projects.
 
 I'll come back to this reviewing thing later.
 :::
 
-## Data format: Proprietary SAS format {.center}
+## Data is stored in a proprietary SAS format {.center}
 
 For example, BEF register:
 
@@ -191,6 +199,10 @@ bef2022.sas7bdat
 . . .
 
 Takes many minutes to load one year of data (in R)
+
+::: aside
+*Waste of time and resources*
+:::
 
 ::: notes
 This means, if you use R, or Python, or Stata, you have to load these,
@@ -208,7 +220,13 @@ December_2023/bef2022.sas7bdat
 December_2023/bef2023.sas7bdat
 ```
 
-> Can you see the issue?
+**Can you see the issue?**
+
+. . .
+
+::: aside
+*Again, waste of time*
+:::
 
 ::: notes
 One problem, sometimes there's a new version of a year you already had.
@@ -229,6 +247,10 @@ while working with the registers.
 -   Variables are not consistent across years
 
 -   Finding the metadata is difficult
+
+::: aside
+*Slows research down, wastes time*
+:::
 
 ::: notes
 Metadata is a big problem. Documentation is relatively poor for most of
@@ -257,7 +279,15 @@ An organization should be responsible for having a well-designed setup,
 otherwise, its on the researcher. But that's not their expertise.
 :::
 
-## Example: DST should use Parquet for data format {.center}
+## Two tools as examples: Parquet and DuckDB {.center}
+
+::: aside
+<https://parquet.apache.org/>
+
+<https://duckdb.org/>
+:::
+
+## Parquet should be used to store large data {.center}
 
 Most data formats are row-based, like CSV or SAS. Newer formats tend to
 be column-based like Parquet.
@@ -374,7 +404,7 @@ bef <- arrow::open_dataset("bef")
 
 ## SQL, or Structured Query Language, is a language for managing and querying databases {.center}
 
-## Is impressively fast {.center}
+## DuckDB is impressively fast {.center}
 
 -   Faster than almost all other tools
 
@@ -386,40 +416,25 @@ bef <- arrow::open_dataset("bef")
 
 -   Easily connects with Parquet datasets
 
-[^1]: From this
-    [presentation](https://www.youtube.com/watch?v=8qzVV7eEiaI) and
-    [this](https://www.youtube.com/watch?v=t2BjZ5hSjHo) one
+[^1]: From benchmark [page](https://duckdblabs.github.io/db-benchmark/).
 
 ## Example in DST {.center}
 
-> 1.  Load all 45 years of BEF
-> 2.  Drop all missing PNR
-> 3.  Group by year
-> 4.  Count sex
+1.  Load all 45 years of BEF
+2.  Drop all missing PNR
+3.  Group by year
+4.  Count sex
 
 . . .
 
 **Takes \< 6 seconds**
-
-## Can be easily used in R {.center}
-
-Integrates with `tidyverse`:
-
-``` r
-library(tidyverse)
-library(arrow)
-open_dataset("path/to/bef") %>%
-  to_duckdb() %>%
-  filter(PNR != "") %>%
-  count(year, KOEN)
-```
 
 ## So... why is this important? Seems like easy stuff! {.center}
 
 -   Because it highlights a lack of expertise and understanding of some
     basic things
 
-# Reproducibility and validity of research from large data
+# Reproducibility and verification of research
 
 Reproducibility: same data + same code = same results?
 
@@ -435,7 +450,7 @@ and data, are lacking, it's difficult to actually ensure
 reproducibility.
 :::
 
-## Reproducibility is already a big issue {.center}
+## Non-reproducibility is a *big*, though mostly unknown, issue {.center}
 
 ::: {layout-ncol="2"}
 ```{r}
@@ -464,7 +479,7 @@ search <- tribble(
   )
 
 ggplot(search, aes(y = item, x = value, label = value)) +
-  geom_col(fill = "#203C6E") +
+  geom_col(fill = "slategray") +
   geom_text(nudge_x = 200, size = 5.5)
 ```
 
@@ -485,7 +500,7 @@ repro_results <- tribble(
   )
 
 ggplot(repro_results, aes(y = item, x = value, label = percent)) +
-  geom_col(fill = "#203C6E") +
+  geom_col(fill = "slategray") +
   geom_text(nudge_x = 1700, size = 5.5)
 ```
 :::
@@ -557,17 +572,23 @@ way harder than doing research.
 
 ## Working in DST makes reproducibility harder {.center}
 
-::: ::: {.columns} ::: {.column} - Hard to review code
+::: {.columns}
+::: {.column}
+- Hard to review code
 
 -   Hard to collaborate
 
--   No version control ::: ::: {.column}
+-   No version control
+:::
+::: {.column}
 
 -   Use proprietary data formats
 
 -   No queue system
 
--   No training materials or courses ::: :::
+-   No training materials or courses
+:::
+:::
 
 ::: notes
 So makes it harder to have several people working on a project, for
