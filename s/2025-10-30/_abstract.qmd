@@ -1,0 +1,18 @@
+# Research is more than just publications---you are worth more than your publications
+
+::: content-hidden
+Share your career path and your experience and tools for data management and reproducibility
+
+- Time is 1 hour, with 30 minute presentation and 20 minute Q&A
+- The title is maximum 15 words
+- Brief paragraph is maximum 150 words
+:::
+
+If you spend any time in research, you will be familiar with the pressure to
+publish and the saying "publish or perish". This pressure has many negative
+consequences, including the tendency for researchers to hyperfocus on
+publications as the primary measure of their success and career progression. But
+there is so much more to research! In this talk, I will share my career path as
+a team leader on research software project, which largely came about because of
+my desire to improve reproducibility and the management and care of research
+data.
