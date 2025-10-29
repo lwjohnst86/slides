@@ -2,7 +2,7 @@
     just --list --unsorted
 
 # Run all necessary build commands.
-run-all: install-r-deps check-spelling build-website format
+run-all: install-r-deps check-spelling format build-website
 
 # Install the pre-commit hooks
 install-precommit:
