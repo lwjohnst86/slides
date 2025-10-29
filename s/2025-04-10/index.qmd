@@ -14,7 +14,6 @@ format:
       - theme.scss
     progress: true
     footer: "Licensed under CC-BY 4.0.<br>Slides at [slides.lwjohnst.com](https://slides.lwjohnst.com)"
-    embed-resources: true
 editor:
   markdown:
     wrap: 72
