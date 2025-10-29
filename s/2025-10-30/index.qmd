@@ -2,33 +2,27 @@
 title: "Research is more than just publications---you are worth more than your publications"
 date: "2025-10-30"
 location: "ISBM Early Career Investigator Webinar Series"
+format:
+  revealjs:
+    mermaid:
+      theme: neutral
 ---
 
 ::: content-hidden
-Share your career path and your experience and tools for data management and reproducibility
+Share your career path and your experience and tools for data management
+and reproducibility
 
-- Time is 1 hour, with 30 minute presentation and 20 minute Q&A
+-   Time is 1 hour, with 30 minute presentation and 20 minute Q&A
 :::
-
-# Outline
-
-- Aim of talk
-
-- Who I am and a brief history
-
-- Experience doing data management and organization
-
-- Reproducibility, challenges, and tools
-
-- Why publications should not be the main focus
 
 # Aim of talk
 
-- *Most important*: Reminder that publications aren't your only or biggest metric of success
+-   *Most important*: Reminder that publications aren't your only or
+    biggest metric of success
 
-- Share a bit of my own career path
+-   Share a bit of my own career path
 
-- Highlight gaps that you can specialise in for your own career
+-   Highlight gaps that you can specialise in for your own career
 
 # Who am I? :wave: :wave:
 
@@ -38,12 +32,8 @@ Share your career path and your experience and tools for data management and rep
 :::
 
 ::: {.column width="50%"}
-- MSc and PhD in Nutritional Science
+-   MSc and PhD in Nutritional Science
 -   Team Leader, Steno Diabetes Center Aarhus and Aarhus University
--   Current work:
-    -   Teach how to do open and reproducible science with R
-    -   Build research software, mainly around data management
-    -   Design ways to enable open and reproducible science
 :::
 :::::
 
@@ -51,9 +41,9 @@ Share your career path and your experience and tools for data management and rep
 
 ```{mermaid}
 gantt
-    title My history
     dateFormat YYYY-MM-DD
     axisFormat %Y-%m
+    todayMarker off
     MSc (UofT) :msc, 2011-09-01, 2y
     PhD (UofT) :phd, after msc, 4y
     Postdoc (UofT) :postdoc, after phd, 2018-02-01
@@ -62,44 +52,54 @@ gantt
     Team leader (SDCA) :teamleader, after postdoc3, 2025-10-30
 ```
 
-::: notes
-I started out doing more "traditional" research but have gradually been
-moving towards more computationally technical work, like software
-development and data engineering as well as teaching researchers
-better practices in coding, open science, and reproducibility
-
-As I continued my research career, I got more and more into building
-software and creating courses to teach researchers about better
-programming practices. This also meant that I had less and less time to
-publish papers, because, there's only so much time in a day.
-
-As I go along, keep this in mind, because it highlights a big issue we
-have in research.
-:::
-
 ## MSc and PhD: Non-traditional work {.center}
 
 In addition to my research...
 
 . . .
 
-- [PROMISE data](https://promise-cohort.gitlab.io/PROMISE): Organized data into an R package structure.
+-   [PROMISE data](https://promise-cohort.gitlab.io/PROMISE): Organized
+    data into an R package structure.
 
-- Three R packages: [`mason`](https://cran.r-project.org/web/packages/mason/index.html), [`prodigenr`](https://cran.r-project.org/web/packages/prodigenr/index.html), [`carpenter`](https://cran.r-project.org/web/packages/carpenter/index.html).
+-   Three R packages:
+    [`mason`](https://cran.r-project.org/web/packages/mason/index.html),
+    [`prodigenr`](https://cran.r-project.org/web/packages/prodigenr/index.html),
+    [`carpenter`](https://cran.r-project.org/web/packages/carpenter/index.html).
 
-- [UofTCoders](https://uoftcoders.github.io/): Graduate student-led group to teach R and Python to other peers.
+-   [UofTCoders](https://uoftcoders.github.io/): Graduate student-led
+    group to teach R and Python to other peers.
 
 ::: notes
 This isn't to brag, this is to highlight, that taking the time to learn
-how to better make use of computers via programming can make you much more
-effective at doing things more easily and faster.
+how to better make use of computers via programming can make you much
+more effective at doing things more easily and faster.
 :::
 
-## Learning how to effectively organize files and code = powerful productivity {.center}
+## Learning to effectively organize files and to code = powerful productivity booster {.center}
+
+::: notes
+A big lesson I learned during this time is just how powerful it is to
+organize things effectively and to learn how to code well. Means that
+those manual things you might do over and over again can be automated or
+heavily streamlined.
+:::
 
 ## During postdoc: Hard lessons learned {.center}
 
-We are woefully behind on basic data engineering, reproducibility, and programming practices.
+We are woefully behind on basic data engineering, reproducibility, and
+programming practices.
+
+::: notes
+I started out doing more "traditional" research but have gradually been
+moving towards more computationally technical work, like software
+development and data engineering as well as teaching researchers better
+practices in coding, open science, and reproducibility
+
+As I continued my research career, I got more and more into building
+software and creating courses to teach researchers about better
+programming practices. This also meant that I had less and less time to
+publish papers, because, there's only so much time in a day.
+:::
 
 ## Postdoc: Data organization, development, and management {.center}
 
@@ -110,7 +110,11 @@ We are woefully behind on basic data engineering, reproducibility, and programmi
     Website of application to and documentation on a Denmark Statistics
     project.
 
-## Postdoc: Created and ran workshops (still do!) {.center}
+-   [registers2parquet](https://github.com/dp-next/registers2parquet):
+    Package to convert Danish health registries into Parquet format for
+    easier use with big data tools.
+
+## Postdoc: Created and ran workshops (and still do!) {.center}
 
 -   Introductory course:
     [r-cubed-intro.rostools.org](https://r-cubed-intro.rostools.org/)
@@ -121,23 +125,41 @@ We are woefully behind on basic data engineering, reproducibility, and programmi
 -   Advanced course:
     [r-cubed-advanced.rostools.org](https://r-cubed-advanced.rostools.org/)
 
-## Problems arise in postdoc: Published very little papers {.center}
+## Problems arising during postdoc: Published few papers {.center}
 
-- After my PhD, very few first author publications.
+-   After my PhD, no first author publications.
 
-- Too many deep problems that needed fixing.
+-   Too many deep problems that needed fixing.
 
-- Focused on building software, tools, and teaching.
+-   Focused on building software, tools, and teaching.
 
-## Current work {.center}
+## Choice: Ignore all broken things and publish or keep trying to fix things? {.center}
 
-- [Seedcase Project](https://seedcase-project.org)
+::: notes
+My postdoc supervisor said, if you want to stay in academia, you really
+need to focus down on publishing papers. But that if that wasn't
+important to me, I should keep doing what I believe is more important
+and impactful.
+:::
+
+## I chose to keep fixing things! {.center}
+
+It wasn't a hard choice, I couldn't ignore the problems.
+
+## I was invited to help apply for a grant because of my work {.center}
+
+For Data Infrastructure grant from Novo Nordisk Foundation
+
+## Got the funding :tada: which is my current work {.center}
+
+[Seedcase Project](https://seedcase-project.org), a framework for
+building infrastructure for research data.
 
 # Research *must* learn to value more than just publications
 
 Why? We have big problems that need fixing!
 
-## Reproducibility is already a big issue {.center}
+## Reproducibility: A major issue we completely ignore {.center}
 
 ::: {layout-ncol="2"}
 ```{r}
@@ -206,18 +228,14 @@ correct, by looking at the code and reviewing it and running it, how can
 we know and trust it?
 :::
 
-## Desperately need more programming expertise! {.center}
+## Desperately need more deep programming expertise! {.center}
 
-## Analyzing large data (and reproducing the results) requires programming skills {.center}
-
--   With massive data, you really need to know how to code and
-    programming.
-
--   But, researchers are not trained for this kind of skill.
+As in, their main work is programming, not publishing papers.
 
 ::: notes
-Hoping your skills and knowledge are enough to do the analysis, without
-actually knowing if they are good enough.
+It takes a lot of work and learning to deeply understanding how to
+program correctly and effectively. Writing papers takes time away from
+that. And no one can be a master at everything.
 :::
 
 ## "Science as amateur software development" {.center}
@@ -239,6 +257,18 @@ analysis... But now do you even know it's right? Programming is *hard*,
 way harder than doing research.
 :::
 
+## Analyzing large data (and reproducing the results) requires programming skills {.center}
+
+-   With massive data, you really need to know how to code and
+    programming.
+
+-   But, researchers are not trained for this kind of skill.
+
+::: notes
+Hoping your skills and knowledge are enough to do the analysis, without
+actually knowing if they are good enough.
+:::
+
 ## Desperately need research-specific software! {.center}
 
 So many research-specific problems that could be fixed with software.
@@ -247,4 +277,14 @@ So many research-specific problems that could be fixed with software.
 
 Data is hard to build, manage, and maintain. It takes time and effort.
 
-# Sum up: Find problem(s) you enjoy fixing and dive deep! {.center}
+# Take home pieces of advice?
+
+## There are so many opportunities outside of academia {.center}
+
+And they clear even less about publications.
+
+## Your skills, knowledge, and experiences are worth more than your number of publications {.center}
+
+## So: Find problems you enjoy fixing and dive deep! {.center}
+
+Even if that means less publications.
