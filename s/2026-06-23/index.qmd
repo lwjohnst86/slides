@@ -1,0 +1,477 @@
+---
+title: "Parquet, DuckDB, and fastreg for blazingly fast data analysis in the Danish Registers"
+date: "2026-06-23"
+date-format: long
+author: Luke W. Johnston
+location: "Epi group meeting at Steno Diabetes Center Aarhus, Denmark (on the 23rd) and for Department of Public Health, Aarhus University (on the 24th)"
+---
+
+# Outline of talk {.center}
+
+-   Rationale and aim
+-   Parquet: A modern format for efficiently storing and loading data
+-   DuckDB: Fast and powerful data processing and analysis
+-   fastreg: Convert SAS to Parquet and quickly load registers
+
+# Rationale for this talk {.center}
+
+Recent developments spark a push for better tooling
+
+## Big picture: Academia is woefully behind in using and knowing modern computing tools {.center}
+
+## This impacts our ability to do research effectively and productively {.center}
+
+## Working with massive data has its own challenges and needs {.center}
+
+## DST recently requires limiting RAM and resource usage {.center}
+
+## DST charges for storage space {.center}
+
+## Aim of this talk {.center}
+
+1.  Spread knowledge of better practices in structuring and working with data.
+
+2.  Showcase fastreg to improve how to work more effectively on DST.
+
+# Parquet file format {.center}
+
+<https://parquet.apache.org/>
+
+## Parquet is a column-based data storage format
+
+Most data formats are row-based, like CSV. Newer formats tend to be
+column-based.
+
+::: columns
+::: column
+### Row-based
+
+``` text
+name,gender,age
+Tim,Man,30
+Sam,Woman,30
+Jenny,Woman,25
+```
+:::
+
+::: {.column .fragment}
+### Column-based
+
+``` text
+name,Tim,Sam,Jenny
+gender,Man,Woman,Woman
+age,30,30,25
+```
+:::
+:::
+
+## Column-based storage has many advantages
+
+::: columns
+::: column
+### Compression
+
+``` text
+name,Tim,Sam,Jenny
+gender,Man,Woman,Woman
+age,30,30,25
+```
+
+...becomes...
+
+``` text
+name,Tim,Jenny,Sam
+gender,Man,Woman{2}
+age,30{2},25
+```
+:::
+
+::: {.column .fragment}
+### Loading
+
+-   Computers read by lines
+-   Per line = same data type
+-   Only read needed columns
+
+``` text
+gender,Man,Woman,Woman
+age,30,30,25
+```
+:::
+:::
+
+## Parquet is 50-75% smaller than other formats {.center}
+
+| File type            | Size (MB)    |
+|----------------------|--------------|
+| SAS (`.sas7bdat`)    | 1.45 Gb      |
+| CSV (`.csv`)         | \~90% of SAS |
+| Stata (`.dta`)       | 745 Mb       |
+| Parquet (`.parquet`) | 398 Mb       |
+
+: File size between CSV, Parquet, Stata, and SAS for `bef` register for
+2017. Note: SAS files on DST are bigger than normal.
+
+## Can partition data by a value (e.g. year) and load all at once {.center}
+
+Called "Hive partitioning":
+
+``` text
+bef/
+├── year=2020/
+│   └── part-0.parquet
+├── year=2021/
+│   └── part-0.parquet
+└── year=2022/
+    └── part-0.parquet
+```
+
+## SAS and Python can load Parquet but not Stata {.center}
+
+([StataNow](https://www.stata.com/statanow/) can, but isn't on DST...)
+
+Should use R anyway :wink:
+
+::: notes
+Not sure if StataNow can load in a Hive Partitioned Parquet dataset.
+:::
+
+# DuckDB {.center}
+
+::: aside
+<https://duckdb.org/>
+:::
+
+## DuckDB is a fairly recent SQL engine designed for analytical queries {.center}
+
+## SQL, or Structured Query Language, is a language for managing and querying databases {.center}
+
+## Is impressively fast {.center}
+
+-   Faster than almost all other tools.
+
+    -   Relatively complex queries (joins, group by, aggregates) on 55
+        Gb takes \< 7.5 min [^1].
+
+    -   Generally, simpler queries take \< 10 seconds for massive
+        datasets.
+
+-   Easily connects with Parquet datasets.
+
+[^1]: From benchmark results
+    [page](https://duckdblabs.github.io/db-benchmark/). Some tools couldn't even handle the queries.
+
+## Can be easily used in R {.center}
+
+``` r
+library(arrow)
+bef <- open_dataset("path/to/bef") |>
+  to_duckdb()
+
+# Or can use duckplyr
+library(duckplyr)
+bef <- read_parquet_duckdb("path/to/bef/*/*.parquet")
+```
+## Integrates with tidyverse and its syntax {.center}
+
+``` r
+library(tidyverse)
+bef |>
+  filter(year = 2020) |>
+  select(pnr, koen)
+```
+
+## SAS recently added DuckDB support, Stata has community packages for it {.center}
+
+(Not sure if either are on DST though.)
+
+Should use R anyway :wink:
+
+# fastreg
+
+<https://dp-next.github.io/fastreg/>
+
+::: notes
+For those familiar with the dstDataPrep, we took that code out of DST and made
+it into a more structured, better designed package that we published to CRAN.
+:::
+
+## Key features {.center}
+
+- Converts SAS into Hive partitioned Parquet datasets
+
+- Automatically handle data updates from DST and Externe registers
+
+- Can do it in parallel for faster conversion
+
+- Easily load all years of a register at once and connect to DuckDB, with minimal use of memory
+
+## Don't use StatTransfer on DST, use fastreg {.center}
+
+StatTransfer doesn't create a Hive partition! :astonished:
+
+## Comes with targets pipeline template for easy setup {.center}
+
+Recommended to do it this way, create with `fastreg::use_template()`.
+
+## A simple demo (without targets) {.center}
+
+Need to set location of SAS files and eventual Parquet output location:
+
+```{r}
+#| label: setup
+#| include: false
+# pak::pak("dp-next/fastreg")
+library(tidyverse)
+library(furrr)
+
+show_tree <- function(dir) {
+  withr::with_dir(fs::path_dir(dir), {
+    fs::dir_tree(fs::path_file(dir))
+  })
+}
+```
+
+```{r}
+#| label: set-options
+#| echo: true
+options(
+  # With a fake project ID and the temporary directory.
+  fastreg.project_rawdata_dir = fs::path_temp("E/rawdata/701020/"),
+  fastreg.project_workdata_dir = fs::path_temp(
+    "E/workdata/701020/parquet-registers/"
+  )
+)
+```
+
+## Converting these SAS files ... {.center .smaller .scrollable}
+
+```{r}
+#| label: simulate-to-sas
+#| echo: false
+#| warning: false
+#| message: false
+rawdata_dir <- getOption("fastreg.project_rawdata_dir")
+registers_tbl <- fastreg::simulate_registers_with_paths(
+  registers = c("bef", "lmdb"),
+  years = as.character(2020:2025),
+  n = 1000000,
+  output_dir = rawdata_dir
+)
+
+plan(multisession)
+sas_paths <- registers_tbl |>
+  furrr::future_pwalk(fastreg::write_to_sas) |>
+  dplyr::pull(output_path)
+
+# list_sas_files(rawdata_dir) |>
+#   fs::file_delete()
+
+rawdata_dir |>
+  # Get to the `E` directory to list both SAS and Parquet files
+  fs::path_dir() |>
+  fs::path_dir() |>
+  show_tree()
+```
+
+## ... Using this fastreg code ... {.center .smaller .scrollable}
+
+(note: targets template has better parallel processing)
+
+```{r}
+#| label: convert-to-parquet
+#| message: false
+#| echo: true
+library(tidyverse)
+library(furrr)
+# Where SAS files are.
+rawdata_dir <- getOption("fastreg.project_rawdata_dir")
+# Set where Parquet should be saved.
+workdata_dir <- getOption("fastreg.project_workdata_dir")
+plan(multisession)
+conversion_log <- rawdata_dir |>
+  fastreg::list_sas_files() |>
+  future_map(\(path) fastreg::convert(path, output_dir = workdata_dir)) |>
+  list_rbind()
+```
+
+## ... Into these Parquet datasets {.center .smaller .scrollable}
+
+```{r}
+#| label: list-parquet-workdata
+#| echo: false
+workdata_dir |>
+  # Get to the `workdata` directory to list both SAS and Parquet files
+  fs::path_dir() |>
+  fs::path_dir() |>
+  show_tree()
+```
+
+## ... And you can quickly list all registers as datasets {.center}
+
+*Requires the `options()` to be set.*
+
+``` r
+fastreg::list_parquet_datasets()
+```
+
+```{r}
+#| label: list-parquet-datasets
+#| echo: false
+fastreg::list_parquet_datasets() |>
+  stringr::str_remove("^/tmp/[[:alnum:]]+/")
+```
+
+## Parquet is much smaller than SAS, saving on storage costs {.center}
+
+```{r}
+#| label: parquet-vs-sas-size
+#| echo: false
+sas_size <- sum(fs::file_info(sas_paths)$size) |>
+  as.character()
+parquet_size <- fastreg::list_parquet_files() |>
+  fs::file_info() |>
+  pull(size) |>
+  sum() |>
+  as.character()
+```
+
+- All SAS files: `r sas_size` bytes
+- All Parquet files: `r parquet_size` bytes
+
+*Note: SAS files are larger than normal in DST, so this difference will be bigger.*
+
+## Reading all years of a register at once {.center .smaller .scrollable}
+
+(available for anyone working in that DST project.)
+
+```{r}
+#| label: set-workdata-dir
+#| eval: false
+#| echo: true
+library(fastreg)
+options(
+  fastreg.project_workdata_dir = "E:/workdata/701010/parquet/"
+)
+bef <- read_register("bef")
+lmdb <- read_register("lmdb")
+```
+
+```{r}
+#| label: show-bef
+#| echo: false
+fastreg::read_register("bef") |>
+  select(-source_file) |>
+  print(n = 4)
+```
+
+## Tests comparing simple analysis fastreg vs direct from SAS {.center .smaller}
+
+How long does it take to do a simple count of gender in each 5 years in `bef` (1 million rows)?
+
+1. Read in all the data for all the years
+2. Group by year
+3. Summarise number of people by gender
+4. Arrange by year, koen, number
+
+## Using fastreg (with Parquet and DuckDB) is blazing fast! {.center}
+
+```{r}
+#| label: convert-to-rds
+#| include: false
+# Save to Rds so we can compare between fastreg, Rds, and SAS.
+rds_dir <- workdata_dir |>
+  fs::path_dir() |>
+  fs::path_temp("rds")
+fs::dir_create(rds_dir)
+save_to_rds <- function(path, output_dir) {
+  rds_file <- path |>
+    fs::path_file() |>
+    fs::path_ext_set("rds")
+
+  haven::read_sas(path) |>
+    saveRDS(fs::path(output_dir, rds_file))
+}
+sas_paths |>
+  purrr::walk(\(path) save_to_rds(path, rds_dir))
+fs::dir_ls(rds_dir, recurse = TRUE)
+```
+
+```{r}
+#| label: benchmark-sas-vs-fastreg
+#| echo: false
+#| warning: false
+read_sas_with_years <- function(path) {
+  year <- fs::path_file(path) |>
+    fs::path_ext_remove() |>
+    stringr::str_extract("\\d{4}")
+  path |>
+    haven::read_sas() |>
+    dplyr::mutate(year = as.integer(year))
+}
+
+test_sas <- function(paths) {
+  paths |>
+    stringr::str_subset("bef") |>
+    purrr::map(read_sas_with_years) |>
+    purrr::list_rbind() |>
+    dplyr::summarise(n = n(), .by = c(year, koen)) |>
+    dplyr::arrange(year, koen, n) |>
+    dplyr::ungroup() |>
+    tibble::as_tibble()
+}
+
+test_fastreg <- function() {
+  fastreg::read_register("bef") |>
+    dplyr::summarise(n = n(), .by = c(year, koen)) |>
+    dplyr::arrange(year, koen, n) |>
+    dplyr::collect() |>
+    tibble::as_tibble()
+}
+
+read_rds_with_years <- function(path) {
+  year <- fs::path_file(path) |>
+    fs::path_ext_remove() |>
+    stringr::str_extract("\\d{4}")
+  readRDS(path) |>
+    dplyr::mutate(year = as.integer(year))
+}
+
+test_rds <- function(dir) {
+  rds_paths <- dir |>
+    fs::dir_ls(recurse = TRUE, regexp = "bef")
+  rds_paths |>
+    purrr::map(read_rds_with_years) |>
+    purrr::list_rbind() |>
+    dplyr::summarise(n = n(), .by = c(year, koen)) |>
+    dplyr::arrange(year, koen, n) |>
+    tibble::as_tibble()
+}
+
+bench::mark(
+  "From SAS" = test_sas(sas_paths),
+  "From RDS" = test_rds(rds_dir),
+  fastreg = test_fastreg(),
+  iterations = 10
+) |>
+  dplyr::select(
+    "Approach" = expression,
+    "Median time" = median,
+    "Memory used" = mem_alloc
+  ) |>
+  knitr::kable()
+```
+
+([Code available here](https://github.com/lwjohnst86/slides/blob/main/s/2026-06-23/index.qmd))
+
+## Limitations of DuckDB {.center}
+
+- Can't do advanced statistical analysis
+
+- A few tidyverse functions don't work
+
+**Solution: Process with DuckDB, collect into R, then do stats**
+
+## Check out the fastreg website for more details on how to use it {.center}
+
+<https://dp-next.github.io/fastreg/>

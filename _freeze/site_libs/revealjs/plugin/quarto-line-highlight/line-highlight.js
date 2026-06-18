@@ -15,7 +15,7 @@ window.QuartoLineHighlight = function () {
 
   function handleLinesSelector(deck, attr) {
     // if we are in printview with pdfSeparateFragments: false
-    // then we'll also want to suppress
+    // then we'll also want to supress
     if (regex.test(attr)) {
       if (isPrintView() && deck.getConfig().pdfSeparateFragments !== true) {
         return false;
@@ -280,7 +280,7 @@ window.QuartoLineHighlight = function () {
   function splitLineNumbers(lineNumbersAttr) {
     // remove space
     lineNumbersAttr = lineNumbersAttr.replace("/s/g", "");
-    // separate steps (for fragment)
+    // seperate steps (for fragment)
     lineNumbersAttr = lineNumbersAttr.split(delimiters.step);
 
     // for each step, calculate first and last line, if any
@@ -303,8 +303,8 @@ window.QuartoLineHighlight = function () {
     });
   }
 
-  function joinLineNumbers(splitLineNumbers) {
-    return splitLineNumbers
+  function joinLineNumbers(splittedLineNumbers) {
+    return splittedLineNumbers
       .map(function (highlights) {
         return highlights
           .map(function (highlight) {

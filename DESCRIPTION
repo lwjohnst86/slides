@@ -21,6 +21,9 @@ Imports:
     widgetframe,
     ggrepel,
     geomtextpath,
-    ggplot2
+    ggplot2,
+    fastreg,
+    furrr,
+    bench
 Remotes:
     gadenbuie/xaringanExtra
