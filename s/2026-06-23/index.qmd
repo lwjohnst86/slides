@@ -375,7 +375,7 @@ fastreg::read_register("bef") |>
   print(n = 4)
 ```
 
-## Tests comparing simple analysis fastreg vs direct from SAS {.center .smaller}
+## Tests comparing simple analysis fastreg vs direct from SAS or Rds {.center .smaller}
 
 How long does it take to do a simple count of gender in each 5 years in `bef` (1 million rows)?
 

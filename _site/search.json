@@ -165,7 +165,7 @@
     "href": "s/2026-06-23/index.html#into-these-parquet-datasets",
     "title": "Parquet, DuckDB, and fastreg for blazingly fast data analysis in the Danish Registers",
     "section": "… Into these Parquet datasets",
-    "text": "… Into these Parquet datasets\n\n\nworkdata\n└── 701020\n    └── parquet\n        ├── bef\n        │   ├── year=2020\n        │   │   └── part-f78b61.parquet\n        │   ├── year=2021\n        │   │   └── part-366199.parquet\n        │   ├── year=2022\n        │   │   └── part-fb0d9c.parquet\n        │   ├── year=2023\n        │   │   └── part-c634f2.parquet\n        │   ├── year=2024\n        │   │   └── part-d448ba.parquet\n        │   └── year=2025\n        │       └── part-cbd11d.parquet\n        └── lmdb\n            ├── year=2020\n            │   └── part-5351d3.parquet\n            ├── year=2021\n            │   └── part-034601.parquet\n            ├── year=2022\n            │   └── part-058a18.parquet\n            ├── year=2023\n            │   └── part-913584.parquet\n            ├── year=2024\n            │   └── part-eeba79.parquet\n            └── year=2025\n                └── part-0d7a05.parquet"
+    "text": "… Into these Parquet datasets\n\n\nworkdata\n└── 701020\n    └── parquet\n        ├── bef\n        │   ├── year=2020\n        │   │   └── part-0b0c4a.parquet\n        │   ├── year=2021\n        │   │   └── part-ec92ba.parquet\n        │   ├── year=2022\n        │   │   └── part-3b4b7a.parquet\n        │   ├── year=2023\n        │   │   └── part-b5a82a.parquet\n        │   ├── year=2024\n        │   │   └── part-e8c3ba.parquet\n        │   └── year=2025\n        │       └── part-c78fd7.parquet\n        └── lmdb\n            ├── year=2020\n            │   └── part-753a15.parquet\n            ├── year=2021\n            │   └── part-c5f56c.parquet\n            ├── year=2022\n            │   └── part-367cf8.parquet\n            ├── year=2023\n            │   └── part-03acdc.parquet\n            ├── year=2024\n            │   └── part-f50253.parquet\n            └── year=2025\n                └── part-f3fc6a.parquet"
   },
   {
     "objectID": "s/2026-06-23/index.html#and-you-can-quickly-list-all-registers-as-datasets",
@@ -186,21 +186,21 @@
     "href": "s/2026-06-23/index.html#reading-all-years-of-a-register-at-once",
     "title": "Parquet, DuckDB, and fastreg for blazingly fast data analysis in the Danish Registers",
     "section": "Reading all years of a register at once",
-    "text": "Reading all years of a register at once\n(available for anyone working in that DST project.)\n\nlibrary(fastreg)\noptions(\n  fastreg.project_workdata_dir = \"E:/workdata/701010/parquet/\"\n)\nbef &lt;- read_register(\"bef\")\nlmdb &lt;- read_register(\"lmdb\")\n\n\n\n# A query:  ?? x 4\n# Database: DuckDB 1.5.2 [luke@Linux 6.17.0-35-generic:R 4.6.0/:memory:]\n   koen pnr          foed_dato   year\n  &lt;dbl&gt; &lt;chr&gt;        &lt;date&gt;     &lt;int&gt;\n1     1 121380373234 1963-01-29  2020\n2     1 922851172404 1990-08-08  2020\n3     2 603009341504 1980-11-02  2020\n4     2 444957773304 1951-03-24  2020\n# ℹ more rows"
+    "text": "Reading all years of a register at once\n(available for anyone working in that DST project.)\n\nlibrary(fastreg)\noptions(\n  fastreg.project_workdata_dir = \"E:/workdata/701010/parquet/\"\n)\nbef &lt;- read_register(\"bef\")\nlmdb &lt;- read_register(\"lmdb\")\n\n\n\n# A query:  ?? x 4\n# Database: DuckDB 1.5.2 [luke@Linux 6.17.0-35-generic:R 4.6.0/:memory:]\n   koen pnr          foed_dato   year\n  &lt;dbl&gt; &lt;chr&gt;        &lt;date&gt;     &lt;int&gt;\n1     2 121380373234 1963-01-29  2020\n2     1 922851172404 1990-08-08  2020\n3     2 603009341504 1980-11-02  2020\n4     2 444957773304 1951-03-24  2020\n# ℹ more rows"
   },
   {
-    "objectID": "s/2026-06-23/index.html#tests-comparing-simple-analysis-fastreg-vs-direct-from-sas",
-    "href": "s/2026-06-23/index.html#tests-comparing-simple-analysis-fastreg-vs-direct-from-sas",
+    "objectID": "s/2026-06-23/index.html#tests-comparing-simple-analysis-fastreg-vs-direct-from-sas-or-rds",
+    "href": "s/2026-06-23/index.html#tests-comparing-simple-analysis-fastreg-vs-direct-from-sas-or-rds",
     "title": "Parquet, DuckDB, and fastreg for blazingly fast data analysis in the Danish Registers",
-    "section": "Tests comparing simple analysis fastreg vs direct from SAS",
-    "text": "Tests comparing simple analysis fastreg vs direct from SAS\nHow long does it take to do a simple count of gender in each 5 years in bef (1 million rows)?\n\nRead in all the data for all the years\nGroup by year\nSummarise number of people by gender\nArrange by year, koen, number"
+    "section": "Tests comparing simple analysis fastreg vs direct from SAS or Rds",
+    "text": "Tests comparing simple analysis fastreg vs direct from SAS or Rds\nHow long does it take to do a simple count of gender in each 5 years in bef (1 million rows)?\n\nRead in all the data for all the years\nGroup by year\nSummarise number of people by gender\nArrange by year, koen, number"
   },
   {
     "objectID": "s/2026-06-23/index.html#using-fastreg-with-parquet-and-duckdb-is-blazing-fast",
     "href": "s/2026-06-23/index.html#using-fastreg-with-parquet-and-duckdb-is-blazing-fast",
     "title": "Parquet, DuckDB, and fastreg for blazingly fast data analysis in the Danish Registers",
     "section": "Using fastreg (with Parquet and DuckDB) is blazing fast!",
-    "text": "Using fastreg (with Parquet and DuckDB) is blazing fast!\n\n\n\n\n\nApproach\nMedian time\nMemory used\n\n\n\n\nFrom SAS\n3.61s\n453MB\n\n\nFrom RDS\n2.59s\n453MB\n\n\nfastreg\n61.32ms\n1006KB\n\n\n\n\n\n(Code available here)"
+    "text": "Using fastreg (with Parquet and DuckDB) is blazing fast!\n\n\n\n\n\nApproach\nMedian time\nMemory used\n\n\n\n\nFrom SAS\n3.58s\n453MB\n\n\nFrom RDS\n2.32s\n453MB\n\n\nfastreg\n58.06ms\n1006KB\n\n\n\n\n\n(Code available here)"
   },
   {
     "objectID": "s/2026-06-23/index.html#limitations-of-duckdbfastreg",

@@ -487,30 +487,30 @@ Luke W. Johnston
     └── parquet
         ├── bef
         │   ├── year=2020
-        │   │   └── part-f78b61.parquet
+        │   │   └── part-0b0c4a.parquet
         │   ├── year=2021
-        │   │   └── part-366199.parquet
+        │   │   └── part-ec92ba.parquet
         │   ├── year=2022
-        │   │   └── part-fb0d9c.parquet
+        │   │   └── part-3b4b7a.parquet
         │   ├── year=2023
-        │   │   └── part-c634f2.parquet
+        │   │   └── part-b5a82a.parquet
         │   ├── year=2024
-        │   │   └── part-d448ba.parquet
+        │   │   └── part-e8c3ba.parquet
         │   └── year=2025
-        │       └── part-cbd11d.parquet
+        │       └── part-c78fd7.parquet
         └── lmdb
             ├── year=2020
-            │   └── part-5351d3.parquet
+            │   └── part-753a15.parquet
             ├── year=2021
-            │   └── part-034601.parquet
+            │   └── part-c5f56c.parquet
             ├── year=2022
-            │   └── part-058a18.parquet
+            │   └── part-367cf8.parquet
             ├── year=2023
-            │   └── part-913584.parquet
+            │   └── part-03acdc.parquet
             ├── year=2024
-            │   └── part-eeba79.parquet
+            │   └── part-f50253.parquet
             └── year=2025
-                └── part-0d7a05.parquet</code></pre>
+                └── part-f3fc6a.parquet</code></pre>
 </div>
 </div>
 </section>
@@ -549,7 +549,7 @@ Luke W. Johnston
 # Database: DuckDB 1.5.2 [luke@Linux 6.17.0-35-generic:R 4.6.0/:memory:]
    koen pnr          foed_dato   year
   &lt;dbl&gt; &lt;chr&gt;        &lt;date&gt;     &lt;int&gt;
-1     1 121380373234 1963-01-29  2020
+1     2 121380373234 1963-01-29  2020
 2     1 922851172404 1990-08-08  2020
 3     2 603009341504 1980-11-02  2020
 4     2 444957773304 1951-03-24  2020
@@ -557,8 +557,8 @@ Luke W. Johnston
 </div>
 </div>
 </section>
-<section id="tests-comparing-simple-analysis-fastreg-vs-direct-from-sas" class="slide level2 center smaller">
-<h2>Tests comparing simple analysis fastreg vs direct from SAS</h2>
+<section id="tests-comparing-simple-analysis-fastreg-vs-direct-from-sas-or-rds" class="slide level2 center smaller">
+<h2>Tests comparing simple analysis fastreg vs direct from SAS or Rds</h2>
 <p>How long does it take to do a simple count of gender in each 5 years in <code>bef</code> (1 million rows)?</p>
 <ol type="1">
 <li>Read in all the data for all the years</li>
@@ -582,17 +582,17 @@ Luke W. Johnston
 <tbody>
 <tr class="odd">
 <td style="text-align: left;">From SAS</td>
-<td style="text-align: right;">3.61s</td>
+<td style="text-align: right;">3.58s</td>
 <td style="text-align: right;">453MB</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">From RDS</td>
-<td style="text-align: right;">2.59s</td>
+<td style="text-align: right;">2.32s</td>
 <td style="text-align: right;">453MB</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">fastreg</td>
-<td style="text-align: right;">61.32ms</td>
+<td style="text-align: right;">58.06ms</td>
 <td style="text-align: right;">1006KB</td>
 </tr>
 </tbody>
