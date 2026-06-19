@@ -96,7 +96,7 @@
     code span.vs { color: #abe338; } /* VerbatimString */
     code span.wa { color: #dcc6e0; } /* Warning */
   </style>
-  <link rel="stylesheet" href="../../site_libs/revealjs/dist/theme/quarto-eba9bc99fa7d4868b21a708f59f64f6e.css">
+  <link rel="stylesheet" href="../../site_libs/revealjs/dist/theme/quarto-f7884f79e5ebd6fc7ec8556ee481c9bd.css">
   <link href="../../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="../../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="../../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -375,7 +375,7 @@ Luke W. Johnston
 <h2>Can be easily used in R</h2>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a></a><span class="fu">library</span>(arrow)</span>
 <span id="cb7-2"><a></a>bef <span class="ot">&lt;-</span> <span class="fu">open_dataset</span>(<span class="st">"path/to/bef"</span>) <span class="sc">|&gt;</span></span>
-<span id="cb7-3"><a></a>  <span class="fu">to_duckdb</span>() </span>
+<span id="cb7-3"><a></a>  <span class="fu">to_duckdb</span>()</span>
 <span id="cb7-4"><a></a></span>
 <span id="cb7-5"><a></a><span class="co"># Or can use duckplyr</span></span>
 <span id="cb7-6"><a></a><span class="fu">library</span>(duckplyr)</span>
@@ -384,7 +384,7 @@ Luke W. Johnston
 <section id="integrates-with-tidyverse-and-its-syntax" class="slide level2 center">
 <h2>Integrates with tidyverse and its syntax</h2>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb8-2"><a></a>bef <span class="sc">|&gt;</span> </span>
+<span id="cb8-2"><a></a>bef <span class="sc">|&gt;</span></span>
 <span id="cb8-3"><a></a>  <span class="fu">filter</span>(<span class="at">year =</span> <span class="dv">2020</span>) <span class="sc">|&gt;</span></span>
 <span id="cb8-4"><a></a>  <span class="fu">select</span>(pnr, koen)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
@@ -415,7 +415,7 @@ Luke W. Johnston
 <h2>Key features</h2>
 <ul>
 <li><p>Converts SAS into Hive partitioned Parquet datasets</p></li>
-<li><p>Automatically handle data updates from DST and Externe registers</p></li>
+<li><p>Handles data updates from DST and Externe registers</p></li>
 <li><p>Can do it in parallel for faster conversion</p></li>
 <li><p>Easily load all years of a register at once and connect to DuckDB, with minimal use of memory</p></li>
 </ul>
@@ -433,33 +433,30 @@ Luke W. Johnston
 <p>Need to set location of SAS files and eventual Parquet output location:</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a></a><span class="fu">options</span>(</span>
-<span id="cb9-2"><a></a>  <span class="co"># With a fake project ID and the temporary directory.</span></span>
-<span id="cb9-3"><a></a>  <span class="at">fastreg.project_rawdata_dir =</span> fs<span class="sc">::</span><span class="fu">path_temp</span>(<span class="st">"E/rawdata/701020/"</span>),</span>
-<span id="cb9-4"><a></a>  <span class="at">fastreg.project_workdata_dir =</span> fs<span class="sc">::</span><span class="fu">path_temp</span>(</span>
-<span id="cb9-5"><a></a>    <span class="st">"E/workdata/701020/parquet-registers/"</span></span>
-<span id="cb9-6"><a></a>  )</span>
-<span id="cb9-7"><a></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb9-2"><a></a>  <span class="co"># This is a random (fake?) project ID.</span></span>
+<span id="cb9-3"><a></a>  <span class="at">fastreg.project_rawdata_dir =</span> <span class="st">"E:/rawdata/701020/"</span>,</span>
+<span id="cb9-4"><a></a>  <span class="at">fastreg.project_workdata_dir =</span> <span class="st">"E:/workdata/701020/parquet/"</span></span>
+<span id="cb9-5"><a></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="converting-these-sas-files" class="slide level2 center smaller scrollable">
 <h2>Converting these SAS files …</h2>
 <div class="cell">
 <div class="cell-output cell-output-stdout">
-<pre><code>E
-└── rawdata
-    └── 701020
-        ├── bef2020.sas7bdat
-        ├── bef2021.sas7bdat
-        ├── bef2022.sas7bdat
-        ├── bef2023.sas7bdat
-        ├── bef2024.sas7bdat
-        ├── bef2025.sas7bdat
-        ├── lmdb2020.sas7bdat
-        ├── lmdb2021.sas7bdat
-        ├── lmdb2022.sas7bdat
-        ├── lmdb2023.sas7bdat
-        ├── lmdb2024.sas7bdat
-        └── lmdb2025.sas7bdat</code></pre>
+<pre><code>rawdata
+└── 701020
+    ├── bef2020.sas7bdat
+    ├── bef2021.sas7bdat
+    ├── bef2022.sas7bdat
+    ├── bef2023.sas7bdat
+    ├── bef2024.sas7bdat
+    ├── bef2025.sas7bdat
+    ├── lmdb2020.sas7bdat
+    ├── lmdb2021.sas7bdat
+    ├── lmdb2022.sas7bdat
+    ├── lmdb2023.sas7bdat
+    ├── lmdb2024.sas7bdat
+    └── lmdb2025.sas7bdat</code></pre>
 </div>
 </div>
 </section>
@@ -475,9 +472,10 @@ Luke W. Johnston
 <span id="cb11-6"><a></a>workdata_dir <span class="ot">&lt;-</span> <span class="fu">getOption</span>(<span class="st">"fastreg.project_workdata_dir"</span>)</span>
 <span id="cb11-7"><a></a><span class="fu">plan</span>(multisession)</span>
 <span id="cb11-8"><a></a>conversion_log <span class="ot">&lt;-</span> rawdata_dir <span class="sc">|&gt;</span></span>
-<span id="cb11-9"><a></a>  fastreg<span class="sc">::</span><span class="fu">list_sas_files</span>() <span class="sc">|&gt;</span></span>
-<span id="cb11-10"><a></a>  <span class="fu">future_map</span>(\(path) fastreg<span class="sc">::</span><span class="fu">convert</span>(path, <span class="at">output_dir =</span> workdata_dir)) <span class="sc">|&gt;</span></span>
-<span id="cb11-11"><a></a>  <span class="fu">list_rbind</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb11-9"><a></a>  <span class="co"># Show *all* SAS files recursively in `rawdata/`.</span></span>
+<span id="cb11-10"><a></a>  fastreg<span class="sc">::</span><span class="fu">list_sas_files</span>() <span class="sc">|&gt;</span></span>
+<span id="cb11-11"><a></a>  <span class="fu">future_map</span>(\(path) fastreg<span class="sc">::</span><span class="fu">convert</span>(path, <span class="at">output_dir =</span> workdata_dir)) <span class="sc">|&gt;</span></span>
+<span id="cb11-12"><a></a>  <span class="fu">list_rbind</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="into-these-parquet-datasets" class="slide level2 center smaller scrollable">
@@ -486,33 +484,33 @@ Luke W. Johnston
 <div class="cell-output cell-output-stdout">
 <pre><code>workdata
 └── 701020
-    └── parquet-registers
+    └── parquet
         ├── bef
         │   ├── year=2020
-        │   │   └── part-1d51e6.parquet
+        │   │   └── part-f78b61.parquet
         │   ├── year=2021
-        │   │   └── part-8fc8bb.parquet
+        │   │   └── part-366199.parquet
         │   ├── year=2022
-        │   │   └── part-fdf68f.parquet
+        │   │   └── part-fb0d9c.parquet
         │   ├── year=2023
-        │   │   └── part-50b423.parquet
+        │   │   └── part-c634f2.parquet
         │   ├── year=2024
-        │   │   └── part-d7f44c.parquet
+        │   │   └── part-d448ba.parquet
         │   └── year=2025
-        │       └── part-b8d709.parquet
+        │       └── part-cbd11d.parquet
         └── lmdb
             ├── year=2020
-            │   └── part-bba52a.parquet
+            │   └── part-5351d3.parquet
             ├── year=2021
-            │   └── part-063582.parquet
+            │   └── part-034601.parquet
             ├── year=2022
-            │   └── part-59ec6d.parquet
+            │   └── part-058a18.parquet
             ├── year=2023
-            │   └── part-b3e5e3.parquet
+            │   └── part-913584.parquet
             ├── year=2024
-            │   └── part-7de2cc.parquet
+            │   └── part-eeba79.parquet
             └── year=2025
-                └── part-1e4771.parquet</code></pre>
+                └── part-0d7a05.parquet</code></pre>
 </div>
 </div>
 </section>
@@ -522,8 +520,7 @@ Luke W. Johnston
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a></a>fastreg<span class="sc">::</span><span class="fu">list_parquet_datasets</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell">
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] "E/workdata/701020/parquet-registers/bef" 
-[2] "E/workdata/701020/parquet-registers/lmdb"</code></pre>
+<pre><code>[1] "E:/workdata/701020/parquet/bef"  "E:/workdata/701020/parquet/lmdb"</code></pre>
 </div>
 </div>
 </section>
@@ -552,10 +549,10 @@ Luke W. Johnston
 # Database: DuckDB 1.5.2 [luke@Linux 6.17.0-35-generic:R 4.6.0/:memory:]
    koen pnr          foed_dato   year
   &lt;dbl&gt; &lt;chr&gt;        &lt;date&gt;     &lt;int&gt;
-1     2 121380373234 1963-01-29  2020
+1     1 121380373234 1963-01-29  2020
 2     1 922851172404 1990-08-08  2020
 3     2 603009341504 1980-11-02  2020
-4     1 444957773304 1951-03-24  2020
+4     2 444957773304 1951-03-24  2020
 # ℹ more rows</code></pre>
 </div>
 </div>
@@ -585,17 +582,17 @@ Luke W. Johnston
 <tbody>
 <tr class="odd">
 <td style="text-align: left;">From SAS</td>
-<td style="text-align: right;">3.94s</td>
+<td style="text-align: right;">3.61s</td>
 <td style="text-align: right;">453MB</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">From RDS</td>
-<td style="text-align: right;">2.64s</td>
+<td style="text-align: right;">2.59s</td>
 <td style="text-align: right;">453MB</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">fastreg</td>
-<td style="text-align: right;">63.02ms</td>
+<td style="text-align: right;">61.32ms</td>
 <td style="text-align: right;">1006KB</td>
 </tr>
 </tbody>
@@ -604,13 +601,14 @@ Luke W. Johnston
 </div>
 <p>(<a href="https://github.com/lwjohnst86/slides/blob/main/s/2026-06-23/index.qmd">Code available here</a>)</p>
 </section>
-<section id="limitations-of-duckdb" class="slide level2 center">
-<h2>Limitations of DuckDB</h2>
+<section id="limitations-of-duckdbfastreg" class="slide level2 center">
+<h2>Limitations of DuckDB/fastreg</h2>
 <ul>
-<li><p>Can’t do advanced statistical analysis</p></li>
-<li><p>A few tidyverse functions don’t work</p></li>
+<li><p>Can’t do advanced statistical analysis. Instead, process data with DuckDB, collect into R, then do stats.</p></li>
+<li><p>A few tidyverse functions don’t work.</p></li>
+<li><p>fastreg doesn’t fix problems within the data itself, only converts/reads.</p></li>
+<li><p>Updates to registers of the same year maybe lead to duplicates in conversion.</p></li>
 </ul>
-<p><strong>Solution: Process with DuckDB, collect into R, then do stats</strong></p>
 </section>
 <section id="check-out-the-fastreg-website-for-more-details-on-how-to-use-it" class="slide level2 center">
 <h2>Check out the fastreg website for more details on how to use it</h2>

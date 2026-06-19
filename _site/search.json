@@ -102,14 +102,14 @@
     "href": "s/2026-06-23/index.html#can-be-easily-used-in-r",
     "title": "Parquet, DuckDB, and fastreg for blazingly fast data analysis in the Danish Registers",
     "section": "Can be easily used in R",
-    "text": "Can be easily used in R\nlibrary(arrow)\nbef &lt;- open_dataset(\"path/to/bef\") |&gt;\n  to_duckdb() \n\n# Or can use duckplyr\nlibrary(duckplyr)\nbef &lt;- read_parquet_duckdb(\"path/to/bef/*/*.parquet\")"
+    "text": "Can be easily used in R\nlibrary(arrow)\nbef &lt;- open_dataset(\"path/to/bef\") |&gt;\n  to_duckdb()\n\n# Or can use duckplyr\nlibrary(duckplyr)\nbef &lt;- read_parquet_duckdb(\"path/to/bef/*/*.parquet\")"
   },
   {
     "objectID": "s/2026-06-23/index.html#integrates-with-tidyverse-and-its-syntax",
     "href": "s/2026-06-23/index.html#integrates-with-tidyverse-and-its-syntax",
     "title": "Parquet, DuckDB, and fastreg for blazingly fast data analysis in the Danish Registers",
     "section": "Integrates with tidyverse and its syntax",
-    "text": "Integrates with tidyverse and its syntax\nlibrary(tidyverse)\nbef |&gt; \n  filter(year = 2020) |&gt;\n  select(pnr, koen)"
+    "text": "Integrates with tidyverse and its syntax\nlibrary(tidyverse)\nbef |&gt;\n  filter(year = 2020) |&gt;\n  select(pnr, koen)"
   },
   {
     "objectID": "s/2026-06-23/index.html#sas-recently-added-duckdb-support-stata-has-community-packages-for-it",
@@ -123,7 +123,7 @@
     "href": "s/2026-06-23/index.html#key-features",
     "title": "Parquet, DuckDB, and fastreg for blazingly fast data analysis in the Danish Registers",
     "section": "Key features",
-    "text": "Key features\n\nConverts SAS into Hive partitioned Parquet datasets\nAutomatically handle data updates from DST and Externe registers\nCan do it in parallel for faster conversion\nEasily load all years of a register at once and connect to DuckDB, with minimal use of memory"
+    "text": "Key features\n\nConverts SAS into Hive partitioned Parquet datasets\nHandles data updates from DST and Externe registers\nCan do it in parallel for faster conversion\nEasily load all years of a register at once and connect to DuckDB, with minimal use of memory"
   },
   {
     "objectID": "s/2026-06-23/index.html#dont-use-stattransfer-on-dst-use-fastreg",
@@ -144,35 +144,35 @@
     "href": "s/2026-06-23/index.html#a-simple-demo-without-targets",
     "title": "Parquet, DuckDB, and fastreg for blazingly fast data analysis in the Danish Registers",
     "section": "A simple demo (without targets)",
-    "text": "A simple demo (without targets)\nNeed to set location of SAS files and eventual Parquet output location:\n\noptions(\n  # With a fake project ID and the temporary directory.\n  fastreg.project_rawdata_dir = fs::path_temp(\"E/rawdata/701020/\"),\n  fastreg.project_workdata_dir = fs::path_temp(\n    \"E/workdata/701020/parquet-registers/\"\n  )\n)"
+    "text": "A simple demo (without targets)\nNeed to set location of SAS files and eventual Parquet output location:\n\noptions(\n  # This is a random (fake?) project ID.\n  fastreg.project_rawdata_dir = \"E:/rawdata/701020/\",\n  fastreg.project_workdata_dir = \"E:/workdata/701020/parquet/\"\n)"
   },
   {
     "objectID": "s/2026-06-23/index.html#converting-these-sas-files",
     "href": "s/2026-06-23/index.html#converting-these-sas-files",
     "title": "Parquet, DuckDB, and fastreg for blazingly fast data analysis in the Danish Registers",
     "section": "Converting these SAS files …",
-    "text": "Converting these SAS files …\n\n\nE\n└── rawdata\n    └── 701020\n        ├── bef2020.sas7bdat\n        ├── bef2021.sas7bdat\n        ├── bef2022.sas7bdat\n        ├── bef2023.sas7bdat\n        ├── bef2024.sas7bdat\n        ├── bef2025.sas7bdat\n        ├── lmdb2020.sas7bdat\n        ├── lmdb2021.sas7bdat\n        ├── lmdb2022.sas7bdat\n        ├── lmdb2023.sas7bdat\n        ├── lmdb2024.sas7bdat\n        └── lmdb2025.sas7bdat"
+    "text": "Converting these SAS files …\n\n\nrawdata\n└── 701020\n    ├── bef2020.sas7bdat\n    ├── bef2021.sas7bdat\n    ├── bef2022.sas7bdat\n    ├── bef2023.sas7bdat\n    ├── bef2024.sas7bdat\n    ├── bef2025.sas7bdat\n    ├── lmdb2020.sas7bdat\n    ├── lmdb2021.sas7bdat\n    ├── lmdb2022.sas7bdat\n    ├── lmdb2023.sas7bdat\n    ├── lmdb2024.sas7bdat\n    └── lmdb2025.sas7bdat"
   },
   {
     "objectID": "s/2026-06-23/index.html#using-this-fastreg-code",
     "href": "s/2026-06-23/index.html#using-this-fastreg-code",
     "title": "Parquet, DuckDB, and fastreg for blazingly fast data analysis in the Danish Registers",
     "section": "… Using this fastreg code …",
-    "text": "… Using this fastreg code …\n(note: targets template has better parallel processing)\n\nlibrary(tidyverse)\nlibrary(furrr)\n# Where SAS files are.\nrawdata_dir &lt;- getOption(\"fastreg.project_rawdata_dir\")\n# Set where Parquet should be saved.\nworkdata_dir &lt;- getOption(\"fastreg.project_workdata_dir\")\nplan(multisession)\nconversion_log &lt;- rawdata_dir |&gt;\n  fastreg::list_sas_files() |&gt;\n  future_map(\\(path) fastreg::convert(path, output_dir = workdata_dir)) |&gt;\n  list_rbind()"
+    "text": "… Using this fastreg code …\n(note: targets template has better parallel processing)\n\nlibrary(tidyverse)\nlibrary(furrr)\n# Where SAS files are.\nrawdata_dir &lt;- getOption(\"fastreg.project_rawdata_dir\")\n# Set where Parquet should be saved.\nworkdata_dir &lt;- getOption(\"fastreg.project_workdata_dir\")\nplan(multisession)\nconversion_log &lt;- rawdata_dir |&gt;\n  # Show *all* SAS files recursively in `rawdata/`.\n  fastreg::list_sas_files() |&gt;\n  future_map(\\(path) fastreg::convert(path, output_dir = workdata_dir)) |&gt;\n  list_rbind()"
   },
   {
     "objectID": "s/2026-06-23/index.html#into-these-parquet-datasets",
     "href": "s/2026-06-23/index.html#into-these-parquet-datasets",
     "title": "Parquet, DuckDB, and fastreg for blazingly fast data analysis in the Danish Registers",
     "section": "… Into these Parquet datasets",
-    "text": "… Into these Parquet datasets\n\n\nworkdata\n└── 701020\n    └── parquet-registers\n        ├── bef\n        │   ├── year=2020\n        │   │   └── part-1d51e6.parquet\n        │   ├── year=2021\n        │   │   └── part-8fc8bb.parquet\n        │   ├── year=2022\n        │   │   └── part-fdf68f.parquet\n        │   ├── year=2023\n        │   │   └── part-50b423.parquet\n        │   ├── year=2024\n        │   │   └── part-d7f44c.parquet\n        │   └── year=2025\n        │       └── part-b8d709.parquet\n        └── lmdb\n            ├── year=2020\n            │   └── part-bba52a.parquet\n            ├── year=2021\n            │   └── part-063582.parquet\n            ├── year=2022\n            │   └── part-59ec6d.parquet\n            ├── year=2023\n            │   └── part-b3e5e3.parquet\n            ├── year=2024\n            │   └── part-7de2cc.parquet\n            └── year=2025\n                └── part-1e4771.parquet"
+    "text": "… Into these Parquet datasets\n\n\nworkdata\n└── 701020\n    └── parquet\n        ├── bef\n        │   ├── year=2020\n        │   │   └── part-f78b61.parquet\n        │   ├── year=2021\n        │   │   └── part-366199.parquet\n        │   ├── year=2022\n        │   │   └── part-fb0d9c.parquet\n        │   ├── year=2023\n        │   │   └── part-c634f2.parquet\n        │   ├── year=2024\n        │   │   └── part-d448ba.parquet\n        │   └── year=2025\n        │       └── part-cbd11d.parquet\n        └── lmdb\n            ├── year=2020\n            │   └── part-5351d3.parquet\n            ├── year=2021\n            │   └── part-034601.parquet\n            ├── year=2022\n            │   └── part-058a18.parquet\n            ├── year=2023\n            │   └── part-913584.parquet\n            ├── year=2024\n            │   └── part-eeba79.parquet\n            └── year=2025\n                └── part-0d7a05.parquet"
   },
   {
     "objectID": "s/2026-06-23/index.html#and-you-can-quickly-list-all-registers-as-datasets",
     "href": "s/2026-06-23/index.html#and-you-can-quickly-list-all-registers-as-datasets",
     "title": "Parquet, DuckDB, and fastreg for blazingly fast data analysis in the Danish Registers",
     "section": "… And you can quickly list all registers as datasets",
-    "text": "… And you can quickly list all registers as datasets\nRequires the options() to be set.\nfastreg::list_parquet_datasets()\n\n\n[1] \"E/workdata/701020/parquet-registers/bef\" \n[2] \"E/workdata/701020/parquet-registers/lmdb\""
+    "text": "… And you can quickly list all registers as datasets\nRequires the options() to be set.\nfastreg::list_parquet_datasets()\n\n\n[1] \"E:/workdata/701020/parquet/bef\"  \"E:/workdata/701020/parquet/lmdb\""
   },
   {
     "objectID": "s/2026-06-23/index.html#parquet-is-much-smaller-than-sas-saving-on-storage-costs",
@@ -186,7 +186,7 @@
     "href": "s/2026-06-23/index.html#reading-all-years-of-a-register-at-once",
     "title": "Parquet, DuckDB, and fastreg for blazingly fast data analysis in the Danish Registers",
     "section": "Reading all years of a register at once",
-    "text": "Reading all years of a register at once\n(available for anyone working in that DST project.)\n\nlibrary(fastreg)\noptions(\n  fastreg.project_workdata_dir = \"E:/workdata/701010/parquet/\"\n)\nbef &lt;- read_register(\"bef\")\nlmdb &lt;- read_register(\"lmdb\")\n\n\n\n# A query:  ?? x 4\n# Database: DuckDB 1.5.2 [luke@Linux 6.17.0-35-generic:R 4.6.0/:memory:]\n   koen pnr          foed_dato   year\n  &lt;dbl&gt; &lt;chr&gt;        &lt;date&gt;     &lt;int&gt;\n1     2 121380373234 1963-01-29  2020\n2     1 922851172404 1990-08-08  2020\n3     2 603009341504 1980-11-02  2020\n4     1 444957773304 1951-03-24  2020\n# ℹ more rows"
+    "text": "Reading all years of a register at once\n(available for anyone working in that DST project.)\n\nlibrary(fastreg)\noptions(\n  fastreg.project_workdata_dir = \"E:/workdata/701010/parquet/\"\n)\nbef &lt;- read_register(\"bef\")\nlmdb &lt;- read_register(\"lmdb\")\n\n\n\n# A query:  ?? x 4\n# Database: DuckDB 1.5.2 [luke@Linux 6.17.0-35-generic:R 4.6.0/:memory:]\n   koen pnr          foed_dato   year\n  &lt;dbl&gt; &lt;chr&gt;        &lt;date&gt;     &lt;int&gt;\n1     1 121380373234 1963-01-29  2020\n2     1 922851172404 1990-08-08  2020\n3     2 603009341504 1980-11-02  2020\n4     2 444957773304 1951-03-24  2020\n# ℹ more rows"
   },
   {
     "objectID": "s/2026-06-23/index.html#tests-comparing-simple-analysis-fastreg-vs-direct-from-sas",
@@ -200,14 +200,14 @@
     "href": "s/2026-06-23/index.html#using-fastreg-with-parquet-and-duckdb-is-blazing-fast",
     "title": "Parquet, DuckDB, and fastreg for blazingly fast data analysis in the Danish Registers",
     "section": "Using fastreg (with Parquet and DuckDB) is blazing fast!",
-    "text": "Using fastreg (with Parquet and DuckDB) is blazing fast!\n\n\n\n\n\nApproach\nMedian time\nMemory used\n\n\n\n\nFrom SAS\n3.94s\n453MB\n\n\nFrom RDS\n2.64s\n453MB\n\n\nfastreg\n63.02ms\n1006KB\n\n\n\n\n\n(Code available here)"
+    "text": "Using fastreg (with Parquet and DuckDB) is blazing fast!\n\n\n\n\n\nApproach\nMedian time\nMemory used\n\n\n\n\nFrom SAS\n3.61s\n453MB\n\n\nFrom RDS\n2.59s\n453MB\n\n\nfastreg\n61.32ms\n1006KB\n\n\n\n\n\n(Code available here)"
   },
   {
-    "objectID": "s/2026-06-23/index.html#limitations-of-duckdb",
-    "href": "s/2026-06-23/index.html#limitations-of-duckdb",
+    "objectID": "s/2026-06-23/index.html#limitations-of-duckdbfastreg",
+    "href": "s/2026-06-23/index.html#limitations-of-duckdbfastreg",
     "title": "Parquet, DuckDB, and fastreg for blazingly fast data analysis in the Danish Registers",
-    "section": "Limitations of DuckDB",
-    "text": "Limitations of DuckDB\n\nCan’t do advanced statistical analysis\nA few tidyverse functions don’t work\n\nSolution: Process with DuckDB, collect into R, then do stats"
+    "section": "Limitations of DuckDB/fastreg",
+    "text": "Limitations of DuckDB/fastreg\n\nCan’t do advanced statistical analysis. Instead, process data with DuckDB, collect into R, then do stats.\nA few tidyverse functions don’t work.\nfastreg doesn’t fix problems within the data itself, only converts/reads.\nUpdates to registers of the same year maybe lead to duplicates in conversion."
   },
   {
     "objectID": "s/2026-06-23/index.html#check-out-the-fastreg-website-for-more-details-on-how-to-use-it",

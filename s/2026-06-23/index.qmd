@@ -200,7 +200,7 @@ it into a more structured, better designed package that we published to CRAN.
 
 - Converts SAS into Hive partitioned Parquet datasets
 
-- Automatically handle data updates from DST and Externe registers
+- Handles data updates from DST and Externe registers
 
 - Can do it in parallel for faster conversion
 
@@ -230,17 +230,26 @@ show_tree <- function(dir) {
     fs::dir_tree(fs::path_file(dir))
   })
 }
+
+options(
+  # With a fake project ID and the temporary directory.
+  fastreg.project_rawdata_dir = fs::path_temp(
+    "E/rawdata/701020/"
+  ),
+  fastreg.project_workdata_dir = fs::path_temp(
+    "E/workdata/701020/parquet/"
+  )
+)
 ```
 
 ```{r}
 #| label: set-options
 #| echo: true
+#| eval: false
 options(
-  # With a fake project ID and the temporary directory.
-  fastreg.project_rawdata_dir = fs::path_temp("E/rawdata/701020/"),
-  fastreg.project_workdata_dir = fs::path_temp(
-    "E/workdata/701020/parquet-registers/"
-  )
+  # This is a random (fake?) project ID.
+  fastreg.project_rawdata_dir = "E:/rawdata/701020/",
+  fastreg.project_workdata_dir = "E:/workdata/701020/parquet/"
 )
 ```
 
@@ -268,8 +277,7 @@ sas_paths <- registers_tbl |>
 #   fs::file_delete()
 
 rawdata_dir |>
-  # Get to the `E` directory to list both SAS and Parquet files
-  fs::path_dir() |>
+  # Get to `rawdata/` to list SAS files
   fs::path_dir() |>
   show_tree()
 ```
@@ -290,6 +298,7 @@ rawdata_dir <- getOption("fastreg.project_rawdata_dir")
 workdata_dir <- getOption("fastreg.project_workdata_dir")
 plan(multisession)
 conversion_log <- rawdata_dir |>
+  # Show *all* SAS files recursively in `rawdata/`.
   fastreg::list_sas_files() |>
   future_map(\(path) fastreg::convert(path, output_dir = workdata_dir)) |>
   list_rbind()
@@ -319,7 +328,8 @@ fastreg::list_parquet_datasets()
 #| label: list-parquet-datasets
 #| echo: false
 fastreg::list_parquet_datasets() |>
-  stringr::str_remove("^/tmp/[[:alnum:]]+/")
+  stringr::str_remove("^/tmp/[[:alnum:]]+/") |>
+  stringr::str_replace("^E/", "E:/")
 ```
 
 ## Parquet is much smaller than SAS, saving on storage costs {.center}
@@ -464,13 +474,15 @@ bench::mark(
 
 ([Code available here](https://github.com/lwjohnst86/slides/blob/main/s/2026-06-23/index.qmd))
 
-## Limitations of DuckDB {.center}
+## Limitations of DuckDB/fastreg {.center}
 
-- Can't do advanced statistical analysis
+- Can't do advanced statistical analysis. Instead, process data with DuckDB, collect into R, then do stats.
 
-- A few tidyverse functions don't work
+- A few tidyverse functions don't work.
 
-**Solution: Process with DuckDB, collect into R, then do stats**
+- fastreg doesn't fix problems within the data itself, only converts/reads.
+
+- Updates to registers of the same year maybe lead to duplicates in conversion.
 
 ## Check out the fastreg website for more details on how to use it {.center}
 
